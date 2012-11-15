@@ -1,0 +1,11 @@
+<?php
+//
+define('THINK_PATH','./ThinkPHP/');
+//
+define('APP_NAME','DCDApp');
+define('APP_PATH','./DCDApp');
+//
+require(THINK_PATH."/ThinkPHP.php");
+//
+App::run();
+?>
