@@ -2,10 +2,10 @@
 -- version 3.4.5
 -- http://www.phpmyadmin.net
 --
--- Ö÷»ú: localhost
--- Éú³ÉÈÕÆÚ: 2012 Äê 11 ÔÂ 16 ÈÕ 01:41
--- ·şÎñÆ÷°æ±¾: 5.5.16
--- PHP °æ±¾: 5.3.8
+-- ä¸»æœº: localhost
+-- ç”Ÿæˆæ—¥æœŸ: 2012 å¹´ 11 æœˆ 16 æ—¥ 01:41
+-- æœåŠ¡å™¨ç‰ˆæœ¬: 5.5.16
+-- PHP ç‰ˆæœ¬: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,60 +17,61 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Êı¾İ¿â: `dcd`
+-- æ•°æ®åº“: `dcd`
 --
 
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `administrator`
+-- è¡¨çš„ç»“æ„ `administrator`
 --
 
 CREATE TABLE IF NOT EXISTS `administrator` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
-  `privilege` int(11) DEFAULT NULL COMMENT '±íÃ÷¹ÜÀíÔ±È¨ÏŞ',
-  `username` varchar(16) COLLATE utf8_bin NOT NULL COMMENT 'ÓÃ»§Ãû',
-  `password` varchar(64) COLLATE utf8_bin NOT NULL COMMENT 'md5¼ÓÃÜºóµÄÃÜÂë',
-  `name` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'ĞÕÃû',
-  `tel` varchar(16) COLLATE utf8_bin DEFAULT NULL COMMENT 'µç»°ºÅ',
+  `privilege` int(11) DEFAULT NULL COMMENT 'è¡¨æ˜ç®¡ç†å‘˜æƒé™',
+  `username` varchar(16) COLLATE utf8_bin NOT NULL COMMENT 'ç”¨æˆ·å',
+  `password` varchar(64) COLLATE utf8_bin NOT NULL COMMENT 'md5åŠ å¯†åçš„å¯†ç ',
+  `name` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'å§“å',
+  `phone` varchar(16) COLLATE utf8_bin DEFAULT NULL COMMENT 'åº§æœºå·',
+  `cellphone` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'æ‰‹æœºå·',
   `email` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'email',
-  `addr` varchar(256) COLLATE utf8_bin DEFAULT NULL COMMENT 'µØÖ·',
-  `createtime` int(11) NOT NULL COMMENT 'ÕËºÅ´´½¨Ê±¼ä',
-  `lastlogintime` int(11) DEFAULT NULL COMMENT 'ÉÏ´ÎµÇÂ¼Ê±¼ä',
+  `addr` varchar(256) COLLATE utf8_bin DEFAULT NULL COMMENT 'åœ°å€',
+  `createtime` int(11) NOT NULL COMMENT 'è´¦å·åˆ›å»ºæ—¶é—´',
+  `lastlogintime` int(11) DEFAULT NULL COMMENT 'ä¸Šæ¬¡ç™»å½•æ—¶é—´',
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 COMMENT='ÍøÕ¾¹ÜÀíÔ±ÕËºÅ±í' ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 COMMENT='ç½‘ç«™ç®¡ç†å‘˜è´¦å·è¡¨' ;
 
 --
--- ×ª´æ±íÖĞµÄÊı¾İ `administrator`
+-- è½¬å­˜è¡¨ä¸­çš„æ•°æ® `administrator`
 --
 
-INSERT INTO `administrator` (`uid`, `privilege`, `username`, `password`, `name`, `tel`, `email`, `addr`, `createtime`, `lastlogintime`) VALUES
-(1, 1, 'root', 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL, 'jdp@zju.edu.cn', NULL, 1352975885, 1353027595);
+INSERT INTO `administrator` (`uid`, `privilege`, `username`, `password`, `name`, `phone`,`cellphone`, `email`, `addr`, `createtime`, `lastlogintime`) VALUES
+(1, 1, 'root', 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL, NULL, 'jdp@zju.edu.cn', NULL, 1352975885, 1353027595);
 
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `news`
+-- è¡¨çš„ç»“æ„ `news`
 --
 
 CREATE TABLE IF NOT EXISTS `news` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ĞÅÏ¢ID',
-  `type` int(11) NOT NULL COMMENT 'ĞÅÏ¢ÀàĞÍID',
-  `title` varchar(256) COLLATE utf8_bin NOT NULL COMMENT 'ĞÅÏ¢±êÌâ',
-  `content` varchar(10240) COLLATE utf8_bin NOT NULL COMMENT 'ĞÅÏ¢ÄÚÈİ',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ä¿¡æ¯ID',
+  `type` int(11) NOT NULL COMMENT 'ä¿¡æ¯ç±»å‹ID',
+  `title` varchar(256) COLLATE utf8_bin NOT NULL COMMENT 'ä¿¡æ¯æ ‡é¢˜',
+  `content` varchar(10240) COLLATE utf8_bin NOT NULL COMMENT 'ä¿¡æ¯å†…å®¹',
   `publisher` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'publisher name',
-  `date` int(11) NOT NULL COMMENT '·¢²¼Ê±¼ä',
+  `date` int(11) NOT NULL COMMENT 'å‘å¸ƒæ—¶é—´',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Í¨ÖªĞÅÏ¢±í' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='é€šçŸ¥ä¿¡æ¯è¡¨' AUTO_INCREMENT=1 ;
 
 
 --
--- ×ª´æ±íÖĞµÄÊı¾İ `news`
+-- è½¬å­˜è¡¨ä¸­çš„æ•°æ® `news`
 --
 
 INSERT INTO `news` (`id`, `title`, `content`, `publisher`, `date`) VALUES
-(4, '[ÖØÒª]¹ØÓÚÖÜ¶şÍíÉÏË¶Ê¿Éú¹¤×÷»ã±¨µÄÍ¨Öª', '<pre style="line-height: 23px; word-wrap: break-word; white-space: pre-wrap; font-size: 14px">\r\n´ó¼ÒºÃ£¬\r\n\r\n±¾ÖÜ¶şÍíÉÏ6:30£¬²Ü¹â±êÖ÷Â¥201£¬ÊµÑéÊÒË¶Ê¿¹¤×÷Àı»á£¬±¾´ÎÀı»áµÄÒ»¸öÖ÷ÒªÒéÌâÊÇÌÖÂÛÊı¾İ±íµÄ¾ßÌåÉè¼Æ·½°¸¡£\r\n\r\nÕë¶ÔÎÒÃÇÄ¿Ç°ÕıÔÚ´î½¨µÄÑİÊ¾ÏµÍ³£¬ÆÈÇĞĞèÒªÈ·Á¢Í³Ò»ÍêÕû´æÈ¡·½°¸£¬Ê¹µÃ£º\r\n\r\n1.	ÎÒÃÇÒÑ¾­»ò½«ÒªÅÀÈ¡µÄÊı¾İ¿ÉÒÔÒÔÍ³Ò»µÄ¸ñÊ½´æ·Å£¬ÒÔ±ãÎÒÃÇ½¨Á¢ÎÈ¶¨¡¢ÊµÊ±µÄÊı¾İ×¥È¡¼Ó¹¤Æ½Ì¨¡£\r\n2.	ÕıÔÚ¿ª·¢ÍêÉÆµÄÉÏ²ãÓ¦ÓÃÏµÍ³£¨ÒÔÍ¼ËÑÍ¼¡¢Ö÷Ìâ¿ÉÊÓ»¯¡¢ÎÊ´ğÏµÍ³£©£¬¿ÉÒÔ»ùÓÚ´Ë´æ´¢·½°¸Ìá¹©µÄ½Ó¿Ú£¬À´»ñÈ¡Êı¾İ£¬ÒÔ´Ë¼Ó¿ì¿ª·¢½ø¶È£¬¼õÉÙÖØ¸´ÀÍ¶¯¡£\r\n\r\n»ùÓÚ´Ë£¬µ±Ç°µÄÒ»¸öÖØÒªÈÎÎñÊÇÈ·¶¨´æ´¢ÏµÍ³ÖĞÊı¾İ±íµÄ¾ßÌåÉè¼Æ·½°¸£¬¸½¼ş£¨ÉÛ½¨ÀÏÊ¦Ìá¹©£©ÖĞÊÇ\r\n&ldquo;¿çÃ½Ìå¼ÆËãÑéÖ¤ÏµÍ³&rdquo;ÖĞ¶¨ÒåµÄÊı¾İ±í¸ñÊ½£¬¿ÉÓÃÓÚ¶Ô¿çÃ½ÌåÊı¾İµÄÍ³Ò»´æ´¢¡£\r\n\r\nµ«ÊÇ¶ÔÓÚÎÒÃÇÄ¿Ç°ĞèÒª¿ª·¢µÄÉÏ²ãÓ¦ÓÃÏµÍ³£¨ÒÔÍ¼ËÑÍ¼¡¢Ö÷Ìâ¿ÉÊÓ»¯¡¢ÎÊ´ğÏµÍ³£©¶øÑÔ£¬»¹ĞèÒª¶¨ÒåºÜ¶àÖĞ¼ä²ãµÄÊı¾İ±í£¨±ÈÈç£¬ÎÊ´ğÏµÍ³ÖĞµÄÖªÊ¶ÈçºÎ´æ´¢£¿Ö÷Ìâ½¨Ä£ÖĞµÄ¸÷ÒªËØ¡¢ÊÂ¼ş¡¢Ö÷Ìâ¡¢ÕªÒªÈçºÎ´æ´¢£¿µÈµÈ£©\r\n\r\nÇë¸÷Î»²ÎÓëÏµÍ³¿ª·¢µÄË¶Ê¿£¬ÒÔ¼°ÕıÔÚ´ÓÊÂÏà¹ØÑĞ¾¿µÄ²©Ê¿£¨ÁõÑó¡¢¸ßº£¶«µÈ£©£¬Ë¼¿¼Ò»ÏÂ¸½¼şÖĞµÄÊı¾İ±í¸ñÊ½ÊÇ·ñºÏÀí£¬ÊÇ·ñĞèÒªÌí¼ÓĞÂµÄÄÚÈİ£¬Õë¶ÔÄãÃÇÄ¿Ç°´ÓÊÂµÄ¿ª·¢ºÍÑĞ¾¿£¬ĞèÒªÊ²Ã´ÑùµÄÖĞ¼äÊı¾İ£¬Ó¦¸ÃÈçºÎ´æ´¢£¿\r\n\r\nÇë»ã±¨µÄË¶Ê¿½«ÕâĞ©ÎÊÌâÁĞÔÚ»ã±¨¹¤×÷Ö®ºó£¬×÷Îª»ã±¨µÄÒ»²¿·Ö¡£\r\n&nbsp;</pre>\r\n<p><span style="line-height: 23px; white-space: pre-wrap; font-size: 14px">Ë¹ÁÁ</span>&nbsp;</p>\r\n<p><img alt="" width="240" height="120" src="/dcd/Attachments/FCKeditor/201211/20121106_101711_191.png" /></p>', 'root', 1352975885),
-(5, '½ñÌìÓÖĞŞ¸ÄÁËÒ»µã´úÂë', '<p>&nbsp;½ñÌìÓÖĞŞ¸ÄÁËÒ»µã´úÂë</p>\r\n<p>&nbsp;</p>\r\n<p>Çì×£Ò»ÏÂ°É</p>\r\n<p>¹ş¹ş</p>', 'root', 1352992650);
+(4, '[é‡è¦]å…³äºå‘¨äºŒæ™šä¸Šç¡•å£«ç”Ÿå·¥ä½œæ±‡æŠ¥çš„é€šçŸ¥', '<pre style="line-height: 23px; word-wrap: break-word; white-space: pre-wrap; font-size: 14px">\r\nå¤§å®¶å¥½ï¼Œ\r\n\r\næœ¬å‘¨äºŒæ™šä¸Š6:30ï¼Œæ›¹å…‰æ ‡ä¸»æ¥¼201ï¼Œå®éªŒå®¤ç¡•å£«å·¥ä½œä¾‹ä¼šï¼Œæœ¬æ¬¡ä¾‹ä¼šçš„ä¸€ä¸ªä¸»è¦è®®é¢˜æ˜¯è®¨è®ºæ•°æ®è¡¨çš„å…·ä½“è®¾è®¡æ–¹æ¡ˆã€‚\r\n\r\né’ˆå¯¹æˆ‘ä»¬ç›®å‰æ­£åœ¨æ­å»ºçš„æ¼”ç¤ºç³»ç»Ÿï¼Œè¿«åˆ‡éœ€è¦ç¡®ç«‹ç»Ÿä¸€å®Œæ•´å­˜å–æ–¹æ¡ˆï¼Œä½¿å¾—ï¼š\r\n\r\n1.	æˆ‘ä»¬å·²ç»æˆ–å°†è¦çˆ¬å–çš„æ•°æ®å¯ä»¥ä»¥ç»Ÿä¸€çš„æ ¼å¼å­˜æ”¾ï¼Œä»¥ä¾¿æˆ‘ä»¬å»ºç«‹ç¨³å®šã€å®æ—¶çš„æ•°æ®æŠ“å–åŠ å·¥å¹³å°ã€‚\r\n2.	æ­£åœ¨å¼€å‘å®Œå–„çš„ä¸Šå±‚åº”ç”¨ç³»ç»Ÿï¼ˆä»¥å›¾æœå›¾ã€ä¸»é¢˜å¯è§†åŒ–ã€é—®ç­”ç³»ç»Ÿï¼‰ï¼Œå¯ä»¥åŸºäºæ­¤å­˜å‚¨æ–¹æ¡ˆæä¾›çš„æ¥å£ï¼Œæ¥è·å–æ•°æ®ï¼Œä»¥æ­¤åŠ å¿«å¼€å‘è¿›åº¦ï¼Œå‡å°‘é‡å¤åŠ³åŠ¨ã€‚\r\n\r\nåŸºäºæ­¤ï¼Œå½“å‰çš„ä¸€ä¸ªé‡è¦ä»»åŠ¡æ˜¯ç¡®å®šå­˜å‚¨ç³»ç»Ÿä¸­æ•°æ®è¡¨çš„å…·ä½“è®¾è®¡æ–¹æ¡ˆï¼Œé™„ä»¶ï¼ˆé‚µå»ºè€å¸ˆæä¾›ï¼‰ä¸­æ˜¯\r\n&ldquo;è·¨åª’ä½“è®¡ç®—éªŒè¯ç³»ç»Ÿ&rdquo;ä¸­å®šä¹‰çš„æ•°æ®è¡¨æ ¼å¼ï¼Œå¯ç”¨äºå¯¹è·¨åª’ä½“æ•°æ®çš„ç»Ÿä¸€å­˜å‚¨ã€‚\r\n\r\nä½†æ˜¯å¯¹äºæˆ‘ä»¬ç›®å‰éœ€è¦å¼€å‘çš„ä¸Šå±‚åº”ç”¨ç³»ç»Ÿï¼ˆä»¥å›¾æœå›¾ã€ä¸»é¢˜å¯è§†åŒ–ã€é—®ç­”ç³»ç»Ÿï¼‰è€Œè¨€ï¼Œè¿˜éœ€è¦å®šä¹‰å¾ˆå¤šä¸­é—´å±‚çš„æ•°æ®è¡¨ï¼ˆæ¯”å¦‚ï¼Œé—®ç­”ç³»ç»Ÿä¸­çš„çŸ¥è¯†å¦‚ä½•å­˜å‚¨ï¼Ÿä¸»é¢˜å»ºæ¨¡ä¸­çš„å„è¦ç´ ã€äº‹ä»¶ã€ä¸»é¢˜ã€æ‘˜è¦å¦‚ä½•å­˜å‚¨ï¼Ÿç­‰ç­‰ï¼‰\r\n\r\nè¯·å„ä½å‚ä¸ç³»ç»Ÿå¼€å‘çš„ç¡•å£«ï¼Œä»¥åŠæ­£åœ¨ä»äº‹ç›¸å…³ç ”ç©¶çš„åšå£«ï¼ˆåˆ˜æ´‹ã€é«˜æµ·ä¸œç­‰ï¼‰ï¼Œæ€è€ƒä¸€ä¸‹é™„ä»¶ä¸­çš„æ•°æ®è¡¨æ ¼å¼æ˜¯å¦åˆç†ï¼Œæ˜¯å¦éœ€è¦æ·»åŠ æ–°çš„å†…å®¹ï¼Œé’ˆå¯¹ä½ ä»¬ç›®å‰ä»äº‹çš„å¼€å‘å’Œç ”ç©¶ï¼Œéœ€è¦ä»€ä¹ˆæ ·çš„ä¸­é—´æ•°æ®ï¼Œåº”è¯¥å¦‚ä½•å­˜å‚¨ï¼Ÿ\r\n\r\nè¯·æ±‡æŠ¥çš„ç¡•å£«å°†è¿™äº›é—®é¢˜åˆ—åœ¨æ±‡æŠ¥å·¥ä½œä¹‹åï¼Œä½œä¸ºæ±‡æŠ¥çš„ä¸€éƒ¨åˆ†ã€‚\r\n&nbsp;</pre>\r\n<p><span style="line-height: 23px; white-space: pre-wrap; font-size: 14px">æ–¯äº®</span>&nbsp;</p>\r\n<p><img alt="" width="240" height="120" src="/dcd/Attachments/FCKeditor/201211/20121106_101711_191.png" /></p>', 'root', 1352975885),
+(5, 'ä»Šå¤©åˆä¿®æ”¹äº†ä¸€ç‚¹ä»£ç ', '<p>&nbsp;ä»Šå¤©åˆä¿®æ”¹äº†ä¸€ç‚¹ä»£ç </p>\r\n<p>&nbsp;</p>\r\n<p>åº†ç¥ä¸€ä¸‹å§</p>\r\n<p>å“ˆå“ˆ</p>', 'root', 1352992650);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -80,16 +81,16 @@ INSERT INTO `news` (`id`, `title`, `content`, `publisher`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `newstype`
+-- è¡¨çš„ç»“æ„ `newstype`
 --
 
 CREATE TABLE IF NOT EXISTS `newstype` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `typeid` int(11) NOT NULL COMMENT 'ĞÅÏ¢ÀàĞÍID',
-  `typename` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'ĞÅÏ¢ÀàĞÍÃû',
-  `note` varchar(1024) COLLATE utf8_bin COMMENT 'ĞÅÏ¢±¸×¢',
+  `typeid` int(11) NOT NULL COMMENT 'ä¿¡æ¯ç±»å‹ID',
+  `typename` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'ä¿¡æ¯ç±»å‹å',
+  `note` varchar(1024) COLLATE utf8_bin COMMENT 'ä¿¡æ¯å¤‡æ³¨',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Í¨ÖªÀàĞÍ±í' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='é€šçŸ¥ç±»å‹è¡¨' AUTO_INCREMENT=1 ;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
@@ -98,65 +99,65 @@ CREATE TABLE IF NOT EXISTS `newstype` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `innerreport`
+-- è¡¨çš„ç»“æ„ `innerreport`
 --
 
 CREATE TABLE IF NOT EXISTS `innerreport` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `type` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'ÄÚ²¿±¨¸æÀàĞÍ',
-  `introduction` varchar(500) COLLATE utf8_bin NOT NULL COMMENT 'ÄÚÈİ¼ò½é',
-  `date` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '±¨¸æ»áÈÕÆÚ',
-  `speaker` varchar(255) COLLATE utf8_bin COMMENT 'Ö÷½²ÈËÁĞ±í£¬ÒÔ;·Ö¸î',
-  `audience` varchar(255) COLLATE utf8_bin COMMENT '²Î»áÈËÔ±ÁĞ±í£¬ÒÔ;·Ö¸î',
-  `attachment` varchar(255) COLLATE utf8_bin COMMENT '±¨¸æ»á×ÊÁÏ¸½¼şÂ·¾¶',
-  `note` varchar(255) COLLATE utf8_bin COMMENT '±¸×¢',
+  `type` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'å†…éƒ¨æŠ¥å‘Šç±»å‹',
+  `introduction` varchar(500) COLLATE utf8_bin NOT NULL COMMENT 'å†…å®¹ç®€ä»‹',
+  `date` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'æŠ¥å‘Šä¼šæ—¥æœŸ',
+  `speaker` varchar(255) COLLATE utf8_bin COMMENT 'ä¸»è®²äººåˆ—è¡¨ï¼Œä»¥;åˆ†å‰²',
+  `audience` varchar(255) COLLATE utf8_bin COMMENT 'å‚ä¼šäººå‘˜åˆ—è¡¨ï¼Œä»¥;åˆ†å‰²',
+  `attachment` varchar(255) COLLATE utf8_bin COMMENT 'æŠ¥å‘Šä¼šèµ„æ–™é™„ä»¶è·¯å¾„',
+  `note` varchar(255) COLLATE utf8_bin COMMENT 'å¤‡æ³¨',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='ÄÚ²¿Ñ§Êõ±¨¸æ»á±í' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='å†…éƒ¨å­¦æœ¯æŠ¥å‘Šä¼šè¡¨' AUTO_INCREMENT=1 ;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `teacher`
+-- è¡¨çš„ç»“æ„ `teacher`
 --
 
 CREATE TABLE IF NOT EXISTS `teacher` (
-  `id` int(11) NOT NULL COMMENT '¹¤ºÅ',
-  `name` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'ĞÕÃû',
-  `photo` varchar(100) COLLATE utf8_bin COMMENT 'ÕÕÆ¬µØÖ·',
-  `gender` varchar(1) COLLATE utf8_bin NOT NULL COMMENT 'ĞÔ±ğ',
-  `position` varchar(8) COLLATE utf8_bin NOT NULL COMMENT 'Ö°³Æ',
-  `birthday` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'ÉúÈÕ',
-  `politicsstatus` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT 'ÕşÖÎÃæÃ²',
-  `birthplace` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '³öÉúµØ',
-  `politicsposition` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'ĞĞÕşÖ°Îñ',
-  `ismarried` tinyint(1) DEFAULT NULL COMMENT '»é·ñ',
-  `researchdir` varchar(200) COLLATE utf8_bin DEFAULT NULL COMMENT 'ÑĞ¾¿·½Ïò',
-  `degree` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '×î¸ßÑ§Î»',
-  `degreedate` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '»ñµÃ×î¸ßÑ§Î»Äê·İ',
-  `academichonour` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'Ñ§Êõ³ÆºÅ',
-  `phonenum` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'ÁªÏµ·½Ê½',
-  `idcardno` varchar(20) COLLATE utf8_bin   COMMENT 'Éí·İÖ¤ºÅ',
-  `address` varchar(50) COLLATE utf8_bin   COMMENT '×¡Ö·',
-  `email` varchar(100) COLLATE utf8_bin   COMMENT 'email£¬¿ÉÊäÈë¶à¸ö£¬ÓÃ;·Ö¸î',
-  `postgraduateschool` varchar(100) COLLATE utf8_bin   COMMENT 'ÑĞ¾¿ÉúÔºĞ£',
-  `postgraduatefaculty` varchar(100) COLLATE utf8_bin   COMMENT 'ÑĞ¾¿ÉúÔºÏµ',
-  `postgraduatemajor` varchar(100) COLLATE utf8_bin   COMMENT 'ÑĞ¾¿Éú×¨Òµ',
-  `postgraduatedegree` varchar(10) COLLATE utf8_bin   COMMENT 'ÑĞ¾¿Éú½×¶Î»ñµÃÑ§Î»',
-  `postgraduateend` varchar(20)   COMMENT 'ÑĞ¾¿Éú±ÏÒµÈÕÆÚ',
-  `collegeschool` varchar(100) COLLATE utf8_bin   COMMENT '±¾¿ÆÔºĞ£',
-  `collegefaculty` varchar(100) COLLATE utf8_bin   COMMENT '±¾¿ÆÔºÏµ',
-  `collegemajor` varchar(100) COLLATE utf8_bin   COMMENT '±¾¿Æ×¨Òµ',
-  `collegedegree` varchar(10) COLLATE utf8_bin   COMMENT '±¾¿Æ½×¶Î»ñµÃÑ§Î»',
-  `collegeend` varchar(20)   COMMENT '±¾¿Æ±ÏÒµÈÕÆÚ',
-  `introduction` varchar(1000) COLLATE utf8_bin DEFAULT NULL COMMENT '¸öÈË¼ò½é',
-  `academicparticipation` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT 'Ñ§ÊõÈÎÖ°',
-  `reachergroup` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT 'ËùÊô¿ÎÌâ×é£¬¿É¶àÑ¡£¬ÓÃ;·Ö¸î',
-  `lab` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT 'ËùÔÚÊµÑéÊÒ£¬¿É¶àÑ¡£¬ÓÃ;·Ö¸î',  
+  `id` int(11) NOT NULL COMMENT 'å·¥å·',
+  `name` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'å§“å',
+  `photo` varchar(100) COLLATE utf8_bin COMMENT 'ç…§ç‰‡åœ°å€',
+  `gender` varchar(1) COLLATE utf8_bin NOT NULL COMMENT 'æ€§åˆ«',
+  `position` varchar(8) COLLATE utf8_bin NOT NULL COMMENT 'èŒç§°',
+  `birthday` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'ç”Ÿæ—¥',
+  `politicsstatus` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT 'æ”¿æ²»é¢è²Œ',
+  `birthplace` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'å‡ºç”Ÿåœ°',
+  `politicsposition` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'è¡Œæ”¿èŒåŠ¡',
+  `ismarried` tinyint(1) DEFAULT NULL COMMENT 'å©šå¦',
+  `researchdir` varchar(200) COLLATE utf8_bin DEFAULT NULL COMMENT 'ç ”ç©¶æ–¹å‘',
+  `degree` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT 'æœ€é«˜å­¦ä½',
+  `degreedate` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'è·å¾—æœ€é«˜å­¦ä½å¹´ä»½',
+  `academichonour` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'å­¦æœ¯ç§°å·',
+  `phonenum` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'è”ç³»æ–¹å¼',
+  `idcardno` varchar(20) COLLATE utf8_bin   COMMENT 'èº«ä»½è¯å·',
+  `address` varchar(50) COLLATE utf8_bin   COMMENT 'ä½å€',
+  `email` varchar(100) COLLATE utf8_bin   COMMENT 'emailï¼Œå¯è¾“å…¥å¤šä¸ªï¼Œç”¨;åˆ†å‰²',
+  `postgraduateschool` varchar(100) COLLATE utf8_bin   COMMENT 'ç ”ç©¶ç”Ÿé™¢æ ¡',
+  `postgraduatefaculty` varchar(100) COLLATE utf8_bin   COMMENT 'ç ”ç©¶ç”Ÿé™¢ç³»',
+  `postgraduatemajor` varchar(100) COLLATE utf8_bin   COMMENT 'ç ”ç©¶ç”Ÿä¸“ä¸š',
+  `postgraduatedegree` varchar(10) COLLATE utf8_bin   COMMENT 'ç ”ç©¶ç”Ÿé˜¶æ®µè·å¾—å­¦ä½',
+  `postgraduateend` varchar(20)   COMMENT 'ç ”ç©¶ç”Ÿæ¯•ä¸šæ—¥æœŸ',
+  `collegeschool` varchar(100) COLLATE utf8_bin   COMMENT 'æœ¬ç§‘é™¢æ ¡',
+  `collegefaculty` varchar(100) COLLATE utf8_bin   COMMENT 'æœ¬ç§‘é™¢ç³»',
+  `collegemajor` varchar(100) COLLATE utf8_bin   COMMENT 'æœ¬ç§‘ä¸“ä¸š',
+  `collegedegree` varchar(10) COLLATE utf8_bin   COMMENT 'æœ¬ç§‘é˜¶æ®µè·å¾—å­¦ä½',
+  `collegeend` varchar(20)   COMMENT 'æœ¬ç§‘æ¯•ä¸šæ—¥æœŸ',
+  `introduction` varchar(1000) COLLATE utf8_bin DEFAULT NULL COMMENT 'ä¸ªäººç®€ä»‹',
+  `academicparticipation` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT 'å­¦æœ¯ä»»èŒ',
+  `reachergroup` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT 'æ‰€å±è¯¾é¢˜ç»„ï¼Œå¯å¤šé€‰ï¼Œç”¨;åˆ†å‰²',
+  `lab` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT 'æ‰€åœ¨å®éªŒå®¤ï¼Œå¯å¤šé€‰ï¼Œç”¨;åˆ†å‰²',  
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='½ÌÊ¦±í';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='æ•™å¸ˆè¡¨';
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -165,76 +166,47 @@ CREATE TABLE IF NOT EXISTS `teacher` (
 
 -- --------------------------------------------------------
 
---
--- ±íµÄ½á¹¹ `admin`
---
-
-CREATE TABLE IF NOT EXISTS `admin` (
-  `id` int(11) NOT NULL COMMENT '¹¤ºÅ',
-  `name` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'ĞÕÃû',
-  `photo` varchar(100) COLLATE utf8_bin COMMENT 'ÕÕÆ¬µØÖ·',
-  `gender` varchar(1) COLLATE utf8_bin NOT NULL COMMENT 'ĞÔ±ğ',
-  `position` varchar(8) COLLATE utf8_bin NOT NULL COMMENT 'Ö°³Æ',
-  `birthday` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'ÉúÈÕ',
-  `politicsstatus` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT 'ÕşÖÎÃæÃ²',
-  `birthplace` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '³öÉúµØ',
-  `politicsposition` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'ĞĞÕşÖ°Îñ',
-  `ismarried` tinyint(1) DEFAULT NULL COMMENT '»é·ñ',
-  `phonenum` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '°ì¹«ÊÒµç»°',
-  `idcardno` varchar(20) COLLATE utf8_bin   COMMENT 'Éí·İÖ¤ºÅ',
-  `cellphone` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT 'ÊÖ»úºÅ',
-  `address` varchar(50) COLLATE utf8_bin   COMMENT '×¡Ö·',
-  `email` varchar(100) COLLATE utf8_bin   COMMENT 'email£¬¿ÉÊäÈë¶à¸ö£¬ÓÃ;·Ö¸î',
-  `lab` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT 'ËùÔÚÊµÑéÊÒ£¬¿É¶àÑ¡£¬ÓÃ;·Ö¸î', 
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='ÊµÑéÊÒ¹ÜÀíÈËÔ±±í(·ÇÍøÕ¾¹ÜÀíÈËÔ±)';
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `student`
+-- è¡¨çš„ç»“æ„ `student`
 --
 
 CREATE TABLE IF NOT EXISTS `student` (
-  `id` int(11) COLLATE utf8_bin NOT NULL COMMENT 'Ñ§ºÅ',
-  `name` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'ĞÕÃû',
-  `photo` varchar(100) COLLATE utf8_bin COMMENT 'ÕÕÆ¬µØÖ·',
-  `gender` varchar(1) COLLATE utf8_bin COMMENT 'ĞÔ±ğ',
-  `labaddr` varchar(50) COMMENT 'ÊµÑéÊÒµØÖ·',
-  `birthday` varchar(20) COLLATE utf8_bin COMMENT '³öÉúÈÕÆÚ',
-  `politicsstatus` varchar(10) COLLATE utf8_bin   COMMENT 'ÕşÖÎÃæÃ²',
-  `nativeplace` varchar(20) COLLATE utf8_bin   COMMENT 'ÉúÔ´µØ',
-  `birth_place` varchar(20) COLLATE utf8_bin   COMMENT '³öÉúµØ',
-  `teacher` int(11) COLLATE utf8_bin NOT NULL COMMENT 'µ¼Ê¦id',
-  `category` varchar(8) COLLATE utf8_bin NOT NULL COMMENT 'Àà±ğ£º²©£¬Ë¶...',
-  `entrancedate` varchar(20) COLLATE utf8_bin   COMMENT 'ÈëÑ§ÈÕÆÚ',
-  `phonenum` varchar(20) COLLATE utf8_bin   COMMENT 'µç»°',
-  `idcardno` varchar(20) COLLATE utf8_bin   COMMENT 'Éí·İÖ¤ºÅ',
-  `address` varchar(50) COLLATE utf8_bin   COMMENT '×¡Ö·',
+  `id` int(11) COLLATE utf8_bin NOT NULL COMMENT 'å­¦å·',
+  `name` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'å§“å',
+  `photo` varchar(100) COLLATE utf8_bin COMMENT 'ç…§ç‰‡åœ°å€',
+  `gender` varchar(1) COLLATE utf8_bin COMMENT 'æ€§åˆ«',
+  `labaddr` varchar(50) COMMENT 'å®éªŒå®¤åœ°å€',
+  `birthday` varchar(20) COLLATE utf8_bin COMMENT 'å‡ºç”Ÿæ—¥æœŸ',
+  `politicsstatus` varchar(10) COLLATE utf8_bin   COMMENT 'æ”¿æ²»é¢è²Œ',
+  `nativeplace` varchar(20) COLLATE utf8_bin   COMMENT 'ç”Ÿæºåœ°',
+  `birth_place` varchar(20) COLLATE utf8_bin   COMMENT 'å‡ºç”Ÿåœ°',
+  `teacher` int(11) COLLATE utf8_bin NOT NULL COMMENT 'å¯¼å¸ˆid',
+  `category` varchar(8) COLLATE utf8_bin NOT NULL COMMENT 'ç±»åˆ«ï¼šåšï¼Œç¡•...',
+  `entrancedate` varchar(20) COLLATE utf8_bin   COMMENT 'å…¥å­¦æ—¥æœŸ',
+  `phonenum` varchar(20) COLLATE utf8_bin   COMMENT 'ç”µè¯',
+  `idcardno` varchar(20) COLLATE utf8_bin   COMMENT 'èº«ä»½è¯å·',
+  `address` varchar(50) COLLATE utf8_bin   COMMENT 'ä½å€',
   `email` varchar(50) COLLATE utf8_bin   COMMENT 'email',
-  `hobby` varchar(50) COLLATE utf8_bin   COMMENT 'ÌØ³¤°®ºÃ',
-  `introduction` varchar(1000) COLLATE utf8_bin   COMMENT '¸öÈË¼ò½é',
-  `postgraduateschool` varchar(100) COLLATE utf8_bin   COMMENT 'ÑĞ¾¿ÉúÔºĞ£',
-  `postgraduatefaculty` varchar(100) COLLATE utf8_bin   COMMENT 'ÑĞ¾¿ÉúÔºÏµ',
-  `postgraduatemajor` varchar(100) COLLATE utf8_bin   COMMENT 'ÑĞ¾¿Éú×¨Òµ',
-  `postgraduatedegree` varchar(10) COLLATE utf8_bin   COMMENT 'ÑĞ¾¿Éú½×¶Î»ñµÃÑ§Î»',
-  `postgraduateend` varchar(20) COLLATE utf8_bin  COMMENT 'ÑĞ¾¿Éú±ÏÒµÈÕÆÚ',
-  `collegeschool` varchar(100) COLLATE utf8_bin   COMMENT '±¾¿ÆÔºĞ£',
-  `collegefaculty` varchar(100) COLLATE utf8_bin   COMMENT '±¾¿ÆÔºÏµ',
-  `collegemajor` varchar(100) COLLATE utf8_bin   COMMENT '±¾¿Æ×¨Òµ',
-  `collegedegree` varchar(10) COLLATE utf8_bin   COMMENT '±¾¿Æ½×¶Î»ñµÃÑ§Î»',
-  `collegeend` varchar(20) COLLATE utf8_bin  COMMENT '±¾¿Æ±ÏÒµÈÕÆÚ',
-  `seniorschool` varchar(100) COLLATE utf8_bin   COMMENT '¸ßÖĞÑ§Ğ£',
-  `seniorstart` varchar(20) COLLATE utf8_bin   COMMENT '¸ßÖĞÈëÑ§ÈÕÆÚ',
-  `seniorend` varchar(20) COLLATE utf8_bin   COMMENT '¸ßÖĞ±ÏÒµÈÕÆÚ',
+  `hobby` varchar(50) COLLATE utf8_bin   COMMENT 'ç‰¹é•¿çˆ±å¥½',
+  `introduction` varchar(1000) COLLATE utf8_bin   COMMENT 'ä¸ªäººç®€ä»‹',
+  `postgraduateschool` varchar(100) COLLATE utf8_bin   COMMENT 'ç ”ç©¶ç”Ÿé™¢æ ¡',
+  `postgraduatefaculty` varchar(100) COLLATE utf8_bin   COMMENT 'ç ”ç©¶ç”Ÿé™¢ç³»',
+  `postgraduatemajor` varchar(100) COLLATE utf8_bin   COMMENT 'ç ”ç©¶ç”Ÿä¸“ä¸š',
+  `postgraduatedegree` varchar(10) COLLATE utf8_bin   COMMENT 'ç ”ç©¶ç”Ÿé˜¶æ®µè·å¾—å­¦ä½',
+  `postgraduateend` varchar(20) COLLATE utf8_bin  COMMENT 'ç ”ç©¶ç”Ÿæ¯•ä¸šæ—¥æœŸ',
+  `collegeschool` varchar(100) COLLATE utf8_bin   COMMENT 'æœ¬ç§‘é™¢æ ¡',
+  `collegefaculty` varchar(100) COLLATE utf8_bin   COMMENT 'æœ¬ç§‘é™¢ç³»',
+  `collegemajor` varchar(100) COLLATE utf8_bin   COMMENT 'æœ¬ç§‘ä¸“ä¸š',
+  `collegedegree` varchar(10) COLLATE utf8_bin   COMMENT 'æœ¬ç§‘é˜¶æ®µè·å¾—å­¦ä½',
+  `collegeend` varchar(20) COLLATE utf8_bin  COMMENT 'æœ¬ç§‘æ¯•ä¸šæ—¥æœŸ',
+  `seniorschool` varchar(100) COLLATE utf8_bin   COMMENT 'é«˜ä¸­å­¦æ ¡',
+  `seniorstart` varchar(20) COLLATE utf8_bin   COMMENT 'é«˜ä¸­å…¥å­¦æ—¥æœŸ',
+  `seniorend` varchar(20) COLLATE utf8_bin   COMMENT 'é«˜ä¸­æ¯•ä¸šæ—¥æœŸ',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Ñ§ÉúĞÅÏ¢±í';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='å­¦ç”Ÿä¿¡æ¯è¡¨';
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -243,18 +215,19 @@ CREATE TABLE IF NOT EXISTS `student` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `person`
+-- è¡¨çš„ç»“æ„ `person`
 --
 
 CREATE TABLE IF NOT EXISTS `person` (
-  `uid` int(11) NOT NULL AUTO_INCREMENT COMMENT '¼ÇÂ¼ID£¬×Ô¶¯µİÔö',
-  `personid` int(11) NOT NULL COMMENT 'ÈËÔ±ID',
-  `name` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'ĞÕÃû',
-  `category` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'Àà±ğ',
-  `note` varchar(255) COLLATE utf8_bin COMMENT '±¸×¢',
+  `uid` int(11) NOT NULL AUTO_INCREMENT COMMENT 'è®°å½•IDï¼Œè‡ªåŠ¨é€’å¢',
+  `personid` int(11) NOT NULL COMMENT 'äººå‘˜ID',
+  `name` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'å§“å',
+  `category` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'ç±»åˆ«',
+  `status`  varchar(4) COLLATE utf8_bin NOT NULL COMMENT 'çŠ¶æ€ï¼Œåœ¨æ ¡ï¼Œç¦»æ ¡',
+  `note` varchar(255) COLLATE utf8_bin COMMENT 'å¤‡æ³¨',
   PRIMARY KEY (`uid`),
   UNIQUE KEY `uid` (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='ÈËÔ±×Ü±í';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='äººå‘˜æ€»è¡¨';
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -267,27 +240,27 @@ CREATE TABLE IF NOT EXISTS `person` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `project`
+-- è¡¨çš„ç»“æ„ `project`
 --
 
 CREATE TABLE IF NOT EXISTS `project` (
-  `id` int(11) NOT NULL COMMENT 'ÏîÄ¿ID',
-  `submittime` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'Ìá½»Ê±¼ä',
-  `typeid` int(11) NOT NULL COMMENT 'ÏîÄ¿Àà±ğID',
-  `number` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'Ö÷¹Ü²¿ÃÅ¸øµÄÏîÄ¿±àºÅ',
-  `principalid` int(11) NOT NULL COMMENT '¸ºÔğÈËID',
-  `principalname` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '¸ºÔğÈËĞÕÃû',
-  `title` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'ÏîÄ¿±êÌâ',
-  `introduction` varchar(500) COLLATE utf8_bin COMMENT 'ÏîÄ¿¼ò½é',
-  `unit` varchar(500) COLLATE utf8_bin COMMENT '²ÎÓëµ¥Î»£¬ÓÃ;·Ö¸ô',
-  `starttime` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '¿ªÊ¼Ê±¼ä',
-  `endtime` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'ÖÕÖ¹Ê±¼ä',
-  `ispublic` tinyint(1) COMMENT 'ÊÇ·ñ¹«¿ª',
-  `subsidizelimit` int(11) COMMENT 'ÏîÄ¿×ÊÖú¶î¶È',
-  `note` varchar(500) COLLATE utf8_bin COMMENT '±¸×¢',
+  `id` int(11) NOT NULL COMMENT 'é¡¹ç›®ID',
+  `submittime` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'æäº¤æ—¶é—´',
+  `typeid` int(11) NOT NULL COMMENT 'é¡¹ç›®ç±»åˆ«ID',
+  `number` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'ä¸»ç®¡éƒ¨é—¨ç»™çš„é¡¹ç›®ç¼–å·',
+  `principalid` int(11) NOT NULL COMMENT 'è´Ÿè´£äººID',
+  `principalname` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'è´Ÿè´£äººå§“å',
+  `title` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'é¡¹ç›®æ ‡é¢˜',
+  `introduction` varchar(500) COLLATE utf8_bin COMMENT 'é¡¹ç›®ç®€ä»‹',
+  `unit` varchar(500) COLLATE utf8_bin COMMENT 'å‚ä¸å•ä½ï¼Œç”¨;åˆ†éš”',
+  `starttime` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'å¼€å§‹æ—¶é—´',
+  `endtime` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'ç»ˆæ­¢æ—¶é—´',
+  `ispublic` tinyint(1) COMMENT 'æ˜¯å¦å…¬å¼€',
+  `subsidizelimit` int(11) COMMENT 'é¡¹ç›®èµ„åŠ©é¢åº¦',
+  `note` varchar(500) COLLATE utf8_bin COMMENT 'å¤‡æ³¨',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='¿ÆÑĞÏîÄ¿ĞÅÏ¢±í';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='ç§‘ç ”é¡¹ç›®ä¿¡æ¯è¡¨';
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -297,16 +270,16 @@ CREATE TABLE IF NOT EXISTS `project` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `projecttype`
+-- è¡¨çš„ç»“æ„ `projecttype`
 --
 
 CREATE TABLE IF NOT EXISTS `projecttype` (
-  `id` int(11) NOT NULL COMMENT 'ÏîÄ¿ID',
-  `typename` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'ÏîÄ¿Àà±ğÃû³Æ',
-  `note` varchar(500) COLLATE utf8_bin COMMENT '±¸×¢',
+  `id` int(11) NOT NULL COMMENT 'é¡¹ç›®ID',
+  `typename` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'é¡¹ç›®ç±»åˆ«åç§°',
+  `note` varchar(500) COLLATE utf8_bin COMMENT 'å¤‡æ³¨',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='¿ÆÑĞÏîÄ¿Àà±ğ±í';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='ç§‘ç ”é¡¹ç›®ç±»åˆ«è¡¨';
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -316,33 +289,33 @@ CREATE TABLE IF NOT EXISTS `projecttype` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `journalpaper`
+-- è¡¨çš„ç»“æ„ `journalpaper`
 --
 
 CREATE TABLE IF NOT EXISTS `journalpaper` (
-  `id` int(11) NOT NULL COMMENT 'ÂÛÎÄID',
-  `time` int(11) NOT NULL COMMENT 'Â¼ÈëÏµÍ³µÄÊ±¼ä',
-  `title` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'ÂÛÎÄ±êÌâ',
-  `abstract` varchar(1000) COLLATE utf8_bin NOT NULL COMMENT 'ÂÛÎÄÕªÒª',
-  `image1` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '´ú±íÍ¼Æ¬1µÄÂ·¾¶',
-  `image2` varchar(100) COLLATE utf8_bin COMMENT '´ú±íÍ¼Æ¬2µÄÂ·¾¶',
-  `image3` varchar(100) COLLATE utf8_bin COMMENT '´ú±íÍ¼Æ¬3µÄÂ·¾¶',
-  `journalname` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'ÆÚ¿¯Ãû³Æ',
-  `publishdate` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '·¢±íÈÕÆÚ',
-  `volumenum` int(11) NOT NULL COMMENT '¾íºÅ',
-  `issuenum` int(11) NOT NULL COMMENT 'ÆÚºÅ',
-  `pagenum` int(11) NOT NULL COMMENT 'Ò³Âë',
-  `SCI` tinyint(1) NOT NULL COMMENT 'SCIÊÕÂ¼',
-  `EI` tinyint(1) NOT NULL COMMENT 'EIÊÕÂ¼',
-  `ISTP` tinyint(1) NOT NULL COMMENT 'ISTPÊÕÂ¼',
-  `IF` double NOT NULL COMMENT 'Ó°ÏìÒò×Ó',
-  `sponsor` varchar(200) COLLATE utf8_bin COMMENT '×ÊÖúÕßÁĞ±í£¬ÓÃ;¸ô¿ª',
-  `official` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'ÕıÊ½°æ£¨pdf£©Â·¾¶',
-  `draft` varchar(100) COLLATE utf8_bin COMMENT '²İ¸å£¨word£©Â·¾¶',
-  `note` varchar(500) COLLATE utf8_bin COMMENT '±¸×¢',
+  `id` int(11) NOT NULL COMMENT 'è®ºæ–‡ID',
+  `time` int(11) NOT NULL COMMENT 'å½•å…¥ç³»ç»Ÿçš„æ—¶é—´',
+  `title` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'è®ºæ–‡æ ‡é¢˜',
+  `abstract` varchar(1000) COLLATE utf8_bin NOT NULL COMMENT 'è®ºæ–‡æ‘˜è¦',
+  `image1` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'ä»£è¡¨å›¾ç‰‡1çš„è·¯å¾„',
+  `image2` varchar(100) COLLATE utf8_bin COMMENT 'ä»£è¡¨å›¾ç‰‡2çš„è·¯å¾„',
+  `image3` varchar(100) COLLATE utf8_bin COMMENT 'ä»£è¡¨å›¾ç‰‡3çš„è·¯å¾„',
+  `journalname` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'æœŸåˆŠåç§°',
+  `publishdate` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'å‘è¡¨æ—¥æœŸ',
+  `volumenum` int(11) NOT NULL COMMENT 'å·å·',
+  `issuenum` int(11) NOT NULL COMMENT 'æœŸå·',
+  `pagenum` int(11) NOT NULL COMMENT 'é¡µç ',
+  `SCI` tinyint(1) NOT NULL COMMENT 'SCIæ”¶å½•',
+  `EI` tinyint(1) NOT NULL COMMENT 'EIæ”¶å½•',
+  `ISTP` tinyint(1) NOT NULL COMMENT 'ISTPæ”¶å½•',
+  `IF` double NOT NULL COMMENT 'å½±å“å› å­',
+  `sponsor` varchar(200) COLLATE utf8_bin COMMENT 'èµ„åŠ©è€…åˆ—è¡¨ï¼Œç”¨;éš”å¼€',
+  `official` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'æ­£å¼ç‰ˆï¼ˆpdfï¼‰è·¯å¾„',
+  `draft` varchar(100) COLLATE utf8_bin COMMENT 'è‰ç¨¿ï¼ˆwordï¼‰è·¯å¾„',
+  `note` varchar(500) COLLATE utf8_bin COMMENT 'å¤‡æ³¨',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='ÆÚ¿¯ÂÛÎÄ±í';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='æœŸåˆŠè®ºæ–‡è¡¨';
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -353,30 +326,30 @@ CREATE TABLE IF NOT EXISTS `journalpaper` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `conferencepaper`
+-- è¡¨çš„ç»“æ„ `conferencepaper`
 --
 
 CREATE TABLE IF NOT EXISTS `conferencepaper` (
-  `id` int(11) NOT NULL COMMENT 'ÂÛÎÄID',
-  `time` int(11) NOT NULL COMMENT 'Â¼ÈëÏµÍ³µÄÊ±¼ä',
-  `title` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'ÂÛÎÄ±êÌâ',
-  `abstract` varchar(1000) COLLATE utf8_bin NOT NULL COMMENT 'ÂÛÎÄÕªÒª',
-  `image1` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '´ú±íÍ¼Æ¬1µÄÂ·¾¶',
-  `image2` varchar(100) COLLATE utf8_bin COMMENT '´ú±íÍ¼Æ¬2µÄÂ·¾¶',
-  `image3` varchar(100) COLLATE utf8_bin COMMENT '´ú±íÍ¼Æ¬3µÄÂ·¾¶',
-  `conferencename` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '»áÒéÃû³Æ',
-  `publishdate` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '·¢±íÈÕÆÚ',
-  `pagenum` int(11) NOT NULL COMMENT 'Ò³Âë',
-  `SCI` tinyint(1) NOT NULL COMMENT 'SCIÊÕÂ¼',
-  `EI` tinyint(1) NOT NULL COMMENT 'EIÊÕÂ¼',
-  `ISTP` tinyint(1) NOT NULL COMMENT 'ISTPÊÕÂ¼',
-  `sponsor` varchar(200) COLLATE utf8_bin COMMENT '×ÊÖúÕßÁĞ±í£¬ÓÃ;¸ô¿ª',
-  `official` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'ÕıÊ½°æ£¨pdf£©Â·¾¶',
-  `draft` varchar(100) COLLATE utf8_bin COMMENT '²İ¸å£¨word£©Â·¾¶',
-  `note` varchar(500) COLLATE utf8_bin COMMENT '±¸×¢',
+  `id` int(11) NOT NULL COMMENT 'è®ºæ–‡ID',
+  `time` int(11) NOT NULL COMMENT 'å½•å…¥ç³»ç»Ÿçš„æ—¶é—´',
+  `title` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'è®ºæ–‡æ ‡é¢˜',
+  `abstract` varchar(1000) COLLATE utf8_bin NOT NULL COMMENT 'è®ºæ–‡æ‘˜è¦',
+  `image1` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'ä»£è¡¨å›¾ç‰‡1çš„è·¯å¾„',
+  `image2` varchar(100) COLLATE utf8_bin COMMENT 'ä»£è¡¨å›¾ç‰‡2çš„è·¯å¾„',
+  `image3` varchar(100) COLLATE utf8_bin COMMENT 'ä»£è¡¨å›¾ç‰‡3çš„è·¯å¾„',
+  `conferencename` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'ä¼šè®®åç§°',
+  `publishdate` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'å‘è¡¨æ—¥æœŸ',
+  `pagenum` int(11) NOT NULL COMMENT 'é¡µç ',
+  `SCI` tinyint(1) NOT NULL COMMENT 'SCIæ”¶å½•',
+  `EI` tinyint(1) NOT NULL COMMENT 'EIæ”¶å½•',
+  `ISTP` tinyint(1) NOT NULL COMMENT 'ISTPæ”¶å½•',
+  `sponsor` varchar(200) COLLATE utf8_bin COMMENT 'èµ„åŠ©è€…åˆ—è¡¨ï¼Œç”¨;éš”å¼€',
+  `official` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'æ­£å¼ç‰ˆï¼ˆpdfï¼‰è·¯å¾„',
+  `draft` varchar(100) COLLATE utf8_bin COMMENT 'è‰ç¨¿ï¼ˆwordï¼‰è·¯å¾„',
+  `note` varchar(500) COLLATE utf8_bin COMMENT 'å¤‡æ³¨',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='»áÒéÂÛÎÄ±í';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='ä¼šè®®è®ºæ–‡è¡¨';
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -386,30 +359,30 @@ CREATE TABLE IF NOT EXISTS `conferencepaper` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `patent`
+-- è¡¨çš„ç»“æ„ `patent`
 --
 
 CREATE TABLE IF NOT EXISTS `dcd_patent` (
-  `id` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '×¨ÀûID',
-  `time` int(11) NOT NULL COMMENT 'Â¼ÈëÏµÍ³Ê±¼ä',
-  `title` varchar(50) COLLATE utf8_bin NOT NULL COMMENT '×¨Àû±êÌâ',
-  `abstract` varchar(1000) COLLATE utf8_bin COMMENT '×¨ÀûÕªÒª',
-  `image1` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '´ú±íÍ¼Æ¬1µÄÂ·¾¶',
-  `image2` varchar(100) COLLATE utf8_bin COMMENT '´ú±íÍ¼Æ¬2µÄÂ·¾¶',
-  `image3` varchar(100) COLLATE utf8_bin COMMENT '´ú±íÍ¼Æ¬3µÄÂ·¾¶',
-  `application` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'ÉêÇëÊéÎÄ¼şµØÖ·',
-  `status` varchar(1) COLLATE utf8_bin NOT NULL COMMENT 'µ±Ç°×´Ì¬',
-  `acceptnum` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '×¨ÀûÊÜÀíºÅ',
-  `acceptdate` varchar(20) COLLATE utf8_bin COMMENT 'ÊÜÀíÈÕÆÚ',
-  `notice` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'ÊÜÀíÍ¨ÖªÊéµØÖ·',
-  `authorizationnum` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'ÊÚÈ¨ºÅ',
-  `authorizationdate` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'ÊÚÈ¨ÈÕÆÚ',
-  `authorizationcertificate` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'ÊÚÈ¨Ö¤ÊéµØÖ·',
-  `subsidize` varchar(100) COLLATE utf8_bin COMMENT '×ÊÖúÕßÁĞ±í£¬ÒÔ;·Ö¸î',
-  `note` varchar(500) COLLATE utf8_bin COMMENT '±¸×¢',
+  `id` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'ä¸“åˆ©ID',
+  `time` int(11) NOT NULL COMMENT 'å½•å…¥ç³»ç»Ÿæ—¶é—´',
+  `title` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'ä¸“åˆ©æ ‡é¢˜',
+  `abstract` varchar(1000) COLLATE utf8_bin COMMENT 'ä¸“åˆ©æ‘˜è¦',
+  `image1` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'ä»£è¡¨å›¾ç‰‡1çš„è·¯å¾„',
+  `image2` varchar(100) COLLATE utf8_bin COMMENT 'ä»£è¡¨å›¾ç‰‡2çš„è·¯å¾„',
+  `image3` varchar(100) COLLATE utf8_bin COMMENT 'ä»£è¡¨å›¾ç‰‡3çš„è·¯å¾„',
+  `application` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'ç”³è¯·ä¹¦æ–‡ä»¶åœ°å€',
+  `status` varchar(1) COLLATE utf8_bin NOT NULL COMMENT 'å½“å‰çŠ¶æ€',
+  `acceptnum` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'ä¸“åˆ©å—ç†å·',
+  `acceptdate` varchar(20) COLLATE utf8_bin COMMENT 'å—ç†æ—¥æœŸ',
+  `notice` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'å—ç†é€šçŸ¥ä¹¦åœ°å€',
+  `authorizationnum` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'æˆæƒå·',
+  `authorizationdate` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'æˆæƒæ—¥æœŸ',
+  `authorizationcertificate` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'æˆæƒè¯ä¹¦åœ°å€',
+  `subsidize` varchar(100) COLLATE utf8_bin COMMENT 'èµ„åŠ©è€…åˆ—è¡¨ï¼Œä»¥;åˆ†å‰²',
+  `note` varchar(500) COLLATE utf8_bin COMMENT 'å¤‡æ³¨',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='×¨Àû±í';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ä¸“åˆ©è¡¨';
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -419,28 +392,28 @@ CREATE TABLE IF NOT EXISTS `dcd_patent` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `softwareright`
+-- è¡¨çš„ç»“æ„ `softwareright`
 --
 
 CREATE TABLE IF NOT EXISTS `softwareright` (
   `id` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'ID',
-  `submittime` int(11) NOT NULL COMMENT 'Â¼ÈëÏµÍ³Ê±¼ä',
-  `title` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'Öø×÷È¨±êÌâ',
-  `abstract` varchar(500) COLLATE utf8_bin COMMENT 'ÕªÒª',
-  `image1` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '´ú±íÍ¼Æ¬1',
-  `image2` varchar(100) COLLATE utf8_bin COMMENT '´ú±íÍ¼Æ¬2',
-  `image3` varchar(100) COLLATE utf8_bin COMMENT '´ú±íÍ¼Æ¬3',
-  `regform` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'Öø×÷È¨µÇ¼Ç±íµØÖ·',
-  `introduction` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'ËµÃ÷ÊéµØÖ·',
-  `code` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'Ô´´úÂëÎÄµµ',
-  `authorizationnum` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'ÊÚÈ¨ºÅ',
-  `authorizationdate` varchar(20) NOT NULL COMMENT 'ÊÚÈ¨ÈÕÆÚ',
-  `authorizationcertificate` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'ÊÚÈ¨Ö¤Êé',
-  `sponser` varchar(100) COLLATE utf8_bin COMMENT 'ÏîÄ¿×ÊÖúÕßÁĞ±í',
-  `note` varchar(500) COLLATE utf8_bin COMMENT '±¸×¢',
+  `submittime` int(11) NOT NULL COMMENT 'å½•å…¥ç³»ç»Ÿæ—¶é—´',
+  `title` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'è‘—ä½œæƒæ ‡é¢˜',
+  `abstract` varchar(500) COLLATE utf8_bin COMMENT 'æ‘˜è¦',
+  `image1` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'ä»£è¡¨å›¾ç‰‡1',
+  `image2` varchar(100) COLLATE utf8_bin COMMENT 'ä»£è¡¨å›¾ç‰‡2',
+  `image3` varchar(100) COLLATE utf8_bin COMMENT 'ä»£è¡¨å›¾ç‰‡3',
+  `regform` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'è‘—ä½œæƒç™»è®°è¡¨åœ°å€',
+  `introduction` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'è¯´æ˜ä¹¦åœ°å€',
+  `code` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'æºä»£ç æ–‡æ¡£',
+  `authorizationnum` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'æˆæƒå·',
+  `authorizationdate` varchar(20) NOT NULL COMMENT 'æˆæƒæ—¥æœŸ',
+  `authorizationcertificate` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'æˆæƒè¯ä¹¦',
+  `sponser` varchar(100) COLLATE utf8_bin COMMENT 'é¡¹ç›®èµ„åŠ©è€…åˆ—è¡¨',
+  `note` varchar(500) COLLATE utf8_bin COMMENT 'å¤‡æ³¨',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Èí¼şÖø×÷È¨±í';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='è½¯ä»¶è‘—ä½œæƒè¡¨';
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -449,24 +422,24 @@ CREATE TABLE IF NOT EXISTS `softwareright` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `techreport`
+-- è¡¨çš„ç»“æ„ `techreport`
 --
 
 CREATE TABLE IF NOT EXISTS `techreport` (
   `id` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'ID',
-  `submittime` varchar(20) NOT NULL COMMENT 'Â¼ÈëÏµÍ³ÈÕÆÚ',
-  `title` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'Öø×÷È¨±êÌâ',
-  `abstract` varchar(500) COLLATE utf8_bin COMMENT 'ÕªÒª',
-  `image1` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '´ú±íÍ¼Æ¬1',
-  `image2` varchar(100) COLLATE utf8_bin COMMENT '´ú±íÍ¼Æ¬2',
-  `image3` varchar(100) COLLATE utf8_bin COMMENT '´ú±íÍ¼Æ¬3',
-  `attachment` varchar(100) COLLATE utf8_bin COMMENT '¸½¼ş',
-  `sponser` varchar(100) COLLATE utf8_bin COMMENT 'ÏîÄ¿×ÊÖúÕßÁĞ±í',
-  `public` tinyint(1) NOT NULL COMMENT '¹«¿ªĞÔÖÊ',
-  `note` varchar(500) COLLATE utf8_bin COMMENT '±¸×¢',
+  `submittime` varchar(20) NOT NULL COMMENT 'å½•å…¥ç³»ç»Ÿæ—¥æœŸ',
+  `title` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'è‘—ä½œæƒæ ‡é¢˜',
+  `abstract` varchar(500) COLLATE utf8_bin COMMENT 'æ‘˜è¦',
+  `image1` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'ä»£è¡¨å›¾ç‰‡1',
+  `image2` varchar(100) COLLATE utf8_bin COMMENT 'ä»£è¡¨å›¾ç‰‡2',
+  `image3` varchar(100) COLLATE utf8_bin COMMENT 'ä»£è¡¨å›¾ç‰‡3',
+  `attachment` varchar(100) COLLATE utf8_bin COMMENT 'é™„ä»¶',
+  `sponser` varchar(100) COLLATE utf8_bin COMMENT 'é¡¹ç›®èµ„åŠ©è€…åˆ—è¡¨',
+  `public` tinyint(1) NOT NULL COMMENT 'å…¬å¼€æ€§è´¨',
+  `note` varchar(500) COLLATE utf8_bin COMMENT 'å¤‡æ³¨',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='¼¼Êõ±¨¸æ±í';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='æŠ€æœ¯æŠ¥å‘Šè¡¨';
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -476,24 +449,24 @@ CREATE TABLE IF NOT EXISTS `techreport` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `thesis`
+-- è¡¨çš„ç»“æ„ `thesis`
 --
 
 CREATE TABLE IF NOT EXISTS `thesis` (
   `id` int(11) NOT NULL COMMENT 'ID',
-  `submitdate` varchar(20) NOT NULL COMMENT 'Ìá½»Ê±¼ä',
-  `title` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'ÂÛÎÄ±êÌâ',
-  `abstract` varchar(1000) COLLATE utf8_bin COMMENT 'ÂÛÎÄÕªÒª',
-  `image1` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '´ú±íÍ¼Æ¬1µÄÂ·¾¶',
-  `image2` varchar(100) COLLATE utf8_bin COMMENT '´ú±íÍ¼Æ¬2µÄÂ·¾¶',
-  `image3` varchar(100) COLLATE utf8_bin COMMENT '´ú±íÍ¼Æ¬3µÄÂ·¾¶',
-  `sponsor` varchar(200) COLLATE utf8_bin COMMENT '×ÊÖúÕßÁĞ±í£¬ÓÃ;¸ô¿ª',
-  `official` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'ÕıÊ½°æ£¨pdf£©Â·¾¶',
-  `draft` varchar(100) COLLATE utf8_bin COMMENT '²İ¸å£¨word£©Â·¾¶',
-  `note` varchar(500) COLLATE utf8_bin COMMENT '±¸×¢',
+  `submitdate` varchar(20) NOT NULL COMMENT 'æäº¤æ—¶é—´',
+  `title` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'è®ºæ–‡æ ‡é¢˜',
+  `abstract` varchar(1000) COLLATE utf8_bin COMMENT 'è®ºæ–‡æ‘˜è¦',
+  `image1` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'ä»£è¡¨å›¾ç‰‡1çš„è·¯å¾„',
+  `image2` varchar(100) COLLATE utf8_bin COMMENT 'ä»£è¡¨å›¾ç‰‡2çš„è·¯å¾„',
+  `image3` varchar(100) COLLATE utf8_bin COMMENT 'ä»£è¡¨å›¾ç‰‡3çš„è·¯å¾„',
+  `sponsor` varchar(200) COLLATE utf8_bin COMMENT 'èµ„åŠ©è€…åˆ—è¡¨ï¼Œç”¨;éš”å¼€',
+  `official` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'æ­£å¼ç‰ˆï¼ˆpdfï¼‰è·¯å¾„',
+  `draft` varchar(100) COLLATE utf8_bin COMMENT 'è‰ç¨¿ï¼ˆwordï¼‰è·¯å¾„',
+  `note` varchar(500) COLLATE utf8_bin COMMENT 'å¤‡æ³¨',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='±ÏÒµÂÛÎÄ±í';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='æ¯•ä¸šè®ºæ–‡è¡¨';
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -503,18 +476,18 @@ CREATE TABLE IF NOT EXISTS `thesis` (
 -- --------------------------------------------------------
 
 --
--- ±íµÄ½á¹¹ `achieve`
+-- è¡¨çš„ç»“æ„ `achieve`
 --
 
 CREATE TABLE IF NOT EXISTS `achieve` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID' ,
-  `personid` int(11) NOT NULL  COMMENT 'ÈËÔ±ID' ,
-  `persontype` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'ÈËÔ±ÀàĞÍ' ,
-  `achievementid` int(11) NOT NULL  COMMENT '¿ÆÑĞ³É¹ûID' ,
-  `achievementtype` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '³É¹ûÀàĞÍ' ,
+  `personid` int(11) NOT NULL  COMMENT 'äººå‘˜ID' ,
+  `persontype` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'äººå‘˜ç±»å‹' ,
+  `achievementid` int(11) NOT NULL  COMMENT 'ç§‘ç ”æˆæœID' ,
+  `achievementtype` varchar(10) COLLATE utf8_bin NOT NULL COMMENT 'æˆæœç±»å‹' ,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='ÈËÔ±¿ÆÑĞ³É¹û¶ÔÓ¦±í';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='äººå‘˜ç§‘ç ”æˆæœå¯¹åº”è¡¨';
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
