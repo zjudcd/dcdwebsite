@@ -165,6 +165,7 @@ pip-log.txt
 ################
 # php web site
 ################
+.bak
 .log
 dcd/Admin/Runtime/Cache/
 dcd/Admin/Runtime/Data/
