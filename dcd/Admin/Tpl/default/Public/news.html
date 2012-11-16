@@ -38,7 +38,8 @@
 			</tr>
 			<tr>
 				<th>发布时间</th>
-				<td><input type="text" name="date" value="{$date}" class="input-b" /></td>
+				<td>{$date|date="Y-n-j H:i:s",###}</td>
+				<td><input type="hidden" name="date" value="{$date}" class="input-b" /></td>
 			</tr>
 		</table>
 		<div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
@@ -61,7 +62,7 @@
 				<td><input name="id[]" type="checkbox" id="id[]" value="{$n.id}" class="input-cb" /></td>
 				<td>{$n.id}</td>
 				<td>{$n.title}</td>
-				<td>{$n.date}</td>
+				<td>{$n.date|date="Y-n-j H:i:s",###}</td>
 				<td><a href="__URL__/edit/newsid/{$n.id}">编辑</a> <a href="__URL__/batch/act/delete/id/{$n.id}">删除</a></td>
 			</tr>
 			</volist>

@@ -1,5 +1,5 @@
 <?php
-class MemberModel extends Model{
+class AdministratorModel extends Model{
 	protected $_validate=array(
 		array('username','require','用户名必填！',0,'',3),
 		array('username','','用户已存在！',2,'unique',1), 

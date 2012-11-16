@@ -2,12 +2,12 @@
 class MemberAction extends BaseAction{
 	function _initialize(){
 		$map['uid'] = $_SESSION[C('USER_AUTH_KEY')];
-		$map['gid'] = "1";
-		$comp = D("Member")->where($map)->select();
+		$map['privilege'] = "1";
+		$comp = D("Administrator")->where($map)->select();
 		if(!$comp) $this->error("对不起，您没有权限！");
 	}
 	public function index(){
-		$Member = D("Member");
+		$Member = D("Administrator");
 		import("ORG.Util.Page");
 		if($_POST['keyword']){
 			$kmap = $_POST['keyword'];
@@ -30,7 +30,7 @@ class MemberAction extends BaseAction{
 		$this->display("Public:member");
 	}
 	public function adds(){
-		$Member = D("Member");
+		$Member = D("Administrator");
 		if($Member->Create()){
 			$Member->password = md5($_POST['password']);
 			if($Member->add()){
@@ -45,7 +45,7 @@ class MemberAction extends BaseAction{
 	}
 	public function edit(){
 		if($_GET['uid']){
-			$userInfo = D("Member")->getByUid($_GET['uid']);
+			$userInfo = D("Administrator")->getByUid($_GET['uid']);
 			$this->assign($userInfo);
 			$this->assign("dsp","edit");
 			$this->display("Public:member");	
@@ -57,7 +57,7 @@ class MemberAction extends BaseAction{
 	public function edits(){
 		$data = $_POST;
 		if($data['newpwd']) $data['password'] = md5($data['newpwd']);
-		if(D("Member")->save($data)){
+		if(D("Administrator")->save($data)){
 			$this->success("修改成功！");
 		}else{
 			$this->error("修改失败！");

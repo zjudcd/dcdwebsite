@@ -15,18 +15,14 @@ class BaseAction extends Action{
 		if(!in_array($act,$allowact)) $this->error('未知操作');
 		$id = is_array($checkboxid)?implode(',',$checkboxid):$checkboxid;
 		if(!$id) $this->error('ID丢失');
-		$tableId = array('Member'=>'uid','Products'=>'pid','Categroy'=>'cid','News'=>'nid','Message'=>'mid','Pages'=>'pgid','Slide'=>'sid','Navigation'=>'ngid');
+		$tableId = array('Administrator'=>'uid','Products'=>'pid','Categroy'=>'cid','News'=>'id','Message'=>'mid','Pages'=>'pgid','Slide'=>'sid','Navigation'=>'ngid');
 		isset($modulename) ? $modulename = $modulename : $modulename = MODULE_NAME;
 		switch($act){
-			case "remove":
-				$Result = D($modulename)->execute('UPDATE __TABLE__ SET cid ='.$_REQUEST['category'].' WHERE '.$tableId[$modulename].' IN ('.$id.')');
-				$msg = "移动成功！";
-				break;
 			case "delete":
 				if($modulename == "Categroy"){
 					$procount = D("Products")->where($tableId[$modulename].' IN ('.$id.')')->count();
 					if($procount) $this->error("分类必需为空，请先转移或清空该分类下的产品！");
-				}elseif($modulename == "Member"){
+				}elseif($modulename == "Administrator"){
 					if(in_array(Session::get(C('USER_AUTH_KEY')),$checkboxid)||$checkboxid == Session::get(C('USER_AUTH_KEY'))) $this->error("不能删除自己的账号！");
 				}
 				$Result = D($modulename)->execute('DELETE FROM __TABLE__ where '.$tableId[$modulename].' IN ('.$id.')');

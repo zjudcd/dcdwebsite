@@ -84,7 +84,7 @@ background-color:white;
 <div class="container">
 
 <div class="title"><h1 class="header">{$news.title}<h1></div>
-<div class="datetime">{$news.date}</div>
+<div class="datetime">{$news.date|date="Y-n-j H:i:s",###}</div>
 <div class="content" style="background: #eeeeee url(../Public/images/content_right_column_bg.jpg) left repeat-y" >
 {$news.content} 
 </div>

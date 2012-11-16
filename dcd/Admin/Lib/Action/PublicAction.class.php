@@ -10,7 +10,7 @@ class PublicAction extends Action{
 		if($_SESSION['verify']!=md5($_POST['verify'])){
 			$this->error('验证码错误！');
 		}else{
-			$Member = D("Member");
+			$Member = D("Administrator");
 			$map['username'] = $_POST['username'];
 			$map['password'] = md5($_POST['password']);
 			$checkUser = $Member->where($map)->find();

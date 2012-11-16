@@ -1,8 +1,8 @@
 <?php
 class IndexAction extends BaseAction{
     public function index(){
-		$userInfo = D("Member")->where("uid = ".Session::get(C('USER_AUTH_KEY')))->find();
-		$siteCount['usercount'] = D("Member")->count();
+		$userInfo = D("Administrator")->where("uid = ".Session::get(C('USER_AUTH_KEY')))->find();
+		$siteCount['usercount'] = D("Administrator")->count();
 		$siteCount['procount'] = D("Products")->count();
 		$siteCount['newscount'] = D("News")->count();
 		$siteCount['pagescount'] = D("Pages")->count();

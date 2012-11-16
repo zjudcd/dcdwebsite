@@ -5,7 +5,7 @@ class NewsModel extends Model{
 		array('content','require','通知内容不能为空！',1,'',3),
 	);
 	protected $_auto = array(
-		array('date','date',1,'function'),
+		array('date','time',1,'function'),
 	);
 }
 ?>
