@@ -9,6 +9,16 @@
 		<form name="newsform" method="post" action="__URL__/adds">
 		<table border="0" cellspacing="1" class="tb-b">
 			<tr>
+				<th>通知类型</th>
+				<td>
+				<select name="typeid">
+				<volist name="types" id="type">
+				<option value="{$type.id}">{$type.name}</option>
+				</volist>
+				</select>
+				</td>
+			</tr>
+			<tr>
 				<th>通知标题</th>
 				<td><input type="text" name="title" value="" class="input-b" /><input type="hidden" name="publisher" value="{$Think.session.admin}"/></td>
 			</tr>
@@ -27,6 +37,20 @@
 			<tr>
 				<th>ID</th>
 				<td>{$id}<input type="hidden" name="id" value="{$id}"></td>
+			</tr>
+			<tr>
+				<th>通知类型</th>
+				<td>
+				<select name="typeid">
+				<volist name="types" id="type">
+					<if condition="$type['id'] eq $typeid">
+					<option value="{$type.id}" selected="selected">{$type.name}</option>
+					<else />
+					<option value="{$type.id}">{$type.name}</option>
+					</if>
+				</volist>
+				</select>
+				</td>
 			</tr>
 			<tr>
 				<th>通知标题</th>
@@ -53,17 +77,31 @@
 			<tr>
 				<th width="20"><input name="checkbox" type="checkbox" class="input-cb" onClick="selAll(this)" /></th>
 				<th width="30">ID</th>
-				<th>通知标题</th>
-				<th>发布时间</th>
-				<th width="150">操作</th>
+				<th width="30">类型</th>
+				<th>标题</th>
+				<th width="150">发布时间</th>
+				<th width="70">发布人</th>
+				<th width="100">操作</th>
 			</tr>
 			<volist name="news" id="n">
 			<tr>
 				<td><input name="id[]" type="checkbox" id="id[]" value="{$n.id}" class="input-cb" /></td>
 				<td>{$n.id}</td>
-				<td>{$n.title}</td>
+				<td>{$n.typeid}</td>
+				<td id="{$n.id}"><a href="__URL__/edit/newsid/{$n.id}">{$n.title}</a></td>
 				<td>{$n.date|date="Y-n-j H:i:s",###}</td>
-				<td><a href="__URL__/edit/newsid/{$n.id}">编辑</a> <a href="__URL__/batch/act/delete/id/{$n.id}">删除</a></td>
+				<td>{$n.publisher}</td>
+				<script language="javascript">
+					function confirmDel(value) {
+						var items=value.split("/");
+						var newsid=items[items.length-1];
+						var title=document.getElementById(newsid).innerText;
+						if (!confirm("确认要删除记录："+title)) {
+							window.event.returnValue = false;
+						}
+					}
+				</script>
+				<td><a href="__URL__/edit/newsid/{$n.id}">编辑</a> <a href="__URL__/batch/act/delete/id/{$n.id}" onClick="confirmDel(this.href)">删除</a></td>
 			</tr>
 			</volist>
 			<tr>

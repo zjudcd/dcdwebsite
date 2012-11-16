@@ -20,6 +20,9 @@ class NewsAction extends BaseAction{
 		$this->display("Public:news");
 	}
 	public function add(){
+		$newstype = M("Newstype");
+		$types= $newstype->order('id')->select();
+		$this->assign("types",$types);
 		$this->assign("dsp","add");
 		$this->display("Public:news");
 	}
@@ -41,6 +44,11 @@ class NewsAction extends BaseAction{
 			$cond["id"]=$_GET["newsid"];
 			$news = D("News")->where($cond)->select();
 			$this->assign($news[0]);
+			
+			$newstype = M("Newstype");
+			$types= $newstype->order('id')->select();
+			$this->assign("types",$types);
+			
 			$this->assign("dsp","edit");
 			$this->display("Public:news");
 		}else{
