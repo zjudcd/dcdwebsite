@@ -196,6 +196,13 @@ img {
 	border: 1px solid #c3c4c5;
 	background: #d8d7d7
 }
+#left
+{}
+
+#left ul
+{
+list-style:  url(images/dcd_button.jpg)
+}
 
 .recent_projects {
 	float: left;
