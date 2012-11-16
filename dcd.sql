@@ -73,3 +73,51 @@ INSERT INTO `news` (`id`, `title`, `content`, `publisher`, `date`) VALUES
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+--
+-- 数据库: `dcd`
+--
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `student`
+--
+
+CREATE TABLE IF NOT EXISTS `student` (
+  `id` int(11) COLLATE utf8_bin NOT NULL COMMENT '学号，现在是8位，不知会不会变，预留10位',
+  `name` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '姓名',
+  `gender` varchar(1) COLLATE utf8_bin COMMENT '性别',
+  `labaddr` varchar(50) COMMENT '实验室地址',
+  `birthday` int(11) COMMENT '出生日期',
+  `politicsstatus` varchar(10) COLLATE utf8_bin   COMMENT '政治面貌',
+  `nativeplace` varchar(20) COLLATE utf8_bin   COMMENT '生源地',
+  `birth_place` varchar(20) COLLATE utf8_bin   COMMENT '出生地',
+  `teacher` int(11) COLLATE utf8_bin NOT NULL COMMENT '导师id',
+  `category` varchar(8) COLLATE utf8_bin NOT NULL COMMENT '类别：博，硕...',
+  `entrancedate` int(11)   COMMENT '入学日期',
+  `phonenum` varchar(20) COLLATE utf8_bin   COMMENT '电话',
+  `idcardno` varchar(20) COLLATE utf8_bin   COMMENT '身份证号',
+  `address` varchar(50) COLLATE utf8_bin   COMMENT '住址',
+  `email` varchar(50) COLLATE utf8_bin   COMMENT 'email',
+  `hobby` varchar(50) COLLATE utf8_bin   COMMENT '特长爱好',
+  `introduction` varchar(1000) COLLATE utf8_bin   COMMENT '个人简介',
+  `postgraduateschool` varchar(100) COLLATE utf8_bin   COMMENT '研究生院校',
+  `postgraduatefaculty` varchar(100) COLLATE utf8_bin   COMMENT '研究生院系',
+  `postgraduatemajor` varchar(100) COLLATE utf8_bin   COMMENT '研究生专业',
+  `postgraduatedegree` varchar(10) COLLATE utf8_bin   COMMENT '研究生阶段获得学位',
+  `postgraduateend` int(11)   COMMENT '研究生毕业日期',
+  `collegeschool` varchar(100) COLLATE utf8_bin   COMMENT '本科院校',
+  `collegefaculty` varchar(100) COLLATE utf8_bin   COMMENT '本科院系',
+  `collegemajor` varchar(100) COLLATE utf8_bin   COMMENT '本科专业',
+  `collegedegree` varchar(10) COLLATE utf8_bin   COMMENT '本科阶段获得学位',
+  `collegeend` int(11)   COMMENT '本科毕业日期',
+  `seniorschool` varchar(100) COLLATE utf8_bin   COMMENT '高中学校',
+  `seniorstart` int(11)   COMMENT '高中入学时间',
+  `seniorend` int(11)   COMMENT '高中毕业时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='学生信息表';
