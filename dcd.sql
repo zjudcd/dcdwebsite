@@ -84,7 +84,7 @@ INSERT INTO `news` (`id`, `title`, `content`, `publisher`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `student`
+-- 表的结构 `student` 这是学生表
 --
 
 CREATE TABLE IF NOT EXISTS `student` (
