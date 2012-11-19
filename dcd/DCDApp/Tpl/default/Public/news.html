@@ -6,9 +6,6 @@
 <link href="../Public/templatemo_style.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 
-ul.none {list-style-type: none}
-
-
 div.container
 {
 
@@ -31,41 +28,33 @@ margin:0;
 }
 div.left
 {
-float:left;
-width:260px;
-height:95%;
+
+width:100%;
+height:750px;
 margin:0;
-color:black;
-font-size:14px;
-font-family:Arial, Helvetica, sans-serif;
+font-size: 14px;
+font-weight: bold;
+color:#282828;
 border-right:1px solid gray;
-overflow: scroll;
+overflow:hidden;
 background-color:white;
 text-decoration:none;
 text-align:left;
+
+clear: both;
+
 }
+
 
 .left ul li
 {
-	margin-bottom:15px;
-}
-div.content
-{
-height:720px;
-float:left;
-width:605px;
-
-padding:1em;
-background-color:white;
-
+	margin-bottom:8px;
 }
 
-.content p
-{
-	white-space:pre-wrap;
-	font-size:14px;
-	font-family:Arial, Helvetica, sans-serif;
-}
+.search {  padding-left:650px; margin: 8px; width: 100%; height:30px; background: #ffffff; }
+	.search .search-input { border: 1px solid  #c3c4c5; height: 24px; color: #131313; background: #FFF; float:left; }
+	.search .search-btn { color: #FFF; background:#19446a; border: 1px solid  #c3c4c5; height: 24px; cursor: pointer; float:left; }
+
 </style>
 </head>
 <body>
@@ -94,8 +83,18 @@ background-color:white;
 
 <div class="header"><h1 class="header">近期新闻</h1></div>
 
+
 <div class="left" >
-<ul class="header_05" >
+<div>
+<form name="search" method="post" action="" class="search f_l">
+				<input type="text" name="keyword" value="" class="search-input">
+				<input type="submit" value="搜索" class="search-btn">
+			</form>
+<div class="clear"></div>
+</div>
+
+<div id="left">
+<ul>
 	<li><a href="#">{$debug}</a></li>
 <volist name="news" id="newsid">
 	<li><a href="__ROOT__/index.php/News/detail/newsid/{$newsid.id}">{$newsid.title}</a></li>
@@ -103,6 +102,11 @@ background-color:white;
 </ul>
 </div>
 
+</div>
+<div style="text-align:center">
+page
+<include file="Public:paging" />
+</div>
 
 </div>
 </div>
