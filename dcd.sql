@@ -56,7 +56,7 @@ INSERT INTO `administrator` (`uid`, `privilege`, `username`, `password`, `name`,
 
 CREATE TABLE IF NOT EXISTS `news` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '信息ID',
-  `type` int(11) NOT NULL COMMENT '信息类型ID',
+  `typeid` int(11) NOT NULL COMMENT '信息类型ID',
   `title` varchar(256) COLLATE utf8_bin NOT NULL COMMENT '信息标题',
   `content` varchar(10240) COLLATE utf8_bin NOT NULL COMMENT '信息内容',
   `publisher` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'publisher name',
@@ -85,9 +85,8 @@ INSERT INTO `news` (`id`, `title`, `content`, `publisher`, `date`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `newstype` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `typeid` int(11) NOT NULL COMMENT '信息类型ID',
-  `typename` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '信息类型名',
+  `id` int(11) NOT NULL COMMENT '信息类型ID',
+  `name` varchar(20) COLLATE utf8_bin NOT NULL COMMENT '信息类型名',
   `note` varchar(1024) COLLATE utf8_bin COMMENT '信息备注',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='通知类型表' AUTO_INCREMENT=1 ;
