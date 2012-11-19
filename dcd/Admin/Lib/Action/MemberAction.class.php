@@ -7,26 +7,23 @@ class MemberAction extends BaseAction{
 		if(!$comp) $this->error("对不起，您没有权限！");
 	}
 	public function index(){
-		if($this->cate == "teacher")
-		{
-			$Member = D("teacher");
-			import("ORG.Util.Page");
-			if($_POST['keyword']){
-				$kmap = $_POST['keyword'];
-				$map['name'] = array('like','%'.$kmap.'%');
-			}elseif($_GET['keyword']){
-				$kmap = $_GET['keyword'];
-				$map['name'] = array('like','%'.$kmap.'%');
-			}
-			$count = $Member->where($map)->count();
-			$Page = new Page($count,20);
-			$Page -> parameter .= "keyword=".urlencode($kmap)."&";
-			$show = $Page->show();
-			$user = $Member->where($map)->order('id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
-			$this->assign('pages',$show);
-			$this->assign("user",$user);
-			$this->display("Public:member");
+		$Member = D($this->cate);
+		import("ORG.Util.Page");
+		if($_POST['keyword']){
+			$kmap = $_POST['keyword'];
+			$map['name'] = array('like','%'.$kmap.'%');
+		}elseif($_GET['keyword']){
+			$kmap = $_GET['keyword'];
+			$map['name'] = array('like','%'.$kmap.'%');
 		}
+		$count = $Member->where($map)->count();
+		$Page = new Page($count,20);
+		$Page -> parameter .= "keyword=".urlencode($kmap)."&";
+		$show = $Page->show();
+		$user = $Member->where($map)->order('id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+		$this->assign('pages',$show);
+		$this->assign("user",$user);
+		$this->display("Public:member");
 	}
 	public function add(){
 		$this->assign("dsp","add");
@@ -75,15 +72,15 @@ class MemberAction extends BaseAction{
 		switch($cate)
 		{
 			case "teacher":
-				$this->cate = "teacher";
+				$this->cate = "Teacher";
 				$this->title = "教师";
 				break;
 			case "student":
-				$this->cate = "student";
+				$this->cate = "Student";
 				$this->title = "学生";
 				break;
 			case "admin":
-				$this->cate = "administrator";
+				$this->cate = "Administrator";
 				$this->title = "管理员";
 				break;
 		}

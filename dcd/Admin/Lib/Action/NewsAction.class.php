@@ -19,6 +19,7 @@ class NewsAction extends BaseAction{
 		$this->assign('pages',$show);
 		$this->assign("news",$news);
 		$this->display("Public:news");
+		
 	}
 	public function add(){
 		$newstype = M("Newstype");
