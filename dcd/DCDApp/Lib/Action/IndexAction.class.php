@@ -1,10 +1,16 @@
 <?php
 class IndexAction extends BaseAction{
     public function index(){
-		Load('extend');
-		$nproducts = D("Products")->order("pid desc")->limit(2)->select();
-		$this->slide();
-		$this->assign("nproducts",$nproducts);
+		$news = M("News")->order('date desc')->limit(1)->select();
+		if($news != null)
+			$newest=$news[0];
+		else
+			$newest = null;
+		$this->assign("newest",$newest);
+		
+		$cond['typeid']=2;//学术通知
+		$news = M("News")->where($cond)->order('date desc')->limit(5)->select();
+		$this->assign("news",$news);
         $this->display("Public:index");
     }
 	protected function slide(){

@@ -95,16 +95,15 @@ clear: both;
 
 <div id="left">
 <ul>
-	<li><a href="#">{$debug}</a></li>
 <volist name="news" id="newsid">
-	<li><a href="__ROOT__/index.php/News/detail/newsid/{$newsid.id}">{$newsid.title}</a></li>
+	<li>[{$newsid.date|date="Y-n-j",###}]&nbsp <a href="__ROOT__/index.php/News/detail/newsid/{$newsid.id}">{$newsid.title}</a></li>
 </volist>
 </ul>
 </div>
 
 </div>
 <div style="text-align:center">
-page
+{$pages}
 <include file="Public:paging" />
 </div>
 

@@ -2,6 +2,7 @@
 class NewsAction extends BaseAction{
 	public function index(){
 		$News = D("News");
+		// 分页
 		import("ORG.Util.Page");
 		if($_POST['keyword']){
 			$kmap = $_POST['keyword'];

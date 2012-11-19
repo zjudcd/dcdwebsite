@@ -36,13 +36,14 @@
      </div>
       <div class="project_content">
         <div class="header_03">最新消息</div>
-        <p>浙江大学数字媒体计算与设计实验室（Digital media Computing & Design Lab，DCD）隶属浙江大学计算机学院，学术带头人为潘云...</p>
-        <div class="button_01"><a href=#>详细信息</a></div>
+        <p>{$newest.title}</p>
+        <div class="button_01"><a href="__ROOT__/index.php/News/detail/newsid/{$newest.id}">详细信息>></a></div>
       </div>
     </div>
     <div id="content_panel">
       <div id="column_w610">
         <div class="header_01">欢迎来到DCD实验室!</div>
+		{$welcome}
 		<p style="font-size:14px">浙江大学数字媒体计算与设计实验室（Digital media Computing & Design Lab，DCD）隶属浙江大学计算机学院，学术带头人为潘云鹤教授（中国工程院院士，中国工程院副院长，浙江大学计算机学院教授、博导）和庄越挺教授（教授、博导，浙江大学计算机学院院长）。</p>
 		<p style="font-size:14px">DCD实验室主要由“视觉感知教育部-微软重点实验室（浙江大学）”和“数字图书馆教育部工程研究中心”构成。</p>
 		<p style="font-size:14px">实验室主要从事人工智能、跨媒体海量信息分析与检索、计算机动画、数字图书馆、智能CAD和数字化设计等领域的研究。</p>
@@ -59,15 +60,13 @@
       <!-- end of column w610 -->
 	  
 	  <div id="column_w290">
-        <div class="header_02">重要通知</div>
+        <div class="header_02">学术通知</div>
         <div class="news_section">
           <div class="news_content">
-            <div class="header_05"><a href="http://www.865171.cn">Lorem ipsum dolor sit</a></div>
-            <p>Lorem ipsum dolor sit amet, cons ect etur adipiscing elit. Vestibu lum ac dui non tellus auctor.</p>
-           </div>
 		   <volist name="news" id="newsid">
-		       <div class="header_05"><a href="{$newsid.id}">{$newsid.title}</a></div>
+		       <div class="header_05"><a href="__ROOT__/index.php/News/detail/newsid/{$newsid.id}">{$newsid.title}</a></div>
            </volist>
+		   </div>
           <div class="cleaner"></div>
 		  </div>
 		  </div>

@@ -1,16 +1,25 @@
 <?php
-class NewsAction extends BaseAction{
+class newsAction extends BaseAction{
 	
 	public function index()
 	{
+		$News = D("News");
+		import("ORG.Util.Page");
+		if($_POST['keyword']){
+			$kmap = $_POST['keyword'];
+			$map['title'] = array('like','%'.$kmap.'%');
+		}else if($_GET['keyword']){
+			$kmap = $_GET['keyword'];
+			$map['title'] = array('like','%'.$kmap.'%');
+		}
+		$count = $News->where($map)->count();
+		$Page = new Page($count,20);
+		$Page -> parameter .= "keyword=".urlencode($kmap)."&";
+		$show = $Page->show();
 		$fields='id,title,date';
-		$news = M("News")->order('date desc')->limit(10)->select();
+		$news = $News->where($map)->order('date desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+		$this->assign('pages',$show);
 		$this->assign("news",$news);
-		if($news == null)
-			$debug = "null";
-		else
-			$debug = "ok";
-		$this->assign("debug",$debug);
 		$this->display("Public:news");
 	}
 	public function detail()
