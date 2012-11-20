@@ -30,6 +30,9 @@ class StudentAction extends BaseAction{
 		$this->display("Public:student");
 	}
 	public function adds(){
+		print_r($_POST);
+		$this->_upload("photo",false,300,400,false,1048576);
+		return;
 		$Student = D("Student");
 		if($Student->Create()){
 			if($Student->add()){
@@ -40,6 +43,26 @@ class StudentAction extends BaseAction{
 			}
 		}else{
 			$this->error($Student->getError());
+		}
+	}
+	public function edit(){
+		if($_GET["studentid"]){
+			$cond["id"]=$_GET["studentid"];
+			$stu = D("student")->where($cond)->select();
+			$this->student = $stu[0];
+			$this->assign("dsp","edit");
+			$this->display("Public:student");
+		}else{
+			$this->assign("jumpUrl","__URL__");
+			$this->error("数据不存在！");
+		}
+	}
+	public function edits(){
+		$data = $_POST;
+		if(D("Student")->save($data)){
+			$this->success("修改成功！");
+		}else{
+			$this->error("资料无改变或修改失败！");		
 		}
 	}
 	public function batch(){

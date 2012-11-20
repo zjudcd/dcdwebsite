@@ -171,6 +171,12 @@ CREATE TABLE IF NOT EXISTS `teacher` (
 -- 表的结构 `student`
 --
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student`
+--
+
 CREATE TABLE IF NOT EXISTS `student` (
   `id` int(11) NOT NULL COMMENT '学号',
   `name` varchar(10) COLLATE utf8_bin NOT NULL COMMENT '姓名',
@@ -180,7 +186,7 @@ CREATE TABLE IF NOT EXISTS `student` (
   `birthday` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '出生日期',
   `politicsstatus` varchar(10) COLLATE utf8_bin DEFAULT NULL COMMENT '政治面貌',
   `nativeplace` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '生源地',
-  `birth_place` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '出生地',
+  `birthplace` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '出生地',
   `teacher` int(11) NOT NULL COMMENT '导师id',
   `category` varchar(8) COLLATE utf8_bin NOT NULL COMMENT '类别：博，硕...',
   `entrancedate` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '入学日期',
