@@ -11,6 +11,8 @@ class IndexAction extends BaseAction{
 		$cond['typeid']=2;//学术通知
 		$news = M("News")->where($cond)->order('date desc')->limit(5)->select();
 		$this->assign("news",$news);
+		
+		$this->slide();
         $this->display("Public:index");
     }
 	protected function slide(){

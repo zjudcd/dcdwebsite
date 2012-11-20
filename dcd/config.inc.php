@@ -9,7 +9,7 @@ return array(
 	'DB_PREFIX'		=>	'',	
 	'DB_CHARSET'	=>	'utf8',
 	'ROUTER_ON'		=>	true,
-	'APP_DEBUG'     =>  true,
+	'APP_DEBUG'     =>  false,
 	'TOKEN_ON'      =>  false,
 	'USER_AUTH_KEY' =>  'aid',
 	'LIUCMS_URL'    =>  'http://localhost/dcd',

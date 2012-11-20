@@ -4,7 +4,7 @@ class ToolboxAction extends BaseAction{
 		$this->display("Public:toolbox");
 	}
 	public function modify(){
-		$userInfo = D("Member")->getByUid(Session::get(C('USER_AUTH_KEY')));
+		$userInfo = D("Administrator")->getByUid(Session::get(C('USER_AUTH_KEY')));
 		$this->assign($userInfo);
 		$this->assign("dsp","modify");
 		$this->display("Public:tools");
@@ -15,7 +15,7 @@ class ToolboxAction extends BaseAction{
 		if($data['opassword'] && $data['uid']){
 			$map['password'] = md5($data['opassword']);
 			$map['uid'] = $data['uid'];
-			$Member = D("Member");
+			$Member = D("Administrator");
 			$checkuser = $Member->where($map)->count();
 			if(!$checkuser){
 				$this->assign("toolmsg","ture");
@@ -41,12 +41,12 @@ class ToolboxAction extends BaseAction{
 	}
 	public function clear(){
 		$id = $_REQUEST['id'];
-		$file['cache'] = array("Admin/Runtime/Cache","LiuCmsApp/Runtime/Cache");
-		$file['data'] = array("Admin/Runtime/Data/_fields","LiuCmsApp/Runtime/Data/_fields");
-		$file['temp'] = array("Admin/Runtime/Temp","LiuCmsApp/Runtime/Temp");
-		$file['logs'] = array("Admin/Runtime/Logs","LiuCmsApp/Runtime/Logs");
-		$file['runtime'] = array("Admin/Runtime/~runtime.php","LiuCmsApp/Runtime/~runtime.php");
-		$file['app'] = array("Admin/Runtime/~app.php","LiuCmsApp/Runtime/~app.php");
+		$file['cache'] = array("Admin/Runtime/Cache","DCDApp/Runtime/Cache");
+		$file['data'] = array("Admin/Runtime/Data/_fields","DCDApp/Runtime/Data/_fields");
+		$file['temp'] = array("Admin/Runtime/Temp","DCDApp/Runtime/Temp");
+		$file['logs'] = array("Admin/Runtime/Logs","DCDApp/Runtime/Logs");
+		$file['runtime'] = array("Admin/Runtime/~runtime.php","DCDApp/Runtime/~runtime.php");
+		$file['app'] = array("Admin/Runtime/~app.php","DCDApp/Runtime/~app.php");
 		$dir = array();
 		foreach($id as $key){
 			$dir = array_merge($dir,$file[$key]);
