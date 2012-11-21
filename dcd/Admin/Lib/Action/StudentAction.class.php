@@ -1,10 +1,10 @@
-<?php
+ï»¿<?php
 class StudentAction extends BaseAction{
 	function _initialize(){
 		$map['uid'] = $_SESSION[C('USER_AUTH_KEY')];
 		$map['privilege'] = "1";
 		$comp = D("Administrator")->where($map)->select();
-		if(!$comp) $this->error("¶Ô²»Æğ£¬ÄúÃ»ÓĞÈ¨ÏŞ£¡");
+		if(!$comp) $this->error("å¯¹ä¸èµ·ï¼Œæ‚¨æ²¡æœ‰æƒé™ï¼");
 	}
 	public function index(){
 		$Member = D("Student");
@@ -30,16 +30,19 @@ class StudentAction extends BaseAction{
 		$this->display("Public:student");
 	}
 	public function adds(){
-		print_r($_POST);
-		$this->_upload("photo",false,300,400,false,1048576);
-		return;
+		if(!empty($_FILES['photo']['name'])){
+			$_POST['photo'] = $this->_upload("photo",false,300,400,true);
+		}
+		else{
+			$_POST['photo'] = 'default.jpg';
+		}
 		$Student = D("Student");
 		if($Student->Create()){
 			if($Student->add()){
 				$this->assign("jumpUrl","__URL__");
-				$this->success("·¢²¼³É¹¦£¡");
+				$this->success("å‘å¸ƒæˆåŠŸï¼");
 			}else{
-				$this->error("·¢²¼Ê§°Ü£¡");
+				$this->error("å‘å¸ƒå¤±è´¥ï¼");
 			}
 		}else{
 			$this->error($Student->getError());
@@ -54,15 +57,18 @@ class StudentAction extends BaseAction{
 			$this->display("Public:student");
 		}else{
 			$this->assign("jumpUrl","__URL__");
-			$this->error("Êı¾İ²»´æÔÚ£¡");
+			$this->error("æ•°æ®ä¸å­˜åœ¨ï¼");
 		}
 	}
 	public function edits(){
 		$data = $_POST;
+		if(!empty($_FILES['photo']['name'])){
+			$data['photo'] = $this->_upload("photo",false,300,400,true);
+		}
 		if(D("Student")->save($data)){
-			$this->success("ĞŞ¸Ä³É¹¦£¡");
+			$this->success("ä¿®æ”¹æˆåŠŸï¼");
 		}else{
-			$this->error("×ÊÁÏÎŞ¸Ä±ä»òĞŞ¸ÄÊ§°Ü£¡");		
+			$this->error("èµ„æ–™æ— æ”¹å˜æˆ–ä¿®æ”¹å¤±è´¥ï¼");		
 		}
 	}
 	public function batch(){

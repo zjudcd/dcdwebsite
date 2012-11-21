@@ -7,6 +7,7 @@ class BaseAction extends Action{
 		}
 	}
 	public function _batch($modulename){
+		echo MODULE_NAME;
 		$checkboxid = $_REQUEST['id'];
 		if(!$checkboxid) $this->error("请选择记录！");
 		$act = $_REQUEST['act'];
@@ -15,7 +16,7 @@ class BaseAction extends Action{
 		if(!in_array($act,$allowact)) $this->error('未知操作');
 		$id = is_array($checkboxid)?implode(',',$checkboxid):$checkboxid;
 		if(!$id) $this->error('ID丢失');
-		$tableId = array('Administrator'=>'uid','Products'=>'pid','Categroy'=>'cid','News'=>'id','Message'=>'mid','Pages'=>'pgid','Slide'=>'sid','Navigation'=>'ngid');
+		$tableId = array('Administrator'=>'uid','Products'=>'pid','Categroy'=>'cid','News'=>'id','Message'=>'mid','Pages'=>'pgid','Slide'=>'sid','Navigation'=>'ngid','Student'=>'id');
 		isset($modulename) ? $modulename = $modulename : $modulename = MODULE_NAME;
 		switch($act){
 			case "delete":
@@ -68,7 +69,7 @@ class BaseAction extends Action{
         	$upload->saveRule = time; 
 			$upload->dateFormat = 'Y/m/d'; 	
 		}
-        if(!$upload->upload()){  
+        if(!$upload->upload()){ 
            	$this->error($upload->getErrorMsg()); 
         }else{ 
 			$imginfo = $upload->getUploadFileInfo();

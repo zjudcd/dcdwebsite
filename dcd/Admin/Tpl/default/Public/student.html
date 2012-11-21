@@ -10,7 +10,7 @@ table.info
 	<switch name="dsp">
 		<case value="add">
 			<h4>添加学生用户</h4>
-			<form name="memberform" method="post" enctype=”multipart/form-data” action="__URL__/adds">
+			<form name="memberform" method="post" enctype="multipart/form-data" action="__URL__/adds">
 			<table width="100%" border="1"  cellspacing="1" >
 				<tr>
 					<th width="148">姓名</th>
@@ -118,7 +118,7 @@ table.info
 		</case>
 		<case value="edit">
 			<h4>修改学生用户</h4>
-			<form name="memberform" method="post" enctype=”multipart/form-data” action="__URL__/edits">
+			<form name="memberform" method="post" enctype="multipart/form-data" action="__URL__/edits">
 			<table width="100%" border="1"  cellspacing="1" >
 				<tr>
 					<th width="148">姓名</th>
@@ -127,7 +127,7 @@ table.info
 					<td width="168"><input type="text" name="gender" value="{$student['gender']}" /></td>
 					<th width="189" >出生年月</th>
 					<td width="168"><input type="text" name="birthday" value="{$student['birthday']}" /></td>
-					<td width="615" rowspan="4"><img src="{$student['photo']}"><input type="file" name="photo"></td>
+					<td width="615" rowspan="4"><img src="__ROOT__/Attachments/photo/{$student['photo']}"><input type="file" name="photo"></td>
 				</tr>
 				<tr>
 					<th width="148">政治面貌</th>
