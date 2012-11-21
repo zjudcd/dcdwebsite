@@ -72,8 +72,158 @@ class ProductsAction extends BaseAction{
 			$this->error("资料无改变或修改失败！");		
 		}
 	}
+	
+	// 批量操作
 	public function batch(){
-		$this->_batch();
-	} 
+		$tablename = $_GET['tablename'];
+		$this->_batch($tablename);
+	}
+	
+	// 指定显示那个页面 由参数showpage指定
+	public function showpage()
+	{
+		// addjour addconf addpatent addsoftware
+		// editjour editconf editpatent editsoftware
+		$page = $_GET['showpage'];
+		$this->assign("dsp",$page);
+		$this->display("Public:products");
+	}
+	
+	// add journal paper to database
+	public function addjour()
+	{
+		$M=M("Journalpaper");
+		if($M->Create())
+		{
+			if($M->add()){
+				$this->assign("jumpUrl","__URL__");
+				$this->success("添加成功！");
+			}else{
+				$this->error("添加失败！");
+			}
+		}
+		else{
+			$this->error($M->getError());
+		}
+	}
+	
+
+	// add conference paper to database
+	public function addconf()
+	{
+		$M=M("Conferencepaper");
+		if($M->Create())
+		{
+			if($M->add()){
+				$this->assign("jumpUrl","__URL__");
+				$this->success("添加成功！");
+			}else{
+				$this->error("添加失败！");
+			}
+		}
+		else{
+			$this->error($M->getError());
+		}
+	}
+
+	// add patent to database
+	public function addpatent()
+	{
+		$M=M("Patent");
+		if($M->Create())
+		{
+			if($M->add()){
+				$this->assign("jumpUrl","__URL__");
+				$this->success("添加成功！");
+			}else{
+				$this->error("添加失败！");
+			}
+		}
+		else{
+			$this->error($M->getError());
+		}
+	}
+	
+	// add software copyright to database
+	public function addright()
+	{
+		$M=M("Softwareright");
+		if($M->Create())
+		{
+			if($M->add()){
+				$this->assign("jumpUrl","__URL__");
+				$this->success("添加成功！");
+			}else{
+				$this->error("添加失败！");
+			}
+		}
+		else{
+			$this->error($M->getError());
+		}
+	}
+	
+	// add  techreport to database
+	public function addtechreport()
+	{
+		$M=M("Techreport");
+		if($M->Create())
+		{
+			if($M->add()){
+				$this->assign("jumpUrl","__URL__");
+				$this->success("添加成功！");
+			}else{
+				$this->error("添加失败！");
+			}
+		}
+		else{
+			$this->error($M->getError());
+		}
+	}
+	
+	// add  inner report to database
+	public function addinreport()
+	{
+		$M=M("Innerreport");
+		if($M->Create())
+		{
+			if($M->add()){
+				$this->assign("jumpUrl","__URL__");
+				$this->success("添加成功！");
+			}else{
+				$this->error("添加失败！");
+			}
+		}
+		else{
+			$this->error($M->getError());
+		}
+	}
+	
+	// add thesis to database
+	public function addthesis()
+	{
+		$M=M("Thesis");
+		if($M->Create())
+		{
+			if($M->add()){
+				$this->assign("jumpUrl","__URL__");
+				$this->success("添加成功！");
+			}else{
+				$this->error("添加失败！");
+			}
+		}
+		else{
+			$this->error($M->getError());
+		}
+	}
+	
+	public function editjour(){
+		$data = $_POST;
+		if(M("Journalpaper")->save($data)){
+			$this->success("修改成功！");
+		}else{
+			$this->error("资料无改变或修改失败！");		
+		}
+	}
+	
 }
 ?>
