@@ -69,24 +69,8 @@ background: #fff url(../Public/images/content_bottom.jpg) left bottom no-repeat;
 </style>
 </head>
 <body>
-<div id="templatemo_header_wrapper">
-  <div id="templatemo_header">
-    <div id="site_logo"></div>
-  </div>
-  <!-- end of header -->
-</div>
-<!-- end of header wrapper -->
-<div id="templatemo_menu_wrapper">
-   <div id="templatemo_menu">
-    <ul>
-      <li><a href="__ROOT__/index.php">主页</a></li>
-	  <li><a href="__ROOT__/index.php/About" class="current">实验室介绍</a></li>
-      <li><a href="__ROOT__/index.php/People">成员介绍</a></li>
-	  <li><a href="__ROOT__/index.php/News">新闻中心</a></li>
-    </ul>
-  </div>
-  <!-- end of menu -->
-</div>
+{~$pagename='About'}
+<include file="Public:header" />
 <!-- end of menu wrapper -->
 <div id="tempatemo_content_wrapper">
 <div id="people_content">
@@ -125,10 +109,7 @@ background: #fff url(../Public/images/content_bottom.jpg) left bottom no-repeat;
 </div>
 </div>
 
-<div id="templatemo_footer">
-		<p style="text-align:center"><br><a href="__ROOT__/admin.php" >管理员登录</a></p>
-		<div id="templatemo_footerlink" style="text-align:center" >Copyright © 2012 &nbsp  &nbsp  &nbsp <a href=#> Digital Media Computing & Design Lab</a> </div>
-	</div>
+<include file="Public:footer" />
    			
 </body>
 </html>
