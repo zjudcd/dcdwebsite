@@ -4,6 +4,7 @@ table.info
 }
 </style>
 <include file="Public:header" />
+<script type="text/javascript" src="__ROOT__/Public/Js/student.js"></script>
 <div class="cbody b-box blank10">
 	<include file="Public:menu" />
 	<div class="b-area-w f_r">
@@ -113,7 +114,7 @@ table.info
 				</tr>			   
 			</table>
 			
-			<div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+			<div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return review()"/></div>
 			</form>
 		</case>
 		<case value="edit">
