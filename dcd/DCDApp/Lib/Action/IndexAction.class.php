@@ -10,6 +10,7 @@ class IndexAction extends BaseAction{
 		
 		$cond['typeid']=2;//学术通知
 		$news = M("News")->where($cond)->order('date desc')->limit(5)->select();
+		$this->assign("menu","Home");
 		$this->assign("news",$news);
 		
 		$this->slide();
@@ -22,6 +23,7 @@ class IndexAction extends BaseAction{
 	
 	public function about()
 	{
+		$this-assign("menu","Home");
 		$this->display("Public:about");
 	}
 }

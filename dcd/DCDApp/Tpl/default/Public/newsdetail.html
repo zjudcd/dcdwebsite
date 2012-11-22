@@ -60,25 +60,7 @@ background-color:white;
 </style>
 </head>
 <body>
-<div id="templatemo_header_wrapper">
-  <div id="templatemo_header">
-    <div id="site_logo"></div>
-  </div>
-  <!-- end of header -->
-</div>
-<!-- end of header wrapper -->
-<div id="templatemo_menu_wrapper">
-   <div id="templatemo_menu">
-    <ul>
-      <li><a href="__ROOT__/index.php">主页</a></li>
-	  <li><a href="__ROOT__/index.php/About">实验室介绍</a></li>
-      <li><a href="__ROOT__/index.php/People">成员介绍</a></li>
-	  <li><a href="__ROOT__/index.php/News" class="current">新闻中心</a></li>
-    </ul>
-  </div>
-  <!-- end of menu -->
-</div>
-<!-- end of menu wrapper -->
+<include file="Public:header" />
 
 <div id="tempatemo_content_wrapper">
 <div id="people_content">
@@ -86,7 +68,7 @@ background-color:white;
 <div class="container">
 
 <div class="title"><h1 class="header">{$news.title}<h1></div>
-<div class="datetime">{$news.date|date="Y-n-j H:i:s",###}</div>
+<div class="datetime">{$news.publisher}&nbsp 发布于 &nbsp{$news.date|date="Y-n-j H:i:s",###}</div>
 <div class="content" style="background: #eeeeee url(../Public/images/content_right_column_bg.jpg) left repeat-y" >
 {$news.content} 
 </div>

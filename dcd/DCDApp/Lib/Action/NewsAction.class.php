@@ -1,5 +1,5 @@
 <?php
-class newsAction extends BaseAction{
+class NewsAction extends BaseAction{
 	
 	public function index()
 	{
@@ -20,6 +20,7 @@ class newsAction extends BaseAction{
 		$news = $News->where($map)->order('date desc')->limit($Page->firstRow.','.$Page->listRows)->select();
 		$this->assign('pages',$show);
 		$this->assign("news",$news);
+		$this->assign("menu","News");
 		$this->display("Public:news");
 	}
 	public function detail()
@@ -28,6 +29,7 @@ class newsAction extends BaseAction{
 		$cond["id"]=$newsid;
 		$news=M("News")->where($cond)->select();
 		$this->assign("news",$news[0]);
+		$this->assign("menu","News");
 		$this->display("Public:newsdetail");
 	}
 }

@@ -8,25 +8,25 @@
 <div id="templatemo_menu_wrapper">
    <div id="templatemo_menu">
     <ul>
-	<if condition="$pagename eq 'Home'">
+	<if condition="$menu eq 'Home'">
       <li><a href="__ROOT__/index.php" class="current">主页</a></li>
 	 <else />
 	  <li><a href="__ROOT__/index.php">主页</a></li>
 	</if>
 	
-	<if condition="$pagename eq 'About'">
+	<if condition="$menu eq 'About'">
 	  <li><a href="__ROOT__/index.php/About" class="current">实验室介绍</a></li>
 	<else />
 	  <li><a href="__ROOT__/index.php/About">实验室介绍</a></li>
 	</if>
 	
-	<if condition="$pagename eq 'People'">
+	<if condition="$menu eq 'People'">
 		<li><a href="__ROOT__/index.php/People" class="current">成员介绍</a></li>
 	<else />
 		<li><a href="__ROOT__/index.php/People">成员介绍</a></li>
 	</if>
 	
-    <if condition="$pagename eq 'News'"> 
+    <if condition="$menu eq 'News'"> 
 		<li><a href="__ROOT__/index.php/News" class="current">新闻中心</a></li>
 	<else />
 		<li><a href="__ROOT__/index.php/News">新闻中心</a></li>
