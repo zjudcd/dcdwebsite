@@ -216,9 +216,17 @@ class ProductsAction extends BaseAction{
 		}
 	}
 	
-	public function editjour(){
-		$data = $_POST;
-		if(M("Journalpaper")->save($data)){
+	// 将修改操作全部放在这里，通过POST中的表名变量来指明所要操作的表
+	public function editprod()
+	{
+		$tablename=$_POST["tablename"];
+		$data=[];
+		foreach ($_POST as $key => $value)
+		{
+			if($key != "tablename")
+				$data[$key]=$value;
+		}
+		if(M($tablename)->save($data)){
 			$this->success("修改成功！");
 		}else{
 			$this->error("资料无改变或修改失败！");		
