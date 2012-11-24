@@ -26,6 +26,8 @@ class StudentAction extends BaseAction{
 		$this->display("Public:student");
 	}
 	public function add(){
+		$Teac = M("Teacher")->select();
+		$this->assign("teacher",$Teac);
 		$this->assign("dsp","add");
 		$this->display("Public:student");
 	}
@@ -51,8 +53,21 @@ class StudentAction extends BaseAction{
 	public function edit(){
 		if($_GET["studentid"]){
 			$cond["id"]=$_GET["studentid"];
-			$stu = D("student")->where($cond)->select();
-			$this->student = $stu[0];
+			$Stu = D("student")->where($cond)->select();
+			$Teac = M("Teacher")->select();
+			if($Stu[0]["gender"] == "男")
+			{
+				$this->man = "selected";
+				$this->woman = "";
+			}
+			else
+			{
+				$this->man = "";
+				$this->woman = "selected";
+			}
+			$this->assign("teacher",$Teac);
+			$this->assign("student",$Stu[0]);
+			$this->assign("teacherid",$Stu[0]['teacher']);
 			$this->assign("dsp","edit");
 			$this->display("Public:student");
 		}else{

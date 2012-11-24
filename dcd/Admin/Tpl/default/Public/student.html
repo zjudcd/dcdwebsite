@@ -17,7 +17,12 @@ table.info
 					<th width="148">姓名</th>
 				    <td width="168"><input type="text" name="name" value="" /></td>
 					<th width="144" >性别</th>
-					<td width="168"><input type="text" name="gender" value="" /></td>
+					<td width="168">
+						<select name="gender">
+							<option value="男">男</option>
+							<option value="女">女</option>
+						</select>
+					</td>
 					<th width="189" >出生年月</th>
 					<td width="168"><input type="text" name="birthday" value="" /></td>
 					<td width="615" rowspan="4"><input type="file" name="photo"></td>
@@ -30,8 +35,14 @@ table.info
 					<th width="189" >出生地</th>
 					<td width="168"><input type="text" name="birthplace" value="" /></td>
 				</tr>
-					<th width="148">导师工号</th>
-					<td width="168"><input type="text" name="teacher" value="" /></td>
+					<th width="148">导师</th>
+					<td width="168">
+						<select name="teacher">
+							<volist name="teacher" id="vo">
+							<option value="{$vo.id}">{$vo.name}({$vo.id})</option>
+							</volist>
+						</select>
+					</td>
 					<th width="144" >类型</th>
 					<td width="168"><input type="text" name="category" value="" /></td>
 					<th width="144" >入学日期</th>
@@ -125,7 +136,12 @@ table.info
 					<th width="148">姓名</th>
 				    <td width="168"><input type="text" name="name" value="{$student['name']}" /></td>
 					<th width="144" >性别</th>
-					<td width="168"><input type="text" name="gender" value="{$student['gender']}" /></td>
+					<td width="168">
+						<select name="gender">
+							<option value="男" {$man}>男</option>
+							<option value="女" {$woman}>女</option>
+						</select>
+					</td>
 					<th width="189" >出生年月</th>
 					<td width="168"><input type="text" name="birthday" value="{$student['birthday']}" /></td>
 					<td width="615" rowspan="4"><img src="__ROOT__/Attachments/photo/{$student['photo']}"><input type="file" name="photo"></td>
@@ -138,8 +154,14 @@ table.info
 					<th width="189" >出生地</th>
 					<td width="168"><input type="text" name="birthplace" value="{$student['birthplace']}" /></td>
 				</tr>
-					<th width="148">导师工号</th>
-					<td width="168"><input type="text" name="teacher" value="{$student['teacher']}" /></td>
+					<th width="148">导师</th>
+					<td width="168">
+						<select name="teacher">
+							<volist name="teacher" id="vo">
+							<option value="{$vo.id}" <eq name="vo.id" value="$teacherid">selected</eq>>{$vo.name}({$vo.id})</option>
+							</volist>
+						</select>
+					</td>
 					<th width="144" >类型</th>
 					<td width="168"><input type="text" name="category" value="{$student['category']}" /></td>
 					<th width="144" >入学日期</th>
