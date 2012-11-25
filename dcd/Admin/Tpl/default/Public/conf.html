@@ -1,7 +1,7 @@
-﻿<h4><a href="javascript:history.back()">成果管理</a>>>期刊论文</h4>
+﻿<h4><a href="javascript:history.back()">成果管理</a>>>会议论文</h4>
 		<div>
-		<a href="__URL__/showpage/sp/addjour"><div class="b-btn f_l blank5_r">添加/发布</div></a>
-		<form name="search" method="post" action="__URL__/search/tablename/Journalpaper" class="search f_l">
+		<a href="__URL__/showpage/sp/addconf"><div class="b-btn f_l blank5_r">添加/发布</div></a>
+		<form name="search" method="post" action="__URL__/search/tablename/Conferencepaper" class="search f_l">
 				<input type="text" name="keyword" value="{$keyword}" class="search-input p_n m_n" />
 				<input type="submit" value="搜索" class="search-btn p_n m_n" />
 		</form>
@@ -14,19 +14,19 @@
 				<th width="30">ID</th>
 				<th>论文名称</th>
 				<th>发表时间</th>
-				<th>期刊名称</th>
+				<th>会议名称</th>
 				<th>作者列表</th>
 				<th width="150">操作</th>
 			</tr>
 			<volist name="papers" id="p">
 			<tr>
-				<td><input name="id[]" type="checkbox" id="id[]" value="{$p.id}" class="input-cb" /></td>
+				<td><input name="id[]" type="checkbox" id="id[]" value="{$p.pid}" class="input-cb" /></td>
 				<td>{$p.id}</td>
 				<td>{$p.title}</td>
-				<td>{$p.journalname}</td>
+				<td>{$p.conferencename}</td>
 				<td>{$p.publishdate}</td>
 				<td>{$p.authorlist}</td>
-				<td><a href="__URL__/editprod/sp/editjour/pid/{$p.id}">编辑</a> <a href="__URL__/act/delete/id/{$p.id}/tablename/Journalpaper">删除</a></td>
+				<td><a href="__URL__/editprod/sp/editconf/pid/{$p.id}">编辑</a> <a href="__URL__/act/delete/id/{$p.id}/tablename/Conferencepaper">删除</a></td>
 			</tr>
 			</volist>
 			<tr>

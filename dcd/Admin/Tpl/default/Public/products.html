@@ -4,9 +4,9 @@
 	<include file="Public:menu" />
 	<div class="b-area-w f_r">
 	<switch name="dsp">
-		<case value="add1">
-		<h4>添加成果-科研项目</h4>
-		<form name="proform" method="post" action="__URL__/adds" enctype="multipart/form-data">
+		<case value="addproj">
+		<h4><a href="javascript:history.back()">科研项目管理</a> >>添加项目</h4>
+		<form name="proform" method="post" action="__URL__/addprod/tablename/Project" enctype="multipart/form-data">
 		<table border="0" cellspacing="1" class="tb-b">
 			<tr>
 				<th>项目ID</th>
@@ -64,9 +64,9 @@
 		<div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
 		</form>
 		</case>
-		<case value="add2">
-			<h4>添加成果-期刊论文</h4>
-		<form name="proform" method="post" action="__URL__/adds" enctype="multipart/form-data">
+		<case value="addjour">
+			<h4><a href="javascript:history.back()">期刊论文管理</a>>>添加成果-期刊论文</h4>
+		<form name="proform" method="post" action="__URL__/addprod/tablename/Journalpaper" enctype="multipart/form-data">
 		  <table border="0" cellspacing="1" class="tb-b">
             <tr>
               <th>论文ID</th>
@@ -142,9 +142,9 @@
 		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
 		</form>
 		</case>
-		<case value="add3">
-		<h4>添加成果-会议论文</h4>
-		<form name="proform" method="post" action="__URL__/adds" enctype="multipart/form-data">
+		<case value="addconf">
+		<h4><a href="javascript:history.back()">会议论文管理</a> >>添加成果-会议论文</h4>
+		<form name="proform" method="post" action="__URL__/addprod/tablename/Conferencepaper" enctype="multipart/form-data">
 		  <table border="0" cellspacing="1" class="tb-b">
             <tr>
               <th>论文ID</th>
@@ -217,9 +217,9 @@
 		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
 		</form>
 		</case>
-		<case value="add4">
-		<h4>添加成果-专利</h4>
-		<form name="proform" method="post" action="__URL__/adds" enctype="multipart/form-data">
+		<case value="addpatent">
+		<h4><a href="javascript:history.back()">专利管理</a> >>添加成果-专利</h4>
+		<form name="proform" method="post" action="__URL__/addprod/tablename/Patent" enctype="multipart/form-data">
 		  <table border="0" cellspacing="1" class="tb-b">
             <tr>
               <th>专利ID</th>
@@ -288,9 +288,9 @@
 		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
 		</form>
 		</case>
-		<case value="add5">
-		<h4>添加成果-软件著作权</h4>
-		<form name="proform" method="post" action="__URL__/adds" enctype="multipart/form-data">
+		<case value="addsw">
+		<h4><a href="javascript:history.back()">软件著作权管理</a> >>添加成果-软件著作权</h4>
+		<form name="proform" method="post" action="__URL__/addprod/tablename/Softwareright" enctype="multipart/form-data">
 		  <table border="0" cellspacing="1" class="tb-b">
             <tr>
               <th>软件著作权ID</th>
@@ -351,9 +351,9 @@
 		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
 		</form>
 		</case>
-		<case value="add6">
-		<h4>添加成果-技术报告</h4>
-		<form name="proform" method="post" action="__URL__/adds" enctype="multipart/form-data">
+		<case value="addtr">
+		<h4><a href="javascript:history.back()">技术报告管理</a> >>添加成果-技术报告</h4>
+		<form name="proform" method="post" action="__URL__/addprod/tablename/Techreport" enctype="multipart/form-data">
 		  <table border="0" cellspacing="1" class="tb-b">
             <tr>
               <th>技术报告ID</th>
@@ -397,9 +397,9 @@
 		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
 		</form>
 		</case>
-		<case value="add7">
-		<h4>添加成果-毕业论文</h4>
-		<form name="proform" method="post" action="__URL__/adds" enctype="multipart/form-data">
+		<case value="addthesis">
+		<h4><a href="javascript:history.back()">毕业论文管理</a> >>添加成果-毕业论文</h4>
+		<form name="proform" method="post" action="__URL__/addprod/tablename/Thesis" enctype="multipart/form-data">
 		  <table border="0" cellspacing="1" class="tb-b">
             <tr>
               <th>毕业论文ID</th>
@@ -443,63 +443,9 @@
 		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
 		</form>
 		</case>
-		<case value="edit">
-		<h4>编辑成果</h4>
-		<form name="proform" method="post" action="__URL__/edits" enctype="multipart/form-data">
-		<table border="0" cellspacing="1" class="tb-b">
-			<tr>
-				<th>ID</th>
-				<td>{$pid}<input type="hidden" name="pid" value="{$pid}"></td>
-			</tr>
-			<tr>
-				<th>成果名称</th>
-				<td><input type="text" name="title" value="{$title}" class="input-b" /></td>
-			</tr>
-			<tr>
-				<th>成果类别</th>
-				<td>
-					<select name="cid" class="input-b">
-						<volist name="cats" id="c"> 
-							<if condition="$c.cid eq $cid">
-								<option value="{$c.cid}" selected="selected">{$c.name}</option>
-							<else />
-								<option value="{$c.cid}">{$c.name}</option>
-							</if>
-						</volist>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<th>成果型号</th>
-				<td><input type="text" name="pattern" value="{$pattern}" class="input-b" /></td>
-			</tr>
-			<tr>
-				<th>成果图片</th>
-				<td><input type="file"  name="attachment" value="{$attachment}" /> 当前图片：<a href="#" onmouseover="tooltip.show('<img src={$attachment|getProImg = ###} height=160 />');" onmouseout=tooltip.hide(); >{$attachment}</a></td>
-			</tr>
-			<tr>
-				<th>成果介绍</th>
-				<td><html:editor id="editor" name="content" type="FCKeditor" content="{$content}" /></td>
-			</tr>
-			<tr>
-				<th>其他参数</th>
-				<td><textarea name="parameters" class="input-textarea">{$parameters|str_replace = "<br />","",###}</textarea></td>
-			</tr>
-			<tr>
-				<th>发布时间</th>
-				<td><input type="text" name="postdate" value="{$postdate|date='Y-n-j H:i:s',###}" class="input-b" /></td>
-			</tr>
-		</table>
-		<div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
-		</form>
-		</case>
 		
 		<case value="jour">
 		<include file="Public:jour" />
-		</case>
-		
-		<case value="addjour">
-		
 		</case>
 		
 		<case value="editjour">
@@ -507,23 +453,16 @@
 		</case>
 		
 		<case value="conf">
-		
+		<include file="Public:conf" />
 		</case>
 		
-		<case value="addconf">
-		
-		</case>
 		
 		<case value="editconf">
 		
 		</case>
 		
 		<case value="software">
-		
-		</case>
-		
-		<case value="addsw">
-		
+		<include file="Public:software" />
 		</case>
 		
 		<case value="editsw">
@@ -531,88 +470,45 @@
 		</case>
 		
 		<case value="patent">
-		
+		<include file="Public:patent" />
 		</case>
-		
-		<case value="addpatent">
-		
-		</case>
+
 		
 		<case value="editpatent">
 		
 		</case>
 		
 		<case value="techreport">
-		
+		<include file="Public:techreport" />
 		</case>
 		
-		<case value="addtr">
-		
-		</case>
 		
 		<case value="edittr">
 		
 		</case>
 		
-		<case value="inreport">
+		<case value="project">
+		<include file="Public:project" />
+		</case>
+		
+		<case value="addproj">
 		
 		</case>
 		
-		<case value="addir">
-		
-		</case>
-		
-		<case value="editir">
+		<case value="editproj">
 		
 		</case>
 		
 		<case value="thesis">
-		
+		<include file="Public:thesis" />
 		</case>
 		
-		<case value="addthesis">
-		
-		</case>
 		
 		<case value="editthesis">
 		
 		</case>
 		
 		<default />
-		<h4>成果管理</h4>
-		<include file="Public:searchbar" />
-		<form name="proform" method="post" action="__URL__/batch">
-		<table width="100%" border="0" cellspacing="1" class="tb-a blank5">
-			<tr>
-				<th width="20"><input name="checkbox" type="checkbox" class="input-cb" onClick="selAll(this)" /></th>
-				<th width="30">ID</th>
-				<th>成果名称</th>
-				<th>发布时间</th>
-				<th>所属分类</th>
-				<th width="150">操作</th>
-			</tr>
-			<volist name="products" id="p">
-			<tr>
-				<td><input name="id[]" type="checkbox" id="id[]" value="{$p.pid}" class="input-cb" /></td>
-				<td>{$p.pid}</td>
-				<td>{$p.title}</td>
-				<td>{$p.postdate|date="Y-n-j H:i:s",###}</td>
-				<td>{$p.name}</td>
-				<td><a href="__URL__/edit/pid/{$p.pid}">编辑</a> <a href="__URL__/act/delete/id/{$p.pid}">删除</a></td>
-			</tr>
-			</volist>
-			<tr>
-				<td colspan="6" align="left">
-					<input name="act" type="radio" value="delete" />删除
-					<input name="act" type="radio" value="remove" />移动
-					<select name="category" id="category">
-						<volist name="cats" id="c"><option value="{$c.cid}">{$c.name}</option></volist>
-					</select>
-					<input type="submit" value="提交" class="input-btn-c" />
-				</td>
-			</tr>
-		</table>
-		</form>
 		<include file="Public:paging" />
 	</switch>
 	</div>

@@ -228,18 +228,12 @@ class ProductsAction extends BaseAction{
 	
 	public function addprod()
 	{
-		$tablename=$_POST["tablename"];
+		$tablename=$_GET["tablename"];
 		if(!empty($_FILES['photo']['name'])){
 			$_POST['image1'] = $this->_upload("photo",false,300,400,true);
 		}
 		else{
 			$_POST['image1'] = 'default.jpg';
-		}
-		foreach ($_POST as $key => $value)
-		{
-			if($key != "tablename")
-				$data[$key]=$value;
-			
 		}
 		
 		$M=M($tablename);
