@@ -17,7 +17,7 @@ table.info
 				<tr>
 					<th width="148">等级</th>
 				  <td width="168">
-					<select>
+					<select name="privilege">
 						<option value="1">1</option>
 						<option value="2" selected>2</option>
 						<option value="3">3</option>
@@ -26,14 +26,14 @@ table.info
 					<th width="144" >姓名</th>
 					<td width="168"><input type="text" name="name" value=""></td>
 					<th width="189" >住址</th>
-					<td width="168"><input type="text" name="address" value="" /></td>
+					<td width="168"><input type="text" name="addr" value="" /></td>
 				</tr>
 				<tr>
 				</td>
 					<th width="144" >用户名</th>
 					<td width="168"><input type="text" name="username" value=""></td>
 					<th width="189" >密码</th>
-					<td width="168"><input type="password" name="password1" value="" /></td>					
+					<td width="168"><input type="password" name="password" value="" /></td>					
 					<th width="148">重复密码</th>
 					<td width="168"><input type="password" name="password2" value="" /></td>
 				</tr>
@@ -53,11 +53,11 @@ table.info
 			<h4>修改管理员用户</h4>
 			<form name="memberform" method="post" enctype="multipart/form-data" action="__URL__/edits">
 			<table width="100%" border="1"  cellspacing="1" >
-
 				<tr>
 					<th width="148">等级</th>
 				  <td width="168">
-					<select>
+					<input type="hidden" name="uid" value="{$administrator['uid']}">
+					<select name="privilege">
 						<option value="1" {$one}>1</option>
 						<option value="2" {$two}>2</option>
 						<option value="3" {$three}>3</option>
@@ -66,14 +66,14 @@ table.info
 					<th width="144" >姓名</th>
 					<td width="168"><input type="text" name="name" value="{$administrator['name']}"></td>
 					<th width="189" >住址</th>
-					<td width="168"><input type="text" name="address" value="{$administrator['address']}" /></td>
+					<td width="168"><input type="text" name="addr" value="{$administrator['addr']}" /></td>
 				</tr>
 				<tr>
 				</td>
 					<th width="144" >用户名</th>
 					<td width="168"><input type="text" name="username" value="{$administrator['username']}"></td>
 					<th width="189" >密码</th>
-					<td width="168"><input type="password" name="password1" value="" /></td>					
+					<td width="168"><input type="password" name="password" value="" /></td>					
 					<th width="148">重复密码</th>
 					<td width="168"><input type="password" name="password2" value="" /></td>
 				</tr>

@@ -1,6 +1,6 @@
 ﻿function review()
 {
-	var passwords = document.getElementsByName("password1")
+	var passwords = document.getElementsByName("password")
 	var p1 = passwords[0]
 	passwords = document.getElementsByName("password2")
 	var p2 = passwords[0]

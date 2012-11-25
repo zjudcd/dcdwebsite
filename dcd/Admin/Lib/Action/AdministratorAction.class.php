@@ -30,16 +30,18 @@ class AdministratorAction extends BaseAction{
 		$this->display("Public:administrator");
 	}
 	public function adds(){
-		print_r($_POST);
-		if(!empty($_FILES['photo']['name'])){
-			$_POST['photo'] = $this->_upload("photo",false,300,400,true);
-		}
-		else{
-			$_POST['photo'] = 'default.jpg';
-		}
+		$data["privilege"] = $_POST["privilege"];
+		$data["username"] = $_POST["username"];
+		if($_POST["password"] != "")
+			$data["password"] = md5($_POST["password"]);
+		$data["name"] = $_POST["name"];
+		$data["phone"] = $_POST["phone"];
+		$data["cellphone"] = $_POST["cellphone"];
+		$data["email"] = $_POST["email"];
+		$data["addr"] = $_POST["addr"];
 		$Admin = D("Administrator");
 		if($Admin->Create()){
-			if($Admin->add()){
+			if($Admin->add($data)){
 				$this->assign("jumpUrl","__URL__");
 				$this->success("发布成功！");
 			}else{
@@ -79,11 +81,17 @@ class AdministratorAction extends BaseAction{
 		}
 	}
 	public function edits(){
-		$data = $_POST;
-		if($_POST["password1"] != "")
-			$data["password"] = md5($_POST["password1"]);
-		return;
-		if(D("Teacher")->save($data)){
+		$data["uid"] = $_POST["uid"];
+		$data["privilege"] = $_POST["privilege"];
+		$data["username"] = $_POST["username"];
+		if($_POST["password"] != "")
+			$data["password"] = md5($_POST["password"]);
+		$data["name"] = $_POST["name"];
+		$data["phone"] = $_POST["phone"];
+		$data["cellphone"] = $_POST["cellphone"];
+		$data["email"] = $_POST["email"];
+		$data["addr"] = $_POST["addr"];
+		if(D("Administrator")->save($data)){
 			$this->success("修改成功！");
 		}else{
 			$this->error("资料无改变或修改失败！");		
