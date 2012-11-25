@@ -4,42 +4,443 @@
 	<include file="Public:menu" />
 	<div class="b-area-w f_r">
 	<switch name="dsp">
-		<case value="add">
-		<h4>添加成果</h4>
+		<case value="add1">
+		<h4>添加成果-科研项目</h4>
 		<form name="proform" method="post" action="__URL__/adds" enctype="multipart/form-data">
 		<table border="0" cellspacing="1" class="tb-b">
 			<tr>
-				<th>成果名称</th>
-				<td><input type="text" name="title" value="" class="input-b" /><input type="hidden" name="uid" value="{$uid}"/></td>
+				<th>项目ID</th>
+				<td><input type="text" name="id" value="" class="input-b" /></td>
 			</tr>
 			<tr>
-				<th>成果类别</th>
-				<td>
-					<select name="cid" class="input-b">
-						<volist name="cats" id="c"> 
-							<option value="{$c.cid}">{$c.name}</option>
-						</volist>
-					</select>
-				</td>
+				<th>提交时间</th>
+				<td><input type="text" name="submittime" value="" class="input-b" /></td>
 			</tr>
 			<tr>
-				<th>成果型号</th>
-				<td><input type="text" name="pattern" value="" class="input-b" /></td>
+				<th>项目类别ID</th>
+				<td><input type="text" name="typeid" value="" class="input-b" /></td>
 			</tr>
 			<tr>
-				<th>成果图片</th>
-				<td><input type="file"  name="attachment" value="" ></td>
+				<th>项目编号</th>
+				<td><input type="text" name="number" value="" class="input-b" /></td>
 			</tr>
 			<tr>
-				<th>成果介绍</th>
-				<td><html:editor id="editor" name="content" type="FCKeditor" content="" /></td>
+				<th>项目负责人ID</th>
+				<td><input type="text" name="principalid" value="" class="input-b" /></td>
 			</tr>
 			<tr>
-				<th>其他参数</th>
-				<td><textarea name="parameters" class="input-textarea"></textarea></td>
+				<th>项目标题</th>
+				<td><input type="text" name="title" value="" class="input-b" /></td>
+			</tr>
+			<tr>
+				<th>项目简介</th>
+				<td><input type="text" name="introduction" value="" class="input-b" /></td>
+			</tr>
+			<tr>
+				<th>参与单位</th>
+				<td><input type="text" name="unit" value="" class="input-b" /></td>
+			</tr>
+			<tr>
+				<th>开始时间</th>
+				<td><input type="text" name="starttime" value="" class="input-b" /></td>
+			</tr>
+			<tr>
+				<th>结束时间</th>
+				<td><input type="text" name="endtime" value="" class="input-b" /></td>
+			</tr>
+			<tr>
+				<th>是否公开</th>
+				<td><input type="text" name="ispublic" value="" class="input-b" /></td>
+			</tr>
+			<tr>
+				<th>项目资助额度</th>
+				<td><input type="text" name="subsidizelimit" value="" class="input-b" /></td>
+			</tr>
+			<tr>
+				<th>备注</th>
+				<td><input type="text" name="note" value="" class="input-b" /></td>
 			</tr>
 		</table>
 		<div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		</form>
+		</case>
+		<case value="add2">
+			<h4>添加成果-期刊论文</h4>
+		<form name="proform" method="post" action="__URL__/adds" enctype="multipart/form-data">
+		  <table border="0" cellspacing="1" class="tb-b">
+            <tr>
+              <th>论文ID</th>
+              <td><input type="text" name="id2" value="" class="input-b" /></td>
+            </tr>
+            <tr>
+              <th>提交时间</th>
+              <td><input type="text" name="submittime2" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>作者姓名列表</th>
+              <td><input type="text" name="journalname" value="" class="input-b" /></td>
+            </tr>
+            <tr>
+              <th>论文标题</th>
+              <td><input type="text" name="title2" value="" class="input-b" /></td>
+            </tr>
+            <tr>
+              <th>论文摘要</th>
+              <td><input type="text" name="abstract" value="" class="input-b" /></td>
+            </tr>
+            <tr rowspan="4">
+              <th height="93" rowspan="4">代表图片1</th>
+              <td rowspan="4"><input type="file" name="photo"></td>
+            </tr>
+		  </table>
+			 <table border="0" cellspacing="1" class="tb-b">
+			<tr>
+              <th>发表日期</th>
+              <td><input type="text" name="publishdate" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>卷号</th>
+              <td><input type="text" name="volumenum" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>期号</th>
+              <td><input type="text" name="issuenum" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>页码</th>
+              <td><input type="text" name="pagenum" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>是否被SCI收录</th>
+              <td><input type="text" name="SCI" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>是否被EI收录</th>
+              <td><input type="text" name="EI" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>是否被ISTP收录</th>
+              <td><input type="text" name="ISTP" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>项目资助ID列表</th>
+              <td><input type="text" name="sponsor" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>论文正式稿电子版</th>
+              <td><input type="text" name="publishdate" value="" class="input-b" /></td>
+            </tr>
+           <tr>
+              <th>论文草稿word版</th>
+              <td><input type="text" name="publishdate" value="" class="input-b" /></td>
+            </tr>
+            <tr>
+              <th>备注</th>
+              <td><input type="text" name="note2" value="" class="input-b" /></td>
+            </tr>
+          </table>
+		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		</form>
+		</case>
+		<case value="add3">
+		<h4>添加成果-会议论文</h4>
+		<form name="proform" method="post" action="__URL__/adds" enctype="multipart/form-data">
+		  <table border="0" cellspacing="1" class="tb-b">
+            <tr>
+              <th>论文ID</th>
+              <td><input type="text" name="id2" value="" class="input-b" /></td>
+            </tr>
+            <tr>
+              <th>提交时间</th>
+              <td><input type="text" name="submittime2" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>作者姓名列表</th>
+              <td><input type="text" name="" value="" class="input-b" /></td>
+            </tr>
+            <tr>
+              <th>论文标题</th>
+              <td><input type="text" name="title2" value="" class="input-b" /></td>
+            </tr>
+            <tr>
+              <th>论文摘要</th>
+              <td><input type="text" name="abstract" value="" class="input-b" /></td>
+            </tr>
+            <tr rowspan="4">
+              <th height="93" rowspan="4">代表图片1</th>
+              <td rowspan="4"><input type="file" name="photo"></td>
+            </tr>
+		  </table>
+			 <table border="0" cellspacing="1" class="tb-b">
+            <tr>
+              <th>会议名称</th>
+              <td><input type="text" name="conferencename" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+			<tr>
+              <th>发表日期</th>
+              <td><input type="text" name="publishdate" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>页码</th>
+              <td><input type="text" name="pagenum" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>是否被SCI收录</th>
+              <td><input type="text" name="SCI" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>是否被EI收录</th>
+              <td><input type="text" name="EI" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>是否被ISTP收录</th>
+              <td><input type="text" name="ISTP" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>项目资助ID列表</th>
+              <td><input type="text" name="sponsor" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>论文正式稿电子版</th>
+              <td><input type="text" name="publishdate" value="" class="input-b" /></td>
+            </tr>
+           <tr>
+              <th>论文草稿word版</th>
+              <td><input type="text" name="publishdate" value="" class="input-b" /></td>
+            </tr>
+            <tr>
+              <th>备注</th>
+              <td><input type="text" name="note2" value="" class="input-b" /></td>
+            </tr>
+          </table>
+		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		</form>
+		</case>
+		<case value="add4">
+		<h4>添加成果-专利</h4>
+		<form name="proform" method="post" action="__URL__/adds" enctype="multipart/form-data">
+		  <table border="0" cellspacing="1" class="tb-b">
+            <tr>
+              <th>专利ID</th>
+              <td><input type="text" name="id2" value="" class="input-b" /></td>
+            </tr>
+            <tr>
+              <th>提交时间</th>
+              <td><input type="text" name="submittime2" value="" class="input-b" /></td>
+            </tr>
+			 <tr>
+              <th>专利标题</th>
+              <td><input type="text" name="title" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>专利摘要</th>
+              <td><input type="text" name="abstract" value="" class="input-b" /></td>
+            </tr>
+			 <tr rowspan="4">
+              <th height="93" rowspan="4">代表图片1</th>
+              <td rowspan="4"><input type="file" name="photo"></td>
+            </tr>
+		  </table>
+			 <table border="0" cellspacing="1" class="tb-b">
+            <tr>
+              <th>专利申请书</th>
+              <td><input type="text" name="application" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+			<tr>
+              <th>当前状态</th>
+              <td><input type="text" name="status" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>专利受理号</th>
+              <td><input type="text" name="acceptnum" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>专利受理日期</th>
+              <td><input type="text" name="acceptdate" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>专利受理录通知书</th>
+              <td><input type="text" name="noitce" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>授权号</th>
+              <td><input type="text" name="authorizationnum" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>授权日期</th>
+              <td><input type="text" name="authorizationdate" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>授权证书</th>
+              <td><input type="text" name="authorizationcertificatio" value="" class="input-b" /></td>
+            </tr>
+           <tr>
+              <th>资助者列表</th>
+              <td><input type="text" name="subsidize" value="" class="input-b" /></td>
+            </tr>
+            <tr>
+              <th>备注</th>
+              <td><input type="text" name="note2" value="" class="input-b" /></td>
+            </tr>
+          </table>
+		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		</form>
+		</case>
+		<case value="add5">
+		<h4>添加成果-软件著作权</h4>
+		<form name="proform" method="post" action="__URL__/adds" enctype="multipart/form-data">
+		  <table border="0" cellspacing="1" class="tb-b">
+            <tr>
+              <th>软件著作权ID</th>
+              <td><input type="text" name="id2" value="" class="input-b" /></td>
+            </tr>
+            <tr>
+              <th>提交时间</th>
+              <td><input type="text" name="submittime2" value="" class="input-b" /></td>
+            </tr>
+			 <tr>
+              <th>软件著作权标题</th>
+              <td><input type="text" name="title" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>软件著作权摘要</th>
+              <td><input type="text" name="abstract" value="" class="input-b" /></td>
+            </tr>
+			 <tr rowspan="4">
+              <th height="93" rowspan="4">代表图片1</th>
+              <td rowspan="4"><input type="file" name="photo"></td>
+            </tr>
+		  </table>
+			 <table border="0" cellspacing="1" class="tb-b">
+            <tr>
+              <th>软件著作权登记表</th>
+              <td><input type="text" name="regform" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+			<tr>
+              <th>软件使用说明书</th>
+              <td><input type="text" name="introduction" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>系统源码</th>
+              <td><input type="text" name="code" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>授权号</th>
+              <td><input type="text" name="authorizationnum" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>授权日期</th>
+              <td><input type="text" name="authorizationdate" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>授权证书</th>
+              <td><input type="text" name="authorizationcertificatio" value="" class="input-b" /></td>
+            </tr>
+           <tr>
+              <th>资助者列表</th>
+              <td><input type="text" name="subsidize" value="" class="input-b" /></td>
+            </tr>
+            <tr>
+              <th>备注</th>
+              <td><input type="text" name="note2" value="" class="input-b" /></td>
+            </tr>
+          </table>
+		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		</form>
+		</case>
+		<case value="add6">
+		<h4>添加成果-技术报告</h4>
+		<form name="proform" method="post" action="__URL__/adds" enctype="multipart/form-data">
+		  <table border="0" cellspacing="1" class="tb-b">
+            <tr>
+              <th>技术报告ID</th>
+              <td><input type="text" name="id2" value="" class="input-b" /></td>
+            </tr>
+            <tr>
+              <th>提交时间</th>
+              <td><input type="text" name="submittime2" value="" class="input-b" /></td>
+            </tr>
+			 <tr>
+              <th>技术报告标题</th>
+              <td><input type="text" name="title" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>技术报告摘要</th>
+              <td><input type="text" name="abstract" value="" class="input-b" /></td>
+            </tr>
+			 <tr rowspan="4">
+              <th height="93" rowspan="4">代表图片1</th>
+              <td rowspan="4"><input type="file" name="photo"></td>
+            </tr>
+		  </table>
+			 <table border="0" cellspacing="1" class="tb-b">
+            <tr>
+              <th>技术报告附件</th>
+              <td><input type="text" name="attachment" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>资助者列表</th>
+              <td><input type="text" name="sponser" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>公开性质</th>
+              <td><input type="text" name="public" value="" class="input-b" /></td>
+            </tr>
+            <tr>
+              <th>备注</th>
+              <td><input type="text" name="note" value="" class="input-b" /></td>
+            </tr>
+          </table>
+		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		</form>
+		</case>
+		<case value="add7">
+		<h4>添加成果-毕业论文</h4>
+		<form name="proform" method="post" action="__URL__/adds" enctype="multipart/form-data">
+		  <table border="0" cellspacing="1" class="tb-b">
+            <tr>
+              <th>毕业论文ID</th>
+              <td><input type="text" name="id2" value="" class="input-b" /></td>
+            </tr>
+            <tr>
+              <th>提交时间</th>
+              <td><input type="text" name="submittime2" value="" class="input-b" /></td>
+            </tr>
+			 <tr>
+              <th>毕业论文标题</th>
+              <td><input type="text" name="title" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>毕业论文摘要</th>
+              <td><input type="text" name="abstract" value="" class="input-b" /></td>
+            </tr>
+			 <tr rowspan="4">
+              <th height="93" rowspan="4">代表图片1</th>
+              <td rowspan="4"><input type="file" name="photo"></td>
+            </tr>
+		  </table>
+			 <table border="0" cellspacing="1" class="tb-b">
+            <tr>
+              <th>资助者列表</th>
+              <td><input type="text" name="sponser" value="" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>论文正式稿PDF版</th>
+              <td><input type="text" name="official" value="" class="input-b" /></td>
+            </tr><tr>
+              <th>论文正式稿WORD版</th>
+              <td><input type="text" name="draft" value="" class="input-b" /></td>
+            </tr>
+			
+            <tr>
+              <th>备注</th>
+              <td><input type="text" name="note" value="" class="input-b" /></td>
+            </tr>
+          </table>
+		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
 		</form>
 		</case>
 		<case value="edit">
