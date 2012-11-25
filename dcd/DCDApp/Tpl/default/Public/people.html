@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -128,24 +128,22 @@ height:40px;
 <div class="left" id="left" >
 
 <ul >
-<li><a href=# >教师</a></li>
-<li><a href=# >博士生</a></li>
-<li><a href=# >硕士生</a></li>
+<li><a href="__URL__/choose/category/teacher" >教师</a></li>
+<li><a href="__URL__/choose/category/student" >学生</a></li>
 </ul>
 
 </div>
 <div class="content">
-
-<div class="people">
-<div class="img">
-<a href=# ><img src="images/zyt.jpg" /></a>
-</div>
-<div class="name" style="text-align:center">
-<span > 庄越挺</span>
-</div>
-</div>
-
-
+		<volist name="people" id="person">
+		<div class="people">
+			<div class="img">
+			<a href="peopledetail/category/{$_GET['category']}/id/{$person['id']}" ><img src="__ROOT__/Attachments/photo/{$person['photo']}" /></a>
+			</div>
+			<div class="name" style="text-align:center">
+			<span >{$person["name"]}</span>
+			</div>
+		</div>
+		</volist>
 </div>
 
 <div style="text-align:center">
