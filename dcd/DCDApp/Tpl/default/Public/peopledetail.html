@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Digital Media Computing & Design Lab</title>
+<link href="../Public/templatemo_style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+
+ul.none {list-style-type: none}
+
+
+div.container
+{
+
+margin:0px;
+border:5px solid #19446a;
+line-height:150%;
+overflow:auto;
+background-color:#FFFFFF;
+}
+div.header,div.footer
+{
+padding:0.5em;
+color:white;
+background-color:#215b8d;
+clear:left;
+}
+h1.header
+{
+padding:0;
+margin:0;
+}
+div.left
+{
+float:left;
+width:130px;
+height:100%;
+margin-top:20px;
+color:black;
+font-size:14px;
+font-family:Arial, Helvetica, sans-serif;
+background-color:white;
+text-decoration:none;
+
+
+}
+
+div.content
+{
+padding:1em;
+background-color:white;
+width:700px;
+margin-left:30px;
+float:left
+
+}
+
+.content.p
+{
+	margin-left:190px;
+}
+
+div.people
+{
+float:left;
+height:190px;
+width:140px;
+padding:1em;
+background-color:white;
+padding:0px;
+margin-bottom:10px;
+margin-left:20px;
+margin-top:10px;
+margin-right:20px;
+overflow:hidden;
+
+
+}
+div.img
+{
+height:160px;
+width:130px;
+padding:5px;
+background-color:white;
+}
+div.name
+{
+height:20px;
+width:130px;
+padding:2px;
+background-color:white;
+}
+div.intro
+{
+height:130px;
+width:120px;
+margin:10px;
+border: 2px solid  #215b8d;
+}
+
+div.peo
+{
+width:680px;
+
+border: 2px solid  #d8d7d7;
+margin-top:10px;
+
+}
+
+</style>
+</head>
+<body>
+<include file="Public:header1" />
+<!-- end of menu wrapper -->
+<div id="tempatemo_content_wrapper">
+<div id="people_content">
+<div class="container">
+
+<div class="header">
+  <h1 class="header">成员介绍</h1>
+</div>
+
+<div class="left" id="left" >
+
+<div class="people">
+<div class="img">
+<img src="__ROOT__/Attachments/photo/{$person['photo']}" /><br/>
+{$person['name']}
+</div>
+</div>
+
+
+
+</div>
+<div class="content">
+
+<div style="height:12px">
+<P></P>
+</div>
+<div class="peo">
+<P style="font-size:16px"  style="font-weight:bold"> 个人信息<br/>
+{$person['introduction']}
+</P>
+</div>
+<!--<div style="float:right"><input type="button" style="background-color:#CCCCCC"  value="修改个人信息"></div>
+</div>-->
+<div class="peo">
+<P style="font-size:16px"  style="font-weight:bold"> 电子邮件<br/>
+{$person['email']}
+</P>
+</div>
+<div class="peo" style="margin-top:40px">
+<P style="font-size:16px"  style="font-weight:bold"> 成果展示</P>
+<!--<div style="float:right"><input type="button" style="background-color:#CCCCCC"  value="修改个人成果"></div>
+</div>-->
+
+
+
+</div>
+
+
+
+</div>
+</div>
+</div>
+
+<include file="Public:footer1" />
+   			
+</body>
+</html>
