@@ -1,6 +1,7 @@
 <?php
 class ProductsAction extends BaseAction{
 	public function index(){
+	
 		$Products = D("Products");
 		import("ORG.Util.Page");
 		$count = $Products->count();
@@ -20,6 +21,7 @@ class ProductsAction extends BaseAction{
 		$this->assign('pages',$show);
 		$this->assign("products",$products);
 		$this->assign("cats",$cats);
+	
 		$this->display("Public:products");
 	}
 	public function add(){
@@ -216,11 +218,43 @@ class ProductsAction extends BaseAction{
 		}
 	}
 	
+	
+	public function addprod()
+	{
+		$tablename=$_POST["tablename"];
+		if(!empty($_FILES['photo']['name'])){
+			$_POST['image1'] = $this->_upload("photo",false,300,400,true);
+		}
+		else{
+			$_POST['image1'] = 'default.jpg';
+		}
+		foreach ($_POST as $key => $value)
+		{
+			if($key != "tablename")
+				$data[$key]=$value;
+			
+		}
+		
+		$M=M($tablename);
+		if($M->Create())
+		{
+			if($M->add()){
+				$this->assign("jumpUrl","__URL__");
+				$this->success("添加成功！");
+			}else{
+				$this->error("添加失败！");
+			}
+		}
+		else{
+			$this->error($M->getError());
+		}
+		
+	}
+	
 	// 将修改操作全部放在这里，通过POST中的表名变量来指明所要操作的表
 	public function editprod()
 	{
 		$tablename=$_POST["tablename"];
-		$data=[];
 		foreach ($_POST as $key => $value)
 		{
 			if($key != "tablename")
