@@ -1,6 +1,13 @@
 <?php
+
 class ProductsAction extends BaseAction{
-	public function index(){
+	
+	public function index()
+	{
+		$this->display("Public:product");
+	}
+	
+	public function prodlist(){
 	
 		$Products = D("Products");
 		import("ORG.Util.Page");
@@ -86,7 +93,7 @@ class ProductsAction extends BaseAction{
 	{
 		// addjour addconf addpatent addsoftware
 		// editjour editconf editpatent editsoftware
-		$page = $_GET['showpage'];
+		$page = $_GET['sp'];// showpage
 		$this->assign("dsp",$page);
 		$this->display("Public:products");
 	}

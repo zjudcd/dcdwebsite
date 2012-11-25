@@ -1,0 +1,35 @@
+﻿<h4><a href="javascript:history.back()">成果管理</a> >>期刊论文</h4>
+		<include file="Public:searchbar" />
+		<form name="proform" method="post" action="__URL__/batch">
+		<table width="100%" border="0" cellspacing="1" class="tb-a blank5">
+			<tr>
+				<th width="20"><input name="checkbox" type="checkbox" class="input-cb" onClick="selAll(this)" /></th>
+				<th width="30">ID</th>
+				<th>论文名称</th>
+				<th>发表时间</th>
+				<th>期刊名称</th>
+				<th width="150">操作</th>
+			</tr>
+			<volist name="products" id="p">
+			<tr>
+				<td><input name="id[]" type="checkbox" id="id[]" value="{$p.pid}" class="input-cb" /></td>
+				<td>{$p.pid}</td>
+				<td>{$p.title}</td>
+				<td>{$p.postdate|date="Y-n-j H:i:s",###}</td>
+				<td>{$p.name}</td>
+				<td><a href="__URL__/edit/pid/{$p.pid}">编辑</a> <a href="__URL__/act/delete/id/{$p.pid}">删除</a></td>
+			</tr>
+			</volist>
+			<tr>
+				<td colspan="6" align="left">
+					<input name="act" type="radio" value="delete" />删除
+					<input name="act" type="radio" value="remove" />移动
+					<select name="category" id="category">
+						<volist name="cats" id="c"><option value="{$c.cid}">{$c.name}</option></volist>
+					</select>
+					<input type="submit" value="提交" class="input-btn-c" />
+				</td>
+			</tr>
+		</table>
+		</form>
+		<include file="Public:paging" />
