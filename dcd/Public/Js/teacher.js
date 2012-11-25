@@ -1,4 +1,4 @@
-锘縡unction review()
+function review()
 {
 	var ids = document.getElementsByName("id")
 	var id = ids[0]
@@ -9,12 +9,12 @@
 	return false
 	if(id.value == "")
 	{
-		alert("瀛﹀彿涓嶈兘涓虹┖")
+		alert("工号不能为空")
 		return false
 	}
 	if(name.value == "")
 	{
-		alert("濮撳悕涓嶈兘涓虹┖")
+		alert("姓名不能为空")
 		return false
 	}
 	return true

@@ -1,0 +1,134 @@
+﻿<style type="text/css">
+table.info
+{
+}
+</style>
+<include file="Public:header" />
+<script type="text/javascript" src="__ROOT__/Public/Js/administrator.js"></script>
+<div class="cbody b-box blank10">
+	<include file="Public:menu" />
+	<div class="b-area-w f_r">
+	<switch name="dsp">
+		<case value="add">
+			<h4>添加管理员用户</h4>
+			<form name="memberform" method="post" enctype="multipart/form-data" action="__URL__/adds">
+			<table width="100%" border="1"  cellspacing="1" >
+
+				<tr>
+					<th width="148">等级</th>
+				  <td width="168">
+					<select>
+						<option value="1">1</option>
+						<option value="2" selected>2</option>
+						<option value="3">3</option>
+					</select>
+				  </td>
+					<th width="144" >姓名</th>
+					<td width="168"><input type="text" name="name" value=""></td>
+					<th width="189" >住址</th>
+					<td width="168"><input type="text" name="address" value="" /></td>
+				</tr>
+				<tr>
+				</td>
+					<th width="144" >用户名</th>
+					<td width="168"><input type="text" name="username" value=""></td>
+					<th width="189" >密码</th>
+					<td width="168"><input type="password" name="password1" value="" /></td>					
+					<th width="148">重复密码</th>
+					<td width="168"><input type="password" name="password2" value="" /></td>
+				</tr>
+				<tr>
+					<th width="144" >电话</th>
+					<td width="168"><input type="text" name="phone" value="" /></td>
+					<th width="189" >手机</th>
+					<td width="168"><input type="text" name="cellphone" value="" /></td>
+					<th width="189" >邮箱</th>
+					<td width="168"><input type="text" name="email" value="" /></td>
+				</tr>
+			</table>
+			<div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return review()" /></div>
+		</form>
+		</case>
+		<case value="edit">
+			<h4>修改管理员用户</h4>
+			<form name="memberform" method="post" enctype="multipart/form-data" action="__URL__/edits">
+			<table width="100%" border="1"  cellspacing="1" >
+
+				<tr>
+					<th width="148">等级</th>
+				  <td width="168">
+					<select>
+						<option value="1" {$one}>1</option>
+						<option value="2" {$two}>2</option>
+						<option value="3" {$three}>3</option>
+					</select>
+				  </td>
+					<th width="144" >姓名</th>
+					<td width="168"><input type="text" name="name" value="{$administrator['name']}"></td>
+					<th width="189" >住址</th>
+					<td width="168"><input type="text" name="address" value="{$administrator['address']}" /></td>
+				</tr>
+				<tr>
+				</td>
+					<th width="144" >用户名</th>
+					<td width="168"><input type="text" name="username" value="{$administrator['username']}"></td>
+					<th width="189" >密码</th>
+					<td width="168"><input type="password" name="password1" value="" /></td>					
+					<th width="148">重复密码</th>
+					<td width="168"><input type="password" name="password2" value="" /></td>
+				</tr>
+				<tr>
+					<th width="144" >电话</th>
+					<td width="168"><input type="text" name="phone" value="{$administrator['name']}" /></td>
+					<th width="189" >手机</th>
+					<td width="168"><input type="text" name="cellphone" value="{$administrator['cellphone']}" /></td>
+					<th width="189" >邮箱</th>
+					<td width="168"><input type="text" name="email" value="{$administrator['email']}" /></td>
+				</tr>
+			</table>
+			<div align="center"><input type="submit" value="提交" onclick="return review()" class="input-btn-b" /></div>
+		</form>
+		</case>
+		
+		<default />
+		<h4>管理员管理</h4>
+		<include file="Public:searchbar" />
+		<form name="memberform" method="post" action="__URL__/batch">
+		<table width="100%" border="0" cellspacing="1" class="tb-a blank5">
+			<tr>
+				<th width="20"><input name="checkbox" type="checkbox" class="input-cb" onClick="selAll(this)" /></th>
+				<th width="150">ID</th>
+				<th>姓名</th>
+				<th width="240">操作</th>
+			</tr>
+			<volist name="user" id="u">
+			<tr>
+				<td><input name="id[]" type="checkbox" id="id[]" value="{$u.uid}" class="input-cb" /></td>
+				<td id={$u.uid}>{$u.uid}</td>
+				<td>{$u.name}</td>
+				<script language="javascript">
+					function confirmDel(value) {
+						var items=value.split("/");
+						var newsid=items[items.length-1];
+						var title=document.getElementById(newsid).innerText;
+						if (!confirm("确认要删除记录:"+title)) {
+							window.event.returnValue = false;
+						}
+					}
+				</script>
+				<td><a href="__URL__/edit/administratorid/{$u.uid}">编辑</a>  <a href="__URL__/batch/act/delete/id/{$u.uid}" onClick="confirmDel(this.href)">删除</a></td>
+			</tr>
+			</volist>
+			<tr>
+				<td colspan="6" align="left">
+					<input name="act" type="radio" value="delete" />删除
+					<input type="submit" value="提交" class="input-btn-c" />
+				</td>
+			</tr>
+		</table>
+		</form>
+	</switch>
+	</div>
+	<div class="clear"></div>
+</div>
+<include file="Public:footer" />

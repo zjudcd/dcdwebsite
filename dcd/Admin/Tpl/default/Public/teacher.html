@@ -1,0 +1,301 @@
+﻿<style type="text/css">
+table.info
+{
+}
+</style>
+<include file="Public:header" />
+<script type="text/javascript" src="__ROOT__/Public/Js/teacher.js"></script>
+<div class="cbody b-box blank10">
+	<include file="Public:menu" />
+	<div class="b-area-w f_r">
+	<switch name="dsp">
+		<case value="add">
+			<h4>添加教师用户</h4>
+			<form name="memberform" method="post" enctype="multipart/form-data" action="__URL__/adds">
+			<table width="100%" border="1"  cellspacing="1" >
+
+				<tr>
+					<th width="148">姓名</th>
+				  <td width="168"><input type="text" name="name" value="" /></td>
+					<th width="144" >性别</th>
+					<td width="168">
+						<select name="gender">
+							<option value="男">男</option>
+							<option value="女">女</option>
+						</select>
+					</td>
+					<th width="189" >出生年月</th>
+					<td width="168"><input type="text" name="birthday" value="" /></td>
+					<td width="615" rowspan="4"><input type="file" name="photo"></td>
+				</tr>
+				<tr>
+					<th width="148">政治面貌</th>
+					<td width="168"><input type="text" name="politicsstatus" value="" /></td>
+					<th width="144" >技术职称</th>
+					<td width="168"><input type="text" name="position" value="" /></td>
+					<th width="189" >出生地</th>
+					<td width="168"><input type="text" name="birthplace" value="" /></td>
+				</tr>
+				<th width="148">行政职务</th>
+				  <td width="168"><input type="text" name="politicsposition" value="" /></td>
+					<th width="144" >婚否</th>
+					<td width="168">
+						<select name="ismarried">
+							<option value="1">已婚</option>
+							<option value="0">未婚</option>
+						</select>
+					</td>
+					<th width="189" >工号</th>
+					<td width="168"><input type="text" name="id" value="" /></td>
+				<tr>
+				<th width="148">研究方向</th>
+				  <td width="168"><input type="text" name="researchdir" value="" /></td>
+					<th width="144" >最高学位</th>
+					<td width="168"><input type="text" name="degree" value="" /></td>
+					<th width="189" >获得学位年份</th>
+					<td width="168"><input type="text" name="degreedate" value="" /></td>
+				<tr>
+					<th>学术称号</th>
+					<td colspan="6"><input type="text" name="academichonour" value="" /></td>
+				</tr>
+				<tr>
+				<th width="148">电话</th>
+				  <td ><input type="text" name="phonenum" value="" /></td>
+				  <th >身份证号</th>
+					<td colspan="4" ><input type="text" name="idcardno" value=""/></td>
+				<tr>
+					<th>住址</th>
+				<td colspan="6"><input type="text" name="address" value="" /></td>
+				</tr>
+				<tr>
+					<th>邮箱</th>
+					<td colspan="6"><input type="text" name="email" value="" /></td>
+				</tr>
+				
+				
+			</table>
+		
+		<table width="100%" border="1"  cellspacing="1" >
+		<tr><th colspan="7">个人简历</th></tr>
+			<tr>
+				<th rowspan="2" width="148">研究生</th>
+				<th width="166" >毕业院校</th>
+		      <td colspan="3"><input type="text" name="postgraduateschool" value="" /></td>
+				<th width="189" >所在院系</th>
+			  <td width="189"><input type="text" name="postgraduatefaculty" value="" /></td>
+		   </tr>
+		   <tr>
+				<th >专业</th>
+		     <td width="559"><input type="text" name="postgraduatemajor" value="" /></td>
+			    <th width="189" >学位</th>
+			 <td width="189"><input type="text" name="postgraduatedegree" value="" /></td>
+				<th width="189" >毕业时间</th>
+				<td width="168"><input type="text" name="postgraduateend" value="" /></td>
+		   </tr>
+		   
+		   <tr>
+				<th rowspan="2" width="148">本科生</th>
+				<th width="166" >毕业院校</th>
+		      <td colspan="3"><input type="text" name="collegeschool" value="" /></td>
+				<th width="189" >所在院系</th>
+			  <td width="189"><input type="text" name="collegefaculty" value="" /></td>
+		   </tr>
+		   <tr>
+				<th >专业</th>
+		     <td width="559"><input type="text" name="collegemajor" value="" /></td>
+			    <th width="189" >学位</th>
+			 <td width="189"><input type="text" name="collegedegree" value="" /></td>
+				<th width="189" >毕业时间</th>
+				<td width="168"><input type="text" name="collegeend" value="" /></td>
+		   </tr>
+		 
+		   <tr>
+				<th colspan="7">个人简介</th>
+			</tr>
+			<tr>
+				<td colspan="7"><input type="text" name="introduction" value="" /></td>
+			</tr>
+			<tr>
+			    <th width="148">学术任职</th>
+				<td colspan="6"><input type="text" name="academicparticipation" value="" /></td>
+			</tr>
+			<tr>
+			    <th width="148">所属课题组</th>
+				<td colspan="6"><input type="text" name="researchgroup" value="" /></td>
+			</tr>
+			<tr>
+			    <th width="148">所在实验室</th>
+				<td colspan="6"><input type="text" name="lab" value="" /></td>
+			</tr>
+		   
+		  </table>
+		
+		<div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		</form>
+		</case>
+		<case value="edit">
+			<h4>修改教师用户</h4>
+			<form name="memberform" method="post" enctype="multipart/form-data" action="__URL__/edits">
+			<table width="100%" border="1"  cellspacing="1" >
+				<tr>
+					<th width="148">姓名</th>
+				  <td width="168"><input type="text" name="name" value="{$teacher['name']}" /></td>
+					<th width="144" >性别</th>
+					<td width="168">
+						<select name="gender">
+							<option value="男" {$man}>男</option>
+							<option value="女" {$woman}>女</option>
+						</select>
+					</td>
+					<th width="189" >出生年月</th>
+					<td width="168"><input type="text" name="birthday" value="{$teacher['birthday']}" /></td>
+					<td width="615" rowspan="4"><img src="__ROOT__/Attachments/photo/{$teacher['photo']}"><input type="file" name="photo"></td>
+				</tr>
+				<tr>
+					<th width="148">政治面貌</th>
+					<td width="168"><input type="text" name="politicsstatus" value="{$teacher['politicsstatus']}" /></td>
+					<th width="144" >技术职称</th>
+					<td width="168"><input type="text" name="position" value="{$teacher['position']}" /></td>
+					<th width="189" >出生地</th>
+					<td width="168"><input type="text" name="birthplace" value="{$techer['birthplace']}" /></td>
+				</tr>
+				<th width="148">行政职务</th>
+				  <td width="168"><input type="text" name="politicsposition" value="{$teacher['politicsposition']}" /></td>
+					<th width="144" >婚否</th>
+					<td width="168">
+						<select name="ismarried">
+							<option value="1" {$married}>已婚</option>
+							<option value="0" {$notmarried}>未婚</option>
+						</select>
+					</td>
+					<th width="189" >工号</th>
+					<td width="168"><input type="text" name="id" value="{$teacher['id']}" /></td>
+				<tr>
+				<th width="148">研究方向</th>
+				  <td width="168"><input type="text" name="researchdir" value="{$teacher['researchdir']}" /></td>
+					<th width="144" >最高学位</th>
+					<td width="168"><input type="text" name="degree" value="{$teacher['degree']}" /></td>
+					<th width="189" >获得学位年份</th>
+					<td width="168"><input type="text" name="degreedate" value="{$teacher['degreedate']}" /></td>
+				<tr>
+					<th>学术称号</th>
+					<td colspan="6"><input type="text" name="academichonour" value="{$teacher['academichonour']}" /></td>
+				</tr>
+				<tr>
+				<th width="148">电话</th>
+				  <td ><input type="text" name="phonenum" value="{$teacher['phonenum']}" /></td>
+				  <th >身份证号</th>
+					<td colspan="4" ><input type="text" name="idcardno" value="{$teacher['idcardno']}"/></td>
+				<tr>
+					<th>住址</th>
+				<td colspan="6"><input type="text" name="address" value="{$teacher['address']}" /></td>
+				</tr>
+				<tr>
+					<th>邮箱</th>
+					<td colspan="6"><input type="text" name="email" value="{$teacher['email']}" /></td>
+				</tr>
+				
+				
+			</table>
+		
+		<table width="100%" border="1"  cellspacing="1" >
+		<tr><th colspan="7">个人简历</th></tr>
+			<tr>
+				<th rowspan="2" width="148">研究生</th>
+				<th width="166" >毕业院校</th>
+		      <td colspan="3"><input type="text" name="postgraduateschool" value="{$teacher['postgraduateschool']}" /></td>
+				<th width="189" >所在院系</th>
+			  <td width="189"><input type="text" name="postgraduatefaculty" value="{$teacher['postgraduatefaculty']}" /></td>
+		   </tr>
+		   <tr>
+				<th >专业</th>
+		     <td width="559"><input type="text" name="postgraduatemajor" value="{$teacher['postgraduatemajor']}" /></td>
+			    <th width="189" >学位</th>
+			 <td width="189"><input type="text" name="postgraduatedegree" value="{$teacher['postgraduatedegree']}" /></td>
+				<th width="189" >毕业时间</th>
+				<td width="168"><input type="text" name="postgraduateend" value="{$teacher['postgraduateend']}" /></td>
+		   </tr>
+		   
+		   <tr>
+				<th rowspan="2" width="148">本科生</th>
+				<th width="166" >毕业院校</th>
+		      <td colspan="3"><input type="text" name="collegeschool" value="{$teacher['collegeschool']}" /></td>
+				<th width="189" >所在院系</th>
+			  <td width="189"><input type="text" name="collegefaculty" value="{$teacher['collegefaculty']}" /></td>
+		   </tr>
+		   <tr>
+				<th >专业</th>
+		     <td width="559"><input type="text" name="collegemajor" value="{$teacher['collegemajor']}" /></td>
+			    <th width="189" >学位</th>
+			 <td width="189"><input type="text" name="collegedegree" value="{$teacher['collegedegree']}" /></td>
+				<th width="189" >毕业时间</th>
+				<td width="168"><input type="text" name="collegeend" value="{$teacher['collegeend']}" /></td>
+		   </tr>
+		 
+		   <tr>
+				<th colspan="7">个人简介</th>
+			</tr>
+			<tr>
+				<td colspan="7"><input type="text" name="introduction" value="{$teacher['introduction']}" /></td>
+			</tr>
+			<tr>
+			    <th width="148">学术任职</th>
+				<td colspan="6"><input type="text" name="academicparticipation" value="{$teacher['academicparticipation']}" /></td>
+			</tr>
+			<tr>
+			    <th width="148">所属课题组</th>
+				<td colspan="6"><input type="text" name="researchgroup" value="{$teacher['researchgroup']}" /></td>
+			</tr>
+			<tr>
+			    <th width="148">所在实验室</th>
+				<td colspan="6"><input type="text" name="lab" value="{$teacher['lab']}" /></td>
+			</tr>
+		   
+		  </table>
+		
+		<div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		</form>
+		</case>
+		
+		<default />
+		<h4>教师管理</h4>
+		<include file="Public:searchbar" />
+		<form name="memberform" method="post" action="__URL__/batch">
+		<table width="100%" border="0" cellspacing="1" class="tb-a blank5">
+			<tr>
+				<th width="20"><input name="checkbox" type="checkbox" class="input-cb" onClick="selAll(this)" /></th>
+				<th width="150">工号</th>
+				<th>姓名</th>
+				<th width="240">操作</th>
+			</tr>
+			<volist name="user" id="u">
+			<tr>
+				<td><input name="id[]" type="checkbox" id="id[]" value="{$u.id}" class="input-cb" /></td>
+				<td id={$u.id}>{$u.id}</td>
+				<td>{$u.name}</td>
+				<script language="javascript">
+					function confirmDel(value) {
+						var items=value.split("/");
+						var newsid=items[items.length-1];
+						var title=document.getElementById(newsid).innerText;
+						if (!confirm("确认要删除记录:"+title)) {
+							window.event.returnValue = false;
+						}
+					}
+				</script>
+				<td><a href="__URL__/edit/teacherid/{$u.id}">编辑</a>  <a href="__URL__/batch/act/delete/id/{$u.id}" onClick="confirmDel(this.href)">删除</a></td>
+			</tr>
+			</volist>
+			<tr>
+				<td colspan="6" align="left">
+					<input name="act" type="radio" value="delete" />删除
+					<input type="submit" value="提交" class="input-btn-c" />
+				</td>
+			</tr>
+		</table>
+		</form>
+	</switch>
+	</div>
+	<div class="clear"></div>
+</div>
+<include file="Public:footer" />
