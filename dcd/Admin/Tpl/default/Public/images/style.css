@@ -52,6 +52,7 @@ a.link-a, a.link-a:hover { color: #FFF; text-decoration: none; }
 	/* Input */
 	.input-a { border: 1px solid #999; width: 160px; color: #333333; background: #FFF; }
 	.input-b { border: none; width: 200px; color: #333333; background: #FFF; height: 24px; }
+	.input-long { border: none; width: 100%; color: #333333; background: #FFF; height: 24px; }
 	.input-c { border: none; width: 100%; color: #333333; background: #FFF; height: 24px; }
 	.input-btn { border: none; background: #fff; color: #000; margin: 5px 0px; padding: 0px 5px; line-height: 18px; cursor: pointer; }
 	.input-btn-b { border: 1px solid #333; background: #19446a; color: #FFF; margin: 5px 0 0 0; padding: 0px 5px; line-height: 18px; cursor: pointer; }

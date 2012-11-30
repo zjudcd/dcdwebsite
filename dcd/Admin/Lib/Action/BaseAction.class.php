@@ -54,7 +54,7 @@ class BaseAction extends Action{
         isset($maxsize) ? $upload->maxSize = $maxsize : $upload->maxSize = 1048576; //1M
 		isset($path) ? $upload->savePath = $savepath = "./Attachments/".$path."/" : $upload->savePath = "./Attachments/Others/";
 		if(!is_dir($savepath)) @mk_dir($savepath);
-        $upload->allowExts = explode(',','gif,png,jpg,jpeg'); 
+        $upload->allowExts = explode(',','gif,png,jpg,jpeg,pdf,doc,docx'); 
 		if($thumb){
 			$upload->thumb = true; 
 			$upload->thumbPrefix = '';
@@ -73,6 +73,35 @@ class BaseAction extends Action{
         }else{ 
 			$imginfo = $upload->getUploadFileInfo();
 			$imginfo = $imginfo[0]['savename'];
+        }
+		return $imginfo;
+    }
+	
+	// 上传多个文件
+	public function _uploadmul($path,$thumb = false,$width,$height,$autosub = false,$maxsize){
+        import("ORG.Net.UploadFile"); 
+        $upload = new UploadFile();  
+        isset($maxsize) ? $upload->maxSize = $maxsize : $upload->maxSize = 1048576; //1M
+		isset($path) ? $upload->savePath = $savepath = "./Attachments/".$path."/" : $upload->savePath = "./Attachments/Others/";
+		if(!is_dir($savepath)) @mk_dir($savepath);
+        $upload->allowExts = explode(',','gif,png,jpg,jpeg,pdf,doc,docx'); 
+		if($thumb){
+			$upload->thumb = true; 
+			$upload->thumbPrefix = '';
+			$upload->thumbSuffix = '_thumb';
+			isset($wideh) ? $upload->thumbMaxWidth = $width : $upload->thumbMaxWidth = "300"; 
+			isset($height) ? $upload->thumbMaxHeight = $height : $upload->thumbMaxHeight = "400"; 
+		}
+    	if($autosub){
+			$upload->autoSub = true;
+			$upload->subType = 'date';
+        	$upload->saveRule = time; 
+			$upload->dateFormat = 'Y/m/d'; 	
+		}
+        if(!$upload->upload()){ 
+           	$this->error($upload->getErrorMsg()); 
+        }else{ 
+			$imginfo = $upload->getUploadFileInfo();
         }
 		return $imginfo;
     }

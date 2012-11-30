@@ -68,9 +68,9 @@
 			<h4><a href="javascript:history.back()">期刊论文管理</a>>>添加成果-期刊论文</h4>
 		<form name="proform" method="post" action="__URL__/addprod/tablename/Journalpaper" enctype="multipart/form-data">
 		  <table border="0" cellspacing="1" class="tb-b">
-            <tr>
-              <th>论文ID</th>
-              <td><input type="text" name="id2" value="" class="input-b" /></td>
+			<tr>
+              <th>论文标题</th>
+              <td><input type="text" name="title2" value="" class="input-long" /></td>
             </tr>
             <tr>
               <th>提交时间</th>
@@ -78,19 +78,15 @@
             </tr>
 			<tr>
               <th>作者姓名列表</th>
-              <td><input type="text" name="journalname" value="" class="input-b" /></td>
-            </tr>
-            <tr>
-              <th>论文标题</th>
-              <td><input type="text" name="title2" value="" class="input-b" /></td>
+              <td><input type="text" name="journalname" value="" class="input-long" /></td>
             </tr>
             <tr>
               <th>论文摘要</th>
-              <td><input type="text" name="abstract" value="" class="input-b" /></td>
+              <td><input type="text" name="abstract" value="" class="input-long" /></td>
             </tr>
             <tr rowspan="4">
               <th height="93" rowspan="4">代表图片1</th>
-              <td rowspan="4"><input type="file" name="photo"></td>
+              <td rowspan="4"><input type="file" name="image1"></td>
             </tr>
 		  </table>
 			 <table border="0" cellspacing="1" class="tb-b">
@@ -112,27 +108,41 @@
             </tr>
 			<tr>
               <th>是否被SCI收录</th>
-              <td><input type="text" name="SCI" value="" class="input-b" /></td>
+              <td><select name="SCI">
+				<option value="0">否</option>
+				<option value="1">是</option>
+				</select>
+				</td>
             </tr>
 			<tr>
               <th>是否被EI收录</th>
-              <td><input type="text" name="EI" value="" class="input-b" /></td>
+              <td>
+			  <select name="EI">
+				<option value="0">否</option>
+				<option value="1">是</option>
+				</select>
+			  </td>
             </tr>
 			<tr>
               <th>是否被ISTP收录</th>
-              <td><input type="text" name="ISTP" value="" class="input-b" /></td>
+			  <td>
+				<select name="ISTP">
+				<option value="0">否</option>
+				<option value="1">是</option>
+				</select>
+			  </td>
             </tr>
 			<tr>
               <th>项目资助ID列表</th>
-              <td><input type="text" name="sponsor" value="" class="input-b" /></td>
+              <td><input type="text" name="sponsor" value="" class="input-long" /></td>
             </tr>
 			<tr>
               <th>论文正式稿电子版</th>
-              <td><input type="text" name="publishdate" value="" class="input-b" /></td>
+              <td><input type="file" name="pdf" value="" class="input-b" /></td>
             </tr>
            <tr>
               <th>论文草稿word版</th>
-              <td><input type="text" name="publishdate" value="" class="input-b" /></td>
+              <td><input type="file" name="word" value="" class="input-b" /></td>
             </tr>
             <tr>
               <th>备注</th>
@@ -146,9 +156,9 @@
 		<h4><a href="javascript:history.back()">会议论文管理</a> >>添加成果-会议论文</h4>
 		<form name="proform" method="post" action="__URL__/addprod/tablename/Conferencepaper" enctype="multipart/form-data">
 		  <table border="0" cellspacing="1" class="tb-b">
-            <tr>
-              <th>论文ID</th>
-              <td><input type="text" name="id2" value="" class="input-b" /></td>
+		   <tr>
+              <th>论文标题</th>
+              <td><input type="text" name="title2" value="" class="input-long" /></td>
             </tr>
             <tr>
               <th>提交时间</th>
@@ -156,19 +166,15 @@
             </tr>
 			<tr>
               <th>作者姓名列表</th>
-              <td><input type="text" name="" value="" class="input-b" /></td>
-            </tr>
-            <tr>
-              <th>论文标题</th>
-              <td><input type="text" name="title2" value="" class="input-b" /></td>
+              <td><input type="text" name="" value="" class="input-long" /></td>
             </tr>
             <tr>
               <th>论文摘要</th>
-              <td><input type="text" name="abstract" value="" class="input-b" /></td>
+              <td><input type="text" name="abstract" value="" class="input-long" /></td>
             </tr>
             <tr rowspan="4">
               <th height="93" rowspan="4">代表图片1</th>
-              <td rowspan="4"><input type="file" name="photo"></td>
+              <td rowspan="4"><input type="file" name="image1"></td>
             </tr>
 		  </table>
 			 <table border="0" cellspacing="1" class="tb-b">
@@ -185,29 +191,43 @@
               <th>页码</th>
               <td><input type="text" name="pagenum" value="" class="input-b" /></td>
             </tr>
-			<tr>
+				<tr>
               <th>是否被SCI收录</th>
-              <td><input type="text" name="SCI" value="" class="input-b" /></td>
+              <td><select name="SCI">
+				<option value="0">否</option>
+				<option value="1">是</option>
+				</select>
+				</td>
             </tr>
 			<tr>
               <th>是否被EI收录</th>
-              <td><input type="text" name="EI" value="" class="input-b" /></td>
+              <td>
+			  <select name="EI">
+				<option value="0">否</option>
+				<option value="1">是</option>
+				</select>
+			  </td>
             </tr>
 			<tr>
               <th>是否被ISTP收录</th>
-              <td><input type="text" name="ISTP" value="" class="input-b" /></td>
+			  <td>
+				<select name="ISTP">
+				<option value="0">否</option>
+				<option value="1">是</option>
+				</select>
+			  </td>
             </tr>
 			<tr>
               <th>项目资助ID列表</th>
-              <td><input type="text" name="sponsor" value="" class="input-b" /></td>
+              <td><input type="text" name="sponsor" value="" class="input-long" /></td>
             </tr>
 			<tr>
               <th>论文正式稿电子版</th>
-              <td><input type="text" name="publishdate" value="" class="input-b" /></td>
+              <td><input type="file" name="official" value="" class="input-b" /></td>
             </tr>
            <tr>
               <th>论文草稿word版</th>
-              <td><input type="text" name="publishdate" value="" class="input-b" /></td>
+              <td><input type="file" name="draft" value="" class="input-b" /></td>
             </tr>
             <tr>
               <th>备注</th>
@@ -239,7 +259,7 @@
             </tr>
 			 <tr rowspan="4">
               <th height="93" rowspan="4">代表图片1</th>
-              <td rowspan="4"><input type="file" name="photo"></td>
+              <td rowspan="4"><input type="file" name="image1"></td>
             </tr>
 		  </table>
 			 <table border="0" cellspacing="1" class="tb-b">
@@ -310,7 +330,7 @@
             </tr>
 			 <tr rowspan="4">
               <th height="93" rowspan="4">代表图片1</th>
-              <td rowspan="4"><input type="file" name="photo"></td>
+              <td rowspan="4"><input type="file" name="image1"></td>
             </tr>
 		  </table>
 			 <table border="0" cellspacing="1" class="tb-b">
@@ -373,13 +393,13 @@
             </tr>
 			 <tr rowspan="4">
               <th height="93" rowspan="4">代表图片1</th>
-              <td rowspan="4"><input type="file" name="photo"></td>
+              <td rowspan="4"><input type="file" name="image1"></td>
             </tr>
 		  </table>
 			 <table border="0" cellspacing="1" class="tb-b">
             <tr>
               <th>技术报告附件</th>
-              <td><input type="text" name="attachment" value="" class="input-b" /></td>
+              <td><input type="file" name="attachment" value="" class="input-b" /></td>
             </tr>
 			<tr>
               <th>资助者列表</th>
@@ -402,37 +422,34 @@
 		<form name="proform" method="post" action="__URL__/addprod/tablename/Thesis" enctype="multipart/form-data">
 		  <table border="0" cellspacing="1" class="tb-b">
             <tr>
-              <th>毕业论文ID</th>
-              <td><input type="text" name="id2" value="" class="input-b" /></td>
+              <th>毕业论文标题</th>
+              <td><input type="text" name="title" value="" class="input-long" /></td>
             </tr>
             <tr>
               <th>提交时间</th>
-              <td><input type="text" name="submittime2" value="" class="input-b" /></td>
-            </tr>
-			 <tr>
-              <th>毕业论文标题</th>
-              <td><input type="text" name="title" value="" class="input-b" /></td>
+              <td><input type="text" name="submitdate" value="" class="input-b" /></td>
             </tr>
 			<tr>
               <th>毕业论文摘要</th>
-              <td><input type="text" name="abstract" value="" class="input-b" /></td>
+              <td><input type="text" name="abstract" value="" class="input-long" /></td>
             </tr>
 			 <tr rowspan="4">
               <th height="93" rowspan="4">代表图片1</th>
-              <td rowspan="4"><input type="file" name="photo"></td>
+              <td rowspan="4"><input type="file" name="image1"></td>
             </tr>
 		  </table>
 			 <table border="0" cellspacing="1" class="tb-b">
             <tr>
               <th>资助者列表</th>
-              <td><input type="text" name="sponser" value="" class="input-b" /></td>
+              <td><input type="text" name="sponsor" value="" class="input-long" /></td>
             </tr>
 			<tr>
-              <th>论文正式稿PDF版</th>
-              <td><input type="text" name="official" value="" class="input-b" /></td>
-            </tr><tr>
-              <th>论文正式稿WORD版</th>
-              <td><input type="text" name="draft" value="" class="input-b" /></td>
+              <th>论文正式稿电子版</th>
+              <td><input type="file" name="official" value="" class="input-b" /></td>
+            </tr>
+           <tr>
+              <th>论文草稿word版</th>
+              <td><input type="file" name="draft" value="" class="input-b" /></td>
             </tr>
 			
             <tr>

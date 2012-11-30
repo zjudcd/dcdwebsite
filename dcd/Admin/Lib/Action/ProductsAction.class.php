@@ -8,10 +8,11 @@ class ProductsAction extends BaseAction{
 	}
 	
 	public function prodlist(){
-	
-		$Products = D("Products");
+		$sp=$_GET["sp"];
+		$tablename = $this->pg2tb($sp);// 参数转化为表名
+		$M = M($tablename);
 		import("ORG.Util.Page");
-		$count = $Products->count();
+		$count = $M->count();
 		$Page = new Page($count,20);
 		$show = $Page->show();
 		if($_POST['keyword']){
@@ -22,49 +23,21 @@ class ProductsAction extends BaseAction{
 			$map['title'] = array('like','%'.$kmap.'%');
 		}
 		$Page -> parameter .= "keyword=".urlencode($kmap)."&";
-		$db_prefix = C("DB_PREFIX");
-		$products = $Products->join($db_prefix.'categroy ON '.$db_prefix.'categroy.cid = '.$db_prefix.'products.cid')->where($map)->order('pid desc')->limit($Page->firstRow.','.$Page->listRows)->select();
-		$cats = D("Categroy")->select();
+		$M = $M->where($map)->order(' desc')->limit($Page->firstRow.','.$Page->listRows)->select();
 		$this->assign('pages',$show);
-		$this->assign("products",$products);
-		$this->assign("cats",$cats);
+		$this->assign("product",$M);
+		$this->assign("dsp",$sp);
+		$this->display("Public:products");
+	}
 	
-		$this->display("Public:products");
-	}
-	public function add(){
-		$cats = D("Categroy")->select();
-		$this->assign("cats",$cats);
-		$this->assign('uid',Session::get(C('USER_AUTH_KEY')));
-		$this->assign("dsp","add");
-		$this->display("Public:products");
-	}
-	public function adds(){
-		$data = $_POST;
-		if(!$data['cid']) $this->error("如果还没有产品分类，请先添加产品分类！");
-		$Products = D("Products");
-		if(!empty($_FILES['attachment']['name'])) $data['attachment'] = $this->_upload("Products",true,360,240,true);
-		$data['parameters'] = nl2br($data['parameters']);
-		$data['postdate'] = time();
-		if($Products->Create()){
-			if($Products->add($data)){
-				$this->assign("jumpUrl","__URL__");
-				$this->success("发布成功！");
-			}else{
-				//$this->error("发布失败！");
-				echo $Products->getLastSql();
-			}
-		}else{
-			$this->error($Products->getError());
-		}
-	}
 	public function edit(){
-		if($_GET['pid']){
-			$products = D("Products")->getByPid($_GET['pid']);
+		if($_GET['id']){
+			$M = D("M")->getByPid($_GET['pid']);
 			$cats = D("Categroy")->select();
 			$this->assign("cats",$cats);
-			$this->assign($products);
+			$this->assign($M);
 			$this->assign("dsp","edit");
-			$this->display("Public:products");
+			$this->display("Public:M");
 		}else{
 			$this->assign("jumpUrl","__URL__");
 			$this->error("数据不存在！");
@@ -73,13 +46,25 @@ class ProductsAction extends BaseAction{
 	public function edits(){
 		$data = $_POST;
 		$data['parameters'] = nl2br($data['parameters']);
-		if(!empty($_FILES['attachment']['name'])) $data['attachment'] = $this->_upload("Products",true,360,240,true);
+		if(!empty($_FILES['attachment']['name'])) $data['attachment'] = $this->_upload("M",true,360,240,true);
 		$data['postdate'] = strtotime($_POST['postdate']);
-		if(D("Products")->save($data)){
+		if(D("M")->save($data)){
 			$this->success("修改成功！");
 		}else{
 			$this->error("资料无改变或修改失败！");		
 		}
+	}
+	
+	static protected function pg2tb($page)
+	{
+		$map=array("jour"=>"Journalpaper",
+			"conf"=>"Conferencepaper",
+			"software"=>"Softwareright",
+			"patent"=>"Patent",
+			"techreport"=>"Techreport",
+			"project"=>"Project",
+			"thesis"=>"Thesis");
+		return $map[$page];
 	}
 	
 	// 批量操作
@@ -98,144 +83,16 @@ class ProductsAction extends BaseAction{
 		$this->display("Public:products");
 	}
 	
-	// add journal paper to database
-	public function addjour()
-	{
-		$M=M("Journalpaper");
-		if($M->Create())
-		{
-			if($M->add()){
-				$this->assign("jumpUrl","__URL__");
-				$this->success("添加成功！");
-			}else{
-				$this->error("添加失败！");
-			}
-		}
-		else{
-			$this->error($M->getError());
-		}
-	}
-	
-
-	// add conference paper to database
-	public function addconf()
-	{
-		$M=M("Conferencepaper");
-		if($M->Create())
-		{
-			if($M->add()){
-				$this->assign("jumpUrl","__URL__");
-				$this->success("添加成功！");
-			}else{
-				$this->error("添加失败！");
-			}
-		}
-		else{
-			$this->error($M->getError());
-		}
-	}
-
-	// add patent to database
-	public function addpatent()
-	{
-		$M=M("Patent");
-		if($M->Create())
-		{
-			if($M->add()){
-				$this->assign("jumpUrl","__URL__");
-				$this->success("添加成功！");
-			}else{
-				$this->error("添加失败！");
-			}
-		}
-		else{
-			$this->error($M->getError());
-		}
-	}
-	
-	// add software copyright to database
-	public function addright()
-	{
-		$M=M("Softwareright");
-		if($M->Create())
-		{
-			if($M->add()){
-				$this->assign("jumpUrl","__URL__");
-				$this->success("添加成功！");
-			}else{
-				$this->error("添加失败！");
-			}
-		}
-		else{
-			$this->error($M->getError());
-		}
-	}
-	
-	// add  techreport to database
-	public function addtechreport()
-	{
-		$M=M("Techreport");
-		if($M->Create())
-		{
-			if($M->add()){
-				$this->assign("jumpUrl","__URL__");
-				$this->success("添加成功！");
-			}else{
-				$this->error("添加失败！");
-			}
-		}
-		else{
-			$this->error($M->getError());
-		}
-	}
-	
-	// add  inner report to database
-	public function addinreport()
-	{
-		$M=M("Innerreport");
-		if($M->Create())
-		{
-			if($M->add()){
-				$this->assign("jumpUrl","__URL__");
-				$this->success("添加成功！");
-			}else{
-				$this->error("添加失败！");
-			}
-		}
-		else{
-			$this->error($M->getError());
-		}
-	}
-	
-	// add thesis to database
-	public function addthesis()
-	{
-		$M=M("Thesis");
-		if($M->Create())
-		{
-			if($M->add()){
-				$this->assign("jumpUrl","__URL__");
-				$this->success("添加成功！");
-			}else{
-				$this->error("添加失败！");
-			}
-		}
-		else{
-			$this->error($M->getError());
-		}
-	}
-	
-	
 	public function addprod()
 	{
 		$tablename=$_GET["tablename"];
-		if(!empty($_FILES['photo']['name'])){
-			$_POST['image1'] = $this->_upload("photo",false,300,400,true);
+		if(!empty($_FILES)){
+			$filesinfo= $this->_uploadmul("products",false,300,400,true);
 		}
-		else{
-			$_POST['image1'] = 'default.jpg';
+		foreach($filesinfo as $num=>$file)
+		{
+			$_POST[$file["key"]]=$file["savename"];
 		}
-		
 		$M=M($tablename);
 		if($M->Create())
 		{
