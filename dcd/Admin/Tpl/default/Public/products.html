@@ -8,13 +8,15 @@
 		<h4><a href="javascript:history.back()">科研项目管理</a> >>添加项目</h4>
 		<form name="proform" method="post" action="__URL__/addprod/tablename/Project" enctype="multipart/form-data">
 		<table border="0" cellspacing="1" class="tb-b">
+			<!--
 			<tr>
 				<th>项目ID</th>
 				<td><input type="text" name="id" value="" class="input-b" /></td>
 			</tr>
+			-->
 			<tr>
-				<th>提交时间</th>
-				<td><input type="text" name="submittime" value="" class="input-b" /></td>
+				<th>项目标题</th>
+				<td><input type="text" name="title" value="" class="input-b" /></td>
 			</tr>
 			<tr>
 				<th>项目类别ID</th>
@@ -28,10 +30,7 @@
 				<th>项目负责人ID</th>
 				<td><input type="text" name="principalid" value="" class="input-b" /></td>
 			</tr>
-			<tr>
-				<th>项目标题</th>
-				<td><input type="text" name="title" value="" class="input-b" /></td>
-			</tr>
+			
 			<tr>
 				<th>项目简介</th>
 				<td><textarea rows="6" cols="55" name="introduction" value="{$student['introduction']}"></textarea></td>
@@ -70,67 +69,75 @@
 		  <table border="0" cellspacing="1" class="tb-b">
 			<tr>
               <th>论文标题</th>
-              <td><input type="text" name="title2" value="" class="input-long" /></td>
-            </tr>
-            <tr>
-              <th>提交时间</th>
-              <td><input type="text" name="submittime2" value="" class="input-b" /></td>
+              <td><input type="text" name="title" value="" class="input-long" /></td>
             </tr>
 			<tr>
               <th>作者姓名列表</th>
-              <td><input type="text" name="journalname" value="" class="input-long" /></td>
+              <td><input type="text" name="authors" value="" class="input-long" /></td>
             </tr>
 			<tr >
 			  <th>第一作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author1" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第二作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author2" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第三作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author3" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第四作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author4" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第五作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author5" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第六作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author6" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
             <tr>
               <th>论文摘要</th>
-              <td> <textarea rows="6" cols="55" name="introduction" value="{$student['introduction']}"></textarea></td></td>
+              <td> <textarea rows="6" cols="55" name="abstract"></textarea></td></td>
             </tr>
             <tr rowspan="4">
               <th height="93" rowspan="4">代表图片1</th>
@@ -186,15 +193,15 @@
             </tr>
 			<tr>
               <th>论文正式稿电子版</th>
-              <td><input type="file" name="pdf" value="" class="input-b" /></td>
+              <td><input type="file" name="official" value="" class="input-b" /></td>
             </tr>
            <tr>
               <th>论文草稿word版</th>
-              <td><input type="file" name="word" value="" class="input-b" /></td>
+              <td><input type="file" name="draft" value="" class="input-b" /></td>
             </tr>
             <tr>
               <th>备注</th>
-              <td><input type="text" name="note2" value="" class="input-b" /></td>
+              <td><input type="text" name="note" value="" class="input-b" /></td>
             </tr>
           </table>
 		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
@@ -206,11 +213,7 @@
 		  <table border="0" cellspacing="1" class="tb-b">
 		   <tr>
               <th>论文标题</th>
-              <td><input type="text" name="title2" value="" class="input-long" /></td>
-            </tr>
-            <tr>
-              <th>提交时间</th>
-              <td><input type="text" name="submittime2" value="" class="input-b" /></td>
+              <td><input type="text" name="title" value="" class="input-long" /></td>
             </tr>
 			<tr>
               <th>作者姓名列表</th>
@@ -218,49 +221,61 @@
             </tr>
 			<tr >
 			  <th>第一作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author1" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第二作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author2" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第三作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author3" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第四作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author4" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第五作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author5" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第六作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author6" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
@@ -337,70 +352,82 @@
 		<h4><a href="javascript:history.back()">专利管理</a> >>添加成果-专利</h4>
 		<form name="proform" method="post" action="__URL__/addprod/tablename/Patent" enctype="multipart/form-data">
 		  <table border="0" cellspacing="1" class="tb-b">
+		  <!--
             <tr>
               <th>专利ID</th>
               <td><input type="text" name="id2" value="" class="input-b" /></td>
             </tr>
-            <tr>
-              <th>提交时间</th>
-              <td><input type="text" name="submittime2" value="" class="input-b" /></td>
+			-->
+			<tr>
+              <th>专利标题</th>
+              <td><input type="text" name="title" value="" class="input-b" /></td>
             </tr>
+ 
 			<tr>
               <th>作者姓名列表</th>
-              <td><input type="text" name="journalname" value="" class="input-long" /></td>
+              <td><input type="text" name="authors" value="" class="input-long" /></td>
             </tr>
 			<tr >
 			  <th>第一作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author1" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第二作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author2" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第三作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author3" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第四作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author4" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第五作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author5" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第六作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author6" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
-			 <tr>
-              <th>专利标题</th>
-              <td><input type="text" name="title" value="" class="input-b" /></td>
-            </tr>
+			 
 			<tr>
               <th>专利摘要</th>
               <td><textarea rows="6" cols="55" name="introduction" value="{$student['introduction']}"></textarea></td>
@@ -450,7 +477,7 @@
             </tr>
             <tr>
               <th>备注</th>
-              <td><input type="text" name="note2" value="" class="input-b" /></td>
+              <td><input type="text" name="note" value="" class="input-b" /></td>
             </tr>
           </table>
 		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
@@ -460,70 +487,81 @@
 		<h4><a href="javascript:history.back()">软件著作权管理</a> >>添加成果-软件著作权</h4>
 		<form name="proform" method="post" action="__URL__/addprod/tablename/Softwareright" enctype="multipart/form-data">
 		  <table border="0" cellspacing="1" class="tb-b">
+		  <!--
             <tr>
               <th>软件著作权ID</th>
               <td><input type="text" name="id2" value="" class="input-b" /></td>
             </tr>
-            <tr>
-              <th>提交时间</th>
-              <td><input type="text" name="submittime2" value="" class="input-b" /></td>
+			-->
+			<tr>
+              <th>软件著作权标题</th>
+              <td><input type="text" name="title" value="" class="input-b" /></td>
             </tr>
 			<tr>
               <th>作者姓名列表</th>
-              <td><input type="text" name="journalname" value="" class="input-long" /></td>
+              <td><input type="text" name="authors" value="" class="input-long" /></td>
             </tr>
 			<tr >
 			  <th>第一作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author1" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第二作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author2" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第三作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author3" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第四作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author4" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第五作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author5" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第六作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author6" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
-			 <tr>
-              <th>软件著作权标题</th>
-              <td><input type="text" name="title" value="" class="input-b" /></td>
-            </tr>
+			
 			<tr>
               <th>软件著作权摘要</th>
               <td><textarea rows="6" cols="55" name="introduction" value="{$student['introduction']}"></textarea></td>
@@ -575,70 +613,81 @@
 		<h4><a href="javascript:history.back()">技术报告管理</a> >>添加成果-技术报告</h4>
 		<form name="proform" method="post" action="__URL__/addprod/tablename/Techreport" enctype="multipart/form-data">
 		  <table border="0" cellspacing="1" class="tb-b">
+		  <!--
             <tr>
               <th>技术报告ID</th>
               <td><input type="text" name="id2" value="" class="input-b" /></td>
             </tr>
-            <tr>
-              <th>提交时间</th>
-              <td><input type="text" name="submittime2" value="" class="input-b" /></td>
+			-->
+			<tr>
+              <th>技术报告标题</th>
+              <td><input type="text" name="title" value="" class="input-long" /></td>
             </tr>
 			<tr>
               <th>作者姓名列表</th>
-              <td><input type="text" name="journalname" value="" class="input-long" /></td>
+              <td><input type="text" name="authors" value="" class="input-long" /></td>
             </tr>
 			<tr >
 			  <th>第一作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author1" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第二作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author2" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第三作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author3" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第四作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author4" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第五作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author5" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
 			<tr >
 			  <th>第六作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
+			  <td> <select name="author6" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						<option value="other">其他</option>
 					</select>
 			  </td>
 			</tr>
-			 <tr>
-              <th>技术报告标题</th>
-              <td><input type="text" name="title" value="" class="input-b" /></td>
-            </tr>
+			 
 			<tr>
               <th>技术报告摘要</th>
               <td><textarea rows="6" cols="55" name="introduction" value="{$student['introduction']}"></textarea></td>
@@ -677,21 +726,13 @@
               <th>毕业论文标题</th>
               <td><input type="text" name="title" value="" class="input-long" /></td>
             </tr>
-            <tr>
-              <th>提交时间</th>
-              <td><input type="text" name="submitdate" value="" class="input-b" /></td>
-            </tr>
 			<tr>
-              <th>作者姓名列表</th>
-              <td><input type="text" name="journalname" value="" class="input-long" /></td>
+              <th>学号</th>
+              <td><input type="text" name="personid" value="" class="input-b" /></td>
             </tr>
 			<tr >
-			  <th>第一作者</th>
-			  <td> <select name="" style="width:100px">
-						<option value=""></option>
-						<option value="">其他</option>
-					</select>
-			  </td>
+			  <th>姓名</th>
+			  <td><input type="text" name="author" value="" class="input-b" /></td>
 			</tr>
 			<tr>
               <th>毕业论文摘要</th>
