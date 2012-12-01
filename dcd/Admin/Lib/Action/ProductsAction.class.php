@@ -22,37 +22,13 @@ class ProductsAction extends BaseAction{
 			$kmap = $_GET['keyword'];
 			$map['title'] = array('like','%'.$kmap.'%');
 		}
+
 		$Page -> parameter .= "keyword=".urlencode($kmap)."&";
 		$M = $M->where($map)->order('submittime desc')->limit($Page->firstRow.','.$Page->listRows)->select();
 		$this->assign('pages',$show);
 		$this->assign("product",$M);
 		$this->assign("dsp",$sp);
 		$this->display("Public:products");
-	}
-	
-	public function edit(){
-		if($_GET['id']){
-			$M = D("M")->getByPid($_GET['pid']);
-			$cats = D("Categroy")->select();
-			$this->assign("cats",$cats);
-			$this->assign($M);
-			$this->assign("dsp","edit");
-			$this->display("Public:M");
-		}else{
-			$this->assign("jumpUrl","__URL__");
-			$this->error("数据不存在！");
-		}
-	}
-	public function edits(){
-		$data = $_POST;
-		$data['parameters'] = nl2br($data['parameters']);
-		if(!empty($_FILES['attachment']['name'])) $data['attachment'] = $this->_upload("M",true,360,240,true);
-		$data['postdate'] = strtotime($_POST['postdate']);
-		if(D("M")->save($data)){
-			$this->success("修改成功！");
-		}else{
-			$this->error("资料无改变或修改失败！");		
-		}
 	}
 	
 	static protected function pg2tb($page)
@@ -78,7 +54,7 @@ class ProductsAction extends BaseAction{
 			"Project"=>"科研项目",
 			"Thesis"=>"毕业论文"
 		);
-		if(in_array($tablename,$map))
+		if(array_key_exists($tablename,$map))
 			return $map[$tablename];
 		else
 			return "未知";
@@ -113,6 +89,7 @@ class ProductsAction extends BaseAction{
 		if(!empty($_FILES)){
 			$filesinfo= $this->_uploadmul("products",false,300,400,true);// 附件存储在Attachments/products目录下
 		}
+		
 		foreach($filesinfo as $num=>$file)
 		{
 			$_POST[$file["key"]]=$file["savename"];
@@ -126,24 +103,26 @@ class ProductsAction extends BaseAction{
 				$author[$_POST[$var]]=$i;//$_POST[$var]是作者id，是第$i作者
 			}
 		}
-		print_r($_POST);
-		return;
+		//print_r($author);
+		//print_r($_POST);//debug
+		//return;
 		$M=M($tablename);
 		if($M->Create())
 		{
 			$M->startTrans();// 启动事务
 			$success = true;
 			if(($id=$M->add())!= false){
-				$Product=M("Product");//在成果表里将该成果的作者与成果关联起来
-				$Product->startTrans(); //可能要添加多条记录，确保都添加成功或失败
+				$Product=M("Products");//在成果表里将该成果的作者与成果关联起来
+				//$Product->startTrans(); //可能要添加多条记录，确保都添加成功或失败
 				$Person=M("Person");
 				foreach($author as $userid=>$number)
 				{
 					$record["personid"]=$userid;
-					$cond["id"]=$userid;
+					$cond["personid"]=$userid;
 					$pinfo=$Person->where($cond)->find();// 根据id查找作者更多信息
 					if($pinfo)
 					{
+						$record["personid"]=$userid;
 						$record["personname"]=$pinfo["name"];
 						$record["persontype"]=$pinfo["category"];
 						$record["productid"]=$id;
@@ -158,14 +137,14 @@ class ProductsAction extends BaseAction{
 				}
 				if($success)
 				{
-					$Product->commit();
+					//$Product->commit();
 					$M->commit();//提交事务
 					$this->assign("jumpUrl","__URL__");
 					$this->success("添加成功！");
 				}
 				else
 				{
-					$Product->rollback();
+					//$Product->rollback();
 					$M->rollback();
 					$this->error("添加失败！原因：操作成果总表失败！");
 				}

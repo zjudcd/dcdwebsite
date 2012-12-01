@@ -1,7 +1,7 @@
-﻿<h4><a href="javascript:history.back()">成果管理</a>>>毕业论文</h4>
+﻿<h4><a href="__URL__">成果管理</a>>>毕业论文</h4>
 		<div>
 		<a href="__URL__/showpage/sp/addthesis"><div class="b-btn f_l blank5_r">添加/发布</div></a>
-		<form name="search" method="post" action="__URL__/search/tablename/Thesis" class="search f_l">
+		<form name="search" method="post" action="__URL__/prodlist/sp/thesis" class="search f_l">
 				<input type="text" name="keyword" value="{$keyword}" class="search-input p_n m_n" />
 				<input type="submit" value="搜索" class="search-btn p_n m_n" />
 		</form>
@@ -15,6 +15,7 @@
 				<th>论文名称</th>
 				<th>发布时间</th>
 				<th>论文摘要</th>
+				<th>作者</th>
 				<th width="150">操作</th>
 			</tr>
 			<volist name="product" id="p">
@@ -22,9 +23,10 @@
 				<td><input name="id[]" type="checkbox" id="id[]" value="{$p.id}" class="input-cb" /></td>
 				<td>{$p.id}</td>
 				<td>{$p.title}</td>
-				<td>{$p.submitdate}</td>
+				<td>{$p.submittime|date="Y-n-j",###}</td>
 				<td>{$p.abstract}</td>
-				<td><a href="__URL__/editprod/sp/editthesis/pid/{$p.id}">编辑</a> <a href="__URL__/act/delete/id/{$p.id}/tablename/Thesis">删除</a></td>
+				<td>{$p.author}</td>
+				<td><a href="#">编辑</a> <a href="#">删除</a></td>
 			</tr>
 			</volist>
 			<tr>

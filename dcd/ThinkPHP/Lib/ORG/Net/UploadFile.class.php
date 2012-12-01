@@ -218,6 +218,7 @@ class UploadFile extends Think
         // 获取上传的文件信息
         // 对$_FILES数组信息处理
         $files	 =	 $this->dealFiles($_FILES);
+		srand(time());// 随机数种子
         foreach($files as $key => $file) {
             //过滤无效的上传
             if(!empty($file['name'])) {
@@ -336,13 +337,14 @@ class UploadFile extends Think
      */
     private function getSaveName($filename)
     {
+		$rdn = rand(1,200);//产生一个随机数
         $rule = $this->saveRule;
         if(empty($rule)) {//没有定义命名规则，则保持文件名不变
             $saveName = $filename['name'];
         }else {
             if(function_exists($rule)) {
                 //使用函数生成一个唯一文件标识号
-                $saveName = $rule().".".$filename['extension'];
+                $saveName = $rule().$rdn.".".$filename['extension'];
             }else {
                 //使用给定的文件名作为标识号
                 $saveName = $rule.".".$filename['extension'];
