@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Digital Media Computing & Design Lab</title>
+<title>{$curpage.title}</title>
 <link href="../Public/templatemo_style.css" rel="stylesheet" type="text/css" />
 </head>
 <style type="text/css">
@@ -79,28 +79,14 @@ background: #fff url(../Public/images/content_bottom.jpg) left bottom no-repeat;
 
 <div class="left" >
 <ul class="header_05">
-<li><a href="about.html">视觉感知实验室</a></li>
-<li><a href="about2.html" >大学数字图书馆国际合作计划</a></li>
+<volist name="intros" id="i">
+<li><a href="__URL__/index/id/{$i.id}">{$i.title}</a></li>
+</volist>
 </ul>
 
 </div>
 <div class="content"  >
-<p>        视觉感知教育部-微软重点实验室（Key Laboratory of Visual Perception (Zhejiang University) , Ministry of Education and Microsoft）的前身是1999年11月19日成立的“浙江大学－微软视觉感知联合实验室（Microsoft Visual Perception Laboratory of Zhejiang University）”，于2005年纳入教育部重点实验室管理体系。
-
-        “浙江大学－微软视觉感知联合实验室”是微软中国研究院初建时，在中国设立的第一个联合实验室。视觉感知教育部-微软重点实验室的研究领域涉及视频运动对象跟踪与识别、真实感建模与绘制和视觉内容感知理解等方面。
- 
-        该实验室的指导教授由浙江大学和微软亚洲研究院双方共同组成。浙江大学方面有：潘云鹤教授（院士，浙江大学校长）、陈纯教授、石教英教授（CAD&CG国家重点实验室前任主任）和庄越挺教授（计算机学院院长），微软方面由沈向洋博士、郭百宁博士、马毅博士和童欣博士等。
-
-        实验室始终将队伍建设和人才培养作为实验室工作的重点，经过多年的运行，已经建立起一支国内外有影响、思想活跃、以中青年科研骨干为主力的学术团队。
-
-        实验室的庄越挺教授与沈向洋博士招收浙江大学计算机学院与微软亚洲研究院联合培养的硕士研究生和博士研究生。
-
-        实验室现任学术委员会主任为浙江大学计算机学院陈纯教授，副主任为微软亚洲研究院主任研究院郭百宁博士。
-
-        实验室学术委员会委员包括浙江大学校长潘云鹤院士、微软亚洲研究院院长沈向洋博士、中国科学院自动化所田捷研究员、上海交通大学刘允才教授、清华大学章毓晋教授、北京大学查红彬教授、南京大学周志华教授。
-
-        实验室现任主任为浙江大学计算机学院庄越挺教授，副主任为浙江大学计算机学院吴飞教授和卜佳俊教授。
-</p>
+{$curpage.content}
 </div>
 
 

@@ -55,7 +55,7 @@ clear: both;
 .left a:visited { color: blue; text-decoration:none ; font-weight: normal; }
 .left a:hover { color: grey; text-decoration: underline; }
 
-.search {  padding-left:650px; margin: 8px; width: 100%; height:30px; background: #ffffff; }
+.search {  padding-left:65%; margin: 8px; width: 100%; height:30px; background: #ffffff; }
 	.search .search-input { border: 1px solid  #c3c4c5; height: 24px; color: #131313; background: #FFF; float:left; }
 	.search .search-btn { color: #FFF; background:#19446a; border: 1px solid  #c3c4c5; height: 24px; cursor: pointer; float:left; }
 
@@ -74,6 +74,20 @@ clear: both;
 <div class="left" >
 <div>
 <form name="search" method="post" action="" class="search f_l">
+				<select name="typeid">
+				<if condition="$typeid eq 0">
+					<option value="0" selected="selected">所有</option>
+				<else />
+					<option value="0">所有</option>
+				</if>
+				<volist name="types" id="type">
+					<if condition="$type['id'] eq $typeid">
+					<option value="{$type.id}" selected="selected">{$type.name}</option>
+					<else />
+					<option value="{$type.id}">{$type.name}</option>
+					</if>
+				</volist>
+				</select>
 				<input type="text" name="keyword" value="" class="search-input">
 				<input type="submit" value="搜索" class="search-btn">
 			</form>
@@ -83,7 +97,7 @@ clear: both;
 <div id="left">
 <ul>
 <volist name="news" id="newsid">
-	<li>[{$newsid.date|date="Y-n-j",###}]&nbsp <a href="__ROOT__/index.php/News/detail/newsid/{$newsid.id}" target="_blank">{$newsid.title}</a></li>
+	<li>[{$newsid.date|date="Y-m-d",###}]&nbsp <a href="__ROOT__/index.php/News/detail/newsid/{$newsid.id}" target="_blank">{$newsid.title}</a></li>
 </volist>
 </ul>
 </div>
