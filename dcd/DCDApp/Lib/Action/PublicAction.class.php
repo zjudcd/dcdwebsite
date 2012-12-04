@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 class PublicAction extends Action{
 	function _initialize(){
 		$sid = Session::get(C('USER_AUTH_KEY'));
@@ -7,83 +7,38 @@ class PublicAction extends Action{
 		$this->display("Public:login");
 	}
 	public function logins(){
-		if($_SESSION['verify']!=md5($_POST['verify'])){
-			$this->error('ÑéÖ¤Âë´íÎó£¡');
+		if($_SESSION['verifyfront']!=md5($_POST['verify'])){
+			$this->error('éªŒè¯ç é”™è¯¯ï¼');
 		}else{
-			$Member = D("Person");
+			$Member = M("Person");
 			$map['personid'] = $_POST['username'];
 			$map['password'] = md5($_POST['password']);
 			$checkUser = $Member->where($map)->find();
 			if(!$checkUser){
 				$this->assign("jumpUrl","__APP__");
-				$this->error("ÓÃ»§Ãû»òÃÜÂë²»ÕýÈ·£¡");
+				$this->error("ç”¨æˆ·åæˆ–å¯†ç ä¸æ­£ç¡®ï¼");
 			}else{
 				Session::set(C('USER_AUTH_KEY'),$checkUser['personid']);
 				Session::set('admin',$checkUser['personid']);
 				$Member->where("personid = ".$checkUser['personid']);
 				$this->assign("jumpUrl","__APP__/Index");
-				$this->success("µÇÂ½³É¹¦£¡");
+				$this->success("ç™»é™†æˆåŠŸï¼");
 			}
 		}
 	}
 	public function verify(){ 
 		$type = isset($_GET['type'])?$_GET['type']:'gif'; 
         import("ORG.Util.Image"); 
-        Image::buildImageVerify(4,1,$type,'','20px'); 
+        Image::buildImageVerify(4,1,$type,'','20px',verifyfront); 
     }
 	public function logout(){
 		if(Session::is_set(C('USER_AUTH_KEY'))){
 			Session::clear();
 			$this->assign('jumpUrl',__URL__.'/login');
-			$this->success("×¢Ïú³É¹¦£¡");
+			$this->success("æ³¨é”€æˆåŠŸï¼");
 		}else{
 			$this->assign('jumpUrl',__URL__.'/login');
-			$this->error('ÒÑ¾­×¢Ïú£¡');
-		}
-		$this->forward();
-	}
-}
-?><?php
-class PublicAction extends Action{
-	function _initialize(){
-		$sid = Session::get(C('USER_AUTH_KEY'));
-	}
-	public function login(){
-		$this->display("Public:login");
-	}
-	public function logins(){
-		if($_SESSION['verify']!=md5($_POST['verify'])){
-			$this->error('ÑéÖ¤Âë´íÎó£¡');
-		}else{
-			$Member = D("Administrator");
-			$map['username'] = $_POST['username'];
-			$map['password'] = md5($_POST['password']);
-			$checkUser = $Member->where($map)->find();
-			if(!$checkUser){
-				$this->assign("jumpUrl","__APP__");
-				$this->error("ÓÃ»§Ãû»òÃÜÂë²»ÕýÈ·£¡");
-			}else{
-				Session::set(C('USER_AUTH_KEY'),$checkUser['uid']);
-				Session::set('admin',$checkUser['username']);
-				$Member->where("uid = ".$checkUser['uid'])->setField("lastlogintime",time());
-				$this->assign("jumpUrl","__APP__/Index");
-				$this->success("µÇÂ½³É¹¦£¡");
-			}
-		}
-	}
-	public function verify(){ 
-		$type = isset($_GET['type'])?$_GET['type']:'gif'; 
-        import("ORG.Util.Image"); 
-        Image::buildImageVerify(4,1,$type,'','20px'); 
-    }
-	public function logout(){
-		if(Session::is_set(C('USER_AUTH_KEY'))){
-			Session::clear();
-			$this->assign('jumpUrl',__URL__.'/login');
-			$this->success("×¢Ïú³É¹¦£¡");
-		}else{
-			$this->assign('jumpUrl',__URL__.'/login');
-			$this->error('ÒÑ¾­×¢Ïú£¡');
+			$this->error('å·²ç»æ³¨é”€ï¼');
 		}
 		$this->forward();
 	}

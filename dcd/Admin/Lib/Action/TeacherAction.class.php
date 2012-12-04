@@ -37,11 +37,20 @@ class TeacherAction extends BaseAction{
 			$_POST['photo'] = 'default.jpg';
 		}
 		$Teacher = D("Teacher");
-		if($Teacher->Create()){
-			if($Teacher->add()){
+		$Person = M("Person");
+		$per["personid"] = $_POST["id"];
+		$per["name"] = $_POST["name"];
+		$per["category"] = "教师";
+		$per["status"] = "在校";
+		if($Teacher->Create() && $Person->Create()){
+			if($Teacher->add($_POST) && $Person->add($per)){
 				$this->assign("jumpUrl","__URL__");
 				$this->success("发布成功！");
 			}else{
+				print_r($_POST);
+				echo "<br/>";
+				print_r($per);
+				return;
 				$this->error("发布失败！");
 			}
 		}else{
