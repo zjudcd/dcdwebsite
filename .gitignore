@@ -167,6 +167,7 @@ pip-log.txt
 ################
 .bak
 .log
+dcd/Admin/Runtime/
 dcd/Admin/Runtime/Cache/
 dcd/Admin/Runtime/Data/
 dcd/Admin/Runtime/Logs/
