@@ -39,8 +39,13 @@ class StudentAction extends BaseAction{
 			$_POST['photo'] = 'default.jpg';
 		}
 		$Student = D("Student");
-		if($Student->Create()){
-			if($Student->add()){
+		$Person = M("Person");
+		$per["personid"] = $_POST["id"];
+		$per["name"] = $_POST["name"];
+		$per["category"] = "学生";
+		$per["status"] = "在校"; 
+		if($Student->Create() && $Person->Create()){
+			if($Student->add() && $Person->add($per)){
 				$this->assign("jumpUrl","__URL__");
 				$this->success("发布成功！");
 			}else{

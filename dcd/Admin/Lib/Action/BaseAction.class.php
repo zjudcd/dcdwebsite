@@ -26,6 +26,7 @@ class BaseAction extends Action{
 					if(in_array(Session::get(C('USER_AUTH_KEY')),$checkboxid)||$checkboxid == Session::get(C('USER_AUTH_KEY'))) $this->error("不能删除自己的账号！");
 				}
 				$Result = D($modulename)->execute('DELETE FROM __TABLE__ where '.$tableId[$modulename].' IN ('.$id.')');
+				$Result1 = M("Person")->execute('DELETE FROM person WHERE personid IN ('.$id.')');
 				$msg = "删除成功！";
 				break;
 			default: $this->error(L('_OPERATION_WRONG_')); break; 

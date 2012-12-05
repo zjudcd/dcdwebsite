@@ -47,10 +47,6 @@ class TeacherAction extends BaseAction{
 				$this->assign("jumpUrl","__URL__");
 				$this->success("发布成功！");
 			}else{
-				print_r($_POST);
-				echo "<br/>";
-				print_r($per);
-				return;
 				$this->error("发布失败！");
 			}
 		}else{
@@ -94,7 +90,9 @@ class TeacherAction extends BaseAction{
 		if(!empty($_FILES['photo']['name'])){
 			$data['photo'] = $this->_upload("photo",false,300,400,true);
 		}
-		if(D("Teacher")->save($data)){
+		$per["personid"] = $_POST["id"];
+		$per["name"] = $_POST["name"];
+		if(M("Person")->save($per) && D("Teacher")->save($data)){
 			$this->success("修改成功！");
 		}else{
 			$this->error("资料无改变或修改失败！");		
