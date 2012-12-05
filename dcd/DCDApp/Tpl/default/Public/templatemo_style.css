@@ -100,7 +100,7 @@ img {
 	width: 100%;
 	height: 114px;
 	margin: 0 auto;
-	background: #19446a url(images/dcd_header_bg.jpg) repeat-x;
+	background: #19446a url(images/dcd_header_bg_fb1.jpg) repeat-x;
 }
 
 #templatemo_header {
@@ -114,7 +114,7 @@ img {
 	height: 100px;
 	font-size: 40px;
 	color: #ffffff;
-	background:url(images/dcd_logo2.jpg) no-repeat;
+	background:url(images/dcd_logo5.jpg) no-repeat;
 }
 
 /* end of header */
@@ -125,7 +125,7 @@ img {
 	width: 100%;
 	height: 41px;
 	margin: 0 auto;
-	background: url(images/dcd_menu_bg.jpg) repeat-x;
+	background: url(images/dcd_menu_bg_fb2.jpg) repeat-x;
 }
 
 #templatemo_menu {
@@ -157,7 +157,7 @@ img {
 	height: 22px;
 	width: 128px;
 	padding: 13px 0 0 0;
-	background: url(images/dcd_menu.jpg) bottom no-repeat;
+	background: url(images/dcd_menu2.jpg) bottom no-repeat;
 	text-align: center;
 	font:arial,sans-serif;
 	font-size: 14px;
@@ -169,7 +169,7 @@ img {
 
 #templatemo_menu li a:hover, #templatemo_menu li .current {
 	color: #000;
-	background: url(images/dcd_menu_hover.jpg) bottom no-repeat;
+	background: url(images/dcd_menu_hover2.jpg) bottom no-repeat;
 }
 /* end of menu*/
 
@@ -219,7 +219,7 @@ list-style:  url(images/dcd_button.jpg)
 	height: 200px;
 	padding: 30px 0;
 	overflow: hidden;	
-	background: #215b8d url(images/dcd_slider_right_divider.jpg) right repeat-y;
+	background: #409ecc url(images/dcd_slider_right_divider.jpg) right repeat-y;
 }
 
 .project_content {
@@ -228,7 +228,7 @@ list-style:  url(images/dcd_button.jpg)
 	height: 180px;
 	padding: 40px 20px;
 	overflow: hidden;
-	background: #1d4b73;
+	background: #387fa2;
 }
 
 .project_content p{
@@ -297,7 +297,7 @@ overflow:hidden;
 	height:80px;
 	margin: 0 auto;
 	color: #828c96;
-	background: #19446a url(images/dcd_header_bg.jpg) repeat-x;
+	background: #19446a url(images/dcd_header_bg_fb1.jpg) repeat-x;
 }
 #templatemo_footerlink {
 	width: 980px;
