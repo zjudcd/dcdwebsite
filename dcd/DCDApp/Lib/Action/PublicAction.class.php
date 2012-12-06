@@ -7,6 +7,7 @@ class PublicAction extends Action{
 		$this->display("Public:login");
 	}
 	public function logins(){
+		print_r($_SESSION);
 		if($_SESSION['verifyfront']!=md5($_POST['verify'])){
 			$this->error('验证码错误！');
 		}else{
@@ -29,7 +30,7 @@ class PublicAction extends Action{
 	public function verify(){ 
 		$type = isset($_GET['type'])?$_GET['type']:'gif'; 
         import("ORG.Util.Image"); 
-        Image::buildImageVerify(4,1,$type,'','20px',verifyfront); 
+        Image::buildImageVerify(4,1,$type,'','20px'); 
     }
 	public function logout(){
 		if(Session::is_set(C('USER_AUTH_KEY'))){
