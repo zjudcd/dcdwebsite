@@ -8,7 +8,7 @@ class PublicAction extends Action{
 	}
 	public function logins(){
 		print_r($_SESSION);
-		if($_SESSION['verifyfront']!=md5($_POST['verify'])){
+		if($_SESSION['verify']!=md5($_POST['verify'])){
 			$this->error('验证码错误！');
 		}else{
 			$Member = M("Person");
@@ -27,11 +27,15 @@ class PublicAction extends Action{
 			}
 		}
 	}
-	public function verify(){ 
-		$type = isset($_GET['type'])?$_GET['type']:'gif'; 
-        import("ORG.Util.Image"); 
-        Image::buildImageVerify(4,1,$type,'','20px'); 
-    }
+//	public function verify(){ 
+		//$type = isset($_GET['type'])?$_GET['type']:'gif'; 
+        //import("ORG.Util.Image"); 
+        //Image::buildImageVerify(4,1,$type,'','20px'); 
+		//Image::buildImageVerify();
+		
+//		import('ORG.Util.Image');
+//		Image::buildImageVerify();
+//  	}
 	public function logout(){
 		if(Session::is_set(C('USER_AUTH_KEY'))){
 			Session::clear();
