@@ -2,12 +2,7 @@
   <div id="templatemo_header">
     <div id="site_logo"></div>
 
-	<p> &nbsp </p>
-    	<div  style="float:right" style="width:600px">
-				<div style="float:right" ><p>&nbsp;</p><p  style="font-size:14px" style="font-family:Arial, Helvetica, sans-serif" style="float:right"><a href="__ROOT__/index.php/Public/login"> 成员登录</a> </p></div>
-				</div>
-
-  </div>
+	</div>
   <!-- end of header -->
 </div>
 
@@ -36,6 +31,12 @@
 		<li><a href="__ROOT__/index.php/News" class="current">新闻中心</a></li>
 	<else />
 		<li><a href="__ROOT__/index.php/News">新闻中心</a></li>
+	</if>
+	
+	<if condition="$menu eq 'Login'">
+		<li><a href="__ROOT__/index.php/Public/login" class="current">成员登录</a></li>
+	<else />
+		<li><a href="__ROOT__/index.php/Public/login">成员登录</a></li>
 	</if>
 	
     </ul>

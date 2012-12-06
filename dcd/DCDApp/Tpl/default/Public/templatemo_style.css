@@ -31,7 +31,7 @@ img {
 	width: 104px;
 	height: 25px;
 	padding-top: 5px;
-	background: url(images/dcd_readmore_button.jpg) no-repeat;
+	background: url(images/templatemo_button_01.jpg) no-repeat;
 	
 	color: #000;
 	font-size: 13px;
@@ -69,7 +69,7 @@ img {
 	font-weight: bold;	
 	padding: 0 0 10px 0;
 	margin: 0 0 15px 0;
-	background: url(images/dcd_banner_divider.jpg) bottom repeat-x;
+	background: url(images/dcd_banner_divider2.jpg) bottom repeat-x;
 }
 
 .header_04 {
@@ -219,7 +219,7 @@ list-style:  url(images/dcd_button.jpg)
 	height: 200px;
 	padding: 30px 0;
 	overflow: hidden;	
-	background: #409ecc url(images/dcd_slider_right_divider.jpg) right repeat-y;
+	background: #409ecc url(images/dcd_slider_right_divider2.jpg) right repeat-y;
 }
 
 .project_content {
