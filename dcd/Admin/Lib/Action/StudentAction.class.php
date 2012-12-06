@@ -85,7 +85,9 @@ class StudentAction extends BaseAction{
 		if(!empty($_FILES['photo']['name'])){
 			$data['photo'] = $this->_upload("photo",false,300,400,true);
 		}
-		if(D("Student")->save($data)){
+		$per["personid"] = $_POST["id"];
+		$per["name"] = $_POST["name"];
+		if(M("Person")->save($per) && D("Student")->save($data)){
 			$this->success("修改成功！");
 		}else{
 			$this->error("资料无改变或修改失败！");		
