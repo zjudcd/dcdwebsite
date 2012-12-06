@@ -26,7 +26,7 @@
 				<td>{$p.typename}</td>
 				<td>{$p.starttime}</td>
 				<td>{$p.unit}</td>
-				<td><a href="__URL__/showpage/sp/editproj/id/{$p.id}">编辑</a> <a href="__URL__/delete/id/{$p.id}/tablename/Project">删除</a></td>
+				<td><a href="__URL__/showpage/sp/editproj/id/{$p.id}">编辑</a> <a href="__URL__/delete/id/{$p.id}/tablename/Project" onClick="confirmDel('{$p.title}')">删除</a></td>
 			</tr>
 			</volist>
 		</table>

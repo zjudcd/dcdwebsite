@@ -10,23 +10,23 @@
 		<form name="proform" method="post" action="__URL__/batch">
 		<table width="100%" border="0" cellspacing="1" class="tb-a blank5">
 			<tr>
-				<th width="20"><input name="checkbox" type="checkbox" class="input-cb" onClick="selAll(this)" /></th>
-				<th width="30">ID</th>
-				<th>论文名称</th>
-				<th>发布时间</th>
-				<th>论文摘要</th>
-				<th>作者</th>
-				<th width="150">操作</th>
+				<th width="5%"><input name="checkbox" type="checkbox" class="input-cb" onClick="selAll(this)" /></th>
+				<th width="5%">ID</th>
+				<th width="20%">论文名称</th>
+				<th width="15%">发布时间</th>
+				<th width="30%">论文摘要</th>
+				<th width="15%">作者</th>
+				<th width="10%">操作</th>
 			</tr>
 			<volist name="product" id="p">
 			<tr>
 				<td><input name="id[]" type="checkbox" id="id[]" value="{$p.id}" class="input-cb" /></td>
 				<td>{$p.id}</td>
 				<td>{$p.title}</td>
-				<td>{$p.submittime|date="Y-n-j",###}</td>
+				<td>{$p.submittime|date="Y-m-d",###}</td>
 				<td>{$p.abstract}</td>
-				<td>{$p.author}</td>
-				<td><a href="__URL__/showpage/sp/editthesis/id/{$p.id}">编辑</a> <a href="__URL__/delete/id/{$p.id}/tablename/Thesis">删除</a></td>
+				<td>{$p.name}</td>
+				<td><a href="__URL__/showpage/sp/editthesis/id/{$p.id}">编辑</a> <a href="__URL__/delete/id/{$p.id}/tablename/Thesis" onClick="confirmDel('{$p.title}')">删除</a></td>
 			</tr>
 			</volist>
 		</table>

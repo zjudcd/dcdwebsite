@@ -29,7 +29,7 @@
 				<!--
 				<td><a href="__URL__/showpage/sp/editjour/id/{$p.id}">编辑</a> <a href="__URL__/batch/act/delete/id/{$p.id}/tablename/Journalpaper">删除</a></td>
 				-->
-				<td><a href="__URL__/showpage/sp/editjour/id/{$p.id}">编辑</a> <a href="__URL__/delete/id/{$p.id}/tablename/Journalpaper">删除</a></td>
+				<td><a href="__URL__/showpage/sp/editjour/id/{$p.id}">编辑</a> <a href="__URL__/delete/id/{$p.id}/tablename/Journalpaper" onClick="confirmDel('{$p.title}')">删除</a></td>
 			</tr>
 			</volist>
 

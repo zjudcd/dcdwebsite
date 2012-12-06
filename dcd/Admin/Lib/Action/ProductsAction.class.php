@@ -24,9 +24,9 @@ class ProductsAction extends BaseAction{
 		}
 
 		$Page -> parameter .= "keyword=".urlencode($kmap)."&";
-		$M = $M->where($map)->order('submittime desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+		$products = $M->where($map)->order('submittime desc')->limit($Page->firstRow.','.$Page->listRows)->select();
 		$this->assign('pages',$show);
-		$this->assign("product",$M);
+		$this->assign("product",$products);
 		$this->assign("dsp",$sp);
 		$this->display("Public:products");
 	}
@@ -79,13 +79,18 @@ class ProductsAction extends BaseAction{
 		// addjour addconf addpatent addsoftware
 		// editjour editconf editpatent editsoftware
 		$page = $_GET['sp'];// showpage
-		$addpage=array("addjour","addconf","addpatent","addsoftware","addtr","addproj");
-		$editpage=array("editjour","editconf","editpatent","editsw","edittr","editthesis");
+		$addpage=array("addjour","addconf","addpatent","addsw","addtr","addproj","addthesis");
+		$editpage=array("editjour","editconf","editpatent","editsw","edittr","editthesis","editproj");
 		if(in_array($page,$addpage) || in_array($page,$editpage))
 		{
 			// 作者选择下拉框的数据
-			$person=M("Person")->order("name")->select();
+			$person=M("Person")->order("personid")->select();
 			$this->assign("persons",$person);
+		}
+		if($page == "addproj" || $page=="editproj")
+		{
+			$types=M("Projecttype")->order("id")->select();
+			$this->assign("types",$types);
 		}
 		if(in_array($page,$editpage))
 		{
@@ -99,7 +104,6 @@ class ProductsAction extends BaseAction{
 			$fields=array("personid","number");
 			$authors=$P->where($pcond)->order("number")->select($fields);
 			$nums=array();
-			//$an=array("author1","author2","author3","author4"，"author5"，"author6");
 			foreach($authors as $key=>$author)
 			{
 				$nums[]=$author["number"];
@@ -144,6 +148,8 @@ class ProductsAction extends BaseAction{
 		{
 			//说明提交的是毕业论文
 			$author[$_POST["personid"]]=1;//
+			$name=M("Person")->where("personid="+$_POST["personid"])->getField("name");
+			$_POST["name"]=$name;
 		}
 		$M=M($tablename);
 		if($M->Create())
@@ -226,7 +232,6 @@ class ProductsAction extends BaseAction{
 			//说明提交的是毕业论文
 			$author[$_POST["personid"]]=1;//
 		}
-		
 		$M=M($tablename);
 		$M->startTrans();// 启动事务
 		$success = true;

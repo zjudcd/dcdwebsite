@@ -6,13 +6,19 @@
               <td><input type="text" name="title" value="{$product.title}" class="input-long" /></td>
             </tr>
 			<tr>
-              <th>学号</th>
-              <td><input type="text" name="personid" value="{$product.personid}" class="input-b" /></td>
+              <th>姓名学号</th>
+			  <td>
+              <select name="personid" style="width:100px">
+					<volist name="persons" id="p">
+					<if condition="$p['personid'] eq $product['personid']">
+						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
+					<else />
+						<option value="{$p.personid}">{$p.name}&nbsp{$p.personid}</option>
+					</if>
+					</volist>
+					</select>
+				</td>
             </tr>
-			<tr >
-			  <th>姓名</th>
-			  <td><input type="text" name="author" value="{$product.author}" class="input-b" /></td>
-			</tr>
 			<tr>
               <th>毕业论文摘要</th>
               <td><textarea rows="6" cols="55" name="abstract" value="{$product.abstract}">{$product.abstract}</textarea></td>
@@ -22,7 +28,7 @@
 			  <td rowspan="4">
 			  <table>
 			  <tr>
-				<td><input type="file" name="image1"></td>
+				<td><input type="file" name="image1" value="{$product.image1}">{$product.image1}</td>
 				<td><img src="__ROOT__/Attachments/products/{$product.image1}" width="150" height="100" id="pimage"></td>
 			  </tr>
 			  </table>
@@ -48,5 +54,5 @@
               <td><input type="text" name="note" value="{$product.note}" class="input-b" /></td>
             </tr>
           </table>
-		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		  <div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_edit()"/></div>
 		</form>

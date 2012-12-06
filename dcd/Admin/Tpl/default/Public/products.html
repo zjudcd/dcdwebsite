@@ -13,8 +13,14 @@
 				<td><input type="text" name="title" value="" class="input-b" /></td>
 			</tr>
 			<tr>
-				<th>项目类别ID</th>
-				<td><input type="text" name="typeid" value="" class="input-b" /></td>
+				<th>项目类别</th>
+				<td>
+					<select name="typeid" style="width:100px">
+					<volist name="types" id="t">
+						<option value="{$t.id}">{$t.name}</option>
+					</volist>
+					<option value="other">其他</option>	
+					</select></td>
 			</tr>
 			<tr>
 				<th>项目编号</th>
@@ -53,14 +59,14 @@
 			</tr>
 			<tr>
 				<th>项目资助额度</th>
-				<td><input type="text" name="sponsorlimit" value="" class="input-b" /></td>
+				<td><input type="text" name="funds" value="" class="input-b" /></td>
 			</tr>
 			<tr>
 				<th>备注</th>
 				<td><input type="text" name="note" value="" class="input-b" /></td>
 			</tr>
 		</table>
-		<div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		<div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_form()"/></div>
 		</form>
 		</case>
 		<case value="addjour">
@@ -217,7 +223,7 @@
               <td><input type="text" name="note" value="" class="input-b" /></td>
             </tr>
           </table>
-		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		  <div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_form()"/></div>
 		</form>
 		</case>
 		<case value="addconf">
@@ -363,19 +369,13 @@
               <td><input type="text" name="note" value="" class="input-b" /></td>
             </tr>
           </table>
-		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		  <div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_form()"/></div>
 		</form>
 		</case>
 		<case value="addpatent">
 		<h4><a href="javascript:history.back()">专利管理</a> >>添加成果-专利</h4>
 		<form name="proform" method="post" action="__URL__/addprod/tablename/Patent" enctype="multipart/form-data">
 		  <table border="0" cellspacing="1" class="tb-b">
-		  <!--
-            <tr>
-              <th>专利ID</th>
-              <td><input type="text" name="id2" value="" class="input-b" /></td>
-            </tr>
-			-->
 			<tr>
               <th>专利标题</th>
               <td><input type="text" name="title" value="" class="input-b" /></td>
@@ -503,7 +503,7 @@
               <td><input type="text" name="note" value="" class="input-b" /></td>
             </tr>
           </table>
-		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		  <div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_form()"/></div>
 		</form>
 		</case>
 		<case value="addsw">
@@ -628,7 +628,7 @@
               <td><input type="text" name="note" value="" class="input-b" /></td>
             </tr>
           </table>
-		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		  <div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_form()"/></div>
 		</form>
 		</case>
 		<case value="addtr">
@@ -736,7 +736,7 @@
               <td><input type="text" name="note" value="" class="input-b" /></td>
             </tr>
           </table>
-		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		  <div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_form()"/></div>
 		</form>
 		</case>
 		<case value="addthesis">
@@ -748,13 +748,15 @@
               <td><input type="text" name="title" value="" class="input-long" /></td>
             </tr>
 			<tr>
-              <th>学号</th>
-              <td><input type="text" name="personid" value="" class="input-b" /></td>
+              <th>姓名学号</th>
+			  <td>
+				<select name="personid" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}&nbsp{$p.personid}</option>
+					</volist>
+				</select>
+			  </td>
             </tr>
-			<tr >
-			  <th>姓名</th>
-			  <td><input type="text" name="author" value="" class="input-b" /></td>
-			</tr>
 			<tr>
               <th>毕业论文摘要</th>
               <td><textarea rows="6" cols="55" name="abstract" value=""></textarea></td>
@@ -783,7 +785,7 @@
               <td><input type="text" name="note" value="" class="input-b" /></td>
             </tr>
           </table>
-		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		  <div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_form()"/></div>
 		</form>
 		</case>
 		

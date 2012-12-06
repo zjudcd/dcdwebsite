@@ -26,7 +26,7 @@
 				<td>{$p.publishdate}</td>
 				<td>{$p.conferencename}</td>
 				<td>{$p.authors}</td>
-				<td><a href="__URL__/showpage/sp/editconf/id/{$p.id}">编辑</a> <a href="__URL__/delete/id/{$p.id}/tablename/Conferencepaper">删除</a></td>
+				<td><a href="__URL__/showpage/sp/editconf/id/{$p.id}">编辑</a> <a href="__URL__/delete/id/{$p.id}/tablename/Conferencepaper" onClick="confirmDel('{$p.title}')">删除</a></td>
 			</tr>
 			</volist>
 			<!--

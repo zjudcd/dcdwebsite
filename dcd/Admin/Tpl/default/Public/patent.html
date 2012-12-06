@@ -24,7 +24,7 @@
 				<td>{$p.title}</td>
 				<td>{$p.authorizationdate}</td>
 				<td>{$p.abstract}</td>
-				<td><a href="__URL__/showpage/sp/editpatent/id/{$p.id}">编辑</a> <a href="__URL__/delete/id/{$p.id}/tablename/Patent">删除</a></td>
+				<td><a href="__URL__/showpage/sp/editpatent/id/{$p.id}">编辑</a> <a href="__URL__/delete/id/{$p.id}/tablename/Patent" onClick="confirmDel('{$p.title}')">删除</a></td>
 			</tr>
 			</volist>
 		</table>

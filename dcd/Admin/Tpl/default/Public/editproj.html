@@ -1,4 +1,4 @@
-﻿<h4><a href="javascript:history.back()">科研项目管理</a> >>添加项目</h4>
+﻿<h4><a href="javascript:history.back()">科研项目管理</a> >>编辑项目</h4>
 		<form name="proform" method="post" action="__URL__/editprod/tablename/Project/id/{$product.id}" enctype="multipart/form-data">
 		<table border="0" cellspacing="1" class="tb-b">
 			<tr>
@@ -7,7 +7,17 @@
 			</tr>
 			<tr>
 				<th>项目类别</th>
-				<td><input type="text" name="typeid" value="{$product.typeid}" class="input-b" /></td>
+				<td>
+					<select name="typeid" style="width:100px">
+					<option value="other">其他</option>	
+					<volist name="types" id="t">
+						<if condition="$t['id'] eq $product['typeid']">
+						<option value="{$t.id}" selected="selected">{$t.name}</option>
+						<else />
+						<option value="{$t.id}">{$t.name}</option>
+						</if>
+					</volist>
+					</select></td>
 			</tr>
 			<tr>
 				<th>项目编号</th>
@@ -17,7 +27,11 @@
 				<th>项目负责人</th>
 				<td> <select name="personid" style="width:100px">
 					<volist name="persons" id="p">
+					<if condition="$p['personid'] eq $product['personid']">
+						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
+					<else />
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</if>
 					</volist>
 						
 					</select>
@@ -46,12 +60,12 @@
 			</tr>
 			<tr>
 				<th>项目资助额度</th>
-				<td><input type="text" name="sponsorlimit" value="{$product.sponsorlimit}" class="input-b" /></td>
+				<td><input type="text" name="funds" value="{$product.funds}" class="input-b" /></td>
 			</tr>
 			<tr>
 				<th>备注</th>
 				<td><input type="text" name="note" value="{$product.note}" class="input-b" /></td>
 			</tr>
 		</table>
-		<div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		<div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_edit()"/></div>
 		</form>

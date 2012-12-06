@@ -132,7 +132,7 @@
 			  <td rowspan="4">
 			  <table>
 			  <tr>
-				<td><input type="file" name="image1"></td>
+				<td><input type="file" name="image1" value="{$product.image1}">{$product.image1}</td>
 				<td><img src="__ROOT__/Attachments/products/{$product.image1}" width="150" height="100" id="pimage"></td>
 			  </tr>
 			  </table>
@@ -146,7 +146,7 @@
             </tr>
 			<tr>
               <th>资助者列表</th>
-              <td><input type="text" name="sponsor" value="{$product.sponsor}" class="input-b" /></td>
+              <td><input type="text" name="sponsor" value="{$product.sponsor}" class="input-long" /></td>
             </tr>
 			<tr>
               <th>公开性质</th>
@@ -157,5 +157,5 @@
               <td><input type="text" name="note" value="{$product.note}" class="input-b" /></td>
             </tr>
           </table>
-		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		  <div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_edit()"/></div>
 		</form>
