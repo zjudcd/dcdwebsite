@@ -5,7 +5,7 @@ class PagesModel extends Model{
 		array('content','require','内容必填！',1,'',3),
 	);
 	protected $_auto = array(
-		array('postdate','time',1,'function'),
+		array('submittime','time',1,'function'),
 	);
 }
 ?>

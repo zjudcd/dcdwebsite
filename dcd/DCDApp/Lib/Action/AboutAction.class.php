@@ -2,9 +2,8 @@
 class AboutAction extends BaseAction{
 	public function index()
 	{
-		$News=M("News");
-		$cond["typeid"]=9;//实验室介绍 在News表中的类型ID为0
-		$pages=$News->where($cond)->order("id")->select();
+		$Pages=M("Pages");
+		$pages=$Pages->order("id")->select();
 		if(isset($_GET["id"]))
 		{
 			

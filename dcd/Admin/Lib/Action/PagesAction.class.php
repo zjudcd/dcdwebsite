@@ -14,13 +14,12 @@ class PagesAction extends BaseAction{
 		$Page = new Page($count,20);
 		$Page -> parameter .= "keyword=".urlencode($kmap)."&";
 		$show = $Page->show();
-		$pages = $Pages->where($map)->order('pgid desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+		$pages = $Pages->where($map)->order('id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
 		$this->assign('pages',$show);
 		$this->assign("pgs",$pages);
 		$this->display("Public:pages");
 	}
 	public function add(){
-		$this->assign('uid',Session::get(C('USER_AUTH_KEY')));
 		$this->assign("dsp","add");
 		$this->display("Public:pages");
 	}
@@ -38,8 +37,8 @@ class PagesAction extends BaseAction{
 		}
 	}
 	public function edit(){
-		if($_GET['pgid']){
-			$pgs = D("Pages")->getByPgid($_GET['pgid']);
+		if($_GET['id']){
+			$pgs = D("Pages")->getById($_GET['id']);
 			$this->assign($pgs);
 			$this->assign("dsp","edit");
 			$this->display("Public:pages");
@@ -50,7 +49,7 @@ class PagesAction extends BaseAction{
 	}
 	public function edits(){
 		$data = $_POST;
-		$data['postdate'] = strtotime($_POST['postdate']);
+		$data['submittime'] = strtotime($_POST['submittime']);
 		if(D("Pages")->save($data)){
 			$this->success("修改成功！");
 		}else{

@@ -6,8 +6,6 @@ class IndexAction extends BaseAction{
 		$siteCount['procount'] = D("Products")->count();
 		$siteCount['newscount'] = D("News")->count();
 		$siteCount['pagescount'] = D("Pages")->count();
-		$siteCount['catscount'] = D("Categroy")->count();
-		$siteCount['msgcount'] = D("Message")->count();
 		$array['osinfo'] = PHP_OS;
 		$array['osinfo'] .= @ini_get('safe_mode') ? ' Safe Mode' : NULL;
 		$array['serverinfo'] = $_SERVER["SERVER_SOFTWARE"];

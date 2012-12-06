@@ -5,40 +5,32 @@
 	<div class="b-area-w f_r">
 	<switch name="dsp">
 		<case value="add">
-		<h4>发布单页</h4>
+		<h4><a href="javascript:history.back()">单页管理</a>>>发布单页</h4>
 		<form name="pagesform" method="post" action="__URL__/adds">
 		<table border="0" cellspacing="1" class="tb-b">
 			<tr>
 				<th>标题</th>
-				<td><input type="text" name="title" value="" class="input-b" /><input type="hidden" name="uid" value="{$uid}"/></td>
+				<td><input type="text" name="title" value="" class="input-b" /></td>
 			</tr>
 			<tr>
 				<th>内容</th>
 				<td><html:editor id="editor" name="content" type="FCKeditor" content="" /></td>
 			</tr>
-			<tr>
-				<th>描述</th>
-				<td><input type="text" name="description" value="" class="input-b" /></td>
-			</tr>
-			<tr>
-				<th>关键字</th>
-				<td><input type="text" name="keywords" value="" class="input-b" /></td>
-			</tr>
 		</table>
-		<div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		<div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_form()"/></div>
 		</form>
 		</case>
 		<case value="edit">
-		<h4>编辑单页</h4>
+		<h4><a href="javascript:history.back()">单页管理</a>>>编辑单页</h4>
 		<form name="pagesform" method="post" action="__URL__/edits">
 		<table border="0" cellspacing="1" class="tb-b">
 			<tr>
 				<th>ID</th>
-				<td>{$pgid}<input type="hidden" name="pgid" value="{$pgid}"></td>
+				<td>{$id}<input type="hidden" name="id" value="{$id}"></td>
 			</tr>
 			<tr>
 				<th>标题</th>
-				<td><input type="text" name="title" value="{$title}" class="input-b" /></td>
+				<td><input type="text" name="title" value="{$title}" class="input-long" /></td>
 			</tr>
 			<tr>
 				<th>内容</th>
@@ -46,18 +38,10 @@
 			</tr>
 			<tr>
 				<th>发布时间</th>
-				<td><input type="text" name="postdate" value="{$postdate|date='Y-n-j H:i:s',###}" class="input-b" /></td>
-			</tr>
-			<tr>
-				<th>描述</th>
-				<td><input type="text" name="description" value="{$description}" class="input-b" /></td>
-			</tr>
-			<tr>
-				<th>关键字</th>
-				<td><input type="text" name="keywords" value="{$keywords}" class="input-b" /></td>
+				<td><input type="text" name="submittime" value="{$submittime|date='Y-n-j H:i:s',###}" class="input-b" /></td>
 			</tr>
 		</table>
-		<div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		<div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_form()"/></div>
 		</form>
 		</case>
 		<default />
@@ -75,10 +59,10 @@
 			<volist name="pgs" id="pg">
 			<tr>
 				<td><input name="id[]" type="checkbox" id="id[]" value="{$pg.pgid}" class="input-cb" /></td>
-				<td>{$pg.pgid}</td>
+				<td>{$pg.id}</td>
 				<td>{$pg.title}</td>
-				<td>{$pg.postdate|date="Y-n-j H:i:s",###}</td>
-				<td><a href="__URL__/edit/pgid/{$pg.pgid}">编辑</a> <a href="__URL__/batch/act/delete/id/{$pg.pgid}">删除</a></td>
+				<td>{$pg.submittime|date="Y-n-j H:i:s",###}</td>
+				<td><a href="__URL__/edit/id/{$pg.id}">编辑</a> <a href="__URL__/batch/act/delete/id/{$pg.id}" onClick="confirmDel('{$pg.title}')">删除</a></td>
 			</tr>
 			</volist>
 			<tr>

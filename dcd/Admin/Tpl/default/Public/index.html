@@ -6,7 +6,7 @@
 		<table border="0" cellspacing="1" class="tb-b">
 			<tr>
 				<th>当前用户</th>
-				<td>{$Think.session.admin} (<if condition="$userInfo['gid'] eq 1">超级管理员<else />普通管理员</if>)</td>
+				<td>{$Think.session.admin} (<if condition="$userInfo['privilege'] eq 1">超级管理员<else />普通管理员</if>)</td>
 			</tr>
 			<tr>
 				<th>最后登录时间</th>
@@ -24,20 +24,12 @@
 				<td>{$siteCount.procount|default = 0}</td>
 			</tr>
 			<tr>
-				<th>分类总数</th>
-				<td>{$siteCount.catscount|default = 0}</td>
-			</tr>
-			<tr>
 				<th>新闻总数</th>
 				<td>{$siteCount.newscount|default = 0}</td>
 			</tr>
 			<tr>
 				<th>单页总数</th>
 				<td>{$siteCount.pagescount|default = 0}</td>
-			</tr>
-			<tr>
-				<th>留言总数</th>
-				<td>{$siteCount.msgcount|default = 0}</td>
 			</tr>
 		</table>
 		<h4>服务器信息</h4>
