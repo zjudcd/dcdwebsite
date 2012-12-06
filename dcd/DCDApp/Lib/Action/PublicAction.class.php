@@ -4,10 +4,10 @@ class PublicAction extends Action{
 		$sid = Session::get(C('USER_AUTH_KEY'));
 	}
 	public function login(){
+		$this->assign("menu","Login");
 		$this->display("Public:login");
 	}
 	public function logins(){
-		print_r($_SESSION);
 		if($_SESSION['verify']!=md5($_POST['verify'])){
 			$this->error('验证码错误！');
 		}else{

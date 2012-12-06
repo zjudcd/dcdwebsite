@@ -10,6 +10,7 @@ class PeopleAction extends BaseAction{
 	{
 		$cate = $_GET["category"];
 		$p = M($cate)->select();
+		$this->assign("menu","People");
 		$this->assign("people",$p);
 		$this->assign("category",$cate);
 		$this->display("Public:people");
