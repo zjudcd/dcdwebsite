@@ -24,16 +24,9 @@
 				<td>{$p.title}</td>
 				<td>{$p.authorizationdate}</td>
 				<td>{$p.abstract}</td>
-				<td><a href="#">编辑</a> <a href="#">删除</a></td>
+				<td><a href="__URL__/showpage/sp/editpatent/id/{$p.id}">编辑</a> <a href="__URL__/delete/id/{$p.id}/tablename/Patent">删除</a></td>
 			</tr>
 			</volist>
-			<tr>
-				<td colspan="6" align="left">
-					<input name="act" type="radio" value="delete" />删除
-					<input name="act" type="radio" value="remove" />移动
-					<input type="submit" value="提交" class="input-btn-c" />
-				</td>
-			</tr>
 		</table>
 		</form>
 		<include file="Public:paging" />

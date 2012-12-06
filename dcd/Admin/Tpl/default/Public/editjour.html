@@ -1,0 +1,228 @@
+﻿<h4><a href="javascript:history.back()">期刊论文管理</a>>>编辑成果-期刊论文</h4>
+		<form name="proform" method="post" action="__URL__/editprod/tablename/Journalpaper/id/{$product.id}" enctype="multipart/form-data">
+		  <table border="0" cellspacing="1" class="tb-b">
+			<tr>
+              <th>论文标题</th>
+              <td><input type="text" name="title" value="{$product.title}" class="input-long" /></td>
+            </tr>
+			<tr>
+              <th>作者姓名列表</th>
+              <td><input type="text" name="authors" value="{$product.authors}" class="input-long" /></td>
+            </tr>
+			<tr >
+			  <th>第一作者</th>
+			  <td> <select name="author1" style="width:100px">
+					<if condition="$author1 eq 'other'">
+					<option value="other" selected="selected">other</option>
+					<else />
+					<option value="other">其他</option>
+					</if>
+					<volist name="persons" id="p">
+					<if condition="$p['personid'] eq $author1">
+						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
+					<else />
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</if>
+					</volist>
+						
+					</select>
+			  </td>
+			</tr>
+			<tr >
+			  <th>第二作者</th>
+			  <td> <select name="author2" style="width:100px">
+					<if condition="$author2 eq 'other'">
+					<option value="other" selected="selected">other</option>
+					<else />
+					<option value="other">其他</option>
+					</if>
+					<volist name="persons" id="p">
+					<if condition="$author2 eq $p['personid']">
+						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
+					<else />
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</if>
+					</volist>
+
+					</select>
+			  </td>
+			</tr>
+			<tr >
+			  <th>第三作者</th>
+			  <td> <select name="author3" style="width:100px">
+					<if condition="$author3 eq 'other'">
+					<option value="other" selected="selected">other</option>
+					<else />
+					<option value="other">其他</option>
+					</if>
+					<volist name="persons" id="p">
+					<if condition="$author3 eq $p['personid']">
+						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
+					<else />
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</if>
+					</volist>
+						
+					</select>
+			  </td>
+			</tr>
+			<tr >
+			  <th>第四作者</th>
+			  <td> <select name="author4" style="width:100px">
+					<if condition="$author4 eq 'other'">
+					<option value="other" selected="selected">other</option>
+					<else />
+					<option value="other">其他</option>
+					</if>
+					<volist name="persons" id="p">
+					<if condition="$author4 eq $p['personid']">
+						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
+					<else />
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</if>
+					</volist>
+						
+					</select>
+			  </td>
+			</tr>
+			<tr >
+			  <th>第五作者</th>
+			  <td> <select name="author5" style="width:100px">
+					<if condition="$author5 eq 'other'">
+					<option value="other" selected="selected">other</option>
+					<else />
+					<option value="other">其他</option>
+					</if>
+					<volist name="persons" id="p">
+					<if condition="$author5 eq $p['personid']">
+						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
+					<else />
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</if>
+					</volist>
+						
+					</select>
+			  </td>
+			</tr>
+			<tr >
+			  <th>第六作者</th>
+			  <td> <select name="author6" style="width:100px">
+					<if condition="$author6 eq 'other'">
+					<option value="other" selected="selected">other</option>
+					<else />
+					<option value="other">其他</option>
+					</if>
+					<volist name="persons" id="p">
+					<if condition="$author6 eq $p['personid']">
+						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
+					<else />
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</if>
+					</volist>
+					</select>
+			  </td>
+			</tr>
+            <tr>
+              <th>论文摘要</th>
+              <td> <textarea rows="6" cols="55" name="abstract" value="{$product.abstract}">{$product.abstract}</textarea></td></td>
+            </tr>
+            <tr rowspan="4">
+              <th height="93" rowspan="4">代表图片1</th>
+			  <td rowspan="4">
+			  <table>
+			  <tr>
+				<td><input type="file" name="image1"></td>
+				<td><img src="__ROOT__/Attachments/products/{$product.image1}" width="150" height="100" id="pimage"></td>
+			  </tr>
+			  </table>
+			  </td>
+			  <!--
+              <td rowspan="4"><input type="file" name="image1"></td>
+			  -->
+            </tr>
+		  </table>
+			 <table border="0" cellspacing="1" class="tb-b">
+			 <tr>
+              <th>期刊全称</th>
+              <td><input type="text" name="journalname" value="{$product.journalname}" class="input-long" /></td>
+            </tr>
+			<tr>
+              <th>发表日期</th>
+              <td><input type="text" name="publishdate" value="{$product.publishdate}" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>卷号</th>
+              <td><input type="text" name="volumenum" value="{$product.volumenum}" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>期号</th>
+              <td><input type="text" name="issuenum" value="{$product.issuenum}" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>页码</th>
+              <td><input type="text" name="pagenum" value="{$product.pagenum}" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>是否被SCI收录</th>
+              <td><select name="SCI">
+				<if condition="$product['SCI'] eq 0">
+				<option value="0" selected="selected">否</option>
+				<option value="1">是</option>
+				<else />
+				<option value="0">否</option>
+				<option value="1" selected="selected">是</option>
+				</if>
+				</select>
+				</td>
+            </tr>
+			<tr>
+              <th>是否被EI收录</th>
+              <td>
+			  <select name="EI">
+				<if condition="$product['EI'] eq 0">
+				<option value="0" selected="selected">否</option>
+				<option value="1">是</option>
+				<else />
+				<option value="0">否</option>
+				<option value="1" selected="selected">是</option>
+				</if>
+				</select>
+			  </td>
+            </tr>
+			<tr>
+              <th>是否被ISTP收录</th>
+			  <td>
+				<select name="ISTP">
+				<if condition="$product['ISTP'] eq 0">
+				<option value="0" selected="selected">否</option>
+				<option value="1">是</option>
+				<else />
+				<option value="0">否</option>
+				<option value="1" selected="selected">是</option>
+				</if>
+				</select>
+			  </td>
+            </tr>
+			<tr>
+              <th>影响因子</th>
+              <td><input type="text" name="IF" value="{$product.IF}" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>项目资助ID列表</th>
+              <td><input type="text" name="sponsor" value="{$product.sponsor}" class="input-long" /></td>
+            </tr>
+			<tr>
+              <th>论文正式稿电子版</th>
+              <td><input type="file" name="official" value="{$product.official}" class="input-b" /></td>
+            </tr>
+           <tr>
+              <th>论文草稿word版</th>
+              <td><input type="file" name="draft" value="{$product.draft}" class="input-b" /></td>
+            </tr>
+            <tr>
+              <th>备注</th>
+              <td><input type="text" name="note" value="{$product.note}" class="input-b" /></td>
+            </tr>
+          </table>
+		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		</form>

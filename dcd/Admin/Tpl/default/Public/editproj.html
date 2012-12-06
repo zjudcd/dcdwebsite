@@ -1,0 +1,57 @@
+﻿<h4><a href="javascript:history.back()">科研项目管理</a> >>添加项目</h4>
+		<form name="proform" method="post" action="__URL__/editprod/tablename/Project/id/{$product.id}" enctype="multipart/form-data">
+		<table border="0" cellspacing="1" class="tb-b">
+			<tr>
+				<th>项目标题</th>
+				<td><input type="text" name="title" value="{$product.title}" class="input-b" /></td>
+			</tr>
+			<tr>
+				<th>项目类别</th>
+				<td><input type="text" name="typeid" value="{$product.typeid}" class="input-b" /></td>
+			</tr>
+			<tr>
+				<th>项目编号</th>
+				<td><input type="text" name="number" value="{$product.number}" class="input-b" /></td>
+			</tr>
+			<tr>
+				<th>项目负责人</th>
+				<td> <select name="personid" style="width:100px">
+					<volist name="persons" id="p">
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</volist>
+						
+					</select>
+			  </td>
+			</tr>
+			
+			<tr>
+				<th>项目简介</th>
+				<td><textarea rows="6" cols="55" name="abstract" value="{$product.abstract}">{$product.abstract}</textarea></td>
+			</tr>
+			<tr>
+				<th>参与单位</th>
+				<td><input type="text" name="unit" value="{$product.unit}" class="input-b" /></td>
+			</tr>
+			<tr>
+				<th>开始时间</th>
+				<td><input type="text" name="starttime" value="{$product.starttime}" class="input-b" /></td>
+			</tr>
+			<tr>
+				<th>结束时间</th>
+				<td><input type="text" name="endtime" value="{$product.endtime}" class="input-b" /></td>
+			</tr>
+			<tr>
+				<th>是否公开</th>
+				<td><input type="text" name="ispublic" value="{$product.ispublic}" class="input-b" /></td>
+			</tr>
+			<tr>
+				<th>项目资助额度</th>
+				<td><input type="text" name="sponsorlimit" value="{$product.sponsorlimit}" class="input-b" /></td>
+			</tr>
+			<tr>
+				<th>备注</th>
+				<td><input type="text" name="note" value="{$product.note}" class="input-b" /></td>
+			</tr>
+		</table>
+		<div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		</form>

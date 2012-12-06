@@ -1,0 +1,52 @@
+﻿<h4><a href="javascript:history.back()">毕业论文管理</a> >>编辑成果-毕业论文</h4>
+		<form name="proform" method="post" action="__URL__/editprod/tablename/Thesis/id/{$product.id}" enctype="multipart/form-data">
+		  <table border="0" cellspacing="1" class="tb-b">
+            <tr>
+              <th>毕业论文标题</th>
+              <td><input type="text" name="title" value="{$product.title}" class="input-long" /></td>
+            </tr>
+			<tr>
+              <th>学号</th>
+              <td><input type="text" name="personid" value="{$product.personid}" class="input-b" /></td>
+            </tr>
+			<tr >
+			  <th>姓名</th>
+			  <td><input type="text" name="author" value="{$product.author}" class="input-b" /></td>
+			</tr>
+			<tr>
+              <th>毕业论文摘要</th>
+              <td><textarea rows="6" cols="55" name="abstract" value="{$product.abstract}">{$product.abstract}</textarea></td>
+            </tr>
+			 <tr rowspan="4">
+              <th height="93" rowspan="4">代表图片1</th>
+			  <td rowspan="4">
+			  <table>
+			  <tr>
+				<td><input type="file" name="image1"></td>
+				<td><img src="__ROOT__/Attachments/products/{$product.image1}" width="150" height="100" id="pimage"></td>
+			  </tr>
+			  </table>
+			  </td>
+            </tr>
+		  </table>
+			 <table border="0" cellspacing="1" class="tb-b">
+            <tr>
+              <th>资助者列表</th>
+              <td><input type="text" name="sponsor" value="{$product.sponsor}" class="input-long" /></td>
+            </tr>
+			<tr>
+              <th>论文正式稿电子版</th>
+              <td><input type="file" name="official" value="{$product.official}" class="input-b" /></td>
+            </tr>
+           <tr>
+              <th>论文草稿word版</th>
+              <td><input type="file" name="draft" value="{$product.draft}" class="input-b" /></td>
+            </tr>
+			
+            <tr>
+              <th>备注</th>
+              <td><input type="text" name="note" value="{$product.note}" class="input-b" /></td>
+            </tr>
+          </table>
+		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		</form>

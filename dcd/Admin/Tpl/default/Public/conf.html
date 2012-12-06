@@ -26,9 +26,10 @@
 				<td>{$p.publishdate}</td>
 				<td>{$p.conferencename}</td>
 				<td>{$p.authors}</td>
-				<td><a href="#">编辑</a> <a href="#">删除</a></td>
+				<td><a href="__URL__/showpage/sp/editconf/id/{$p.id}">编辑</a> <a href="__URL__/delete/id/{$p.id}/tablename/Conferencepaper">删除</a></td>
 			</tr>
 			</volist>
+			<!--
 			<tr>
 				<td colspan="6" align="left">
 					<input name="act" type="radio" value="delete" />删除
@@ -36,6 +37,7 @@
 					<input type="submit" value="提交" class="input-btn-c" />
 				</td>
 			</tr>
+			-->
 		</table>
 		</form>
 		<include file="Public:paging" />

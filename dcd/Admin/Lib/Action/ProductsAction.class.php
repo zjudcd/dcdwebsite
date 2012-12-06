@@ -39,7 +39,14 @@ class ProductsAction extends BaseAction{
 			"patent"=>"Patent",
 			"techreport"=>"Techreport",
 			"project"=>"Project",
-			"thesis"=>"Thesis");
+			"thesis"=>"Thesis",
+			"editjour"=>"Journalpaper",
+			"editconf"=>"Conferencepaper",
+			"editsw"=>"Softwareright",
+			"editpatent"=>"Patent",
+			"edittr"=>"Techreport",
+			"editproj"=>"Project",
+			"editthesis"=>"Thesis");
 		return $map[$page];
 	}
 	
@@ -72,12 +79,42 @@ class ProductsAction extends BaseAction{
 		// addjour addconf addpatent addsoftware
 		// editjour editconf editpatent editsoftware
 		$page = $_GET['sp'];// showpage
-		$addpage=array("addjour","addconf","addpatent","addsoftware","addtr");
-		if(in_array($page,$addpage))
+		$addpage=array("addjour","addconf","addpatent","addsoftware","addtr","addproj");
+		$editpage=array("editjour","editconf","editpatent","editsw","edittr","editthesis");
+		if(in_array($page,$addpage) || in_array($page,$editpage))
 		{
 			// 作者选择下拉框的数据
 			$person=M("Person")->order("name")->select();
 			$this->assign("persons",$person);
+		}
+		if(in_array($page,$editpage))
+		{
+			// 编辑页面的填充数据
+			$tablename=$this->pg2tb($page);
+			$cond["id"]=$_GET["id"];
+			$product=M($tablename)->where($cond)->select();
+			$P=M("Products");// 查询相关作者
+			$pcond["productid"]=$cond["id"];
+			$pcond["producttype"]=$this->tb2type($tablename);
+			$fields=array("personid","number");
+			$authors=$P->where($pcond)->order("number")->select($fields);
+			$nums=array();
+			//$an=array("author1","author2","author3","author4"，"author5"，"author6");
+			foreach($authors as $key=>$author)
+			{
+				$nums[]=$author["number"];
+				$name=sprintf("author%d",$author["number"]);
+				$this->assign($name,$author["personid"]);
+			}
+			for($i=1;$i<=6;++$i)
+			{
+				if(!in_array($i,$nums))
+				{
+					$name = sprintf("author%d",$i);
+					$this->assign($name,"other");// 默认选择作者other
+				}
+			}
+			$this->assign("product",$product[0]);
 		}
 		$this->assign("dsp",$page);
 		$this->display("Public:products");
@@ -103,9 +140,11 @@ class ProductsAction extends BaseAction{
 				$author[$_POST[$var]]=$i;//$_POST[$var]是作者id，是第$i作者
 			}
 		}
-		//print_r($author);
-		//print_r($_POST);//debug
-		//return;
+		if(isset($_POST["personid"]))
+		{
+			//说明提交的是毕业论文
+			$author[$_POST["personid"]]=1;//
+		}
 		$M=M($tablename);
 		if($M->Create())
 		{
@@ -113,7 +152,6 @@ class ProductsAction extends BaseAction{
 			$success = true;
 			if(($id=$M->add())!= false){
 				$Product=M("Products");//在成果表里将该成果的作者与成果关联起来
-				//$Product->startTrans(); //可能要添加多条记录，确保都添加成功或失败
 				$Person=M("Person");
 				foreach($author as $userid=>$number)
 				{
@@ -159,20 +197,154 @@ class ProductsAction extends BaseAction{
 		
 	}
 	
-	// 将修改操作全部放在这里，通过POST中的表名变量来指明所要操作的表
+	// 将修改操作全部放在这里，通过GET中的表名变量来指明所要操作的表
 	public function editprod()
 	{
-		$tablename=$_POST["tablename"];
-		foreach ($_POST as $key => $value)
+		$tablename=$_GET["tablename"];
+		$id=$_GET["id"];
+		$type=$this->tb2type($tablename);
+		$_POST["id"]=$id;
+		if(!empty($_FILES["image1"]["name"]) || !empty($_FILES["official"]["name"]) || !empty($_FILES["draft"]["name"])){
+			$filesinfo= $this->_uploadmul("products",false,300,400,true);// 附件存储在Attachments/products目录下
+		}
+		
+		foreach($filesinfo as $num=>$file)
 		{
-			if($key != "tablename")
-				$data[$key]=$value;
+			$_POST[$file["key"]]=$file["savename"];
 		}
-		if(M($tablename)->save($data)){
-			$this->success("修改成功！");
+		//$_POST["submittime"]=time();
+		for($i=1;$i<=6;$i++)
+		{
+			$var = sprintf("author%d",$i);
+			if(!empty($_POST[$var]) && $_POST[$var]!="other")
+			{
+				$author[$_POST[$var]]=$i;//$_POST[$var]是作者id，是第$i作者
+			}
+		}
+		if(isset($_POST["personid"]))
+		{
+			//说明提交的是毕业论文
+			$author[$_POST["personid"]]=1;//
+		}
+		
+		$M=M($tablename);
+		$M->startTrans();// 启动事务
+		$success = true;
+		if(($n=$M->save($_POST))!= false){
+			$Product=M("Products");//在成果表里将该成果的作者与成果关联起来
+			$acond["productid"]=$id;
+			$acond["producttype"]=$type;
+			$fields=array("personid","number");
+			$dbauthor=$Product->where($acond)->order("number")->select($fields);
+			$indb=array();//记录已经在数据库的作者
+			foreach($dbauthor as $n=>$au)
+			{
+				// 检查作者变化
+				// 原先有现在没有的删除
+				// 原先有，现在次序改变的，更新
+				// 原先没有的，添加
+				$personid=$au["personid"];
+				$number=$au["number"];
+				if(array_key_exists($personid,$author))
+				{
+					$indb[]=$personid;
+					if($author[$personid]==number)
+						continue;// 无需改变
+					else
+					{
+						// 作者次序改变了
+						$au["number"]=$author[$personid];
+						$Product->save($au);
+					}
+				}
+				else
+				{
+					$acond["personid"]=$personid;
+					$Product->where($acond)->delete();//该作者不在
+				}
+			}
+			
+			$Person=M("Person");
+			foreach($author as $userid=>$number)
+			{
+				if(in_array($userid,$indb))
+					continue;// 只要那些新增的作者才需要重新插入记录
+				$record["personid"]=$userid;
+				$cond["personid"]=$userid;
+				$pinfo=$Person->where($cond)->find();// 根据id查找作者更多信息
+				if($pinfo)
+				{
+					$record["personid"]=$userid;
+					$record["personname"]=$pinfo["name"];
+					$record["persontype"]=$pinfo["category"];
+					$record["productid"]=$id;
+					$record["producttype"]=$type;
+					$record["number"]=$number;
+					if($Product->add($record)==false)
+					{
+						$success = false;
+						break;//break foreach
+					}
+				}
+			}
+			if($success)
+			{
+				$M->commit();//提交事务
+				$this->assign("jumpUrl","__URL__");
+				$this->success("修改成功！");
+			}
+			else
+			{
+				$M->rollback();
+				$this->error("更新失败！原因：操作成果总表失败！");
+			}
 		}else{
-			$this->error("资料无改变或修改失败！");		
+			$M->rollback();
+			$this->error("更新记录失败！或者成果资料未改动");
 		}
+	}
+	
+	public function delete()
+	{
+		$tablename=$_GET["tablename"];
+		$id=$_GET["id"];// 成果id，在tablename中是唯一的，但是在products表中还需要成果类型才能唯一确定某个成果
+		$success=false;
+		$M=M($tablename);
+		$M->startTrans();// 开始事务
+		$P=M("Products");// 成果人员对应表也要删除相应记录
+		$type=$this->tb2type($tablename);
+		$pcond["productid"]=$id;
+		$pcond["producttype"]=$type;
+		if($P->where($pcond)->delete()==false)
+		{
+			$success=false;
+			$msg="删除成果人员对应表失败！";
+		}
+		else
+		{
+			$cond["id"]=$id;
+			if($M->where($cond)->delete())
+			{
+				$success=true;
+			}
+			else
+			{
+				$success=false;
+				$msg="删除成果失败！";
+			}
+		}
+		if($success)
+		{
+			$M->commit();
+			$msg="删除成功！";
+			$this->success($msg);
+		}
+		else
+		{
+			$M->rollback();
+			$this->error($msg);
+		}
+		
 	}
 	
 }

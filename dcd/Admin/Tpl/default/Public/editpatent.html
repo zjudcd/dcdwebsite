@@ -1,0 +1,191 @@
+﻿<h4><a href="javascript:history.back()">专利管理</a> >>编辑成果-专利</h4>
+		<form name="proform" method="post" action="__URL__/editprod/tablename/Patent/id/{$product.id}" enctype="multipart/form-data">
+		  <table border="0" cellspacing="1" class="tb-b">
+
+			<tr>
+              <th>专利标题</th>
+              <td><input type="text" name="title" value="{$product.title}" class="input-b" /></td>
+            </tr>
+ 
+			<tr>
+              <th>作者姓名列表</th>
+              <td><input type="text" name="authors" value="{$product.authors}" class="input-long" /></td>
+            </tr>
+			<tr >
+			  <th>第一作者</th>
+			  <td> <select name="author1" style="width:100px">
+					<if condition="$author1 eq 'other'">
+					<option value="other" selected="selected">other</option>
+					<else />
+					<option value="other">其他</option>
+					</if>
+					<volist name="persons" id="p">
+					<if condition="$p['personid'] eq $author1">
+						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
+					<else />
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</if>
+					</volist>
+						
+					</select>
+			  </td>
+			</tr>
+			<tr >
+			  <th>第二作者</th>
+			  <td> <select name="author2" style="width:100px">
+					<if condition="$author2 eq 'other'">
+					<option value="other" selected="selected">other</option>
+					<else />
+					<option value="other">其他</option>
+					</if>
+					<volist name="persons" id="p">
+					<if condition="$author2 eq $p['personid']">
+						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
+					<else />
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</if>
+					</volist>
+
+					</select>
+			  </td>
+			</tr>
+			<tr >
+			  <th>第三作者</th>
+			  <td> <select name="author3" style="width:100px">
+					<if condition="$author3 eq 'other'">
+					<option value="other" selected="selected">other</option>
+					<else />
+					<option value="other">其他</option>
+					</if>
+					<volist name="persons" id="p">
+					<if condition="$author3 eq $p['personid']">
+						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
+					<else />
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</if>
+					</volist>
+						
+					</select>
+			  </td>
+			</tr>
+			<tr >
+			  <th>第四作者</th>
+			  <td> <select name="author4" style="width:100px">
+					<if condition="$author4 eq 'other'">
+					<option value="other" selected="selected">other</option>
+					<else />
+					<option value="other">其他</option>
+					</if>
+					<volist name="persons" id="p">
+					<if condition="$author4 eq $p['personid']">
+						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
+					<else />
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</if>
+					</volist>
+						
+					</select>
+			  </td>
+			</tr>
+			<tr >
+			  <th>第五作者</th>
+			  <td> <select name="author5" style="width:100px">
+					<if condition="$author5 eq 'other'">
+					<option value="other" selected="selected">other</option>
+					<else />
+					<option value="other">其他</option>
+					</if>
+					<volist name="persons" id="p">
+					<if condition="$author5 eq $p['personid']">
+						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
+					<else />
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</if>
+					</volist>
+						
+					</select>
+			  </td>
+			</tr>
+			<tr >
+			  <th>第六作者</th>
+			  <td> <select name="author6" style="width:100px">
+					<if condition="$author6 eq 'other'">
+					<option value="other" selected="selected">other</option>
+					<else />
+					<option value="other">其他</option>
+					</if>
+					<volist name="persons" id="p">
+					<if condition="$author6 eq $p['personid']">
+						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
+					<else />
+						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
+					</if>
+					</volist>
+					</select>
+			  </td>
+			</tr>
+			 
+			<tr>
+              <th>专利简介</th>
+              <td> <textarea rows="6" cols="55" name="abstract" value="{$product.abstract}">{$product.abstract}</textarea></td></td>
+            </tr>
+            <tr rowspan="4">
+              <th height="93" rowspan="4">代表图片1</th>
+			  <td rowspan="4">
+			  <table>
+			  <tr>
+				<td><input type="file" name="image1"></td>
+				<td><img src="__ROOT__/Attachments/products/{$product.image1}" width="150" height="100" id="pimage"></td>
+			  </tr>
+			  </table>
+			  </td>
+			  <!--
+              <td rowspan="4"><input type="file" name="image1"></td>
+			  -->
+            </tr>
+		  </table>
+			 <table border="0" cellspacing="1" class="tb-b">
+            <tr>
+              <th>专利申请书</th>
+              <td><input type="file" name="application" value="{$product.application}" class="input-b" /></td>
+            </tr>
+			<tr>
+			<tr>
+              <th>当前状态</th>
+              <td><input type="text" name="status" value="{$product.status}" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>专利受理号</th>
+              <td><input type="text" name="acceptnum" value="{$product.acceptnum}" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>专利受理日期</th>
+              <td><input type="text" name="acceptdate" value="{$product.acceptdate}" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>专利受理录通知书</th>
+              <td><input type="file" name="notice" value="{$product.notice}" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>授权号</th>
+              <td><input type="text" name="authorizationnum" value="{$product.authorizationnum}" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>授权日期</th>
+              <td><input type="text" name="authorizationdate" value="{$product.authorizationdate}" class="input-b" /></td>
+            </tr>
+			<tr>
+              <th>授权证书</th>
+              <td><input type="file" name="authorizationcertificate" value="{$product.authorizationcertificate}" class="input-b" /></td>
+            </tr>
+           <tr>
+              <th>资助者列表</th>
+              <td><input type="text" name="sponsor" value="{$product.sponsor}" class="input-b" /></td>
+            </tr>
+            <tr>
+              <th>备注</th>
+              <td><input type="text" name="note" value="{$product.note}" class="input-b" /></td>
+            </tr>
+          </table>
+		  <div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		</form>
