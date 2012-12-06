@@ -1,22 +1,35 @@
 <link href="../Public/style.css" rel="stylesheet" type="text/css" />
+<link href="../Public/templatemo_style.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 table.info
 {
 }
+.b-area-ww { width:778px; border: 5px solid #d8d7d7; padding: 5px; background-color: #ebf6fb;}
 </style>
-<include file="Public:header" />
+<div id="templatemo_header_wrapper">
+  <div id="templatemo_header">
+    <div id="site_logo"></div>
+
+	</div>
+  <!-- end of header -->
+</div>
 <div class="cbody b-box blank10">
 	<include file="Public:menu" />
-	<div class="b-area-w f_r">
-		<h4>添加学生用户</h4>
+	<div class="b-area-ww f_r" style="float:left">
+		<h4>修改个人信息</h4>
 		<form name="memberform" method="post" action="__URL__/adds">
-		<table width="100%" border="1"  cellspacing="1" >
+		<table width="100%" border="1"  cellspacing="1" align="center">
 
 			<tr>
 				<th width="148">姓名</th>
 			  <td width="168"><input type="text" name="username" value="" /></td>
 				<th width="144" >性别</th>
-				<td width="168"><input type="text" name="username" value="" /></td>
+				<td width="168">
+						<select name="gender">
+							<option value="男">男</option>
+							<option value="女">女</option>
+						</select>
+				</td>
 				<th width="189" >出生年月</th>
 				<td width="168"><input type="text" name="username" value="" /></td>
 				<td width="615" rowspan="4">照片</td>
@@ -39,18 +52,18 @@ table.info
 			<th width="148">电话</th>
 			  <td ><input type="text" name="username2" value="" /></td>
 			  <th >身份证号</th>
-				<td colspan="3" ><input type="text" name="username" value="" class="input-b" /></td>
+				<td colspan="3" ><input type="text" name="username" value="" /></td>
 			<tr>
 				<th>住址</th>
-			<td colspan="6"><input type="text" name="email" value="" class="input-b" /></td>
+			<td colspan="6"><input type="text" name="email" value=""  /></td>
 			</tr>
 			<tr>
 				<th>邮箱</th>
-				<td colspan="6"><input type="text" name="email" value="" class="input-b" /></td>
+				<td colspan="6"><input type="text" name="email" value="" ></td>
 			</tr>
 			<tr>
 				<th>特长爱好</th>
-				<td colspan="6"><input type="text" name="email" value="" class="input-b" /></td>
+				<td colspan="6"><input type="text" name="email" value="" /></td>
 			</tr>
 			
 		</table>
@@ -100,20 +113,21 @@ table.info
 				<th colspan="7">个人简介</th>
 			</tr>
 			<tr>
-				<td colspan="7"><input type="text" name="username3" value=""class="input-b" /></td>
+				<td height="126" colspan="7">
+				  <textarea rows="10" cols="85" name="introduction" value="{$student['introduction']}"></textarea></td>
 			</tr>
 			<tr>
 			    <th width="148">所属课题组</th>
-				<td colspan="6"><input type="text" name="username3" value=""class="input-b" /></td>
+				<td colspan="6"><input type="text" name="username3" value="" /></td>
 			</tr>
 			<tr>
 			    <th width="148">所在实验室</th>
-				<td colspan="6"><input type="text" name="username3" value=""class="input-b" /></td>
+				<td colspan="6"><input type="text" name="username3" value="" /></td>
 			</tr>
 		   
 		  </table>
 		
-		<div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		<div align="center"><input type="submit" value="提交"  /></div>
 		</form>
 		</case>
 		

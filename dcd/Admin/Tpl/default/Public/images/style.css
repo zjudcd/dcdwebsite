@@ -42,6 +42,7 @@ a.link-a, a.link-a:hover { color: #FFF; text-decoration: none; }
 	.cbody .sidebar a:hover { color: #FFF; background: #397fa3 url(menu.gif) no-repeat 10px center; }
 	.b-area-b { width:780px; background: #397fa3; color: #FFF; padding: 0 5px; line-height: 28px;  }
 	.b-area-w { width:778px; border: 1px solid #333; padding: 5px; }
+
 	.cbody h4 { padding: 0 0 0 5px; margin: 5px 0; border-left: 5px solid #397fa3;  }
 	.cbody .pages { border: 1px solid #333; line-height: 24px; padding: 0 5px; }
 	
