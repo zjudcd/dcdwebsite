@@ -22,7 +22,7 @@ class PublicAction extends Action{
 				Session::set(C('USER_AUTH_KEY'),$checkUser['personid']);
 				Session::set('admin',$checkUser['personid']);
 				$Member->where("personid = ".$checkUser['personid']);
-				$this->assign("jumpUrl","__APP__/Index");
+				$this->assign("jumpUrl","__APP__/Member");
 				$this->success("登陆成功！");
 			}
 		}
