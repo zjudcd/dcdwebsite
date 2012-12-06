@@ -16,7 +16,7 @@ body { margin: 0px; padding: 0px; font-size: 12px; }
 .blank10_r { margin-right: 10px; }
 .b-box { width: 950px; margin-left: auto; margin-right: auto; }
 .b-div { background:  #6fc2ee; }
-a { color:#397fa3; text-decoration: none; }
+a { color:#000; text-decoration: none; }
 a:hover { color: #397fa3; text-decoration: underline; }
 a.link-a, a.link-a:hover { color: #FFF; text-decoration: none; }
 .tb-a { background: #397fa3; line-height: 24px; text-align: center; }
@@ -50,6 +50,7 @@ a.link-a, a.link-a:hover { color: #FFF; text-decoration: none; }
 	.login div { color: #FFF; font-size: 12px; line-height: 24px; }
 	
 	/* Input */
+	.inputbutton{ background: url(Button.jpg) no-repeat center center;}
 	.input-a { border: 1px solid #999; width: 160px; color: #333333; background: #FFF; }
 	.input-b { border: none; width: 200px; color: #333333; background: #FFF; height: 24px; }
 	.input-long { border: none; width: 100%; color: #333333; background: #FFF; height: 24px; }
