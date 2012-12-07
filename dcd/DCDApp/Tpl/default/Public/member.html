@@ -1,4 +1,4 @@
-<link href="../Public/style.css" rel="stylesheet" type="text/css" />
+﻿<link href="../Public/style.css" rel="stylesheet" type="text/css" />
 <link href="../Public/templatemo_style.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 table.info
@@ -22,28 +22,28 @@ table.info
 
 			<tr>
 				<th width="148">姓名</th>
-			  <td width="168"><input type="text" name="username" value="" /></td>
+			  <td width="168"><input type="text" name="name" value="{$p['name']}" /></td>
 				<th width="144" >性别</th>
 				<td width="168">
 						<select name="gender">
-							<option value="男">男</option>
-							<option value="女">女</option>
+							<option value="男" {$man}>男</option>
+							<option value="女" {$woman}>女</option>
 						</select>
 				</td>
 				<th width="189" >出生年月</th>
-				<td width="168"><input type="text" name="username" value="" /></td>
+				<td width="168"><input type="text" name="birthday" value="{$p['birthday']}" /></td>
 				<td width="615" rowspan="4"><input type="file" name="photo" style="width:120"></td>
 			</tr>
 			<tr>
 				<th width="148">政治面貌</th>
-			    <td width="168"><input type="text" name="username3" value="" /></td>
+			    <td width="168"><input type="text" name="politicsstatus" value="{$p['politicsstatus']}" /></td>
 			    <th width="144" >生源地</th>
-				<td width="168"><input type="text" name="username" value="" /></td>
+				<td width="168"><input type="text" name="nativeplace" value="{$p['nativeplace']}" /></td>
 				<th width="189" >出生地</th>
-				<td width="168"><input type="text" name="username" value="" /></td>
+				<td width="168"><input type="text" name="birthplace" value="{$p['birthplace']}" /></td>
 			</tr>
 			<th width="148">导师</th>
-			  <td width="168"><input type="text" name="username" value="" /></td>
+			  <td width="168">{$teachername}</td>
 				<th width="144" >专业年级</th>
 				<td width="168"><input type="text" name="username" value="" /></td>
 				<th width="189" >学号</th>

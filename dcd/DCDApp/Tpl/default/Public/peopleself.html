@@ -146,16 +146,16 @@ white-space:pre;
 </div>
 <P style="font-size:16px"  style="font-weight:bold"> 个人信息 </P>
 <div class="peo"> 
-<P style="font-size:14px"  style="font-weight:bold">  姓 名 ：                      性 别 ：                       出生年月 ：                        政治面貌 ：
+<P style="font-size:14px"  style="font-weight:bold">  姓 名 ：       {$p["name"]}{$p["academichonour"]}               性 别 ：       {$p["gender"]}                出生年月 ：   {$p["birthday"]}                     政治面貌 ： {$politicsstatus}
   
   个人简介 ：
-{$person['introduction']}
+{$p['introduction']}
 </P>
 
-<P style="font-size:14px"  style="font-weight:bold">  联系方式 ：{$person['email']}
+<P style="font-size:14px"  style="font-weight:bold">  电子邮箱 ：{$p['email']}
 </P>
 </div>
-<div style="float:right"><input type="button" style="background-color:#CCCCCC"  value="修改个人信息"></div>
+<div style="float:right"><a href="__APP__/{$cate}"><input type="button" style="background-color:#CCCCCC"  value="修改个人信息"></a></div>
 
 <P style="font-size:16px"  style="font-weight:bold"> &nbsp;</P>
 

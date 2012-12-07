@@ -20,9 +20,9 @@ class PublicAction extends Action{
 				$this->error("用户名或密码不正确！");
 			}else{
 				Session::set(C('USER_AUTH_KEY'),$checkUser['personid']);
-				Session::set('admin',$checkUser['personid']);
+				Session::set('userid',$checkUser['personid']);
 				$Member->where("personid = ".$checkUser['personid']);
-				$this->assign("jumpUrl","__APP__/Member");
+				$this->assign("jumpUrl","__APP__/Peopleself");
 				$this->success("登陆成功！");
 			}
 		}
