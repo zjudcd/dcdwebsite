@@ -20,7 +20,6 @@ class PublicAction extends Action{
 				$this->assign("jumpUrl","__APP__/Public/login");
 				$this->error("用户名或密码不正确！");
 			}else{
-				Session::set(C('USER_AUTH_KEY'),$checkUser['personid']);
 				Session::set('userid',$checkUser['personid']);
 				$Member->where("personid = ".$checkUser['personid']);
 				$this->assign("jumpUrl","__APP__/Peopleself");
@@ -38,8 +37,8 @@ class PublicAction extends Action{
 //		Image::buildImageVerify();
 //  	}
 	public function logout(){
-		if(Session::is_set(C('USER_AUTH_KEY'))){
-			Session::clear();
+		if(Session::is_set('userid')){
+			Session::set('userid',"");
 			$this->assign('jumpUrl',__URL__.'/login');
 			$this->success("注销成功！");
 		}else{
