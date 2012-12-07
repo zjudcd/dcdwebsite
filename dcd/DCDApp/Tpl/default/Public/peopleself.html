@@ -101,9 +101,18 @@ border: 2px solid  #215b8d;
 div.peo
 {
 width:680px;
-
-border: 2px solid  #d8d7d7;
+border-bottom:1px dashed #215b8d;
 margin-top:10px;
+word-wrap: break-word;
+word-break: normal; 
+
+
+}
+div.res
+{
+width:680px;
+margin-top:10px;
+
 white-space:pre;
 word-wrap: break-word;
 word-break: normal; 
@@ -114,12 +123,16 @@ width:70px;
 height:100px;
 float:left;
 font-size:14px;
+margin-top:15px;
 }
 div.selff{
-width:580px;
+width:610px;
 float:left;
 font-size:14px;
 margin-bottom:15px;
+margin-top:15px;
+line-height:150%;
+letter-spacing:1px;
 }
 
 </style>
@@ -166,9 +179,9 @@ margin-bottom:15px;
 	  <td width="60">{$p["name"]}</td>
 		<td width="70" >性        别：</td>
 		<td width="30">{$p["gender"]}</td>
-		<td width="70" >出生年月：</td>
+		<td width="80" >出生年月：</td>
 		<td width="50">{$p["birthday"]}</td>
-		<td width="70">政治面貌：</td>
+		<td width="80">政治面貌：</td>
 		<td width="90">{$p["politicstatus"]}</td>
 		<td width="70">职       称：</td>
 		<td width="90">{$p["politicstatus"]}</td>
@@ -190,10 +203,13 @@ margin-bottom:15px;
 <P style="font-size:16px"  style="font-weight:bold"> &nbsp;</P>
 
 <P style="font-size:16px"  style="font-weight:bold"> 成果展示</P>
-<div class="peo" style="margin-bottom:60px" >
 
-<!--<div style="float:right"><input type="button" style="background-color:#CCCCCC"  value="修改个人成果"></div>
-</div>-->
+<div class="res"  >
+<div>
+<ul style="list-style:decimal">
+<li></li>
+</ul>
+</div>
 
 </div>
 <div style="float:right"><a href="__APP__/password" style="color:#397fa3">>>修改密码</a></div>
