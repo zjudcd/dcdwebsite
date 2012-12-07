@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -105,7 +105,21 @@ width:680px;
 border: 2px solid  #d8d7d7;
 margin-top:10px;
 white-space:pre;
+word-wrap: break-word;
+word-break: normal; 
 
+}
+div.self{
+width:70px;
+height:100px;
+float:left;
+font-size:14px;
+}
+div.selff{
+width:580px;
+float:left;
+font-size:14px;
+margin-bottom:15px;
 }
 
 </style>
@@ -125,7 +139,6 @@ white-space:pre;
 <div class="people">
 <div class="img">
 <img src="__ROOT__/Attachments/photo/{$p['photo']}" /><br/>
-{$person['name']}
 </div>
 </div>
 
@@ -141,34 +154,24 @@ white-space:pre;
 <div class="peo"> 
 <table width="100%" align="center" style="font-size:14px">
 	<tr>
-		<td width="80">姓       名：</td>
-	  <td width="70"></td>
-		<td width="80" >性        别：</td>
-		<td width="70">			  </td>
-		<td width="80" >出生年月：</td>
-		<td width="70"></td>
-		<td width="80">政治面貌：</td>
-		<td width="140"></td>
+		<td width="70">姓       名：</td>
+	  <td width="60">{$p["name"]}</td>
+		<td width="70" >性        别：</td>
+		<td width="30">{$p["gender"]}</td>
+		<td width="70" >出生年月：</td>
+		<td width="50">{$p["birthday"]}</td>
+		<td width="70">政治面貌：</td>
+		<td width="90">{$p["politicstatus"]}</td>
+		<td width="70">导       师：</td>
+		<td width="90">{$p["politicstatus"]}</td>
 	</tr>
+	</table>
+	<div class="self">个人简介：	</div><div class="selff">{$p['introduction']}</div>
+
+<table width="100%" align="center" style="font-size:14px">
+
 	<tr>
-	<td width="80" height="15"> </td>
-	</tr>
-	<tr>
-	<tr>
-	<td width="80">个人简介：</td>
-	<td rowspan="4" colspan="7">{$p['introduction']}</td>
-	</tr>
-	<tr>
-	<td width="80" height="106"> </td>
-	</tr>
-	<tr>
-	<td width="80"> </td>
-	</tr>
-	<tr>
-	<td width="80"> </td>
-	</tr>
-	<tr>
-	<td width="80">电子邮箱：</td>
+	<td width="70">电子邮箱：</td>
 	<td rowspan="4">{$p['email']}</td>
 	</tr>
  </table> 
@@ -183,6 +186,7 @@ white-space:pre;
 </div>-->
 
 </div>
+
 </div>
 </div>
 </div>

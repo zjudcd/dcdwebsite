@@ -125,15 +125,7 @@ margin-bottom:15px;
 </style>
 </head>
 <body>
-<div id="templatemo_header_wrapper">
-  <div id="templatemo_header">
-    <div id="site_logo"></div>
-		<div class="userinfo f_r" style="float:right"><p>&nbsp;</p>
-		<if condition="Session::get('userid') neq ''">欢迎回来！ {$Think.session.userid} |<a href="__ROOT__/index.php" target="_blank">网站主页</a> | <a href="__APP__/Public/logout">注销登陆</a><else /><a href="__ROOT__/index.php" target="_blank">网站主页</a></if></div>
-	</div>
-  <!-- end of header -->
-</div>
-<!-- end of menu wrapper -->
+<include file="Public:header" />
 <div id="tempatemo_content_wrapper" >
 <div id="people_content">
 <div class="container">
@@ -185,8 +177,6 @@ margin-bottom:15px;
  </table> 
 
 </div>
-<div style="float:right"><a href="__APP__/Member_t"><input type="button" style="background-color:#CCCCCC"  value="修改个人信息"></a></div>
-
 <P style="font-size:16px"  style="font-weight:bold"> &nbsp;</P>
 
 <P style="font-size:16px"  style="font-weight:bold"> 成果展示</P>
@@ -196,9 +186,6 @@ margin-bottom:15px;
 </div>-->
 
 </div>
-<div style="float:right"><a href="__APP__/password" style="color:#397fa3">>>修改密码</a></div>
-
-
 
 </div>
 </div>
