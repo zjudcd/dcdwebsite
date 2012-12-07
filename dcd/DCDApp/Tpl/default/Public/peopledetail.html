@@ -112,7 +112,6 @@ white-space:pre;
 </head>
 <body>
 <include file="Public:header" />
-<!-- end of menu wrapper -->
 <div id="tempatemo_content_wrapper" >
 <div id="people_content">
 <div class="container">
@@ -125,7 +124,7 @@ white-space:pre;
 
 <div class="people">
 <div class="img">
-<img src="__ROOT__/Attachments/photo/{$person['photo']}" /><br/>
+<img src="__ROOT__/Attachments/photo/{$p['photo']}" /><br/>
 {$person['name']}
 </div>
 </div>
@@ -138,38 +137,56 @@ white-space:pre;
 <div style="height:12px">
 <P></P>
 </div>
-<P style="font-size:16px"  style="font-weight:bold"> 个人信息</P>
+<P style="font-size:16px"  style="font-weight:bold"> 个人信息 </P>
 <div class="peo"> 
-<P style="font-size:14px"  style="font-weight:bold">  姓 名 ：                      性 别 ：                       出生年月 ：                        政治面貌 ：
-  
-  个人简介 ：
-{$person['introduction']}
-</P>
+<table width="100%" align="center" style="font-size:14px">
+	<tr>
+		<td width="80">姓       名：</td>
+	  <td width="70"></td>
+		<td width="80" >性        别：</td>
+		<td width="70">			  </td>
+		<td width="80" >出生年月：</td>
+		<td width="70"></td>
+		<td width="80">政治面貌：</td>
+		<td width="140"></td>
+	</tr>
+	<tr>
+	<td width="80" height="15"> </td>
+	</tr>
+	<tr>
+	<tr>
+	<td width="80">个人简介：</td>
+	<td rowspan="4" colspan="7">{$p['introduction']}</td>
+	</tr>
+	<tr>
+	<td width="80" height="106"> </td>
+	</tr>
+	<tr>
+	<td width="80"> </td>
+	</tr>
+	<tr>
+	<td width="80"> </td>
+	</tr>
+	<tr>
+	<td width="80">电子邮箱：</td>
+	<td rowspan="4">{$p['email']}</td>
+	</tr>
+ </table> 
 
-<P style="font-size:14px"  style="font-weight:bold">  联系方式 ：{$person['email']}
-</P>
 </div>
-<!--<div style="float:right"><input type="button" style="background-color:#CCCCCC"  value="修改个人信息"></div>
-</div>-->
 <P style="font-size:16px"  style="font-weight:bold"> &nbsp;</P>
 
 <P style="font-size:16px"  style="font-weight:bold"> 成果展示</P>
-<div class="peo" >
+<div class="peo" style="margin-bottom:60px" >
 
 <!--<div style="float:right"><input type="button" style="background-color:#CCCCCC"  value="修改个人成果"></div>
 </div>-->
 
-
-
-</div>
-
-
-
 </div>
 </div>
 </div>
 </div>
-
+</div>
 <include file="Public:footer" />
    			
 </body>
