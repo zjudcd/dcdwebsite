@@ -114,7 +114,8 @@ white-space:pre;
 <div id="templatemo_header_wrapper">
   <div id="templatemo_header">
     <div id="site_logo"></div>
-
+		<div class="userinfo f_r" style="float:right"><p>&nbsp;</p>
+		<if condition="Session::get(C('USER_AUTH_KEY')) neq ''">欢迎回来！ {$Think.session.admin} |<a href="__ROOT__/index.php" target="_blank">网站主页</a> | <a href="__APP__/Public/logout">注销登陆</a><else /><a href="__ROOT__/index.php" target="_blank">网站主页</a></if></div>
 	</div>
   <!-- end of header -->
 </div>
@@ -146,10 +147,10 @@ white-space:pre;
 </div>
 <P style="font-size:16px"  style="font-weight:bold"> 个人信息 </P>
 <div class="peo"> 
-<P style="font-size:14px"  style="font-weight:bold">  姓 名 ：       {$p["name"]}{$p["academichonour"]}               性 别 ：       {$p["gender"]}                出生年月 ：   {$p["birthday"]}                     政治面貌 ： {$politicsstatus}
+<P style="font-size:14px"  style="font-weight:bold">  姓 名 ：       {$p["name"]}{$p["academichonour"]}               性 别 ：       {$p["gender"]}                出生年月 ：   {$p["birthday"]}                     政治面貌 ： {$p["politicsstatus"]}
   
-  个人简介 ：
-{$p['introduction']}
+  
+  个人简介 ：{$p['introduction']}
 </P>
 
 <P style="font-size:14px"  style="font-weight:bold">  电子邮箱 ：{$p['email']}
