@@ -101,5 +101,14 @@ class TeacherAction extends BaseAction{
 	public function batch(){
 		$this->_batch();
 	} 
+	public function reset(){
+		$data["personid"] = $_GET["teacherid"];
+		$data["password"] = md5("123456");
+		if(M("person")->save($data)){
+			$this->success("修改成功！");
+		}else{
+			$this->success("修改失败！");
+		}
+	}
 }
 ?>

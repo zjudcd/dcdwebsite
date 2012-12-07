@@ -277,8 +277,16 @@ table.info
 							window.event.returnValue = false;
 						}
 					}
+					function confirmReset(value) {
+						var items=value.split("/");
+						var newsid=items[items.length-1];
+						var title=document.getElementById(newsid).innerText;
+						if (!confirm("确认要重置"+title+"的密码")) {
+							window.event.returnValue = false;
+						}
+					}
 				</script>
-				<td><a href="__URL__/edit/studentid/{$u.id}">编辑</a>  <a href="__URL__/batch/act/delete/id/{$u.id}" onClick="confirmDel(this.href)">删除</a></td>
+				<td><a href="__URL__/edit/studentid/{$u.id}">编辑</a>  <a href="__URL__/batch/act/delete/id/{$u.id}" onClick="confirmDel(this.href)">删除</a><a href="__URL__/reset/studentid/{$u.id}" onClick="confirmReset(this.href)">重置密码</a></td>
 			</tr>
 			</volist>
 			<tr>
