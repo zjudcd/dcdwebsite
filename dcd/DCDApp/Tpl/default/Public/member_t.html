@@ -1,0 +1,148 @@
+<link href="../Public/style.css" rel="stylesheet" type="text/css" />
+<link href="../Public/templatemo_style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+table.info
+{
+}
+.b-area-ww { width:778px; border: 5px solid #d8d7d7; padding: 5px; background-color: #ebf6fb;}
+</style>
+<div id="templatemo_header_wrapper">
+  <div id="templatemo_header">
+    <div id="site_logo"></div>
+
+	</div>
+  <!-- end of header -->
+</div>
+<div class="cbody b-box blank10">
+	<include file="Public:menu" />
+	<div class="b-area-ww f_r" style="float:left">
+		<h4>修改个人信息</h4>
+			<form name="memberform" method="post" enctype="multipart/form-data" action="__URL__/adds">
+			<table width="100%" border="1"  cellspacing="1" >
+
+				<tr>
+					<th width="148">姓名</th>
+				  <td width="168"><input type="text" name="name" value="" /></td>
+					<th width="144" >性别</th>
+					<td width="168">
+						<select name="gender">
+							<option value="男">男</option>
+							<option value="女">女</option>
+						</select>
+					</td>
+					<th width="189" >出生年月</th>
+					<td width="168"><input type="text" name="birthday" value="" /></td>
+					<td width="615" rowspan="4"><input type="file" name="photo" style="width:120"></td>
+				</tr>
+				<tr>
+					<th width="148">政治面貌</th>
+					<td width="168"><input type="text" name="politicsstatus" value="" /></td>
+					<th width="144" >技术职称</th>
+					<td width="168"><input type="text" name="position" value="" /></td>
+					<th width="189" >出生地</th>
+					<td width="168"><input type="text" name="birthplace" value="" /></td>
+				</tr>
+				<th width="148">行政职务</th>
+				  <td width="168"><input type="text" name="politicsposition" value="" /></td>
+					<th width="144" >婚否</th>
+					<td width="168">
+						<select name="ismarried">
+							<option value="1">已婚</option>
+							<option value="0">未婚</option>
+						</select>
+					</td>
+					<th width="189" >工号</th>
+					<td width="168"><input type="text" name="id" value="" /></td>
+				<tr>
+				<th width="148">研究方向</th>
+				  <td width="168"><input type="text" name="researchdir" value="" /></td>
+					<th width="144" >最高学位</th>
+					<td width="168"><input type="text" name="degree" value="" /></td>
+					<th width="189" >获得学位年份</th>
+					<td width="168"><input type="text" name="degreedate" value="" /></td>
+				<tr>
+					<th>学术称号</th>
+					<td colspan="6"><input type="text" name="academichonour" value="" /></td>
+				</tr>
+				<tr>
+				<th width="148">电话</th>
+				  <td ><input type="text" name="phonenum" value="" /></td>
+				  <th >身份证号</th>
+					<td colspan="4" ><input type="text" name="idcardno" value=""/></td>
+				<tr>
+					<th>住址</th>
+				<td colspan="6"><input type="text" name="address" value="" /></td>
+				</tr>
+				<tr>
+					<th>邮箱</th>
+					<td colspan="6"><input type="text" name="email" value="" /></td>
+				</tr>
+				
+				
+			</table>
+		
+		<table width="100%" border="1"  cellspacing="1" >
+		<tr><th colspan="7">个人简历</th></tr>
+			<tr>
+				<th rowspan="2" width="148">研究生</th>
+				<th width="166" >毕业院校</th>
+		      <td colspan="3"><input type="text" name="postgraduateschool" value="" /></td>
+				<th width="189" >所在院系</th>
+			  <td width="189"><input type="text" name="postgraduatefaculty" value="" /></td>
+		   </tr>
+		   <tr>
+				<th >专业</th>
+		     <td width="559"><input type="text" name="postgraduatemajor" value="" /></td>
+			    <th width="189" >学位</th>
+			 <td width="189"><input type="text" name="postgraduatedegree" value="" /></td>
+				<th width="189" >毕业时间</th>
+				<td width="168"><input type="text" name="postgraduateend" value="" /></td>
+		   </tr>
+		   
+		   <tr>
+				<th rowspan="2" width="148">本科生</th>
+				<th width="166" >毕业院校</th>
+		      <td colspan="3"><input type="text" name="collegeschool" value="" /></td>
+				<th width="189" >所在院系</th>
+			  <td width="189"><input type="text" name="collegefaculty" value="" /></td>
+		   </tr>
+		   <tr>
+				<th >专业</th>
+		     <td width="559"><input type="text" name="collegemajor" value="" /></td>
+			    <th width="189" >学位</th>
+			 <td width="189"><input type="text" name="collegedegree" value="" /></td>
+				<th width="189" >毕业时间</th>
+				<td width="168"><input type="text" name="collegeend" value="" /></td>
+		   </tr>
+		 
+		   <tr>
+				<th colspan="7">个人简介</th>
+			</tr>
+			<tr>
+				<td height="126" colspan="7">
+				  <textarea rows="10" cols="85" name="introduction" value="{$student['introduction']}" style="width:400" ></textarea></td>
+			</tr>
+			<tr>
+			    <th width="148">学术任职</th>
+				<td colspan="6"><input type="text" name="academicparticipation" value="" /></td>
+			</tr>
+			<tr>
+			    <th width="148">所属课题组</th>
+				<td colspan="6"><input type="text" name="researchgroup" value="" /></td>
+			</tr>
+			<tr>
+			    <th width="148">所在实验室</th>
+				<td colspan="6"><input type="text" name="lab" value="" /></td>
+			</tr>
+		  </table>
+		
+		<div align="center">
+		  <input name="submit" type="submit" value="提交">
+		</div>
+		</form>
+		</case>
+		
+	</div>
+	<div class="clear"></div>
+</div>
+<include file="Public:footer" />
