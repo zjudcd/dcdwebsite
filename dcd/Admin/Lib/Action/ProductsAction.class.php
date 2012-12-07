@@ -31,6 +31,18 @@ class ProductsAction extends BaseAction{
 		$this->display("Public:products");
 	}
 	
+	static protected function tb2pg($tb)
+	{
+		$map=array("Journalpaper"=>"jour",
+			"Conferencepaper"=>"conf",
+			"Softwareright"=>"software",
+			"Patent"=>"patent",
+			"Techreport"=>"techreport",
+			"Project"=>"project",
+			"Thesis"=>"thesis");
+		return $map[$tb];
+	}
+	
 	static protected function pg2tb($page)
 	{
 		$map=array("jour"=>"Journalpaper",
@@ -127,6 +139,7 @@ class ProductsAction extends BaseAction{
 	public function addprod()
 	{
 		$tablename=$_GET["tablename"];
+		$sp=$this->tb2pg($tablename);
 		if(!empty($_FILES)){
 			$filesinfo= $this->_uploadmul("products",false,300,400,true);// 附件存储在Attachments/products目录下
 		}
@@ -148,7 +161,8 @@ class ProductsAction extends BaseAction{
 		{
 			//说明提交的是毕业论文
 			$author[$_POST["personid"]]=1;//
-			$name=M("Person")->where("personid="+$_POST["personid"])->getField("name");
+			$cond["personid"]=$_POST["personid"];
+			$name=M("Person")->where($cond)->getField("name");
 			$_POST["name"]=$name;
 		}
 		$M=M($tablename);
@@ -183,7 +197,8 @@ class ProductsAction extends BaseAction{
 				{
 					//$Product->commit();
 					$M->commit();//提交事务
-					$this->assign("jumpUrl","__URL__");
+					$jmpUrl="__URL__/prodlist/sp/".$sp;
+					$this->assign("jumpUrl",$jmpUrl);
 					$this->success("添加成功！");
 				}
 				else
