@@ -17,7 +17,7 @@ table.info
 	<include file="Public:menu" />
 	<div class="b-area-ww f_r" style="float:left">
 		<h4>修改个人信息</h4>
-		<form name="memberform" method="post" action="__URL__/adds">
+		<form name="memberform" method="post" enctype="multipart/form-data" action="__URL__/edits">
 		<table width="100%" border="1"  cellspacing="1" align="center">
 
 			<tr>
@@ -32,7 +32,7 @@ table.info
 				</td>
 				<th width="189" >出生年月</th>
 				<td width="168"><input type="text" name="birthday" value="{$p['birthday']}" /></td>
-				<td width="615" rowspan="4"><input type="file" name="photo" style="width:120"></td>
+				<td width="615" rowspan="4"><img src="__ROOT__/Attachments/photo/{$p['photo']}" width="130" height="160"></img><input type="file" name="photo" style="width:120"></td>
 			</tr>
 			<tr>
 				<th width="148">政治面貌</th>
@@ -45,28 +45,28 @@ table.info
 			<th width="148">导师</th>
 			  <td width="168">{$teachername}</td>
 			  <th >类型</th>
-				<td ><input type="text" name="category" value="" /></td>
+				<td ><input type="text" name="category" value="{$p['category']}" /></td>
 				<th width="144" >入学日期</th>
-				<td width="168"><input type="text" name="username" value="" /></td>
+				<td width="168"><input type="text" name="entrancedate" value="{$p['entrancedate']}" /></td>
 				
 			<tr>
 			<th width="189" >学号</th>
-				<td width="168"><input type="text" name="username" value="" /></td>
+				<td width="168"><input type="hidden" name="id" value="{$p['id']}" />{$p['id']}</td>
 			<th width="148">电话</th>
-			  <td ><input type="text" name="username2" value="" /></td>
+			  <td ><input type="text" name="phonenum" value="{$p['phonenum']}" /></td>
 			  <th >身份证号</th>
-				<td ><input type="text" name="username" value="" /></td>
+				<td ><input type="text" name="idcardno" value="{$p['idcardno']}" /></td>
 			<tr>
 				<th>住址</th>
-			<td colspan="6"><input type="text" name="email" value=""  /></td>
+			<td colspan="6"><input type="text" name="address" value="{$p['address']}"  /></td>
 			</tr>
 			<tr>
 				<th>邮箱</th>
-				<td colspan="6"><input type="text" name="email" value="" ></td>
+				<td colspan="6"><input type="text" name="email" value="{$p['email']}" ></td>
 			</tr>
 			<tr>
 				<th>特长爱好</th>
-				<td colspan="6"><input type="text" name="email" value="" /></td>
+				<td colspan="6"><input type="text" name="hobby" value="{$p['hobby']}" /></td>
 			</tr>
 			
 		</table>
@@ -78,54 +78,54 @@ table.info
 			<tr>
 				<th rowspan="2" width="148">研究生</th>
 				<th width="166" >毕业院校</th>
-		      <td colspan="3"><input type="text" name="username3" value="" /></td>
+		      <td colspan="3"><input type="text" name="postgraduateschool" value="{$p['postgraduateschool']}" /></td>
 				<th width="189" >所在院系</th>
-			  <td width="189"><input type="text" name="username" value="" /></td>
+			  <td width="189"><input type="text" name="postgraduatefaculty" value="{$p['postgraduatefaculty']}" /></td>
 		   </tr>
 		   <tr>
 				<th >专业</th>
-		     <td width="559"><input type="text" name="username32" value="" /></td>
+		     <td width="559"><input type="text" name="postgraduatemajor" value="{$p['postgraduatemajor']}" /></td>
 			    <th width="189" >学位</th>
-			 <td width="189"><input type="text" name="username" value="" /></td>
+			 <td width="189"><input type="text" name="postgraduatedegree" value="{$p['postgraduatedegree']}" /></td>
 				<th width="189" >毕业时间</th>
-				<td width="168"><input type="text" name="username" value="" /></td>
+				<td width="168"><input type="text" name="postgraduateend" value="{$p['postgraduateend']}" /></td>
 		   </tr>
 		   <tr>
 				<th rowspan="2" width="148">本科</th>
 				<th width="166" >毕业院校</th>
-		      <td colspan="3"><input type="text" name="username3" value="" /></td>
+		      <td colspan="3"><input type="text" name="collegeschool" value="{$p['collegeschool']}" /></td>
 				<th width="189" >所在院系</th>
-			  <td width="189"><input type="text" name="username" value="" /></td>
+			  <td width="189"><input type="text" name="collegefaculty" value="{$p['collegefaculty']}" /></td>
 		   </tr>
 		   <tr>
 				<th >专业</th>
-		     <td width="559"><input type="text" name="username32" value="" /></td>
+		     <td width="559"><input type="text" name="collegemajor" value="{$p['collegemajor']}" /></td>
 			    <th width="189" >学位</th>
-			 <td width="189"><input type="text" name="username" value="" /></td>
+			 <td width="189"><input type="text" name="collegedegree" value="{$p['collegedegree']}" /></td>
 				<th width="189" >毕业时间</th>
-				<td width="168"><input type="text" name="username" value="" /></td>
+				<td width="168"><input type="text" name="collegeend" value="{$p['collegeend']}" /></td>
 		   </tr>
 		   <tr>
 				<th width="148">高中</th>
 				<th width="166" >毕业学校</th>
-		      <td colspan="3"><input type="text" name="username3" value="" /></td>
-				<th width="189" >所在院系</th>
-			  <td width="189"><input type="text" name="username" value="" /></td>
+		      <td colspan="3"><input type="text" name="seniorschool" value="{$p['seniorschool']}" /></td>
+				<th width="189" >在校时间</th>
+			  <td width="189"><input type="text" name="seniorstart" value="{$p['seniorstart']}" />到<input type="text" name="seniorend" value="{$p['seniorend']}" /></td>
 		   </tr>
 		   <tr>
 				<th colspan="7">个人简介</th>
 			</tr>
 			<tr>
 				<td height="126" colspan="7">
-				  <textarea rows="10" cols="85" name="introduction" value="{$student['introduction']}" style="width:400" ></textarea></td>
+				  <textarea rows="10" cols="85" name="introduction" value="" style="width:400" >{$p['introduction']}</textarea></td>
 			</tr>
 			<tr>
 			    <th width="148">所属课题组</th>
-				<td colspan="6"><input type="text" name="username3" value="" /></td>
+				<td colspan="6"><input type="text" name="researchgroup" value="{$p['researchgroup']}" /></td>
 			</tr>
 			<tr>
 			    <th width="148">所在实验室</th>
-				<td colspan="6"><input type="text" name="username3" value="" /></td>
+				<td colspan="6"><input type="text" name="lab" value="{$p['lab']}" /></td>
 			</tr>
 		   
 		  </table>

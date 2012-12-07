@@ -9,6 +9,7 @@ class PublicAction extends Action{
 	}
 	public function logins(){
 		if($_SESSION['verify']!=md5($_POST['verify'])){
+			$this->assign("jumpUrl","__APP__/Public/login");
 			$this->error('验证码错误！');
 		}else{
 			$Member = M("Person");
@@ -16,7 +17,7 @@ class PublicAction extends Action{
 			$map['password'] = md5($_POST['password']);
 			$checkUser = $Member->where($map)->find();
 			if(!$checkUser){
-				$this->assign("jumpUrl","__APP__");
+				$this->assign("jumpUrl","__APP__/Public/login");
 				$this->error("用户名或密码不正确！");
 			}else{
 				Session::set(C('USER_AUTH_KEY'),$checkUser['personid']);
