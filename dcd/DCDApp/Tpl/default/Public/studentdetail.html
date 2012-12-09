@@ -101,30 +101,34 @@ border: 2px solid  #215b8d;
 div.peo
 {
 width:680px;
-
-border: 2px solid  #d8d7d7;
+border: 0px solid  #d8d7d7;
 margin-top:10px;
 white-space:pre;
 word-wrap: break-word;
 word-break: normal; 
-
 }
 div.self{
-width:70px;
+width:680px;
 height:100px;
 float:left;
 font-size:14px;
-}
-div.selff{
-width:580px;
-float:left;
-font-size:14px;
-margin-bottom:15px;
+height:auto!important;
+min-height:30px;
 }
 
 </style>
 </head>
 <body>
+<!--
+<div id="templatemo_header_wrapper">
+  <div id="templatemo_header">
+    <div id="site_logo"></div>
+		<div class="userinfo f_r" style="float:right"><p>&nbsp;</p>
+		</div>
+	</div>-->
+  <!-- end of header -->
+<!--</div>-->
+<!-- end of menu wrapper -->
 <include file="Public:header" />
 <div id="tempatemo_content_wrapper" >
 <div id="people_content">
@@ -154,22 +158,21 @@ margin-bottom:15px;
 <div class="peo"> 
 <table width="100%" align="center" style="font-size:14px">
 	<tr>
-		<td width="70">姓       名：</td>
-	  <td width="60">{$p["name"]}</td>
-		<td width="70" >性        别：</td>
-		<td width="30">{$p["gender"]}</td>
-		<td width="70" >出生年月：</td>
-		<td width="50">{$p["birthday"]}</td>
-		<td width="70">政治面貌：</td>
-		<td width="90">{$p["politicstatus"]}</td>
-		<td width="70">导       师：</td>
-		<td width="90">{$p["politicstatus"]}</td>
+		<td width="40" >姓名：</td>
+	    <td width="60">{$p["name"]}</td>
+		<td width="40" >性别：</td>
+		<td width="60">{$p["gender"]}</td>
+		<td width="60" >出生年月：</td>
+		<td width="60">{$p["birthday"]}</td>
+		<td width="50">政治面貌：</td>
+		<td width="60">{$p["politicsstatus"]}</td>
+		<td width="40">导师：</td>
+		<td width="60">{$t["name"]}</td>
 	</tr>
 	</table>
-	<div class="self">个人简介：	</div><div class="selff">{$p['introduction']}</div>
+	<div class="self">个人简介：{$p['introduction']}</div>
 
-<table width="100%" align="center" style="font-size:14px">
-
+<table width="100%" align="center" style="font-size:14px;white-space:normal;margin-top:1px">
 	<tr>
 	<td width="70">电子邮箱：</td>
 	<td rowspan="4">{$p['email']}</td>
@@ -177,15 +180,32 @@ margin-bottom:15px;
  </table> 
 
 </div>
+
 <P style="font-size:16px"  style="font-weight:bold"> &nbsp;</P>
 
-<P style="font-size:16px"  style="font-weight:bold"> 成果展示</P>
-<div class="peo" style="margin-bottom:60px" >
-
+<P style="font-size:16px"  style="font-weight:bold"><strong>论文</strong></P>
+<div class="peo" style="margin-bottom:60px;white-space:normal" >
+<ol style="padding-left:25px;font-size:15px">
+<volist name="papers" id="p">
+	<li><font size="3">{$p.authors},{$p.title},{$p.conferencename}{$p.journalname},vol.{$p.volumenum},{$p.pagenum},{$p.publishdate}</font></li>
+</volist>
+</ol>
 <!--<div style="float:right"><input type="button" style="background-color:#CCCCCC"  value="修改个人成果"></div>
 </div>-->
 
 </div>
+<P style="font-size:16px"  style="font-weight:bold"><strong>项目</strong></P>
+<div class="peo" style="margin-bottom:60px;white-space:normal" >
+<ol style="padding-left:25px;font-size:15px">
+<volist name="projects" id="pro">
+	<li><font size="3">{$pro.personname},{$pro.typename},{$pro.title}</font></li>
+</volist>
+</ol>
+<!--<div style="float:right"><input type="button" style="background-color:#CCCCCC"  value="修改个人成果"></div>
+</div>-->
+</div>
+
+
 
 </div>
 </div>

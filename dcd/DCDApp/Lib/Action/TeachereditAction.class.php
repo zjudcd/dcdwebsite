@@ -1,8 +1,8 @@
 ﻿<?php
-class MemberAction extends Action{
+class TeachereditAction extends Action{
 	public function index(){
 		$cond["id"] = $_SESSION["userid"];
-		$person = M("Student")->where($cond)->select();
+		$person = M("Teacher")->where($cond)->select();
 		if($person[0]["gender"] == "男"){
 			$this->man = "selected";
 			$this->woman = "";
@@ -11,17 +11,23 @@ class MemberAction extends Action{
 			$this->man == "";
 			$this->woman = "selected";
 		}
-		$condt["id"] = $person[0]["teacher"];
-		$teacher = M("Teacher")->where($condt)->select();
-		$this->teachername = $teacher[0]["name"];
+		if($person[0]["ismarried"] == 1){
+			$this->ismarried = "selected";
+			$this->notmarried = "";
+		}
+		else{
+			$this->ismarried = "";
+			$this->notmarried = "selected";
+		}
+		
 		$this->p = $person[0];
-		$this->display("Public:Member");
+		$this->display("Public:Teacheredit");
 	}
 	public function edits(){
 		if(!empty($_FILES['photo']['name'])){
 			$_POST['photo'] = $this->_upload("photo",false,300,400,true);
 		}
-		if(M('Student')->save($_POST))
+		if(M('Teacher')->save($_POST))
 			$this->success("修改成功！");
 		else
 			$this->error("数据无变化或修改失败！");

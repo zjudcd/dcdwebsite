@@ -87,10 +87,12 @@ class StudentAction extends BaseAction{
 		}
 		$per["personid"] = $_POST["id"];
 		$per["name"] = $_POST["name"];
-		if(M("Person")->save($per) && D("Student")->save($data)){
+		if(D("Student")->save($data) != false)
+		{
+			M("Person")->save($per);
 			$this->success("修改成功！");
 		}else{
-			$this->error("资料无改变或修改失败！");		
+			$this->error("修改失败或无修改！");		
 		}
 	}
 	public function batch(){
@@ -102,7 +104,7 @@ class StudentAction extends BaseAction{
 		if(M("person")->save($data)){
 			$this->success("修改成功！");
 		}else{
-			$this->success("修改失败！");
+			$this->success("密码本来就是初始密码或修改失败！");
 		}
 	}
 }

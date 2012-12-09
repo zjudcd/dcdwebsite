@@ -10,7 +10,7 @@ table.info
   <div id="templatemo_header">
     <div id="site_logo"></div>
 <div class="userinfo f_r" style="float:right"><p>&nbsp;</p>
-		<if condition="Session::get('userid') neq ''">欢迎回来！ <a href="__APP__/Peopleself">{$Think.session.userid}</a> |<a href="__ROOT__/index.php" target="_blank">网站主页</a> | <a href="__APP__/Public/logout">注销登陆</a><else /></if></div>
+		<include file="Public:loginnavigation" /></div>
 	</div>
   <!-- end of header -->
 </div>
@@ -118,7 +118,7 @@ table.info
 			</tr>
 			<tr>
 				<td height="126" colspan="7">
-				  <textarea rows="10" cols="85" name="introduction" value="" style="width:400" >{$p['introduction']}</textarea></td>
+				  <textarea rows="10" cols="85" name="introduction" value="" style="width:100%;overflow:visible" >{$p['introduction']}</textarea></td>
 			</tr>
 			<tr>
 			    <th width="148">所属课题组</th>

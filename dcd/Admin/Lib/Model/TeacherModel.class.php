@@ -1,9 +1,9 @@
-<?php
+ï»¿<?php
 class TeacherModel extends Model{
 	protected $_validate=array(
-		array('name','require','ÐÕÃû²»ÄÜÎª¿Õ£¡',0,'',3),
-		array('id','require','¹¤ºÅ²»ÄÜÎª¿Õ',1,'',3),
-		array('gender','require','ÐÔ±ð²»ÄÜÎª¿Õ',2,'',3),
+		array('name','require','å§“åä¸èƒ½ä¸ºç©ºï¼',0,'',3),
+		array('id','require','å·¥å·ä¸èƒ½ä¸ºç©º',1,'',3),
+		array('gender','require','æ€§åˆ«ä¸èƒ½ä¸ºç©º',2,'',3),
 	);
 }
 ?>

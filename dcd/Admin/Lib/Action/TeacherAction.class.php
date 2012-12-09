@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class TeacherAction extends BaseAction{
 	function _initialize(){
 		$map['uid'] = $_SESSION[C('USER_AUTH_KEY')];
@@ -92,10 +92,12 @@ class TeacherAction extends BaseAction{
 		}
 		$per["personid"] = $_POST["id"];
 		$per["name"] = $_POST["name"];
-		if(M("Person")->save($per) && D("Teacher")->save($data)){
+		if(D("Teacher")->save($data) != false)
+		{
+			M("Person")->save($per);
 			$this->success("修改成功！");
 		}else{
-			$this->error("资料无改变或修改失败！");		
+			$this->error("修改失败或无修改！");		
 		}
 	}
 	public function batch(){

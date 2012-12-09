@@ -4,8 +4,19 @@ class PublicAction extends Action{
 		$sid = Session::get(C('USER_AUTH_KEY'));
 	}
 	public function login(){
-		$this->assign("menu","Login");
-		$this->display("Public:login");
+		if($_SESSION['usertype'] == "teacher")
+		{
+			$this->redirect("Teacherself/index");
+		}
+		else if($_SESSION['usertype'] == "student")
+		{
+			$this->redirect("Studentself/index");
+		}
+		else
+		{
+			$this->assign("menu","Login");
+			$this->display("Public:login");
+		}
 	}
 	public function logins(){
 		if($_SESSION['verify']!=md5($_POST['verify'])){
@@ -21,8 +32,14 @@ class PublicAction extends Action{
 				$this->error("用户名或密码不正确！");
 			}else{
 				Session::set('userid',$checkUser['personid']);
+				if($checkUser['category'] == "教师")
+					Session::set('usertype','teacher');
+				else if($checkUser['category'] == "学生")
+					Session::set('usertype','student');
+				else
+				{}
 				$Member->where("personid = ".$checkUser['personid']);
-				$this->assign("jumpUrl","__APP__/Peopleself");
+				$this->assign("jumpUrl","__APP__/".$_SESSION['usertype']."self");
 				$this->success("登陆成功！");
 			}
 		}
@@ -39,6 +56,7 @@ class PublicAction extends Action{
 	public function logout(){
 		if(Session::is_set('userid')){
 			Session::set('userid',"");
+			Session::set('usertype',"");
 			$this->assign('jumpUrl',__URL__.'/login');
 			$this->success("注销成功！");
 		}else{
