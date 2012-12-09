@@ -54,7 +54,7 @@ class PublicAction extends Action{
 //		Image::buildImageVerify();
 //  	}
 	public function logout(){
-		if(Session::is_set('userid')){
+		if($_SESSION['userid'] != ""){
 			Session::set('userid',"");
 			Session::set('usertype',"");
 			$this->assign('jumpUrl',__URL__.'/login');

@@ -1,5 +1,9 @@
 ﻿<?php
 class StudentselfAction extends Action{
+	public function _initialize(){
+		if($_SESSION["usertype"] != "student")
+			$this->error("对不起，您无权访问这个页面！");
+	}
 	public function index(){
 		$condstudent["id"] = $_SESSION["userid"];
 		$per = M("Student")->where($condstudent)->select();
