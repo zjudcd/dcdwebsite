@@ -159,15 +159,11 @@ min-height:30px;
 <table width="100%" align="center" style="font-size:14px">
 	<tr>
 		<td width="40" >姓名：</td>
-	    <td width="60">{$p["name"]}</td>
+	    <td width="120">{$p["name"]}</td>
 		<td width="40" >性别：</td>
-		<td width="60">{$p["gender"]}</td>
+		<td width="120">{$p["gender"]}</td>
 		<td width="60" >出生年月：</td>
-		<td width="60">{$p["birthday"]}</td>
-		<td width="50">政治面貌：</td>
-		<td width="60">{$p["politicsstatus"]}</td>
-		<td width="40">导师：</td>
-		<td width="60">{$t["name"]}</td>
+		<td width="120">{$p["birthday"]}</td>
 	</tr>
 	</table>
 	<div class="self">个人简介：{$p['introduction']}</div>
@@ -182,7 +178,7 @@ min-height:30px;
 </div>
 
 <P style="font-size:16px"  style="font-weight:bold"> &nbsp;</P>
-
+<!--
 <P style="font-size:16px"  style="font-weight:bold"><strong>论文</strong></P>
 <div class="peo" style="margin-bottom:60px;white-space:normal" >
 <ol style="padding-left:25px;font-size:15px">
@@ -190,8 +186,6 @@ min-height:30px;
 	<li><font size="3">{$p.authors},{$p.title},{$p.conferencename}{$p.journalname},vol.{$p.volumenum},{$p.pagenum},{$p.publishdate}</font></li>
 </volist>
 </ol>
-<!--<div style="float:right"><input type="button" style="background-color:#CCCCCC"  value="修改个人成果"></div>
-</div>-->
 
 </div>
 <P style="font-size:16px"  style="font-weight:bold"><strong>项目</strong></P>
@@ -201,10 +195,8 @@ min-height:30px;
 	<li><font size="3">{$pro.personname},{$pro.typename},{$pro.title}</font></li>
 </volist>
 </ol>
-<!--<div style="float:right"><input type="button" style="background-color:#CCCCCC"  value="修改个人成果"></div>
-</div>-->
 </div>
-
+-->
 
 
 </div>
