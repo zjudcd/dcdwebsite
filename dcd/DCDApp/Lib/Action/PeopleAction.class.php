@@ -46,6 +46,7 @@ class PeopleAction extends BaseAction{
 			$result = M($type)->where($cond)->select();
 			array_push($p,$result[0]);
 		}
+		$this->assign("pages",$show);
 		$this->assign("category",$type);
 		$this->assign("people",$p);
 		$this->assign("menu","People");
