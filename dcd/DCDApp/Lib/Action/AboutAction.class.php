@@ -18,6 +18,7 @@ class AboutAction extends BaseAction{
 			}
 		}
 		else $curpage=$pages[0];
+		$this->assign("cpn",$id);
 		$this->assign("intros",$pages);
 		$this->assign("curpage",$curpage);
 		$this->assign("menu","About");

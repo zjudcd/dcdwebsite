@@ -126,11 +126,11 @@ white-space:pre;
 </div>
 <div class="header"><h1 class="header">实验室介绍</h1></div>
 
-<div class="left" >
+<div class="left" id="link_clicked">
 <ul class="header_05">
 <volist name="intros" id="i">
 <if condition="$cpn eq $id['id']">
-<li><a href="__URL__/index/id/{$i.id}">{$i.title}</a></li>
+<li><a href="__URL__/index/id/{$i.id}" class="current">{$i.title}</a></li>
 <else />
 <li><a href="__URL__/index/id/{$i.id}">{$i.title}</a></li>
 </if>
