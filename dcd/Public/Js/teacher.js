@@ -4,17 +4,14 @@ function review()
 	var id = ids[0]
 	var names = document.getElementsByName("name")
 	var name = names[0]
-	alert("id=" + id.value)
-	alert("name=" + name.value)
-	return false
 	if(id.value == "")
 	{
-		alert("工号不能为空")
+		alert("宸ュ彿涓嶈兘涓虹┖")
 		return false
 	}
 	if(name.value == "")
 	{
-		alert("姓名不能为空")
+		alert("濮撳悕涓嶈兘涓虹┖")
 		return false
 	}
 	return true

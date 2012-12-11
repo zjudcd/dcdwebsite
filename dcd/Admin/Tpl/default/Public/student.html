@@ -10,12 +10,11 @@ table.info
 	<div class="b-area-w f_r">
 	<switch name="dsp">
 		<case value="add">
-			<h4>添加学生用户</h4>
-			<a href="__URL__/"><div class="b-btn f_l blank5_r">返回</div></a>
+			<h4><a href="__APP__/Members">人员管理</a>>><a href="__URL__/">学生</a>>>添加</h4>
 			<form name="memberform" method="post" enctype="multipart/form-data" action="__URL__/adds">
 			<table width="100%" border="1"  cellspacing="1" >
 				<tr>
-					<th width="148">姓名</th>
+					<th width="148">姓名<font color="red">*</font></th>
 				    <td width="168"><input type="text" name="name" value="" /></td>
 					<th width="144" >性别</th>
 					<td width="168">
@@ -54,7 +53,7 @@ table.info
 					<th width="144">身份证号</th>
 					<td width="168" ><input type="text" name="idcardno" value="" /></td>
 					<th width="144" >学号</th>
-					<td width="168"><input type="text" name="id" value="" /></td>
+					<td width="168"><font color="red">*</font><input type="text" name="id" value="" /></td>
 				<tr>
 					<th>住址</th>
 					<td colspan="6"><input type="text" name="address" value="" /></td>
@@ -132,12 +131,11 @@ table.info
 			</form>
 		</case>
 		<case value="edit">
-			<h4>修改学生用户</h4>
-			<a href="__URL__/"><div class="b-btn f_l blank5_r">返回</div></a>
+			<h4><a href="__APP__/Members">人员管理</a>>><a href="__URL__/">学生</a>>>编辑</h4>
 			<form name="memberform" method="post" enctype="multipart/form-data" action="__URL__/edits">
 			<table width="100%" border="1"  cellspacing="1" >
 				<tr>
-					<th width="148">姓名</th>
+					<th width="148">姓名<font color="red">*</font></th>
 				    <td width="168"><input type="text" name="name" value="{$student['name']}" /></td>
 					<th width="144" >性别</th>
 					<td width="168">
@@ -253,7 +251,7 @@ table.info
 		</case>
 		
 		<default />
-		<h4>学生管理</h4>
+		<h4><a href="__APP__/Members">人员管理</a>>>学生</h4>
 		<include file="Public:searchbar" />
 		<form name="memberform" method="post" action="__URL__/batch">
 		<table width="100%" border="0" cellspacing="1" class="tb-a blank5">

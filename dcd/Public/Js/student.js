@@ -1,4 +1,4 @@
-﻿function review()
+function review()
 {
 	var ids = document.getElementsByName("id")
 	var id = ids[0]
