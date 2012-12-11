@@ -75,6 +75,9 @@ text-align:left;
 {
 	margin-bottom:15px;
 }
+.left li a:current {
+color:#409ecc;
+}
 .left li a:hover {
 color:#409ecc;
 }
@@ -83,7 +86,6 @@ color:#409ecc;
 #link_clicked li .current {
 color: #409ecc;
 }
-
 div.content
 {
 
@@ -126,10 +128,10 @@ white-space:pre;
 </div>
 <div class="header"><h1 class="header">实验室介绍</h1></div>
 
-<div class="left" id="link_clicked">
-<ul class="header_05">
+<div class="left">
+<ul class="header_05" id="link_clicked">
 <volist name="intros" id="i">
-<if condition="$cpn eq $id['id']">
+<if condition="$cpn eq $i['id']">
 <li><a href="__URL__/index/id/{$i.id}" class="current">{$i.title}</a></li>
 <else />
 <li><a href="__URL__/index/id/{$i.id}">{$i.title}</a></li>
