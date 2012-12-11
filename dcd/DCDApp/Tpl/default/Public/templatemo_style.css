@@ -215,7 +215,7 @@ list-style:  url(images/dcd_button.jpg)
 
 .project_slideshow {
 	float: left;
-	width: 610px;
+	width: 608px;
 	height: 260px;
 	overflow: hidden;	
 	background: #409ecc url(images/dcd_slider_right_divider2.jpg) right repeat-y;
