@@ -111,10 +111,10 @@ img {
 #templatemo_header #site_logo {
 	float: left;
 	width: 340px;
-	height: 100px;
+	height: 110px;
 	font-size: 40px;
 	color: #ffffff;
-	background:url(images/dcd_logo5.jpg) no-repeat;
+	background:url(images/dcd_logo3.jpg) no-repeat;
 }
 
 /* end of header */

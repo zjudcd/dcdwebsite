@@ -49,6 +49,12 @@ text-align:left;
 {
 	margin-bottom:15px;
 }
+.left li a:current {
+color:#409ecc;
+}
+.left li a:hover {
+color:#409ecc;
+}
 div.content
 {
 
@@ -56,9 +62,18 @@ float:left;
 width:625px;
 border-left:1px solid gray;
 padding:1em;
+white-space:pre;
+word-wrap: break-word;
+word-break: normal; 
+
+}
+div.bgimg
+{
+float:left;
+width:625px;
+height:204px;
 background: #fff url(../Public/images/content_bottom.jpg) left bottom no-repeat;
 white-space:pre;
-
 }
 
 .content p
@@ -67,6 +82,7 @@ white-space:pre;
 	font-size:14px;
 	font-family:Arial, Helvetica, sans-serif;
 }
+
 </style>
 </head>
 <body>
@@ -82,13 +98,15 @@ white-space:pre;
 <ul class="header_05">
 <volist name="intros" id="i">
 <li><a href="__URL__/index/id/{$i.id}">{$i.title}</a></li>
+
 </volist>
 <li><a href="__ROOT__/Hsu-conference/pr.htm" target="_blank">The Third Pao-Lu Hsu Conference (2011)</a></li>
 </ul>
 
 </div>
-<div class="content"  >
-{$curpage.content}
+<div class="content"  >{$curpage.content}
+<div class="bgimg">
+</div>
 </div>
 
 
