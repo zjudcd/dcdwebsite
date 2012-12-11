@@ -5,7 +5,7 @@
 	<div class="b-area-w f_r">
 	<switch name="dsp">
 		<case value="add">
-		<h4><a href="javascript:history.back()">单页管理</a>>>发布单页</h4>
+		<h4><a href="javascript:history.back()">学术活动页面管理</a>>>发布单页</h4>
 		<form name="pagesform" method="post" action="__URL__/adds">
 		<table border="0" cellspacing="1" class="tb-b">
 			<tr>
@@ -21,7 +21,7 @@
 		</form>
 		</case>
 		<case value="edit">
-		<h4><a href="javascript:history.back()">单页管理</a>>>编辑单页</h4>
+		<h4><a href="javascript:history.back()">学术活动页面管理</a>>>编辑单页</h4>
 		<form name="pagesform" method="post" action="__URL__/edits">
 		<table border="0" cellspacing="1" class="tb-b">
 			<tr>
@@ -45,7 +45,7 @@
 		</form>
 		</case>
 		<default />
-		<h4>单页管理</h4>
+		<h4>学术活动页面管理</h4>
 		<include file="Public:searchbar" />
 		<form name="pagesform" method="post" action="__URL__/batch">
 		<table width="100%" border="0" cellspacing="1" class="tb-a blank5">
@@ -58,7 +58,7 @@
 			</tr>
 			<volist name="pgs" id="pg">
 			<tr>
-				<td><input name="id[]" type="checkbox" id="id[]" value="{$pg.pgid}" class="input-cb" /></td>
+				<td><input name="id[]" type="checkbox" id="id[]" value="{$pg.id}" class="input-cb" /></td>
 				<td>{$pg.id}</td>
 				<td>{$pg.title}</td>
 				<td>{$pg.submittime|date="Y-n-j H:i:s",###}</td>

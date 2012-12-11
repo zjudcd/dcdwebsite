@@ -15,7 +15,7 @@ class BaseAction extends Action{
 		if(!in_array($act,$allowact)) $this->error('未知操作');
 		$id = is_array($checkboxid)?implode(',',$checkboxid):$checkboxid;
 		if(!$id) $this->error('ID丢失');
-		$tableId = array('Administrator'=>'uid','Products'=>'pid','Categroy'=>'cid','News'=>'id','Message'=>'mid','Pages'=>'id','Slide'=>'sid','Navigation'=>'ngid','Student'=>'id','Teacher'=>'id','Admin'=>'uid');
+		$tableId = array('Administrator'=>'uid','Products'=>'pid','Categroy'=>'cid','News'=>'id','Message'=>'mid','Pages'=>'id','Slide'=>'sid','Navigation'=>'ngid','Student'=>'id','Teacher'=>'id','Admin'=>'uid','Achievementpages'=>'id','Activitypages'=>'id');
 		isset($modulename) ? $modulename = $modulename : $modulename = MODULE_NAME;
 		switch($act){
 			case "delete":
