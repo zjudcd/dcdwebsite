@@ -13,7 +13,6 @@ div.container
 {
 
 margin:0px;
-border:5px solid #387fa2;
 line-height:150%;
 overflow:auto;
 background-color:#FFFFFF;
@@ -33,7 +32,7 @@ margin:0;
 div.left
 {
 float:left;
-width:130px;
+width:155px;
 height:100%;
 margin-top:20px;
 color:black;
@@ -49,8 +48,8 @@ div.content
 {
 padding:1em;
 background-color:white;
-width:700px;
-margin-left:30px;
+width:685px;
+margin-left:20px;
 float:left
 
 }
@@ -63,32 +62,36 @@ float:left
 div.people
 {
 float:left;
-height:190px;
-width:140px;
+height:210px;
+width:155px;
 padding:1em;
-background-color:white;
+background: #fff url(../Public/images/peoplebg.jpg) top no-repeat;
 padding:0px;
 margin-bottom:10px;
-margin-left:20px;
+margin-left:16px;
 margin-top:10px;
-margin-right:20px;
+margin-right:17px;
 overflow:hidden;
-
-
 }
+
 div.img
 {
 height:160px;
 width:130px;
-padding:5px;
 background-color:white;
+margin-top:18px;
+margin-left: auto;
+ 
+margin-right: auto;
 }
 div.name
 {
 height:20px;
 width:130px;
-padding:2px;
 background-color:white;
+margin-left: auto;
+ 
+margin-right: auto;
 }
 div.intro
 {
@@ -106,7 +109,6 @@ margin-top:10px;
 white-space:pre;
 word-wrap: break-word;
 word-break: normal; 
-
 }
 div.self{
 width:680px;
@@ -114,10 +116,14 @@ height:100px;
 float:left;
 font-size:14px;
 margin-bottom:1px;
+margin-top:1px;
 white-space:normal;
 margin-left:5px;
 height:auto!important;
 min-height:30px;
+line-height:1.8;
+word-spacing:1px;
+text-align:justify;
 }
 
 </style>
@@ -152,11 +158,11 @@ min-height:30px;
 </div>
 <div class="content">
 
-<div style="height:12px">
-<P></P>
-</div>
+<div style="height:6px"><P></P></div>
+<div style="height:6px"><P></P></div>
+<div style="height:6px"><P></P></div>
 <P style="font-size:16px"  style="font-weight:bold"><strong> 个人信息 </strong></P>
-<div class="peo"> 
+<div class="peo" style="border-bottom:dotted grey 2px"> 
 <table width="100%" align="center" style="font-size:14px;margin-left:5px" border="0">
 	<tr>
 		<td width="40" >姓名：</td>
@@ -171,8 +177,9 @@ min-height:30px;
 		<td width="60">{$p["position"]}</td>
 	</tr>
 	</table>
-	<div class="self">个人简介：{$p['introduction']}</div>
-	<table width="100%" align="center" style="font-size:14px;white-space:normal;margin-top:1px" border="0">
+	<div class="self" style="margin-bottom:20px">个人简介：{$p['introduction']}</div>
+
+<table width="100%" align="center" style="font-size:14px;margin-left:5px" border="0">
 		<tr>
 		<td width="70">电子邮箱：</td>
 		<td rowspan="4">{$p['email']}</td>
