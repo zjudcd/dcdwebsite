@@ -15,6 +15,7 @@ class AchievementpagesAction extends BaseAction{
 		$Page -> parameter .= "keyword=".urlencode($kmap)."&";
 		$show = $Page->show();
 		$pages = $Pages->where($map)->order('id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+		$this->assign($menu,"Achievementpages");
 		$this->assign('pages',$show);
 		$this->assign("pgs",$pages);
 		$this->display("Public:Achievementpages");

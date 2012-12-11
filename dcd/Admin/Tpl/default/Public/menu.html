@@ -1,12 +1,55 @@
 <ul class="sidebar f_l">
+	<if condition="$menu eq 'Home'">
 	<li><a href="__APP__/Index" class="home-link">管理首页</a></li>
+	<else />
+	<li><a href="__APP__/Index" class="home-link">管理首页</a></li>
+	</if>
+	
+	<if condition="$menu eq 'User'">
+	<li><a href="__APP__/Members" class="home-link">用户管理</a></li>
+	<else />
 	<li><a href="__APP__/Members">用户管理</a></li>
+	</if>
+	
+	<if condition="$menu eq 'News'">
+	<li><a href="__APP__/News" class="home-link">通知管理</a></li>
+	<else />
 	<li><a href="__APP__/News">通知管理</a></li>
+	</if>
+	
+	<if condition="$menu eq 'Products'">
+	<li><a href="__APP__/Products" class="home-link">成果管理</a></li>
+	<else />
 	<li><a href="__APP__/Products">成果管理</a></li>
+	</if>	
+	
+	<if condition="$menu eq 'Pages'">
+	<li><a href="__APP__/Pages" class="home-link">实验室介绍页面管理</a></li>
+	<else />
 	<li><a href="__APP__/Pages">实验室介绍页面管理</a></li>
+	</if>
+	
+	<if condition="$menu eq 'Achievementpages'">
+	<li><a href="__APP__/Achievementpages" class="home-link">科研成果页面管理</a></li>
+	<else />
 	<li><a href="__APP__/Achievementpages">科研成果页面管理</a></li>
+	</if>
+	
+	<if condition="$menu eq 'Activitypages'">
+	<li><a href="__APP__/Activitypages" class="home-link">学术活动页面管理</a></li>
+	<else />
 	<li><a href="__APP__/Activitypages">学术活动页面管理</a></li>
-	<li><a href="__APP__/Message">留言管理</a></li>
+	</if>
+	
+	<if condition="$menu eq 'Toolbox'">
+	<li><a href="__APP__/Toolbox" class="home-link">网站设置</a></li>
+	<else />
 	<li><a href="__APP__/Toolbox">网站设置</a></li>
+	</if>
+	
+	<if condition="$menu eq 'Setting'">
+	<li><a href="__APP__/Setting" class="home-link">系统设置</a></li>
+	<else />
 	<li><a href="__APP__/Setting">系统设置</a></li>
+	</if>
 </ul>
