@@ -5,10 +5,10 @@
 }
 #silder ul { list-style-type: none; }
 #sliderContent {
-    width: 500px;
+    width: 600px;
     position: relative;
 	top: 0;
-	margin: 5px 0px 0px 0px;
+	margin: 1px 0px 0px 0px;
 	padding: 0px;
 }
 .sliderImage {
@@ -20,8 +20,8 @@
     position: absolute;
 	font: 10px/15px Arial, Helvetica, sans-serif;
     width: 758px;;
-    background-color: #000;
-    filter: alpha(opacity=70);
+    background-color: #222;
+    filter: alpha(opacity=100);
     -moz-opacity: 0.7;
 	-khtml-opacity: 0.7;
     opacity: 0.7;
@@ -37,7 +37,7 @@
 	left: 0;
 }
 .bottom {
-	bottom: 2px;
+	bottom: 15px;
     left: 0;
 }
 .left {

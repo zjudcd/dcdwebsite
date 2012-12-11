@@ -10,15 +10,15 @@ class IndexAction extends BaseAction{
 		
 		$cond['typeid']=2;//学术通知
 		$news = M("News")->where($cond)->order('date desc')->limit(5)->select();
+		$this->slide();
 		$this->assign("menu","Home");
 		$this->assign("news",$news);
 		
-		$this->slide();
         $this->display("Public:index");
     }
 	protected function slide(){
-		$slide = D("Slide")->select();
-		$this->assign("slide",$slide);
+		$slides = M("Slide")->order("postdate desc")->limit(5)->select();
+		$this->assign("slide",$slides);
 	}
 	
 	public function about()

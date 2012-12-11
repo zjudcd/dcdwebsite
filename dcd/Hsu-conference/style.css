@@ -1,0 +1,34 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #FFFFFF;
+}
+.style2 {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #FF0000;
+}
+.style3 {
+	font-size: small;
+	font-weight: bold;
+	color: #09C;
+}
+.style4 {
+	font-size: 12px;
+	color: #09C;
+}
+.style6 {
+	font-size: xx-large;
+	font-weight: bold;
+}
+
+.mylinks {color: #000000; font-weight: normal; font-size: small; }
+.style19 {font-size: small}
+.style7 {font-size: small; font-weight: bold; }
+.style20 {color: #000000; font-weight: normal; font-size: x-small; }
