@@ -131,9 +131,9 @@ height:40px;
 <div class="left" id="left" >
 
 <ul >
-<li><a href="__URL__/choose/category/teacher" >教师</a></li>
-<li><a href="__URL__/choose/category/student" >学生</a></li>
-<li><a href="__URL__/choose/category/grastudent" >毕业学生</a></li>
+<li><a href="__URL__/index/category/teacher" >教师</a></li>
+<li><a href="__URL__/index/category/student" >学生</a></li>
+<li><a href="__URL__/index/category/grastudent" >毕业学生</a></li>
 </ul>
 
 </div>
@@ -141,7 +141,7 @@ height:40px;
 		<volist name="people" id="person">
 		<div class="people">
 			<div class="img">
-			<a href="__APP__/{$_GET['category']}detail/index/id/{$person['id']}" target="_blank" ><img src="__ROOT__/Attachments/photo/{$person['photo']}"  width="130px" height="160px"/></a>
+			<a href="__APP__/{$category}detail/index/id/{$person['id']}" target="_blank" ><img src="__ROOT__/Attachments/photo/{$person['photo']}"  width="130px" height="160px"/></a>
 			</div>
 			<div class="name" style="text-align:center">
 			<span >{$person["name"]}</span>
