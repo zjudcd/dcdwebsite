@@ -48,6 +48,7 @@ class PeopleAction extends BaseAction{
 		}
 		$this->assign("pages",$show);
 		$this->assign("category",$type);
+		$this->assign("cate",$cate);
 		$this->assign("people",$p);
 		$this->assign("menu","People");
 		$this->display("Public:people");

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -108,6 +108,22 @@ height:40px;
 .search {  padding-left:650px; margin: 8px; width: 100%; height:30px; background: #ffffff; }
 	.search .search-input { border: 1px solid  #c3c4c5; height: 24px; color: #131313; background: #FFF; float:left; }
 	.search .search-btn { color: #FFF; background:#387fa2; border: 1px solid  #c3c4c5; height: 24px; cursor: pointer; float:left; }
+	
+.left ul li
+{
+	margin-bottom:15px;
+}
+.left li a:current {
+color:#409ecc;
+}
+.left li a:hover {
+color:#409ecc;
+}
+#link_clicked
+{}
+#link_clicked li .current {
+color: #409ecc;
+}
 </style>
 </head>
 <body>
@@ -126,14 +142,24 @@ height:40px;
 			</form>
 <div class="clear"></div>
 </div>
-
-
 <div class="left" id="left" >
 
-<ul >
-<li><a href="__URL__/index/category/teacher" >教师</a></li>
-<li><a href="__URL__/index/category/student" >学生</a></li>
-<li><a href="__URL__/index/category/grastudent" >毕业学生</a></li>
+<ul class="header_05" id="link_clicked">
+	<if condition="$cate eq 'teacher'">
+	<li><a href="__URL__/index/category/teacher" class="current">教师</a></li>
+	<else />
+	<li><a href="__URL__/index/category/teacher" >教师</a></li>
+	</if>
+	<if condition="$cate eq 'student'">
+	<li><a href="__URL__/index/category/student" class="current">学生</a></li>
+	<else />
+	<li><a href="__URL__/index/category/student" >学生</a></li>
+	</if>
+	<if condition="$cate eq 'grastudent'">
+	<li><a href="__URL__/index/category/grastudent" class="current">毕业学生</a></li>
+	<else />
+	<li><a href="__URL__/index/category/grastudent" >毕业学生</a></li>
+	</if>
 </ul>
 
 </div>
