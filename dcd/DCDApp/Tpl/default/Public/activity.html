@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$curpage.title}</title>
+<link href="../Public/templatemo_style.css" rel="stylesheet" type="text/css" />
+</head>
+<style type="text/css">
+
+ul.none {list-style-type: none}
+
+
+div.container
+{
+
+margin:0px;
+
+line-height:150%;
+overflow:auto;
+background-color:#FFFFFF;
+}
+div.conimg
+{
+height:200px;
+margin:0px;
+overflow:auto;
+background-color:#FFFFFF;
+overflow:hidden;
+}
+div.conimgleft
+{
+float:left;
+width:240px;
+height:100%;
+margin:0;
+background-color:white;
+overflow:hidden;
+}
+div.conimgright
+{
+float:left;
+width:625px;
+padding:1em;
+overflow:hidden;
+}
+div.header
+{
+width:225px;
+margin:3px;
+padding:0.5em;
+color:white;
+background-color:#409ecc;
+clear:left;
+}
+h1.header
+{
+padding:0;
+margin:0;
+}
+div.left
+{
+float:left;
+width:240px;
+height:100%;
+margin:0;
+color:black;
+font-size:14px;
+font-family:Arial, Helvetica, sans-serif;
+background-color:white;
+text-decoration:none;
+text-align:left;
+}
+
+.left ul li
+{
+	margin-bottom:15px;
+}
+.left li a:hover {
+color:#409ecc;
+}
+#link_clicked
+{}
+#link_clicked li .current {
+color: #409ecc;
+}
+
+div.content
+{
+
+float:left;
+width:625px;
+border-left:1px solid gray;
+padding:1em;
+white-space:pre;
+word-wrap: break-word;
+word-break: normal; 
+
+}
+div.bgimg
+{
+float:left;
+width:625px;
+height:204px;
+background: #fff url(../Public/images/content_bottom.jpg) left bottom no-repeat;
+white-space:pre;
+}
+
+.content p
+{
+	white-space:pre-wrap;
+	font-size:14px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+</style>
+</head>
+<body>
+<include file="Public:header" />
+<!-- end of menu wrapper -->
+<div id="tempatemo_content_wrapper">
+<div id="people_content">
+<div class="container">
+<div class="conimg">
+<div class="conimgleft"><img src="../Public/images/test.jpg" /> </div>
+<div class="conimgright"><img src="../Public/images/test2.jpg" /></div>
+</div>
+<div class="header"><h1 class="header">实验室介绍</h1></div>
+
+<div class="left" id="link_clicked">
+<ul class="header_05">
+<volist name="intros" id="i">
+<if condition="$cpn eq $id['id']">
+<li><a href="__URL__/index/id/{$i.id}" class="current">{$i.title}</a></li>
+<else />
+<li><a href="__URL__/index/id/{$i.id}">{$i.title}</a></li>
+</if>
+</volist>
+</ul>
+
+
+</div>
+<div class="content"  >{$curpage.content}
+<div class="bgimg">
+</div>
+</div>
+
+
+</div>
+</div>
+</div>
+
+<include file="Public:footer" />
+   			
+</body>
+</html>
