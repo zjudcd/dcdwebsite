@@ -2,7 +2,6 @@
 class AchievementAction extends BaseAction{
 	public function index()
 	{
-		
 		$Pages=M("Achievementpages");
 		$pages=$Pages->order("id")->select();
 		if(isset($_GET["id"]))
@@ -18,7 +17,11 @@ class AchievementAction extends BaseAction{
 				}
 			}
 		}
-		else $curpage=$pages[0];
+		else 
+		{
+			$curpage=$pages[0];
+			$id=$curpage["id"];
+		}
 		$this->assign("cpn",$id);
 		$this->assign("intros",$pages);
 		$this->assign("curpage",$curpage);

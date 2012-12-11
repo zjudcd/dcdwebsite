@@ -17,7 +17,11 @@ class ActivityAction extends BaseAction{
 				}
 			}
 		}
-		else $curpage=$pages[0];
+		else 
+		{
+			$curpage=$pages[0];
+			$id=$curpage["id"];
+		}
 		$this->assign("cpn",$id);
 		$this->assign("intros",$pages);
 		$this->assign("curpage",$curpage);
