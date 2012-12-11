@@ -1,14 +1,19 @@
 	<script language="javascript">
 		$(document).ready(function() {
-			$('#slider').s3Slider({
+			$('#sslider').s3Slider({
 				timeOut: 4000 
 			});
 		});
 	</script>
 	<link href="__ROOT__/Public/Css/smaSlider.css" rel="stylesheet" type="text/css" />
-	<div id="slider">
-        <ul id="sliderContent" class="sma_sliderImage">
-			<a href="#" target="_blank"><img src="../Public/images/test.jpg" width="240" height="200"/>
-            <div class="clear sliderImage"></div>
+	<div id="sslider">
+        <ul id="ssliderContent">
+			<li class="ssliderImage">
+			<a href="#1" target="_blank"><img src="../Public/images/test.jpg" width="240" height="200"/></a>
+			</li>
+			<li class="ssliderImage">
+			<a href="#2" target="_blank"><img src="../Public/images/test.jpg" width="240" height="200"/></a>
+			</li>
+            <div class="clear ssliderImage"></div>
         </ul>
     </div>
