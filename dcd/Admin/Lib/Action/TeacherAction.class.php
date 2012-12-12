@@ -23,10 +23,12 @@ class TeacherAction extends BaseAction{
 		$user = $Member->where($map)->order('id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
 		$this->assign('pages',$show);
 		$this->assign("user",$user);
+		$this->assign(menu,"Members");
 		$this->display("Public:teacher");
 	}
 	public function add(){
 		$this->assign("dsp","add");
+		$this->assign(menu,"Members");
 		$this->display("Public:teacher");
 	}
 	public function adds(){
@@ -77,6 +79,7 @@ class TeacherAction extends BaseAction{
 				$this->married = "";
 				$this->notmarried = "selected";
 			}
+			$this->assign(menu,"Members");
 			$this->assign("teacher",$Teac[0]);
 			$this->assign("dsp","edit");
 			$this->display("Public:teacher");

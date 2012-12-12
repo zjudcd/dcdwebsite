@@ -5,6 +5,7 @@ class SettingAction extends BaseAction{
 		foreach($siteinfo as $key){
 			$this->assign($key['types'],$key['values']);
 		}
+		$this->assign(menu,"Setting");
 		$this->display("Public:setting");
 	}
 	public function update(){

@@ -4,6 +4,7 @@ class ProductsAction extends BaseAction{
 	
 	public function index()
 	{
+		$this->assign(menu,"Products");
 		$this->display("Public:product");
 	}
 	
@@ -25,6 +26,7 @@ class ProductsAction extends BaseAction{
 
 		$Page -> parameter .= "keyword=".urlencode($kmap)."&";
 		$products = $M->where($map)->order('submittime desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+		$this->assign(menu,"Products");
 		$this->assign('pages',$show);
 		$this->assign("product",$products);
 		$this->assign("dsp",$sp);
@@ -133,6 +135,7 @@ class ProductsAction extends BaseAction{
 			$this->assign("product",$product[0]);
 		}
 		$this->assign("dsp",$page);
+		$this->assign(menu,"Products");
 		$this->display("Public:products");
 	}
 	

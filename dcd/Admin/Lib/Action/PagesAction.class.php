@@ -15,12 +15,14 @@ class PagesAction extends BaseAction{
 		$Page -> parameter .= "keyword=".urlencode($kmap)."&";
 		$show = $Page->show();
 		$pages = $Pages->where($map)->order('id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+		$this->assign(menu,"Pages");
 		$this->assign('pages',$show);
 		$this->assign("pgs",$pages);
 		$this->display("Public:pages");
 	}
 	public function add(){
 		$this->assign("dsp","add");
+		$this->assign(menu,"Pages");
 		$this->display("Public:pages");
 	}
 	public function adds(){
@@ -41,6 +43,7 @@ class PagesAction extends BaseAction{
 			$pgs = D("Pages")->getById($_GET['id']);
 			$this->assign($pgs);
 			$this->assign("dsp","edit");
+			$this->assign(menu,"Pages");
 			$this->display("Public:pages");
 		}else{
 			$this->assign("jumpUrl","__URL__");

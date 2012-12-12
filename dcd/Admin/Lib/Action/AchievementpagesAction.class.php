@@ -15,13 +15,14 @@ class AchievementpagesAction extends BaseAction{
 		$Page -> parameter .= "keyword=".urlencode($kmap)."&";
 		$show = $Page->show();
 		$pages = $Pages->where($map)->order('id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
-		$this->assign($menu,"Achievementpages");
+		$this->assign(menu,"Achievementpages");
 		$this->assign('pages',$show);
 		$this->assign("pgs",$pages);
 		$this->display("Public:Achievementpages");
 	}
 	public function add(){
 		$this->assign("dsp","add");
+		$this->assign(menu,"Achievementpages");
 		$this->display("Public:Achievementpages");
 	}
 	public function adds(){
@@ -42,6 +43,7 @@ class AchievementpagesAction extends BaseAction{
 			$pgs = D("Achievementpages")->getById($_GET['id']);
 			$this->assign($pgs);
 			$this->assign("dsp","edit");
+			$this->assign(menu,"Achievementpages");
 			$this->display("Public:Achievementpages");
 		}else{
 			$this->assign("jumpUrl","__URL__");

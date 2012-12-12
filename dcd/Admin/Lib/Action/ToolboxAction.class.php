@@ -1,6 +1,7 @@
 <?php
 class ToolboxAction extends BaseAction{
 	public function index(){
+		$this->assign(menu,"Toolbox");
 		$this->display("Public:toolbox");
 	}
 	public function modify(){

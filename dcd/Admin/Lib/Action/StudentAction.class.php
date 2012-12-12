@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class StudentAction extends BaseAction{
 	function _initialize(){
 		$map['uid'] = $_SESSION[C('USER_AUTH_KEY')];
@@ -23,12 +23,14 @@ class StudentAction extends BaseAction{
 		$user = $Member->where($map)->order('id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
 		$this->assign('pages',$show);
 		$this->assign("user",$user);
+		$this->assign(menu,"Members");
 		$this->display("Public:student");
 	}
 	public function add(){
 		$Teac = M("Teacher")->select();
 		$this->assign("teacher",$Teac);
 		$this->assign("dsp","add");
+		$this->assign(menu,"Members");
 		$this->display("Public:student");
 	}
 	public function adds(){
@@ -74,6 +76,7 @@ class StudentAction extends BaseAction{
 			$this->assign("student",$Stu[0]);
 			$this->assign("teacherid",$Stu[0]['teacher']);
 			$this->assign("dsp","edit");
+			$this->assign(menu,"Members");
 			$this->display("Public:student");
 		}else{
 			$this->assign("jumpUrl","__URL__");

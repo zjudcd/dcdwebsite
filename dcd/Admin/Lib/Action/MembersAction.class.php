@@ -7,6 +7,8 @@ class MembersAction extends BaseAction{
 		if(!$comp) $this->error("对不起，您没有权限！");
 	}
 	public function index(){
+		$this->assign(menu,"Members");
+		print($this->menu);
 		$this->display("Public:members");
 	}
 }

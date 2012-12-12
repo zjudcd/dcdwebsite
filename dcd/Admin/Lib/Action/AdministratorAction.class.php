@@ -23,10 +23,12 @@ class AdministratorAction extends BaseAction{
 		$user = $Member->where($map)->order('uid desc')->limit($Page->firstRow.','.$Page->listRows)->select();
 		$this->assign('pages',$show);
 		$this->assign("user",$user);
+		$this->assign(menu,"Members");
 		$this->display("Public:administrator");
 	}
 	public function add(){
 		$this->assign("dsp","add");
+		$this->assign(menu,"Members");
 		$this->display("Public:administrator");
 	}
 	public function adds(){
@@ -72,6 +74,7 @@ class AdministratorAction extends BaseAction{
 				$this->assign("two","");
 				$this->assign("three","selected");
 			}
+			$this->assign(menu,"Members");
 			$this->assign("administrator",$Admin[0]);
 			$this->assign("dsp","edit");
 			$this->display("Public:administrator");

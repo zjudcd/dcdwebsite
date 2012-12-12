@@ -16,6 +16,7 @@ class NewsAction extends BaseAction{
 		$Page -> parameter .= "keyword=".urlencode($kmap)."&";
 		$show = $Page->show();
 		$news = $News->where($map)->order('date desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+		$this->assign(menu,"News");
 		$this->assign('pages',$show);
 		$this->assign("news",$news);
 		$this->display("Public:news");
@@ -26,6 +27,7 @@ class NewsAction extends BaseAction{
 		$types= $newstype->order('id')->select();
 		$this->assign("types",$types);
 		$this->assign("dsp","add");
+		$this->assign(menu,"News");
 		$this->display("Public:news");
 	}
 	public function adds(){
@@ -50,7 +52,7 @@ class NewsAction extends BaseAction{
 			$newstype = M("Newstype");
 			$types= $newstype->order('id')->select();
 			$this->assign("types",$types);
-			
+			$this->assign(menu,"News");
 			$this->assign("dsp","edit");
 			$this->display("Public:news");
 		}else{

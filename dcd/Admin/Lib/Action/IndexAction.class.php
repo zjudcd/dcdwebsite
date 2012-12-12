@@ -19,6 +19,7 @@ class IndexAction extends BaseAction{
 			$upload = '<font color="red">'.不支持上传.'</font>';
 		}
 		$array['upload'] = $upload;
+		$this->assign(menu,"Index");
 		$this->assign('latestversion','<script language="javascript" src="http://fengziliu.com/liucms/vs.php?version='.C("LIUCMS_VERSION").'"></script>');
 		$this->assign('userInfo',$userInfo);
 		$this->assign('siteCount',$siteCount);
