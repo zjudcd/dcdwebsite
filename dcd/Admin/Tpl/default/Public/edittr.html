@@ -150,7 +150,17 @@
             </tr>
 			<tr>
               <th>公开性质</th>
-              <td><input type="text" name="public" value="{$product.public}" class="input-b" /></td>
+              <td>
+				<select name="public">
+					<if condition="$p['public'] eq '0'">
+					<option value="0" selected="selected">否</option>
+					<option value="1">是</option>
+					<else />
+					<option value="0">否</option>
+					<option value="1" selected="selected">是</option>
+					</if>
+				</select>
+				</td>
             </tr>
             <tr>
               <th>备注</th>

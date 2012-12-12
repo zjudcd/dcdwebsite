@@ -56,7 +56,17 @@
 			</tr>
 			<tr>
 				<th>是否公开</th>
-				<td><input type="text" name="ispublic" value="{$product.ispublic}" class="input-b" /></td>
+				<td>
+				<select name="ispublic">
+					<if condition="$p['ispublic'] eq '0'">
+					<option value="0" selected="selected">否</option>
+					<option value="1">是</option>
+					<else />
+					<option value="0">否</option>
+					<option value="1" selected="selected">是</option>
+					</if>
+				</select>
+				</td>
 			</tr>
 			<tr>
 				<th>项目资助额度</th>

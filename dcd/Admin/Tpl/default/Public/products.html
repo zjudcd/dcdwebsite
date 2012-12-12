@@ -55,7 +55,12 @@
 			</tr>
 			<tr>
 				<th>是否公开</th>
-				<td><input type="text" name="ispublic" value="" class="input-b" /></td>
+				<td>
+				<select name="ispublic">
+					<option value="0">否</option>
+					<option value="1">是</option>
+				</select>
+				</td>
 			</tr>
 			<tr>
 				<th>项目资助额度</th>
@@ -728,8 +733,13 @@
               <td><input type="text" name="sponsor" value="" class="input-b" /></td>
             </tr>
 			<tr>
-              <th>公开性质</th>
-              <td><input type="text" name="public" value="" class="input-b" /></td>
+              <th>是否公开</th>
+              <td>
+				<select name="public">
+					<option value="0">否</option>
+					<option value="1">是</option>
+				</select>
+				</td>
             </tr>
             <tr>
               <th>备注</th>

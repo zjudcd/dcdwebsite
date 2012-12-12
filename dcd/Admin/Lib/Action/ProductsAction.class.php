@@ -168,6 +168,13 @@ class ProductsAction extends BaseAction{
 			$name=M("Person")->where($cond)->getField("name");
 			$_POST["name"]=$name;
 		}
+		if(isset($_POST["typeid"]))
+		{
+			// 添加项目
+			$ptcond["id"]=$_POST["typeid"];
+			$typename=M("Projecttype")->where($ptcond)->getField("name");
+			$_POST["typename"]=$typename;
+		}
 		$M=M($tablename);
 		if($M->Create())
 		{
@@ -225,6 +232,7 @@ class ProductsAction extends BaseAction{
 	public function editprod()
 	{
 		$tablename=$_GET["tablename"];
+		$sp=$this->tb2pg($tablename);
 		$id=$_GET["id"];
 		$type=$this->tb2type($tablename);
 		$_POST["id"]=$id;
@@ -249,6 +257,13 @@ class ProductsAction extends BaseAction{
 		{
 			//说明提交的是毕业论文
 			$author[$_POST["personid"]]=1;//
+		}
+		if(isset($_POST["typeid"]))
+		{
+			// 添加项目
+			$ptcond["id"]=$_POST["typeid"];
+			$typename=M("Projecttype")->where($ptcond)->getField("name");
+			$_POST["typename"]=$typename;
 		}
 		$M=M($tablename);
 		$M->startTrans();// 启动事务
@@ -313,7 +328,8 @@ class ProductsAction extends BaseAction{
 			if($success)
 			{
 				$M->commit();//提交事务
-				$this->assign("jumpUrl","__URL__");
+				$jmpUrl="__URL__/prodlist/sp/".$sp;
+				$this->assign("jumpUrl",$jmpUrl);
 				$this->success("修改成功！");
 			}
 			else
@@ -323,7 +339,7 @@ class ProductsAction extends BaseAction{
 			}
 		}else{
 			$M->rollback();
-			$this->error("更新记录失败！或者成果资料未改动");
+			$this->error("成果资料未改动");
 		}
 	}
 	

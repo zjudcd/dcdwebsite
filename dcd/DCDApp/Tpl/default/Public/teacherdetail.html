@@ -191,7 +191,7 @@ text-align:justify;
 <div class="peo" style="margin-bottom:60px;white-space:normal" >
 <ol style="padding-left:25px;font-size:15px">
 <volist name="papers" id="p">
-	<li><font size="3">{$p.authors},{$p.title},{$p.conferencename}{$p.journalname},vol.{$p.volumenum},{$p.pagenum},{$p.publishdate}</font></li>
+	<li><font size="3">{$p.authors},{$p.title},{$p.conferencename}{$p.journalname},<if condition="$p['volumenum'] neq ''">vol.{$p.volumenum},</if>page.{$p.pagenum},{$p.publishdate}</font></li>
 </volist>
 </ol>
 <!--<div style="float:right"><input type="button" style="background-color:#CCCCCC"  value="修改个人成果"></div>
