@@ -9,7 +9,7 @@ class IndexAction extends BaseAction{
 		$this->assign("newest",$newest);
 		
 		$cond['typeid']=2;//学术通知
-		$news = M("News")->where($cond)->order('date desc')->limit(5)->select();
+		$news = M("News")->where($cond)->order('date desc')->limit(8)->select();
 		$this->slide();
 		$this->assign("menu","Home");
 		$this->assign("news",$news);
