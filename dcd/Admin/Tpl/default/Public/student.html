@@ -60,7 +60,14 @@ table.info
 				</tr>
 				<tr>
 					<th>邮箱</th>
-					<td colspan="6"><input type="text" name="email" value="" /></td>
+					<td colspan="1"><input type="text" name="email" value="" /></td>
+					<th>状态</th>
+					<td colspan="5">
+					<select name="status">
+						<option value="在校">在校</option>
+						<option value="离校">离校</option>
+					</select>
+					</td>
 				</tr>
 				<tr>
 					<th>特长爱好</th>
@@ -181,7 +188,13 @@ table.info
 				</tr>
 				<tr>
 					<th>邮箱</th>
-					<td colspan="6"><input type="text" name="email" value="{$student['email']}" /></td>
+					<td colspan="1"><input type="text" name="email" value="{$student['email']}" /></td>
+					<th>状态</th>
+					<td colspan="5">
+					<select name="status">
+						<option value="在校" {$inschool}>在校</option>
+						<option value="离校" {$outschool}>离校</option>
+					</select>
 				</tr>
 				<tr>
 					<th>特长爱好</th>
@@ -295,6 +308,7 @@ table.info
 			</tr>
 		</table>
 		</form>
+		<include file="Public:paging" />
 	</switch>
 	</div>
 	<div class="clear"></div>

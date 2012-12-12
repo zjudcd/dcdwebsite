@@ -45,7 +45,7 @@ class StudentAction extends BaseAction{
 		$per["personid"] = $_POST["id"];
 		$per["name"] = $_POST["name"];
 		$per["category"] = "学生";
-		$per["status"] = "在校"; 
+		$per["status"] = $_POST["status"]; 
 		if($Student->Create() && $Person->Create()){
 			if($Student->add() && $Person->add($per)){
 				$this->assign("jumpUrl","__URL__");
@@ -72,6 +72,18 @@ class StudentAction extends BaseAction{
 				$this->man = "";
 				$this->woman = "selected";
 			}
+			$cond1["personid"] = $_GET["studentid"];
+			$status = M("person")->where($cond1)->select();
+			if($status[0]["status"] == "在校")
+			{
+				$this->inschool = "selected";
+				$this->outschool = "";
+			}
+			else
+			{
+				$this->inschool = "";
+				$this->outschool = "selected";
+			}
 			$this->assign("teacher",$Teac);
 			$this->assign("student",$Stu[0]);
 			$this->assign("teacherid",$Stu[0]['teacher']);
@@ -90,9 +102,12 @@ class StudentAction extends BaseAction{
 		}
 		$per["personid"] = $_POST["id"];
 		$per["name"] = $_POST["name"];
-		if(D("Student")->save($data) != false)
+		$per["status"] = $_POST["status"];
+		
+		$s = D("Student")->save($data);
+		$p = M("Person")->save($per);
+		if($s == true || $p == true)
 		{
-			M("Person")->save($per);
 			$this->success("修改成功！");
 		}else{
 			$this->error("修改失败或无修改！");		
