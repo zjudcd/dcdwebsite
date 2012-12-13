@@ -34,7 +34,7 @@ class PeopleAction extends BaseAction{
 		$Page = new Page($count,12);
 		$Page -> parameter .= "keyword=".urlencode($kmap)."&";
 		$show = $Page->show();
-		$pp = $Member->where($map)->order('personid desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+		$pp = $Member->where($map)->order('rank')->limit($Page->firstRow.','.$Page->listRows)->select();
 		if($cate == "grastudent")
 			$type = "student";
 		else
