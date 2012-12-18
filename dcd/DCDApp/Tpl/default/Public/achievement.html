@@ -61,7 +61,6 @@ h1.header
 {
 padding:0;
 margin:0;
-font-size:22px;
 }
 div.left
 {
@@ -92,6 +91,13 @@ color:#409ecc;
 #link_clicked li .current {
 color: #409ecc;
 }
+
+#link_clickedd
+{}
+#link_clickedd li .current {
+color: #409ecc;
+}
+
 div.content
 {
 
@@ -119,7 +125,14 @@ white-space:pre;
 	font-size:14px;
 	font-family:Arial, Helvetica, sans-serif;
 }
-
+div.subtitle
+{
+font-size:15px;
+color:#397fa3;
+margin-left:8px;
+margin-top:5px;
+font-weight:bold;
+}
 </style>
 </head>
 <body>
@@ -133,9 +146,10 @@ white-space:pre;
 </div>
 <div class="conimgright"><img src="../Public/images/about.jpg" width="620" height="190" /></div>
 </div>
+<div class="header"><h1 class="header">科研成果</h1></div>
 
 <div class="left">
-<div class="header"><h1 class="header">平台建设</h1></div>
+<div class="subtitle">平台建设</div>
 <ul class="header_05" id="link_clicked">
 <volist name="intros" id="i">
 <if condition="$cpn eq $i['id']">
@@ -145,7 +159,9 @@ white-space:pre;
 </if>
 </volist>
 </ul>
-<div class="header"><h1 class="header">获奖成果</h1></div>
+
+<div class="subtitle">获奖成果</div>
+<ul class="header_05" id="link_clickedd">
 <volist name="intros" id="i">
 <if condition="$cpn eq $i['id']">
 <li><a href="__URL__/index/id/{$i.id}" class="current">{$i.title}</a></li>
@@ -154,17 +170,19 @@ white-space:pre;
 </if>
 </volist>
 </ul>
-<div class="header"><h1 class="header">代表性论著</h1></div>
-<volist name="intros" id="i">
-<if condition="$cpn eq $i['id']">
-<li><a href="__URL__/index/id/{$i.id}" class="current">{$i.title}</a></li>
-<else />
-<li><a href="__URL__/index/id/{$i.id}">{$i.title}</a></li>
-</if>
-</volist>
-</ul>
+
+<div class="subtitle"><a href=""><img  src="../Public/images/lunzhu.jpg" /> </a></div>
+
+
+
+
 </div>
 <div class="content"  >{$curpage.content}
+<ol style="padding-left:25px;font-size:15px">
+<volist name="papers" id="p">
+	<li><a href=""><font >{$p.authors},{$p.title},</font><font style="font-style:italic">{$p.conferencename}</font>,<font style="font-family:fantasy, Terminal">"{$p.journalname},<if condition="$p['volumenum'] neq ''">vol.{$p.volumenum},</if>page.{$p.pagenum},{$p.publishdate}</font></a></li>
+</volist>
+</ol>
 <div class="bgimg">
 </div>
 </div>
