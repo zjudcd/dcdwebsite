@@ -188,8 +188,12 @@ text-align:justify;
 <P style="font-size:16px"  style="font-weight:bold"><strong>论文</strong></P>
 <div class="peo" style="margin-bottom:60px;white-space:normal" >
 <ol style="padding-left:25px;font-size:15px">
-<volist name="papers" id="p">
-	<li><a href=""><font >{$p.authors},{$p.title},</font><font style="font-style:italic">{$p.conferencename}</font>,<font style="font-family:'幼圆' ">"{$p.journalname},<if condition="$p['volumenum'] neq ''">vol.{$p.volumenum},</if>page.{$p.pagenum},{$p.publishdate}</font></div>
+<volist name="jourpapers" id="p">
+	<li><a href="__APP__/Paper"><font >{$p.authors},{$p.title},</font><font style="font-family:'幼圆' ">"{$p.journalname},<if condition="$p['volumenum'] neq ''">vol.{$p.volumenum},</if>page.{$p.pagenum},{$p.publishdate}</font></div>
+</a></li>
+</volist>
+<volist name="confpapers" id="p">
+	<li><a href="__APP__/Paper"><font >{$p.authors},{$p.title},</font><font style="font-style:italic">{$p.conferencename}</font>,<if condition="$p['volumenum'] neq ''">vol.{$p.volumenum},</if>page.{$p.pagenum},{$p.publishdate}</font></div>
 </a></li>
 </volist>
 </ol>

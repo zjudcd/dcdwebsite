@@ -6,7 +6,7 @@ class TeacherdetailAction extends Action{
 		$per = M("Teacher")->where($condteacher)->select();
 		$this->p = $per[0];
 		$P=M("Products");
-		$cond1="personid='".$_GET["id"]."' and producttype='期刊论文'";
+		$cond1="personid='".$_GET["id"]."' and producttype='期刊论文' and ispublic=1";
 		$prods=$P->where($cond1)->select();
 		$Jour=M("Journalpaper");
 		$papers=array();
@@ -18,8 +18,10 @@ class TeacherdetailAction extends Action{
 			$paper=$Jour->where($cond)->select();
 			$papers[]=$paper[0];
 		}
+		$this->assign(jourpapers,$papers);
+		$papers = Array();
 		$Conf=M("Conferencepaper");
-		$cond1="personid='".$_GET["id"]."' and producttype='会议论文'";
+		$cond1="personid='".$_GET["id"]."' and producttype='会议论文' and ispublic=1";
 		$prods=$P->where($cond1)->select();
 		foreach($prods as $k=>$prod)
 		{
@@ -28,12 +30,13 @@ class TeacherdetailAction extends Action{
 			$paper=$Conf->where($cond)->select();
 			$papers[]=$paper[0];
 		}
-		$this->assign("papers",$papers);
+		$this->assign(confpapers,$papers);
 		
 		// project 写在下面
 		$resultprojects = Array();
 		$productscond["personid"] = $_GET["id"];
 		$productscond["producttype"] = "科研项目";
+		$productscond["ispublic"] = 1;
 		$products = M("products")->where($productscond)->select();
 		foreach($products as $key => $product)
 		{
