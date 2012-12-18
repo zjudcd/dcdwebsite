@@ -172,6 +172,7 @@ dcd/Admin/Runtime/Cache/
 dcd/Admin/Runtime/Data/
 dcd/Admin/Runtime/Logs/
 dcd/Admin/Runtime/Temp/
+dcd/DCDApp/Runtime/
 dcd/DCDApp/Runtime/Cache/
 dcd/DCDApp/Runtime/Data/
 dcd/DCDApp/Runtime/Logs/
