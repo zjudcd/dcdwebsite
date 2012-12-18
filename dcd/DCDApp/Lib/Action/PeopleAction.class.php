@@ -6,7 +6,6 @@ class PeopleAction extends BaseAction{
 			$cate = $_GET["category"];
 		else
 			$cate = "teacher";
-		$Member = M("person");
 		import("ORG.Util.Page");
 		if($_POST['keyword']){
 			$kmap = $_POST['keyword'];
@@ -17,37 +16,27 @@ class PeopleAction extends BaseAction{
 		}
 		if($cate == "teacher")
 		{
-			$map['category'] = "教师";
+			$table = "teacher";
 			$map['status'] = "在校";
 		}	
 		else if($cate == "student")
 		{
-			$map['category'] = "学生";
+			$table = "student";
 			$map['status'] = "在校";
 		}
 		else
 		{
-			$map['category'] = "学生";
+			$table = "Student";
 			$map['status'] = "离校";
 		}
+		$Member = M($table);
 		$count = $Member->where($map)->count();
 		$Page = new Page($count,12);
 		$Page -> parameter .= "keyword=".urlencode($kmap)."&";
 		$show = $Page->show();
-		$pp = $Member->where($map)->order('rank')->limit($Page->firstRow.','.$Page->listRows)->select();
-		if($cate == "grastudent")
-			$type = "student";
-		else
-			$type = $cate;
-		$p = Array();
-		foreach($pp as $k => $v)
-		{
-			$cond["id"] = $v["personid"];
-			$result = M($type)->where($cond)->select();
-			array_push($p,$result[0]);
-		}
+		$p = $Member->where($map)->order('rank')->limit($Page->firstRow.','.$Page->listRows)->select();
 		$this->assign("pages",$show);
-		$this->assign("category",$type);
+		$this->assign("category",$table);
 		$this->assign("cate",$cate);
 		$this->assign("people",$p);
 		$this->assign("menu","People");

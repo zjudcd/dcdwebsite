@@ -57,7 +57,7 @@ table.info
 					<td width="168"><input type="text" name="phonenum" value="{$student['phonenum']}" /></td>
 					<th width="144">身份证号</th>
 					<td width="168" ><input type="text" name="idcardno" value="{$student['idcardno']}" /></td>
-					<th width="144" >学号</th>
+					<th width="144" >学号<font color="red">*</font></th>
 					<td width="168">
 					<if condition = "$title eq '编辑'"><input type="hidden" name="id" value="{$student['id']}"/>{$student['id']}
 					<else />
