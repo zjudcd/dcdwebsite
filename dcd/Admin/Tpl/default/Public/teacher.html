@@ -4,148 +4,14 @@ table.info
 }
 </style>
 <include file="Public:header" />
-<script type="text/javascript" src="__ROOT__/Public/Js/teacher.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/Js/personreview.js"></script>
 <div class="cbody b-box blank10">
 	<include file="Public:menu" />
 	<div class="b-area-w f_r">
 	<switch name="dsp">
-		<case value="add">
-		<h4><a href="__APP__/Members">人员管理</a>>><a href="__URL__/">教师</a>>>添加</h4>
-			<form name="memberform" method="post" enctype="multipart/form-data" action="__URL__/adds">
-			<table width="100%" border="1"  cellspacing="1" >
-
-				<tr>
-					<th width="148">姓名<font color="red">*</font></th>
-				  <td width="168"><input type="text" name="name" value="" /></td>
-					<th width="144" >性别</th>
-					<td width="168">
-						<select name="gender">
-							<option value="男">男</option>
-							<option value="女">女</option>
-						</select>
-					</td>
-					<th width="189" >出生年月</th>
-					<td width="168"><input type="text" name="birthday" value="" /></td>
-					<td width="615" rowspan="4"><input type="file" name="photo" style="width:120" /></td>
-				</tr>
-				<tr>
-					<th width="148">政治面貌</th>
-					<td width="168"><input type="text" name="politicsstatus" value="" /></td>
-					<th width="144" >技术职称</th>
-					<td width="168">
-					<select name="position">
-						<option value="教授">教授</option>
-						<option value="副教授">副教授</option>
-						<option value="讲师">讲师</option>
-						<option value="博士后">博士后</option>
-						<option value="">无</option>
-					</select></td>
-					<th width="189" >出生地</th>
-					<td width="168"><input type="text" name="birthplace" value="" /></td>
-				</tr>
-				<th width="148">行政职务</th>
-				  <td width="168"><input type="text" name="politicsposition" value="" /></td>
-					<th width="144" >婚否</th>
-					<td width="168">
-						<select name="ismarried">
-							<option value="1">已婚</option>
-							<option value="0">未婚</option>
-						</select>
-					</td>
-					<th width="189" >工号<font color="red">*</font></th>
-					<td width="168"><input type="text" name="id" value="" /></td>
-				<tr>
-				<th width="148">研究方向</th>
-				  <td width="168"><input type="text" name="researchdir" value="" /></td>
-					<th width="144" >最高学位</th>
-					<td width="168"><input type="text" name="degree" value="" /></td>
-					<th width="189" >获得学位年份</th>
-					<td width="168"><input type="text" name="degreedate" value="" /></td>
-				<tr>
-					<th>学术称号</th>
-					<td colspan="1"><input type="text" name="academichonour" value="" /></td>
-					<th>英文名</th>
-					<td colspan="4"><input type="text" name="englishname" value="" /></td>
-				</tr>
-				<tr>
-				<th width="148">电话</th>
-				  <td ><input type="text" name="phonenum" value="" /></td>
-				  <th >身份证号</th>
-					<td colspan="4" ><input type="text" name="idcardno" value=""/></td>
-				<tr>
-					<th>住址</th>
-				<td colspan="6"><input type="text" name="address" value="" /></td>
-				</tr>
-				<tr>
-					<th>邮箱</th>
-					<td colspan="6"><input type="text" name="email" value="" /></td>
-				</tr>
-				
-				
-			</table>
-		
-		<table width="100%" border="1"  cellspacing="1" >
-		<tr><th colspan="7">个人简历</th></tr>
-			<tr>
-				<th rowspan="2" width="148">研究生</th>
-				<th width="166" >毕业院校</th>
-		      <td colspan="3"><input type="text" name="postgraduateschool" value="" /></td>
-				<th width="189" >所在院系</th>
-			  <td width="189"><input type="text" name="postgraduatefaculty" value="" /></td>
-		   </tr>
-		   <tr>
-				<th >专业</th>
-		     <td width="559"><input type="text" name="postgraduatemajor" value="" /></td>
-			    <th width="189" >学位</th>
-			 <td width="189"><input type="text" name="postgraduatedegree" value="" /></td>
-				<th width="189" >毕业时间</th>
-				<td width="168"><input type="text" name="postgraduateend" value="" /></td>
-		   </tr>
-		   
-		   <tr>
-				<th rowspan="2" width="148">本科生</th>
-				<th width="166" >毕业院校</th>
-		      <td colspan="3"><input type="text" name="collegeschool" value="" /></td>
-				<th width="189" >所在院系</th>
-			  <td width="189"><input type="text" name="collegefaculty" value="" /></td>
-		   </tr>
-		   <tr>
-				<th >专业</th>
-		     <td width="559"><input type="text" name="collegemajor" value="" /></td>
-			    <th width="189" >学位</th>
-			 <td width="189"><input type="text" name="collegedegree" value="" /></td>
-				<th width="189" >毕业时间</th>
-				<td width="168"><input type="text" name="collegeend" value="" /></td>
-		   </tr>
-		 
-		   <tr>
-				<th colspan="7">个人简介</th>
-			</tr>
-			<td height="126" colspan="7">
-				  <textarea rows="10" cols="85" name="introduction" value="" style="width:100%;overflow:visible" ></textarea></td>
-			</td>
-			<tr>
-			    <th width="148">学术任职</th>
-				<td colspan="6"><input type="text" name="academicparticipation" value="" /></td>
-			</tr>
-			<tr>
-			    <th width="148">所属课题组</th>
-				<td colspan="6"><input type="text" name="researchgroup" value="" /></td>
-			</tr>
-			<tr>
-			    <th width="148">所在实验室</th>
-				<td colspan="6"><input type="text" name="lab" value="" /></td>
-			</tr>
-		   
-		  </table>
-		
-		<div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return review()"/></div>
-		</form>
-		</case>
-		<case value="edit">
-			<h4><a href="__APP__/Members">人员管理</a>>><a href="__URL__/">教师</a>>>编辑</h4>			
-			<a href="__URL__/"><div class="b-btn f_l blank5_r">返回</div></a>
-			<form name="memberform" method="post" enctype="multipart/form-data" action="__URL__/edits">
+		<case value="detail">
+			<h4><a href="__APP__/Members">人员管理</a>>><a href="__URL__/">教师</a>>>{$title}</h4>			
+			<form name="memberform" method="post" enctype="multipart/form-data" action="__URL__/{$action}">
 			<table width="100%" border="1"  cellspacing="1" >
 				<tr>
 					<th width="148">姓名<font color="red">*</font></th>
@@ -153,8 +19,13 @@ table.info
 					<th width="144" >性别</th>
 					<td width="168">
 						<select name="gender">
-							<option value="男" {$man}>男</option>
-							<option value="女" {$woman}>女</option>
+						<if condition = "$teacher['gender'] eq '女'">
+							<option value="男" >男</option>
+							<option value="女" selected>女</option>
+						<else />
+							<option value="男" selected>男</option>
+							<option value="女" >女</option>
+						</if>
 						</select>
 					</td>
 					<th width="189" >出生年月</th>
@@ -166,11 +37,31 @@ table.info
 					<td width="168"><input type="text" name="politicsstatus" value="{$teacher['politicsstatus']}" /></td>
 					<th width="144" >技术职称</th>
 					<td width="168"><select name="position">
-						<option value="教授" {$position[0]}>教授</option>
-						<option value="副教授" {$position[1]}>副教授</option>
-						<option value="讲师" {$position[2]}>讲师</option>
-						<option value="博士后" {$position[3]}>博士后</option>
-						<option value="无" {$position[4]}>无</option>
+					<if condition="$teacher['position'] eq '教授'">
+						<option value="教授" selected>教授</option>
+					<else />
+						<option value="教授">教授</option>
+					</if>
+					<if condition="$teacher['position'] eq '副教授'">
+						<option value="副教授" selected>副教授</option>
+					<else />
+						<option value="副教授">副教授</option>
+					</if>
+					<if condition="$teacher['position'] eq '讲师'">
+						<option value="讲师" selected>讲师</option>
+					<else />
+						<option value="讲师">讲师</option>
+					</if>
+					<if condition="$teacher['position'] eq '博士后'">
+						<option value="博士后" selected>博士后</option>
+					<else />
+						<option value="博士后">博士后</option>
+					</if>
+					<if condition="$teacher['position'] eq '无'">
+						<option value="无" selected>无</option>
+					<else />
+						<option value="无">无</option>
+					</if>
 					</select></td>
 					<th width="189" >出生地</th>
 					<td width="168"><input type="text" name="birthplace" value="{$techer['birthplace']}" /></td>
@@ -180,12 +71,23 @@ table.info
 					<th width="144" >婚否</th>
 					<td width="168">
 						<select name="ismarried">
-							<option value="1" {$married}>已婚</option>
-							<option value="0" {$notmarried}>未婚</option>
+						<if condition = "$teacher['ismarried'] eq 1">
+							<option value="0" >未婚</option>
+							<option value="1" selected>已婚</option>
+						<else />
+							<option value="0" selected>未婚</option>
+							<option value="1" >已婚</option>
+						</if>
 						</select>
 					</td>
-					<th width="189" >工号</th>
-					<td width="168"><input type="hidden" name="id" value="{$teacher['id']}"/>{$teacher['id']}</td>
+					<th width="189" >工号<font color="red">*</font></th>
+					<td width="168">
+					<if condition = "$title eq '编辑'">
+						<input type="hidden" name="id" value="{$teacher['id']}"/>{$teacher['id']}
+					<else />
+						<input type="text" name="id" value="{$teacher['id']}"/>
+					</if>
+					</td>
 				<tr>
 				<th width="148">研究方向</th>
 				  <td width="168"><input type="text" name="researchdir" value="{$teacher['researchdir']}" /></td>
@@ -271,7 +173,7 @@ table.info
 		   
 		  </table>
 		
-		<div align="center"><input type="submit" value="提交" class="input-btn-b" /></div>
+		<div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return review('teacher')"/></div>
 		</form>
 		</case>
 		

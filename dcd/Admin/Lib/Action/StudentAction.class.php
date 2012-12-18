@@ -28,8 +28,13 @@ class StudentAction extends BaseAction{
 	}
 	public function add(){
 		$Teac = M("Teacher")->select();
+		$s = Array();
+		$s["photo"] = "default.jpg";
+		$this->assign(student,$s);
+		$this->assign(action,"adds");
+		$this->assign(title,"添加");
 		$this->assign("teacher",$Teac);
-		$this->assign("dsp","add");
+		$this->assign("dsp","detail");
 		$this->assign(menu,"Members");
 		$this->display("Public:student");
 	}
@@ -40,14 +45,14 @@ class StudentAction extends BaseAction{
 		else{
 			$_POST['photo'] = 'default.jpg';
 		}
+		$data = $_POST;
 		$Student = D("Student");
 		$Person = M("Person");
 		$per["personid"] = $_POST["id"];
 		$per["name"] = $_POST["name"];
 		$per["category"] = "学生";
-		$per["status"] = $_POST["status"]; 
 		if($Student->Create() && $Person->Create()){
-			if($Student->add() && $Person->add($per)){
+			if($Student->add($data) && $Person->add($per)){
 				$this->assign("jumpUrl","__URL__");
 				$this->success("发布成功！");
 			}else{
@@ -62,32 +67,14 @@ class StudentAction extends BaseAction{
 			$cond["id"]=$_GET["studentid"];
 			$Stu = D("student")->where($cond)->select();
 			$Teac = M("Teacher")->select();
-			if($Stu[0]["gender"] == "男")
-			{
-				$this->man = "selected";
-				$this->woman = "";
-			}
-			else
-			{
-				$this->man = "";
-				$this->woman = "selected";
-			}
 			$cond1["personid"] = $_GET["studentid"];
 			$status = M("person")->where($cond1)->select();
-			if($status[0]["status"] == "在校")
-			{
-				$this->inschool = "selected";
-				$this->outschool = "";
-			}
-			else
-			{
-				$this->inschool = "";
-				$this->outschool = "selected";
-			}
+			$this->assign(title,"编辑");
+			$this->assign(action,"edits");
 			$this->assign("teacher",$Teac);
 			$this->assign("student",$Stu[0]);
 			$this->assign("teacherid",$Stu[0]['teacher']);
-			$this->assign("dsp","edit");
+			$this->assign("dsp","detail");
 			$this->assign(menu,"Members");
 			$this->display("Public:student");
 		}else{
@@ -102,7 +89,6 @@ class StudentAction extends BaseAction{
 		}
 		$per["personid"] = $_POST["id"];
 		$per["name"] = $_POST["name"];
-		$per["status"] = $_POST["status"];
 		
 		$s = D("Student")->save($data);
 		$p = M("Person")->save($per);

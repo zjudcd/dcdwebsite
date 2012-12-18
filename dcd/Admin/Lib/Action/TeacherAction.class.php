@@ -27,7 +27,12 @@ class TeacherAction extends BaseAction{
 		$this->display("Public:teacher");
 	}
 	public function add(){
-		$this->assign("dsp","add");
+		$t = Array();
+		$t["photo"] = 'default.jpg';
+		$this->assign(teacher,$t);
+		$this->assign(title,"添加");
+		$this->assign(action,"adds");
+		$this->assign("dsp","detail");
 		$this->assign(menu,"Members");
 		$this->display("Public:teacher");
 	}
@@ -38,14 +43,14 @@ class TeacherAction extends BaseAction{
 		else{
 			$_POST['photo'] = 'default.jpg';
 		}
+		$data = $_POST;
 		$Teacher = D("Teacher");
 		$Person = M("Person");
 		$per["personid"] = $_POST["id"];
 		$per["name"] = $_POST["name"];
 		$per["category"] = "教师";
-		$per["status"] = "在校";
 		if($Teacher->Create() && $Person->Create()){
-			if($Teacher->add($_POST) && $Person->add($per)){
+			if($Teacher->add($data) && $Person->add($per)){
 				$this->assign("jumpUrl","__URL__");
 				$this->success("发布成功！");
 			}else{
@@ -59,69 +64,12 @@ class TeacherAction extends BaseAction{
 		if($_GET["teacherid"]){
 			$cond["id"]=$_GET["teacherid"];
 			$Teac = D("teacher")->where($cond)->select();
-			if($Teac[0]["gender"] == "男")
-			{
-				$this->man = "selected";
-				$this->woman = "";
-			}
-			else
-			{
-				$this->man = "";
-				$this->woman = "selected";
-			}
-			if($Teac[0]["ismarried"] == 1)
-			{
-				$this->married = "selected";
-				$this->notmarried = "";
-			}
-			else
-			{
-				$this->married = "";
-				$this->notmarried = "selected";
-			}
-			$p = Array();
-			switch($Teac[0]["position"])
-			{
-				case "教授":
-					$p[0] = "selected";
-					$p[1] = "";
-					$p[2] = "";
-					$p[3] = "";
-					$p[4] = "";
-					break;
-				case "副教授":
-					$p[0] = "";
-					$p[1] = "selected";
-					$p[2] = "";
-					$p[3] = "";
-					$p[4] = "";
-					break;
-				case "讲师":
-					$p[0] = "";
-					$p[1] = "";
-					$p[2] = "selected";
-					$p[3] = "";
-					$p[4] = "";
-					break;
-				case "博士后":
-					$p[0] = "";
-					$p[1] = "";
-					$p[2] = "";
-					$p[3] = "selected";
-					$p[4] = "";
-					break;
-				default:
-					$p[0] = "";
-					$p[1] = "";
-					$p[2] = "";
-					$p[3] = "";
-					$p[4] = "selected";
-					break;
-			}
+			$this->assign(title,"编辑");
+			$this->assign(action,"edits");
 			$this->assign(position,$p);
 			$this->assign(menu,"Members");
 			$this->assign("teacher",$Teac[0]);
-			$this->assign("dsp","edit");
+			$this->assign("dsp","detail");
 			$this->display("Public:teacher");
 		}else{
 			$this->assign("jumpUrl","__URL__");
@@ -135,9 +83,10 @@ class TeacherAction extends BaseAction{
 		}
 		$per["personid"] = $_POST["id"];
 		$per["name"] = $_POST["name"];
-		if(D("Teacher")->save($data) != false)
+		$t = D("Teacher")->save($data);
+		$p = M("Person")->save($per);
+		if($t == true || $p == true)
 		{
-			M("Person")->save($per);
 			$this->success("修改成功！");
 		}else{
 			$this->error("修改失败或无修改！");		
