@@ -91,6 +91,13 @@ color:#409ecc;
 #link_clicked li .current {
 color: #409ecc;
 }
+
+#link_clickedd
+{}
+#link_clickedd li .current {
+color: #409ecc;
+}
+
 div.content
 {
 
@@ -118,7 +125,19 @@ white-space:pre;
 	font-size:14px;
 	font-family:Arial, Helvetica, sans-serif;
 }
-
+div.subtitle
+{
+font-size:15px;
+color:#397fa3;
+margin-left:8px;
+margin-top:5px;
+font-weight:bold;
+}
+div.subtitle a
+{
+color:#397fa3;
+font-weight:bold;
+}
 </style>
 </head>
 <body>
@@ -132,23 +151,42 @@ white-space:pre;
 </div>
 <div class="conimgright"><img src="../Public/images/about.jpg" width="620" height="190" /></div>
 </div>
-<div class="header"><h1 class="header">学术活动</h1></div>
+<div class="header"><h1 class="header">科研成果</h1></div>
 
 <div class="left">
+<div class="subtitle"><a href="__URL__/direction/type/5">平台建设</a></div>
 <ul class="header_05" id="link_clicked">
-<li><a href="__ROOT__/Hsu-conference/pr.htm" target="_blank">The Third Pao-Lu Hsu Conference (2011)</a></li>
-<volist name="intros" id="i">
+<volist name="platform" id="i">
 <if condition="$cpn eq $i['id']">
-<li><a href="__URL__/activity/id/{$i.id}" class="current">{$i.title}</a></li>
+<li><a href="__URL__/direction/type/5/id/{$i.id}" class="current">{$i.title}</a></li>
 <else />
-<li><a href="__URL__/activity/id/{$i.id}">{$i.title}</a></li>
+<li><a href="__URL__/direction/type/5/id/{$i.id}">{$i.title}</a></li>
 </if>
 </volist>
 </ul>
 
+<div class="subtitle"><a href="__URL__/direction/type/3">获奖成果</a></div>
+<ul class="header_05" id="link_clickedd">
+<volist name="award" id="i">
+<if condition="$cpn eq $i['id']">
+<li><a href="__URL__/direction/type/3/id/{$i.id}" class="current">{$i.title}</a></li>
+<else />
+<li><a href="__URL__/direction/type/3/id/{$i.id}">{$i.title}</a></li>
+</if>
+</volist>
+</ul>
 
+<div class="subtitle"><a href="__URL__/typical"><img  src="../Public/images/lunzhu.jpg" /> </a></div>
 </div>
-<div class="content"  >{$curpage.content}
+<div class="content"  >{$curpage.content}<ol style="padding-left:25px;font-size:15px">
+<volist name="tjour" id="p">
+	<li><a href="__ROOT__/index.php/Paper/type/jour/id/{$p.id}"><font >{$p.authors},{$p.title},</font><font style="font-style:italic">{$p.journalname},</font><if condition="$p['volumenum'] neq ''">vol.{$p.volumenum},</if>page.{$p.pagenum},{$p.publishdate}</font></a></li>
+</volist>
+
+<volist name="tconf" id="p">
+	<li><a href="__ROOT__/index.php/Paper/type/conf/id/{$p.id}"><font >{$p.authors},{$p.title},</font><font style="font-style:italic">{$p.conferencename},</font>page.{$p.pagenum},{$p.publishdate}</font></a></li>
+</volist>
+</ol>
 <div class="bgimg">
 </div>
 </div>
