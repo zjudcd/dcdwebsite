@@ -32,7 +32,14 @@ table.info
 					<th width="148">政治面貌</th>
 					<td width="168"><input type="text" name="politicsstatus" value="" /></td>
 					<th width="144" >技术职称</th>
-					<td width="168"><input type="text" name="position" value="" /></td>
+					<td width="168">
+					<select name="position">
+						<option value="教授">教授</option>
+						<option value="副教授">副教授</option>
+						<option value="讲师">讲师</option>
+						<option value="博士后">博士后</option>
+						<option value="">无</option>
+					</select></td>
 					<th width="189" >出生地</th>
 					<td width="168"><input type="text" name="birthplace" value="" /></td>
 				</tr>
@@ -156,7 +163,13 @@ table.info
 					<th width="148">政治面貌</th>
 					<td width="168"><input type="text" name="politicsstatus" value="{$teacher['politicsstatus']}" /></td>
 					<th width="144" >技术职称</th>
-					<td width="168"><input type="text" name="position" value="{$teacher['position']}" /></td>
+					<td width="168"><select name="position">
+						<option value="教授" {$position[0]}>教授</option>
+						<option value="副教授" {$position[1]}>副教授</option>
+						<option value="讲师" {$position[2]}>讲师</option>
+						<option value="博士后" {$position[3]}>博士后</option>
+						<option value="无" {$position[4]}>无</option>
+					</select></td>
 					<th width="189" >出生地</th>
 					<td width="168"><input type="text" name="birthplace" value="{$techer['birthplace']}" /></td>
 				</tr>

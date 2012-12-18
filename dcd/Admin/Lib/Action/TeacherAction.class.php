@@ -79,6 +79,46 @@ class TeacherAction extends BaseAction{
 				$this->married = "";
 				$this->notmarried = "selected";
 			}
+			$p = Array();
+			switch($Teac[0]["position"])
+			{
+				case "教授":
+					$p[0] = "selected";
+					$p[1] = "";
+					$p[2] = "";
+					$p[3] = "";
+					$p[4] = "";
+					break;
+				case "副教授":
+					$p[0] = "";
+					$p[1] = "selected";
+					$p[2] = "";
+					$p[3] = "";
+					$p[4] = "";
+					break;
+				case "讲师":
+					$p[0] = "";
+					$p[1] = "";
+					$p[2] = "selected";
+					$p[3] = "";
+					$p[4] = "";
+					break;
+				case "博士后":
+					$p[0] = "";
+					$p[1] = "";
+					$p[2] = "";
+					$p[3] = "selected";
+					$p[4] = "";
+					break;
+				default:
+					$p[0] = "";
+					$p[1] = "";
+					$p[2] = "";
+					$p[3] = "";
+					$p[4] = "selected";
+					break;
+			}
+			$this->assign(position,$p);
 			$this->assign(menu,"Members");
 			$this->assign("teacher",$Teac[0]);
 			$this->assign("dsp","edit");
