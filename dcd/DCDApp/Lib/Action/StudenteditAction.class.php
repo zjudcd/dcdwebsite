@@ -25,8 +25,13 @@ class StudenteditAction extends Action{
 		if(!empty($_FILES['photo']['name'])){
 			$_POST['photo'] = $this->_upload("photo",false,300,400,true);
 		}
+		$data["personid"] = $_POST["id"];
+		$data["name"] = $_POST["name"];
 		if(M('Student')->save($_POST))
+		{
+			M("Person")->save($data);
 			$this->success("修改成功！");
+		}
 		else
 			$this->error("数据无变化或修改失败！");
 	}
