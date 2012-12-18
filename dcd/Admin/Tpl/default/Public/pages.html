@@ -5,13 +5,27 @@
 	<div class="b-area-w f_r">
 	<switch name="dsp">
 		<case value="add">
-		<h4><a href="javascript:history.back()">实验室介绍页面管理</a>>>发布单页</h4>
+		<h4><a href="__URL__">页面管理</a>>>发布单页</h4>
 		<form name="pagesform" method="post" action="__URL__/adds">
 		<table border="0" cellspacing="1" class="tb-b">
+			<tr>
+				<th>页面类型</th>
+				<td>
+				<select name="type">
+					<option value="1">实验室介绍</option>
+					<option value="2">研究方向</option>
+					<option value="3">获奖成果</option>
+					<option value="4">学术活动</option>
+					<option value="5">平台建设</option>
+				</select>
+				</td>
+			</tr>
+			
 			<tr>
 				<th>标题</th>
 				<td><input type="text" name="title" value="" class="input-b" /></td>
 			</tr>
+			
 			<tr>
 				<th>内容</th>
 				<td><html:editor id="editor" name="content" type="FCKeditor" content="" /></td>
@@ -21,12 +35,49 @@
 		</form>
 		</case>
 		<case value="edit">
-		<h4><a href="javascript:history.back()">实验室介绍页面管理</a>>>编辑单页</h4>
+		<h4><a href="__URL__">页面管理</a>>>编辑单页</h4>
 		<form name="pagesform" method="post" action="__URL__/edits">
 		<table border="0" cellspacing="1" class="tb-b">
 			<tr>
 				<th>ID</th>
 				<td>{$id}<input type="hidden" name="id" value="{$id}"></td>
+			</tr>
+			<tr>
+				<th>页面类型</th>
+				<td>
+				
+				<select name="type">
+					<if condition="$type eq 1">
+					<option value="1" selected="selected">实验室介绍</option>
+					<else />
+					<option value="1">实验室介绍</option>
+					</if>
+					<if condition="$type eq 2">
+					<option value="2" selected="selected">研究方向</option>
+					<else />
+					<option value="2">研究方向</option>
+					</if>
+					
+					
+					<if condition="$type eq 3">
+					<option value="3" selected="selected">获奖成果</option>
+					<else />
+					<option value="3">获奖成果</option>
+					</if>
+					
+					<if condition="$type eq 4">
+					<option value="4" selected="selected">学术活动</option>
+					<else />
+					<option value="4">学术活动</option>
+					</if>
+					
+					<if condition="$type eq 5">
+					<option value="5" selected="selected">平台建设</option>
+					<else />
+					<option value="5">平台建设</option>
+					</if>
+				</select>
+				</td>
 			</tr>
 			<tr>
 				<th>标题</th>
@@ -45,21 +96,29 @@
 		</form>
 		</case>
 		<default />
-		<h4>实验室介绍页面管理</h4>
+		<h4>页面管理</h4>
 		<include file="Public:searchbar" />
 		<form name="pagesform" method="post" action="__URL__/batch">
 		<table width="100%" border="0" cellspacing="1" class="tb-a blank5">
 			<tr>
-				<th width="20"><input name="checkbox" type="checkbox" class="input-cb" onClick="selAll(this)" /></th>
-				<th width="30">ID</th>
-				<th>标题</th>
-				<th>发布时间</th>
-				<th width="150">操作</th>
+				<th width="5%"><input name="checkbox" type="checkbox" class="input-cb" onClick="selAll(this)" /></th>
+				<th width="20%">页面类型</th>
+				<th width="40%">标题</th>
+				<th width="20%">发布时间</th>
+				<th width="15%">操作</th>
 			</tr>
 			<volist name="pgs" id="pg">
 			<tr>
 				<td><input name="id[]" type="checkbox" id="id[]" value="{$pg.id}" class="input-cb" /></td>
-				<td>{$pg.id}</td>
+				<td>
+				<switch name="pg.type">
+					<case value="1">实验室介绍</case>
+					<case value="2">研究方向</case>
+					<case value="3">获奖成果</case>
+					<case value="4">学术活动</case>
+					<case value="5">平台建设</case>
+				</switch>
+				</td>
 				<td>{$pg.title}</td>
 				<td>{$pg.submittime|date="Y-n-j H:i:s",###}</td>
 				<td><a href="__URL__/edit/id/{$pg.id}">编辑</a> <a href="__URL__/batch/act/delete/id/{$pg.id}" onClick="confirmDel('{$pg.title}')">删除</a></td>

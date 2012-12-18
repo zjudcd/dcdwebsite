@@ -1,0 +1,35 @@
+<h4><a href="__URL__/">成果管理</a>>>代表性成果</h4>
+		<div>
+		<div class="clear"></div>
+		</div>
+		<form name="proform" method="post" action="__URL__/batch">
+		<table width="100%" border="0" cellspacing="1" class="tb-a blank5">
+			<tr>
+				<th width="5%"><input name="checkbox" type="checkbox" class="input-cb" onClick="selAll(this)" /></th>
+				<th width="15%">成果类型</th>
+				<th width="45%">名称</th>
+				<th width="25%">作者列表</th>
+				<th width="10%">操作</th>
+			</tr>
+			<volist name="tjour" id="p">
+			<tr>
+				<td><input name="id[]" type="checkbox" id="id[]" value="{$p.id}" class="input-cb" /></td>
+				<td>期刊论文</td>
+				<td>{$p.title}</td>
+				<td>{$p.authors}</td>
+				<td><a href="__URL__/showpage/sp/editjour/id/{$p.id}">编辑</a></td>
+			</tr>
+			</volist>
+			
+			<volist name="tconf" id="p">
+			<tr>
+				<td><input name="id[]" type="checkbox" id="id[]" value="{$p.id}" class="input-cb" /></td>
+				<td>会议论文</td>
+				<td>{$p.title}</td>
+				<td>{$p.authors}</td>
+				<td><a href="__URL__/showpage/sp/editconf/id/{$p.id}">编辑</a></td>
+			</tr>
+			</volist>
+
+		</table>
+		</form>

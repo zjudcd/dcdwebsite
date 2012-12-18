@@ -33,6 +33,24 @@ class ProductsAction extends BaseAction{
 		$this->display("Public:products");
 	}
 	
+	// 代表性成果
+	public function typical()
+	{
+		$cond["istypical"] = 1;
+		// 代表性 期刊论文
+		$Jour = M("Journalpaper")->where($cond)->select();
+		$this->assign("tjour",$Jour);
+		// 代表性 会议论文
+		$Conf = M("Conferencepaper")->where($cond)->select();
+		$this->assign("tconf",$Conf);
+		
+		$this->assign("dsp","typical");
+		
+		// 代表性 项目
+		$this->display("Public:products");
+		// 
+	}
+	
 	static protected function tb2pg($tb)
 	{
 		$map=array("Journalpaper"=>"jour",
