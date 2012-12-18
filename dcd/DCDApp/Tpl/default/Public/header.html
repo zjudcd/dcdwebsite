@@ -22,9 +22,9 @@
 	</if>
 		
 	<if condition="$menu eq 'Achievement'">
-		<li><a href="__ROOT__/index.php/achievement" class="current">科研项目与成果</a></li>
+		<li><a href="__ROOT__/index.php/achievement" class="current">研究方向</a></li>
 	<else />
-		<li><a href="__ROOT__/index.php/achievement">科研项目与成果</a></li>
+		<li><a href="__ROOT__/index.php/achievement">研究方向</a></li>
 	</if>
 	
 	<if condition="$menu eq 'Activity'">
@@ -37,6 +37,12 @@
 		<li><a href="__ROOT__/index.php/People/" class="current">成员介绍</a></li>
 	<else />
 		<li><a href="__ROOT__/index.php/People/">成员介绍</a></li>
+	</if>
+	
+	<if condition="$menu eq 'Achievement'">
+		<li><a href="__ROOT__/index.php/achievement" class="current">科研成果</a></li>
+	<else />
+		<li><a href="__ROOT__/index.php/achievement">科研成果</a></li>
 	</if>
 	
     <if condition="$menu eq 'News'"> 

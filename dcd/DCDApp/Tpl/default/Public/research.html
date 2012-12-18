@@ -61,7 +61,6 @@ h1.header
 {
 padding:0;
 margin:0;
-font-size:22px;
 }
 div.left
 {
@@ -133,9 +132,9 @@ white-space:pre;
 </div>
 <div class="conimgright"><img src="../Public/images/about.jpg" width="620" height="190" /></div>
 </div>
+<div class="header"><h1 class="header">研究方向</h1></div>
 
 <div class="left">
-<div class="header"><h1 class="header">平台建设</h1></div>
 <ul class="header_05" id="link_clicked">
 <volist name="intros" id="i">
 <if condition="$cpn eq $i['id']">
@@ -145,24 +144,8 @@ white-space:pre;
 </if>
 </volist>
 </ul>
-<div class="header"><h1 class="header">获奖成果</h1></div>
-<volist name="intros" id="i">
-<if condition="$cpn eq $i['id']">
-<li><a href="__URL__/index/id/{$i.id}" class="current">{$i.title}</a></li>
-<else />
-<li><a href="__URL__/index/id/{$i.id}">{$i.title}</a></li>
-</if>
-</volist>
-</ul>
-<div class="header"><h1 class="header">代表性论著</h1></div>
-<volist name="intros" id="i">
-<if condition="$cpn eq $i['id']">
-<li><a href="__URL__/index/id/{$i.id}" class="current">{$i.title}</a></li>
-<else />
-<li><a href="__URL__/index/id/{$i.id}">{$i.title}</a></li>
-</if>
-</volist>
-</ul>
+
+
 </div>
 <div class="content"  >{$curpage.content}
 <div class="bgimg">
