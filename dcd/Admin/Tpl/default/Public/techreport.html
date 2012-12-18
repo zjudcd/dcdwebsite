@@ -14,7 +14,7 @@
 				<th width="30">ID</th>
 				<th>报告名称</th>
 				<th>提交日期</th>
-				<th>报告摘要</th>
+				<th>作者</th>
 				<th width="150">操作</th>
 			</tr>
 			<volist name="product" id="p">
@@ -23,7 +23,7 @@
 				<td>{$p.id}</td>
 				<td>{$p.title}</td>
 				<td>{$p.submittime|date="Y-n-j",###}</td>
-				<td>{$p.abstract}</td>
+				<td>{$p.authors}</td>
 				<td><a href="__URL__/showpage/sp/edittr/id/{$p.id}">编辑</a> <a href="__URL__/delete/id/{$p.id}/tablename/Techreport" onClick="confirmDel('{$p.title}')">删除</a></td>
 				<!--
 				<td><a href="__URL__/editprod/sp/edittr/pid/{$p.id}">编辑</a> <a href="__URL__/act/delete/id/{$p.id}/tablename/Techreport">删除</a></td>

@@ -122,7 +122,9 @@ class ProductsAction extends BaseAction{
 			{
 				$nums[]=$author["number"];
 				$name=sprintf("author%d",$author["number"]);
+				$pub = sprintf("ispublic%d",$author["number"]);
 				$this->assign($name,$author["personid"]);
+				$this->assign($pub,$author["ispublic"]);
 			}
 			for($i=1;$i<=6;++$i)
 			{
@@ -130,6 +132,8 @@ class ProductsAction extends BaseAction{
 				{
 					$name = sprintf("author%d",$i);
 					$this->assign($name,"other");// 默认选择作者other
+					$pub = sprintf("ispublic%d",$i); // public 选项
+					$this->assign($pub,0); // 
 				}
 			}
 			$this->assign("product",$product[0]);
@@ -155,9 +159,14 @@ class ProductsAction extends BaseAction{
 		for($i=1;$i<=6;$i++)
 		{
 			$var = sprintf("author%d",$i);
+			$varpub = sprintf("ispublic%d",$i); //是否展现在个人主页
 			if(!empty($_POST[$var]) && $_POST[$var]!="other")
 			{
 				$author[$_POST[$var]]=$i;//$_POST[$var]是作者id，是第$i作者
+				if(isset($_POST[$varpub]))
+				{
+					$public[$_POST[$var]] = 1;// 该作者要展现该成果
+				}
 			}
 		}
 		if(isset($_POST["personid"]))
@@ -196,6 +205,10 @@ class ProductsAction extends BaseAction{
 						$record["productid"]=$id;
 						$record["producttype"]=$this->tb2type($tablename);
 						$record["number"]=$number;
+						if(array_key_exists($userid,$public))
+						{
+							$record["ispublic"] = 1;
+						}
 						if($Product->add($record)==false)
 						{
 							$success = false;
@@ -229,6 +242,7 @@ class ProductsAction extends BaseAction{
 	}
 	
 	// 将修改操作全部放在这里，通过GET中的表名变量来指明所要操作的表
+	// 尼玛 这代码需要重构啊，但是没钱，谁去弄他- -
 	public function editprod()
 	{
 		$tablename=$_GET["tablename"];
@@ -248,15 +262,23 @@ class ProductsAction extends BaseAction{
 		for($i=1;$i<=6;$i++)
 		{
 			$var = sprintf("author%d",$i);
+			$varpub = sprintf("ispublic%d",$i); //是否展现在个人主页
 			if(!empty($_POST[$var]) && $_POST[$var]!="other")
 			{
 				$author[$_POST[$var]]=$i;//$_POST[$var]是作者id，是第$i作者
+				if(isset($_POST[$varpub]))
+				{
+					$public[$_POST[$var]] = 1;// 该作者要展现该成果
+				}
 			}
 		}
 		if(isset($_POST["personid"]))
 		{
-			//说明提交的是毕业论文
+			//说明提交的是毕业论文 或者项目
 			$author[$_POST["personid"]]=1;//
+			$cond["personid"]=$_POST["personid"];
+			$name=M("Person")->where($cond)->getField("name");
+			$_POST["name"]=$name;
 		}
 		if(isset($_POST["typeid"]))
 		{
@@ -268,7 +290,7 @@ class ProductsAction extends BaseAction{
 		$M=M($tablename);
 		$M->startTrans();// 启动事务
 		$success = true;
-		if(($n=$M->save($_POST))!= false){
+		if(!(($n=$M->save($_POST))=== false)){ // 这里要严格比较，因为如果成果资料本身无修改，save返回值为0
 			$Product=M("Products");//在成果表里将该成果的作者与成果关联起来
 			$acond["productid"]=$id;
 			$acond["producttype"]=$type;
@@ -286,14 +308,16 @@ class ProductsAction extends BaseAction{
 				if(array_key_exists($personid,$author))
 				{
 					$indb[]=$personid;
-					if($author[$personid]==number)
-						continue;// 无需改变
+					if(array_key_exists($personid,$public))
+					{
+						$au["ispublic"] = 1;
+					}
 					else
 					{
-						// 作者次序改变了
-						$au["number"]=$author[$personid];
-						$Product->save($au);
+						$au["ispublic"] = 0; // 修改成不显示
 					}
+					$au["number"]=$author[$personid];
+					$Product->save($au);
 				}
 				else
 				{
@@ -318,6 +342,14 @@ class ProductsAction extends BaseAction{
 					$record["productid"]=$id;
 					$record["producttype"]=$type;
 					$record["number"]=$number;
+					if(array_key_exists($userid,$public))
+					{
+						$record["ispublic"] = 1;
+					}
+					else
+					{	
+						$record["ispublic"] = 0;
+					}
 					if($Product->add($record)==false)
 					{
 						$success = false;

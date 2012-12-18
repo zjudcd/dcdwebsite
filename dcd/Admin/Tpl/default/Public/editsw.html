@@ -3,124 +3,26 @@
 		  <table border="0" cellspacing="1" class="tb-b">
 			<tr>
               <th>软件著作权标题</th>
-              <td><input type="text" name="title" value="{$product.title}" class="input-b" /></td>
+              <td><input type="text" name="title" value="{$product.title}" class="input-long" /></td>
             </tr>
 			<tr>
               <th>作者姓名列表</th>
               <td><input type="text" name="authors" value="{$product.authors}" class="input-long" /></td>
             </tr>
-			<tr >
-			  <th>第一作者</th>
-			  <td> <select name="author1" style="width:100px">
-					<if condition="$author1 eq 'other'">
-					<option value="other" selected="selected">other</option>
+			<include file="Public:chooseauthors" />
+			<tr>
+				<th>代表性成果</th>
+				<td>
+					<select name="istypical">
+					<if condition="$product['istypical'] eq 0">
+					<option value="0" selected="selected">否</option>
+					<option value="1">是</option>
 					<else />
-					<option value="other">其他</option>
+					<option value="0">否</option>
+					<option value="1" selected="selected">是</option>
 					</if>
-					<volist name="persons" id="p">
-					<if condition="$p['personid'] eq $author1">
-						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
-					<else />
-						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
-					</if>
-					</volist>
-						
 					</select>
-			  </td>
-			</tr>
-			<tr >
-			  <th>第二作者</th>
-			  <td> <select name="author2" style="width:100px">
-					<if condition="$author2 eq 'other'">
-					<option value="other" selected="selected">other</option>
-					<else />
-					<option value="other">其他</option>
-					</if>
-					<volist name="persons" id="p">
-					<if condition="$author2 eq $p['personid']">
-						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
-					<else />
-						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
-					</if>
-					</volist>
-
-					</select>
-			  </td>
-			</tr>
-			<tr >
-			  <th>第三作者</th>
-			  <td> <select name="author3" style="width:100px">
-					<if condition="$author3 eq 'other'">
-					<option value="other" selected="selected">other</option>
-					<else />
-					<option value="other">其他</option>
-					</if>
-					<volist name="persons" id="p">
-					<if condition="$author3 eq $p['personid']">
-						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
-					<else />
-						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
-					</if>
-					</volist>
-						
-					</select>
-			  </td>
-			</tr>
-			<tr >
-			  <th>第四作者</th>
-			  <td> <select name="author4" style="width:100px">
-					<if condition="$author4 eq 'other'">
-					<option value="other" selected="selected">other</option>
-					<else />
-					<option value="other">其他</option>
-					</if>
-					<volist name="persons" id="p">
-					<if condition="$author4 eq $p['personid']">
-						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
-					<else />
-						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
-					</if>
-					</volist>
-						
-					</select>
-			  </td>
-			</tr>
-			<tr >
-			  <th>第五作者</th>
-			  <td> <select name="author5" style="width:100px">
-					<if condition="$author5 eq 'other'">
-					<option value="other" selected="selected">other</option>
-					<else />
-					<option value="other">其他</option>
-					</if>
-					<volist name="persons" id="p">
-					<if condition="$author5 eq $p['personid']">
-						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
-					<else />
-						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
-					</if>
-					</volist>
-						
-					</select>
-			  </td>
-			</tr>
-			<tr >
-			  <th>第六作者</th>
-			  <td> <select name="author6" style="width:100px">
-					<if condition="$author6 eq 'other'">
-					<option value="other" selected="selected">other</option>
-					<else />
-					<option value="other">其他</option>
-					</if>
-					<volist name="persons" id="p">
-					<if condition="$author6 eq $p['personid']">
-						<option value="{$p.personid}" selected="selected">{$p.name}{$p.personid}</option>
-					<else />
-						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
-					</if>
-					</volist>
-					</select>
-			  </td>
+				</td>
 			</tr>
 			
 			<tr>
@@ -167,11 +69,11 @@
             </tr>
            <tr>
               <th>资助者列表</th>
-              <td><input type="text" name="sponsor" value="{$product.sponsor}" class="input-b" /></td>
+              <td><input type="text" name="sponsor" value="{$product.sponsor}" class="input-long" /></td>
             </tr>
             <tr>
               <th>备注</th>
-              <td><input type="text" name="note" value="{$product.note}" class="input-b" /></td>
+              <td><input type="text" name="note" value="{$product.note}" class="input-long" /></td>
             </tr>
           </table>
 		  <div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_edit()"/></div>

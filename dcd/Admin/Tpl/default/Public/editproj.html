@@ -3,7 +3,7 @@
 		<table border="0" cellspacing="1" class="tb-b">
 			<tr>
 				<th>项目标题</th>
-				<td><input type="text" name="title" value="{$product.title}" class="input-b" /></td>
+				<td><input type="text" name="title" value="{$product.title}" class="input-long" /></td>
 			</tr>
 			<tr>
 				<th>项目类别</th>
@@ -37,14 +37,27 @@
 					</select>
 			  </td>
 			</tr>
-			
+			<tr>
+				<th>代表性成果</th>
+				<td>
+					<select name="istypical">
+					<if condition="$product['istypical'] eq 0">
+					<option value="0" selected="selected">否</option>
+					<option value="1">是</option>
+					<else />
+					<option value="0">否</option>
+					<option value="1" selected="selected">是</option>
+					</if>
+					</select>
+				</td>
+			</tr>
 			<tr>
 				<th>项目简介</th>
 				<td><textarea rows="6" cols="55" name="abstract" value="{$product.abstract}">{$product.abstract}</textarea></td>
 			</tr>
 			<tr>
 				<th>参与单位</th>
-				<td><input type="text" name="unit" value="{$product.unit}" class="input-b" /></td>
+				<td><input type="text" name="unit" value="{$product.unit}" class="input-long" /></td>
 			</tr>
 			<tr>
 				<th>开始时间</th>
@@ -74,7 +87,7 @@
 			</tr>
 			<tr>
 				<th>备注</th>
-				<td><input type="text" name="note" value="{$product.note}" class="input-b" /></td>
+				<td><input type="text" name="note" value="{$product.note}" class="input-long" /></td>
 			</tr>
 		</table>
 		<div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_edit()"/></div>

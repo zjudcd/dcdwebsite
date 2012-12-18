@@ -15,7 +15,7 @@
 				<th>软件名称</th>
 				<th>授权日期</th>
 				<th>简介</th>
-				<th>资助者</th>
+				<th>作者</th>
 				<th width="150">操作</th>
 			</tr>
 			<volist name="product" id="p">
@@ -25,7 +25,7 @@
 				<td>{$p.title}</td>
 				<td>{$p.authorizationdate}</td>
 				<td>{$p.abstract}</td>
-				<td>{$p.sponsor}</td>
+				<td>{$p.authors}</td>
 				<td><a href="__URL__/showpage/sp/editsw/id/{$p.id}">编辑</a> <a href="__URL__/delete/id/{$p.id}/tablename/Softwareright" onClick="confirmDel('{$p.title}')">删除</a></td>
 				<!--
 				<td><a href="__URL__/editprod/sp/editsw/pid/{$p.id}">编辑</a> <a href="__URL__/act/delete/id/{$p.id}/tablename/Softwareright">删除</a></td>

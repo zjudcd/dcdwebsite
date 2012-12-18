@@ -1,4 +1,4 @@
-﻿<h4><a href="javascript:history.back()">毕业论文管理</a> >>编辑成果-毕业论文</h4>
+<h4><a href="javascript:history.back()">毕业论文管理</a> >>编辑成果-毕业论文</h4>
 		<form name="proform" method="post" action="__URL__/editprod/tablename/Thesis/id/{$product.id}" enctype="multipart/form-data">
 		  <table border="0" cellspacing="1" class="tb-b">
             <tr>
@@ -19,6 +19,20 @@
 					</select>
 				</td>
             </tr>
+			<tr>
+				<th>代表性成果</th>
+				<td>
+					<select name="istypical">
+					<if condition="$product['istypical'] eq 0">
+					<option value="0" selected="selected">否</option>
+					<option value="1">是</option>
+					<else />
+					<option value="0">否</option>
+					<option value="1" selected="selected">是</option>
+					</if>
+					</select>
+				</td>
+			</tr>
 			<tr>
               <th>毕业论文摘要</th>
               <td><textarea rows="6" cols="55" name="abstract" value="{$product.abstract}">{$product.abstract}</textarea></td>
@@ -51,7 +65,7 @@
 			
             <tr>
               <th>备注</th>
-              <td><input type="text" name="note" value="{$product.note}" class="input-b" /></td>
+              <td><input type="text" name="note" value="{$product.note}" class="input-long" /></td>
             </tr>
           </table>
 		  <div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_edit()"/></div>

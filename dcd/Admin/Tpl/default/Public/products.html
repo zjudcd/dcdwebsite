@@ -10,7 +10,7 @@
 		<table border="0" cellspacing="1" class="tb-b">
 			<tr>
 				<th>项目标题</th>
-				<td><input type="text" name="title" value="" class="input-b" /></td>
+				<td><input type="text" name="title" value="" class="input-long" /></td>
 			</tr>
 			<tr>
 				<th>项目类别</th>
@@ -36,7 +36,15 @@
 					</select>
 			  </td>
 			</tr>
-			
+			<tr>
+				<th>代表性成果</th>
+				<td>
+					<select name="istypical">
+					<option value="0">否</option>
+					<option value="1">是</option>
+					</select>
+				</td>
+			</tr>
 			<tr>
 				<th>项目简介</th>
 				<td><textarea rows="6" cols="55" name="abstract" value=""></textarea></td>
@@ -68,7 +76,7 @@
 			</tr>
 			<tr>
 				<th>备注</th>
-				<td><input type="text" name="note" value="" class="input-b" /></td>
+				<td><input type="text" name="note" value="" class="input-long" /></td>
 			</tr>
 		</table>
 		<div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_form()"/></div>
@@ -93,8 +101,10 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					
+					<input type="checkbox" name="ispublic1" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -104,8 +114,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-
 					</select>
+					<input type="checkbox" name="ispublic2" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -115,8 +126,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					<input type="checkbox" name="ispublic3" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -126,8 +138,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					<input type="checkbox" name="ispublic4" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -137,8 +150,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					<input type="checkbox" name="ispublic5" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -149,7 +163,18 @@
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
 					</select>
+					<input type="checkbox" name="ispublic6" />
+					展现
 			  </td>
+			</tr>
+			<tr>
+				<th>代表性成果</th>
+				<td>
+					<select name="istypical">
+					<option value="0">否</option>
+					<option value="1">是</option>
+					</select>
+				</td>
 			</tr>
             <tr>
               <th>论文摘要</th>
@@ -166,7 +191,7 @@
               <td><input type="text" name="journalname" value="" class="input-long" /></td>
             </tr>
 			<tr>
-              <th>发表日期</th>
+              <th>发表年份</th>
               <td><input type="text" name="publishdate" value="" class="input-b" /></td>
             </tr>
 			<tr>
@@ -225,7 +250,7 @@
             </tr>
             <tr>
               <th>备注</th>
-              <td><input type="text" name="note" value="" class="input-b" /></td>
+              <td><input type="text" name="note" value="" class="input-long" /></td>
             </tr>
           </table>
 		  <div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_form()"/></div>
@@ -250,8 +275,10 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					
+					<input type="checkbox" name="ispublic1" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -261,8 +288,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-
 					</select>
+					<input type="checkbox" name="ispublic2" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -272,8 +300,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					<input type="checkbox" name="ispublic3" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -283,8 +312,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					<input type="checkbox" name="ispublic4" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -294,8 +324,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					<input type="checkbox" name="ispublic5" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -306,7 +337,18 @@
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
 					</select>
+					<input type="checkbox" name="ispublic6" />
+					展现
 			  </td>
+			</tr>
+			<tr>
+				<th>代表性成果</th>
+				<td>
+					<select name="istypical">
+					<option value="0">否</option>
+					<option value="1">是</option>
+					</select>
+				</td>
 			</tr>
             <tr>
               <th>论文摘要</th>
@@ -320,11 +362,11 @@
 			 <table border="0" cellspacing="1" class="tb-b">
             <tr>
               <th>会议名称</th>
-              <td><input type="text" name="conferencename" value="" class="input-b" /></td>
+              <td><input type="text" name="conferencename" value="" class="input-long" /></td>
             </tr>
 			<tr>
 			<tr>
-              <th>发表日期</th>
+              <th>发表年份</th>
               <td><input type="text" name="publishdate" value="" class="input-b" /></td>
             </tr>
 			<tr>
@@ -371,7 +413,7 @@
             </tr>
             <tr>
               <th>备注</th>
-              <td><input type="text" name="note" value="" class="input-b" /></td>
+              <td><input type="text" name="note" value="" class="input-long" /></td>
             </tr>
           </table>
 		  <div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_form()"/></div>
@@ -383,7 +425,7 @@
 		  <table border="0" cellspacing="1" class="tb-b">
 			<tr>
               <th>专利标题</th>
-              <td><input type="text" name="title" value="" class="input-b" /></td>
+              <td><input type="text" name="title" value="" class="input-long" /></td>
             </tr>
  
 			<tr>
@@ -397,8 +439,10 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					
+					<input type="checkbox" name="ispublic1" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -408,8 +452,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-
 					</select>
+					<input type="checkbox" name="ispublic2" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -419,8 +464,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					<input type="checkbox" name="ispublic3" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -430,8 +476,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					<input type="checkbox" name="ispublic4" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -441,8 +488,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					<input type="checkbox" name="ispublic5" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -453,7 +501,18 @@
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
 					</select>
+					<input type="checkbox" name="ispublic6" />
+					展现
 			  </td>
+			</tr>
+			<tr>
+				<th>代表性成果</th>
+				<td>
+					<select name="istypical">
+					<option value="0">否</option>
+					<option value="1">是</option>
+					</select>
+				</td>
 			</tr>
 			 
 			<tr>
@@ -501,11 +560,11 @@
             </tr>
            <tr>
               <th>资助者列表</th>
-              <td><input type="text" name="sponsor" value="" class="input-b" /></td>
+              <td><input type="text" name="sponsor" value="" class="input-long" /></td>
             </tr>
             <tr>
               <th>备注</th>
-              <td><input type="text" name="note" value="" class="input-b" /></td>
+              <td><input type="text" name="note" value="" class="input-long" /></td>
             </tr>
           </table>
 		  <div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_form()"/></div>
@@ -517,7 +576,7 @@
 		  <table border="0" cellspacing="1" class="tb-b">
 			<tr>
               <th>软件著作权标题</th>
-              <td><input type="text" name="title" value="" class="input-b" /></td>
+              <td><input type="text" name="title" value="" class="input-long" /></td>
             </tr>
 			<tr>
               <th>作者姓名列表</th>
@@ -530,8 +589,10 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					
+					<input type="checkbox" name="ispublic1" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -541,8 +602,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-
 					</select>
+					<input type="checkbox" name="ispublic2" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -552,8 +614,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					<input type="checkbox" name="ispublic3" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -563,8 +626,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					<input type="checkbox" name="ispublic4" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -574,8 +638,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					<input type="checkbox" name="ispublic5" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -586,9 +651,19 @@
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
 					</select>
+					<input type="checkbox" name="ispublic6" />
+					展现
 			  </td>
 			</tr>
-			
+			<tr>
+				<th>代表性成果</th>
+				<td>
+					<select name="istypical">
+					<option value="0">否</option>
+					<option value="1">是</option>
+					</select>
+				</td>
+			</tr>
 			<tr>
               <th>软件著作权摘要</th>
               <td><textarea rows="6" cols="55" name="abstract" value=""></textarea></td>
@@ -626,11 +701,11 @@
             </tr>
            <tr>
               <th>资助者列表</th>
-              <td><input type="text" name="sponsor" value="" class="input-b" /></td>
+              <td><input type="text" name="sponsor" value="" class="input-long" /></td>
             </tr>
             <tr>
               <th>备注</th>
-              <td><input type="text" name="note" value="" class="input-b" /></td>
+              <td><input type="text" name="note" value="" class="input-long" /></td>
             </tr>
           </table>
 		  <div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_form()"/></div>
@@ -655,8 +730,10 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					
+					<input type="checkbox" name="ispublic1" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -666,8 +743,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-
 					</select>
+					<input type="checkbox" name="ispublic2" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -677,8 +755,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					<input type="checkbox" name="ispublic3" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -688,8 +767,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					<input type="checkbox" name="ispublic4" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -699,8 +779,9 @@
 					<volist name="persons" id="p">
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
-						
 					</select>
+					<input type="checkbox" name="ispublic5" />
+					展现
 			  </td>
 			</tr>
 			<tr >
@@ -711,7 +792,18 @@
 						<option value="{$p.personid}">{$p.name}{$p.personid}</option>
 					</volist>
 					</select>
+					<input type="checkbox" name="ispublic6" />
+					展现
 			  </td>
+			</tr>
+			<tr>
+				<th>代表性成果</th>
+				<td>
+					<select name="istypical">
+					<option value="0">否</option>
+					<option value="1">是</option>
+					</select>
+				</td>
 			</tr>
 			 
 			<tr>
@@ -730,7 +822,7 @@
             </tr>
 			<tr>
               <th>资助者列表</th>
-              <td><input type="text" name="sponsor" value="" class="input-b" /></td>
+              <td><input type="text" name="sponsor" value="" class="input-long" /></td>
             </tr>
 			<tr>
               <th>是否公开</th>
@@ -743,7 +835,7 @@
             </tr>
             <tr>
               <th>备注</th>
-              <td><input type="text" name="note" value="" class="input-b" /></td>
+              <td><input type="text" name="note" value="" class="input-long" /></td>
             </tr>
           </table>
 		  <div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_form()"/></div>
@@ -768,6 +860,15 @@
 			  </td>
             </tr>
 			<tr>
+			<tr>
+				<th>代表性成果</th>
+				<td>
+					<select name="istypical">
+					<option value="0">否</option>
+					<option value="1">是</option>
+					</select>
+				</td>
+			</tr>
               <th>毕业论文摘要</th>
               <td><textarea rows="6" cols="55" name="abstract" value=""></textarea></td>
             </tr>
@@ -792,7 +893,7 @@
 			
             <tr>
               <th>备注</th>
-              <td><input type="text" name="note" value="" class="input-b" /></td>
+              <td><input type="text" name="note" value="" class="input-long" /></td>
             </tr>
           </table>
 		  <div align="center"><input type="submit" value="提交" class="input-btn-b" onclick="return validate_form()"/></div>
