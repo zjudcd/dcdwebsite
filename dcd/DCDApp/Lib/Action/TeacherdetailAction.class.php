@@ -42,7 +42,6 @@ class TeacherdetailAction extends Action{
 			$people = Array();
 			$productcond["productid"] = $product["productid"];
 			$productcond["producttype"] = "科研项目";
-			print_r($productcond);
 			$protmp = M("products")->where($productcond)->select();
 			foreach($protmp as $k => $v)	//查项目负责人姓名
 			{
