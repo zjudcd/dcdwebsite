@@ -129,30 +129,31 @@ text-align:justify;
 </style>
 </head>
 <body>
-<!--
+
 <div id="templatemo_header_wrapper">
   <div id="templatemo_header">
     <div id="site_logo"></div>
 		<div class="userinfo f_r" style="float:right"><p>&nbsp;</p>
-		</div>
-	</div>-->
+		<if condition = "($_SESSION['usertype'] eq 'student') AND ($_GET['id'] eq '')">
+		<include file="Public:loginnavigation" />
+		</if></div>
+	</div>
   <!-- end of header -->
-<!--</div>-->
+</div>
 <!-- end of menu wrapper -->
-<include file="Public:header" />
 <div id="tempatemo_content_wrapper" >
 <div id="people_content">
 <div class="container">
 
 <div class="header">
-  <h1 class="header">成员介绍<div style="float:right;"><a href="javascript:history.back()"><font color="white">[返回]</font></a></div></h1>
+  <h1 class="header">成员介绍<if condition = "$_GET['id'] neq ''"><div style="float:right;"><a href="javascript:history.back()"><font color="white">[返回]</font></a></div></if></h1>
 </div>
 
 <div class="left" id="left" >
 
 <div class="people">
 <div class="img">
-<img src="__ROOT__/Attachments/photo/{$p['photo']}"  width="130px" height="160px" /><br/>
+<img src="__ROOT__/Attachments/photo/{$person['photo']}"  width="130px" height="160px" /><br/>
 </div>
 </div>
 
@@ -169,46 +170,51 @@ text-align:justify;
 <table width="100%" align="center" style="font-size:14px;margin-left:5px" border="0">
 	<tr>
 		<td width="40" >姓      名：</td>
-	    <td width="80">{$p["name"]}</td>
+	    <td width="80">{$person["name"]} {$person["englishname"]}</td>
 		<td width="40" >性      别：</td>
-		<td width="80">{$p["gender"]}</td>
+		<td width="80">{$person["gender"]}</td>
 		<td width="60" >出生年月：</td>
-		<td width="120">{$p["birthday"]}</td>
+		<td width="120">{$person["birthday"]}</td>
 	</tr>
 	</table>
-	<div class="self" style="margin-bottom:20px">个人简介：{$p['introduction']}</div>
+	<div class="self" style="margin-bottom:20px">个人简介：{$person['introduction']}</div>
 
 <table width="100%" align="center" style="font-size:14px;margin-left:5px" border="0">
 	<tr>
 	<td width="70">电子邮箱：</td>
-	<td rowspan="4"><a href="mailto:{$p['email']}">{$p['email']}</a></td>
+	<td rowspan="4"><a href="mailto:{$person['email']}">{$person['email']}</a></td>
 	</tr>
  </table> 
 
 </div>
-
+<if condition = "($_SESSION['usertype'] eq 'student') AND ($_GET['id'] eq '')">
+<div style="float:right"><a href="__APP__/studentedit"><input type="button" style="background-color:#CCCCCC"  value="修改个人信息"></a></div>
+</if>
 <P style="font-size:16px"  style="font-weight:bold"> &nbsp;</P>
-<!--
+<if condition = "($_SESSION['usertype'] eq 'student') AND ($_GET['id'] eq '')">
 <P style="font-size:16px"  style="font-weight:bold"><strong>论文</strong></P>
 <div class="peo" style="margin-bottom:60px;white-space:normal" >
 <ol style="padding-left:25px;font-size:15px">
-<volist name="papers" id="p">
-	<li><font size="3">{$p.authors},{$p.title},{$p.conferencename}{$p.journalname},vol.{$p.volumenum},{$p.pagenum},{$p.publishdate}</font></li>
+<volist name="jourpapers" id="p">
+	<li><a href="__APP__/Paper/index/type/jour/id/{$p.id}"><font >{$p.authors},{$p.title},</font><font style="font-style:italic">{$p.journalname},</font><if condition="$paper['volumenum'] neq ''">vol.{$p.volumenum},</if>page.{$p.pagenum},{$p.publishdate}</font>
+</a></li>
+</volist>
+<volist name="confpapers" id="p">
+	<li><a href="__APP__/Paper/index/type/conf/id/{$p.id}"><font >{$p.authors},{$p.title},</font><font style="font-style:italic">{$p.conferencename},</font>page.{$p.pagenum},{$p.publishdate}</font>
+</a></li>
 </volist>
 </ol>
-
 </div>
 <P style="font-size:16px"  style="font-weight:bold"><strong>项目</strong></P>
 <div class="peo" style="margin-bottom:60px;white-space:normal" >
 <ol style="padding-left:25px;font-size:15px">
 <volist name="projects" id="pro">
-	<li><font size="3">{$pro.personname},{$pro.typename},{$pro.title}</font></li>
+	<li><font size="3">项目名称：{$pro.title}&nbsp;&nbsp;&nbsp;&nbsp;项目类型：{$pro.typename}&nbsp;&nbsp;&nbsp;&nbsp;负责人姓名：{$pro.personname}</font></li>
 </volist>
 </ol>
 </div>
--->
-
-
+<div style="float:right"><a href="__APP__/password" style="color:#397fa3">>>修改密码</a></div>
+</if>
 </div>
 </div>
 </div>

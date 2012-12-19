@@ -1,16 +1,13 @@
 ﻿<?php
 class StudentselfAction extends Action{
 	public function _initialize(){
-		if($_SESSION["usertype"] != "student")
+		if(!isset($_SESSION["usertype"]) || $_SESSION["usertype"] == "" || $_SESSION["usertype"] == "teacher")
 			$this->error("对不起，您无权访问这个页面！");
 	}
 	public function index(){
 		$condstudent["id"] = $_SESSION["userid"];
 		$per = M("Student")->where($condstudent)->select();
-		$this->p = $per[0];
-		$condteacher["id"] = $per[0]['teacher'];
-		$teacher = M("teacher")->where($condteacher)->select();
-		$this->t = $teacher[0];
+		$this->assign(person,$per[0]);
 		$P=M("Products");
 		$cond1="personid='".$_SESSION["userid"]."' and producttype='期刊论文'";
 		$prods=$P->where($cond1)->select();
@@ -19,11 +16,12 @@ class StudentselfAction extends Action{
 		foreach($prods as $k=>$prod)
 		{
 			$prodid=$prod["productid"];
-			//$cond["id"]=$prodid;
 			$cond="id =".$prodid;
 			$paper=$Jour->where($cond)->select();
 			$papers[]=$paper[0];
 		}
+		$this->assign(jourpapers,$papers);
+		$papers = array();
 		$Conf=M("Conferencepaper");
 		$cond1="personid='".$_SESSION["userid"]."' and producttype='会议论文'";
 		$prods=$P->where($cond1)->select();
@@ -34,7 +32,7 @@ class StudentselfAction extends Action{
 			$paper=$Conf->where($cond)->select();
 			$papers[]=$paper[0];
 		}
-		$this->assign("papers",$papers);
+		$this->assign(confpapers,$papers);
 		
 		// project 写在下面
 		$resultprojects = Array();
@@ -64,7 +62,7 @@ class StudentselfAction extends Action{
 			array_push($resultprojects,$result);
 		}
 		$this->assign("projects",$resultprojects);
-		$this->display("Public:studentself");
+		$this->display("Public:studentdetail");
 	}
 }
 ?>

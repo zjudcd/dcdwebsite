@@ -134,7 +134,9 @@ text-align:justify;
   <div id="templatemo_header">
     <div id="site_logo"></div>
 		<div class="userinfo f_r" style="float:right"><p>&nbsp;</p>
-		</div>
+		<if condition = "($_SESSION['usertype'] eq 'teacher') AND ($_GET['id'] eq '')">
+		<include file="Public:loginnavigation" />
+		</if></div>
 	</div>
   <!-- end of header -->
 </div>
@@ -143,7 +145,7 @@ text-align:justify;
 <div id="people_content">
 <div class="container">
 <div class="header">
-  <h1 class="header">成员介绍<div style="float:right;"><a href="javascript:history.back()"><font color="white">[返回]</font></a></div></h1>
+  <h1 class="header">成员介绍<if condition = "$_GET['id'] neq ''"><div style="float:right;"><a href="javascript:history.back()"><font color="white">[返回]</font></a></div></if></h1>
 </div>
 
 <div class="left" id="left" >
@@ -167,7 +169,7 @@ text-align:justify;
 <table width="100%" align="center" style="font-size:14px;margin-left:5px" border="0">
 	<tr>
 		<td width="40" >姓      名：</td>
-	    <td width="80">{$p["name"]}</td>
+	    <td width="80">{$p["name"]} {$p["englishname"]}</td>
 		<td width="40">职      称：</td>
 		<td width="80">{$p["position"]}</td>
 	</tr>
@@ -181,8 +183,9 @@ text-align:justify;
 	 </table> 
 
 </div>
-
-
+<if condition = "($_SESSION['usertype'] eq 'teacher') AND ($_GET['id'] eq '')">
+<div style="float:right"><a href="__APP__/Teacheredit"><input type="button" style="background-color:#CCCCCC"  value="修改个人信息"></a></div>
+</if>
 <P style="font-size:16px"  style="font-weight:bold"> &nbsp;</P>
 
 <P style="font-size:16px"  style="font-weight:bold"><strong>论文</strong></P>
@@ -206,8 +209,9 @@ text-align:justify;
 </volist>
 </ol>
 </div>
-
-
+<if condition = "($_SESSION['usertype'] eq 'teacher') AND ($_GET['id'] eq '')">
+<div style="float:right"><a href="__APP__/password" style="color:#397fa3">>>修改密码</a></div>
+</if>
 </div>
 
 

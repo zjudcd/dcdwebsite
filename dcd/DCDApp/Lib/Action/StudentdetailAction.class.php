@@ -4,7 +4,8 @@ class StudentdetailAction extends Action{
 		$this->assign("menu","People");
 		$condstudent["id"] = $_GET["id"];
 		$per = M("Student")->where($condstudent)->select();
-		$this->p = $per[0];
+		$this->assign(person,$per[0]);
+		/*
 		$condteacher["id"] = $per[0]['teacher'];
 		$teacher = M("teacher")->where($condteacher)->select();
 		$this->t = $teacher[0];
@@ -61,6 +62,7 @@ class StudentdetailAction extends Action{
 			array_push($resultprojects,$result);
 		}
 		$this->assign("projects",$resultprojects);
+		*/
 		$this->display("Public:studentdetail");
 	}
 }

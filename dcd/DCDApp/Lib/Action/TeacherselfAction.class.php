@@ -1,7 +1,7 @@
 ﻿<?php
 class TeacherselfAction extends Action{
 	public function _initialize(){
-		if($_SESSION["usertype"] != "teacher")
+		if(!isset($_SESSION["usertype"]) || $_SESSION["usertype"] == "" || $_SESSION["usertype"] == "student")
 			$this->error("对不起，您无权访问这个页面！");
 	}
 	public function index(){
@@ -21,6 +21,8 @@ class TeacherselfAction extends Action{
 			$paper=$Jour->where($cond)->select();
 			$papers[]=$paper[0];
 		}
+		$this->assign(jourpapers,$papers);
+		$papers = Array();
 		$Conf=M("Conferencepaper");
 		$cond1="personid='".$_SESSION["userid"]."' and producttype='会议论文'";
 		$prods=$P->where($cond1)->select();
@@ -31,7 +33,7 @@ class TeacherselfAction extends Action{
 			$paper=$Conf->where($cond)->select();
 			$papers[]=$paper[0];
 		}
-		$this->assign("papers",$papers);
+		$this->assign(confpapers,$papers);
 		
 		// project 写在下面
 		$resultprojects = Array();
@@ -44,14 +46,16 @@ class TeacherselfAction extends Action{
 			$productcond["productid"] = $product["productid"];
 			$productcond["producttype"] = "科研项目";
 			$protmp = M("products")->where($productcond)->select();
-			foreach($protmp as $k => $v)
+			foreach($protmp as $k => $v)	//查项目负责人姓名
 			{
 				$personcond["personid"] = $v["personid"];
 				$person = M("person")->where($personcond)->select();
 				array_push($people,$person[0]['name']);
 			}
 			$projectcond['id'] = $product['productid'];
-			$project = M("project")->where($projectcond)->select();
+			$project = M("project")->where($projectcond)->select();//查项目详情
+			if(count($project) == 0)
+				break;
 			$result = Array();
 			$result["personname"] = implode(",",$people);
 			$projecttypecond[id] = $project[0]["typeid"];
@@ -61,7 +65,7 @@ class TeacherselfAction extends Action{
 			array_push($resultprojects,$result);
 		}
 		$this->assign("projects",$resultprojects);
-		$this->display("Public:teacherself");
+		$this->display("Public:teacherdetail");
 	}
 }
 ?>
