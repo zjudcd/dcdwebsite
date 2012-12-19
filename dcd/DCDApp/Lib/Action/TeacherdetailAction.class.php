@@ -36,22 +36,25 @@ class TeacherdetailAction extends Action{
 		$resultprojects = Array();
 		$productscond["personid"] = $_GET["id"];
 		$productscond["producttype"] = "科研项目";
-		$productscond["ispublic"] = 1;
 		$products = M("products")->where($productscond)->select();
 		foreach($products as $key => $product)
 		{
 			$people = Array();
 			$productcond["productid"] = $product["productid"];
 			$productcond["producttype"] = "科研项目";
+			print_r($productcond);
 			$protmp = M("products")->where($productcond)->select();
-			foreach($protmp as $k => $v)
+			foreach($protmp as $k => $v)	//查项目负责人姓名
 			{
 				$personcond["personid"] = $v["personid"];
 				$person = M("person")->where($personcond)->select();
 				array_push($people,$person[0]['name']);
 			}
 			$projectcond['id'] = $product['productid'];
-			$project = M("project")->where($projectcond)->select();
+			$projectcond['ispublic'] = 1;
+			$project = M("project")->where($projectcond)->select();//查项目详情
+			if(count($project) == 0)
+				break;
 			$result = Array();
 			$result["personname"] = implode(",",$people);
 			$projecttypecond[id] = $project[0]["typeid"];
