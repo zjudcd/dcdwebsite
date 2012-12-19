@@ -8,6 +8,7 @@ class PaperAction extends Action{
 			$table = "conferencepaper";
 		$cond["id"] = $_GET["id"];
 		$p = M($table)->where($cond)->select();
+		$this->assign(type,$_GET["type"]);
 		$this->assign(paper,$p[0]);
 		$this->display("Public:paper");
 	}

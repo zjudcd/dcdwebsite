@@ -108,7 +108,7 @@ font-weight:bold;
   <h1 class="header">论文展示<div style="float:right;"><a href="javascript:history.back()"><font color="white">[返回]</font></a></div></h1>
 </div>
 <div class="content">
-<img src="../Public/images/test.jpg" width="220" height="190"/> 
+<img src="__ROOT__/Attachments/photo/{$paper['image1']}" width="220" height="190"/> 
 <div class="title">{$paper.title}</div>
 <div class="author">{$paper.authors}</div>
 <div class="abstract">Abstract</div>
@@ -116,7 +116,12 @@ font-weight:bold;
 {$paper.abstract}</div>
 <div class="abstract">Citation</div>
 <div class="thesis">
-<font >{$paper.authors},{$paper.title},</font><font style="font-style:italic">{$paper.conferencename}</font>,<font style="font-family:'幼圆' ">"{$paper.journalname},<if condition="$p['volumenum'] neq ''">vol.{$paper.volumenum},</if>page.{$paper.pagenum},{$paper.publishdate}</font></div>
+<if condition = "$type eq 'jour'">
+	<font >{$paper.authors},{$paper.title},</font><font style="font-style:italic">{$paper.journalname},</font><if condition="$paper['volumenum'] neq ''">vol.{$paper.volumenum},</if>page.{$paper.pagenum},{$paper.publishdate}</font>
+<else/>
+	<font >{$paper.authors},{$paper.title},</font><font style="font-style:italic">{$paper.conferencename},</font>page.{$paper.pagenum},{$paper.publishdate}</font>
+</if>
+</div>
 </div>
 
 </div>
