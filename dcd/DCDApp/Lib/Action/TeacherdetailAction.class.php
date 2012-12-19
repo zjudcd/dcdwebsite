@@ -60,8 +60,6 @@ class TeacherdetailAction extends Action{
 			$result["title"] = $project[0]["title"];
 			array_push($resultprojects,$result);
 		}
-		print_r($this->jourpapers);
-		print_r($this->confpapers);
 		$this->assign("projects",$resultprojects);
 		$this->display("Public:teacherdetail");
 	}

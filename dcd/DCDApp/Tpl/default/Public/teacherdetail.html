@@ -189,17 +189,14 @@ text-align:justify;
 <div class="peo" style="margin-bottom:60px;white-space:normal" >
 <ol style="padding-left:25px;font-size:15px">
 <volist name="jourpapers" id="p">
-	<li><a href="__APP__/Paper/index/type/jour/id/{$p.id}"><font >{$p.authors},{$p.title},</font><font style="font-family:'幼圆' ">"{$p.journalname},<if condition="$p['volumenum'] neq ''">vol.{$p.volumenum},</if>page.{$p.pagenum},{$p.publishdate}</font></div>
+	<li><a href="__APP__/Paper/index/type/jour/id/{$p.id}"><font >{$p.authors},{$p.title},</font><font style="font-family:'幼圆' ">"{$p.journalname},<if condition="$p['volumenum'] neq ''">vol.{$p.volumenum},</if>page.{$p.pagenum},{$p.publishdate}</font>
 </a></li>
 </volist>
 <volist name="confpapers" id="p">
-	<li><a href="__APP__/Paper/index/type/conf/id/{$p.id}"><font >{$p.authors},{$p.title},</font><font style="font-style:italic">{$p.conferencename}</font>,<if condition="$p['volumenum'] neq ''">vol.{$p.volumenum},</if>page.{$p.pagenum},{$p.publishdate}</font></div>
+	<li><a href="__APP__/Paper/index/type/conf/id/{$p.id}"><font >{$p.authors},{$p.title},</font><font style="font-style:italic">{$p.conferencename}</font>,<if condition="$p['volumenum'] neq ''">vol.{$p.volumenum},</if>page.{$p.pagenum},{$p.publishdate}</font>
 </a></li>
 </volist>
 </ol>
-<!--<div style="float:right"><input type="button" style="background-color:#CCCCCC"  value="修改个人成果"></div>
-</div>-->
-
 </div>
 <P style="font-size:16px"  style="font-weight:bold"><strong>项目</strong></P>
 <div class="peo" style="margin-bottom:60px;white-space:normal" >
@@ -208,8 +205,7 @@ text-align:justify;
 	<li><font size="3">项目名称：{$pro.title}&nbsp;&nbsp;&nbsp;&nbsp;项目类型：{$pro.typename}&nbsp;&nbsp;&nbsp;&nbsp;负责人姓名：{$pro.personname}</font></li>
 </volist>
 </ol>
-<!--<div style="float:right"><input type="button" style="background-color:#CCCCCC"  value="修改个人成果"></div>
-</div>-->
+</div>
 
 
 </div>
@@ -217,8 +213,6 @@ text-align:justify;
 
 
 
-</div>
-</div>
 </div>
 </div>
 <include file="Public:footer" />
