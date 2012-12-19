@@ -52,7 +52,7 @@ class BaseAction extends Action{
 	public function _upload($path,$thumb = false,$width,$height,$autosub = false,$maxsize){
         import("ORG.Net.UploadFile"); 
         $upload = new UploadFile();  
-        isset($maxsize) ? $upload->maxSize = $maxsize : $upload->maxSize = 1048576; //1M
+        isset($maxsize) ? $upload->maxSize = $maxsize : $upload->maxSize = 5048576; //1M
 		isset($path) ? $upload->savePath = $savepath = "./Attachments/".$path."/" : $upload->savePath = "./Attachments/Others/";
 		if(!is_dir($savepath)) @mk_dir($savepath);
         $upload->allowExts = explode(',','gif,png,jpg,jpeg,pdf,doc,docx'); 
@@ -82,7 +82,7 @@ class BaseAction extends Action{
 	public function _uploadmul($path,$thumb = false,$width,$height,$autosub = false,$maxsize){
         import("ORG.Net.UploadFile"); 
         $upload = new UploadFile();  
-        isset($maxsize) ? $upload->maxSize = $maxsize : $upload->maxSize = 1048576; //1M
+        isset($maxsize) ? $upload->maxSize = $maxsize : $upload->maxSize = 5048576; //1M
 		isset($path) ? $upload->savePath = $savepath = "./Attachments/".$path."/" : $upload->savePath = "./Attachments/Others/";
 		if(!is_dir($savepath)) @mk_dir($savepath);
         $upload->allowExts = explode(',','gif,png,jpg,jpeg,pdf,doc,docx'); 
