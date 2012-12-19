@@ -180,8 +180,7 @@ font-weight:bold;
 
 <div class="subtitle"><a href="__URL__/typical"><img  src="../Public/images/lunzhu.jpg" /> </a></div>
 </div>
-<div class="content"  >{$curpage.content}<ol style="padding-left:25px;font-size:15px"><volist name="tjour" id="p"><li><a href="__ROOT__/index.php/Paper/index/type/jour/id/{$p.id}"><font >{$p.authors},{$p.title},</font><font style="font-style:italic">{$p.journalname},</font><if condition="$p['volumenum'] neq ''">vol.{$p.volumenum},</if>page.{$p.pagenum},{$p.publishdate}</font></a></li></volist><volist name="tconf" id="p"><li><a href="__ROOT__/index.php/Paper/index/type/conf/id/{$p.id}"><font >{$p.authors},{$p.title},</font><font style="font-style:italic">{$p.conferencename},</font>page.{$p.pagenum},{$p.publishdate}</font></a></li></volist
-</ol>
+<div class="content"  >{$curpage.content}<ol style="padding-left:25px;font-size:15px"><volist name="tjour" id="p"><li><a href="__ROOT__/index.php/Paper/index/type/jour/id/{$p.id}"><font >{$p.authors},{$p.title},</font><font style="font-style:italic">{$p.journalname},</font><if condition="$p['volumenum'] neq ''">vol.{$p.volumenum},</if>page.{$p.pagenum},{$p.publishdate}</font></a></li></volist><volist name="tconf" id="p"><li><a href="__ROOT__/index.php/Paper/index/type/conf/id/{$p.id}"><font >{$p.authors},{$p.title},</font><font style="font-style:italic">{$p.conferencename},</font>page.{$p.pagenum},{$p.publishdate}</font></a></li></volist></ol>
 <div class="bgimg">
 </div>
 </div>
