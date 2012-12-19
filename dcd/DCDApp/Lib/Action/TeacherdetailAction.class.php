@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class TeacherdetailAction extends Action{
 	public function index(){
 		$this->assign("menu","People");
