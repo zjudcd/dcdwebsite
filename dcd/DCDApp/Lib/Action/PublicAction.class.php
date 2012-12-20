@@ -39,7 +39,7 @@ class PublicAction extends Action{
 				else
 				{}
 				$Member->where("personid = ".$checkUser['personid']);
-				$this->assign("jumpUrl","__APP__/".$_SESSION['usertype']."detail");
+				$this->assign("jumpUrl","__APP__/".$_SESSION['usertype']."self");
 				$this->success("登陆成功！");
 			}
 		}
