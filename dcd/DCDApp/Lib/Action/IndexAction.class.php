@@ -1,7 +1,7 @@
 <?php
 class IndexAction extends BaseAction{
     public function index(){
-		$news = M("News")->order('date desc')->limit(8)->select();
+		$news = M("News")->order('date desc')->limit(10)->select();
 		$this->slide();
 		$this->assign("menu","Home");
 		$this->assign("news",$news);
