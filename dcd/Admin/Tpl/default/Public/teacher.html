@@ -99,7 +99,19 @@ table.info
 					<th>学术称号</th>
 					<td colspan="1"><input type="text" name="academichonour" value="{$teacher['academichonour']}" /></td>
 					<th>英文名</th>
-					<td colspan="4"><input type="text" name="englishname" value="{$teacher['englishname']}" /></td>
+					<td colspan="1"><input type="text" name="englishname" value="{$teacher['englishname']}" /></td>
+					<th>状态</th>
+					<td colspan="2">
+						<select name="status"/>
+					<if condition = "$teacher['status'] eq 离校">
+						<option value = "在校">在校</option>
+						<option value = "离校" selected>离校</option>
+					<else />
+						<option value = "在校" selected>在校</option>
+						<option value = "离校">离校</option>
+					</if>
+						</select>
+					</td>
 				</tr>
 				<tr>
 				<th width="148">电话</th>
