@@ -18,6 +18,8 @@ class StudenteditAction extends Action{
 		$condt["id"] = $person[0]["teacher"];
 		$teacher = M("Teacher")->where($condt)->select();
 		$this->teachername = $teacher[0]["name"];
+		$person[0]['introduction'] = str_replace("<br/>","\n",$person[0]['introduction']);
+		$person[0]['introduction'] = str_replace("&nbsp;"," ",$person[0]['introduction']);
 		$this->p = $person[0];
 		$this->display("Public:studentedit");
 	}

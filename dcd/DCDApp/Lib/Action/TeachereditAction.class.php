@@ -62,8 +62,10 @@ class TeachereditAction extends Action{
 				$p[4] = "selected";
 				break;
 		}
+		$person[0]['introduction'] = str_replace("<br/>","\n",$person[0]['introduction']);
+		$person[0]['introduction'] = str_replace("&nbsp;"," ",$person[0]['introduction']);
 		$this->assign(position,$p);
-		$this->p = $person[0];
+		$this->assign(p,$person[0]);
 		$this->display("Public:Teacheredit");
 	}
 	public function edits(){

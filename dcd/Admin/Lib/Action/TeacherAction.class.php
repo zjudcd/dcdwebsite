@@ -64,6 +64,8 @@ class TeacherAction extends BaseAction{
 		if($_GET["teacherid"]){
 			$cond["id"]=$_GET["teacherid"];
 			$Teac = D("teacher")->where($cond)->select();
+			$Teac[0]['introduction'] = str_replace("<br/>","\n",$Teac[0]['introduction']);
+			$Teac[0]['introduction'] = str_replace("&nbsp;"," ",$Teac[0]['introduction']);
 			$this->assign(title,"编辑");
 			$this->assign(action,"edits");
 			$this->assign(position,$p);

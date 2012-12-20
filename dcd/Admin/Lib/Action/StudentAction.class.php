@@ -69,6 +69,8 @@ class StudentAction extends BaseAction{
 			$Teac = M("Teacher")->select();
 			$cond1["personid"] = $_GET["studentid"];
 			$status = M("person")->where($cond1)->select();
+			$Stu[0]['introduction'] = str_replace("<br/>","\n",$Stu[0]['introduction']);
+			$Stu[0]['introduction'] = str_replace("&nbsp;"," ",$Stu[0]['introduction']);
 			$this->assign(title,"编辑");
 			$this->assign(action,"edits");
 			$this->assign("teacher",$Teac);
