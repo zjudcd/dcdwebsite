@@ -1,16 +1,16 @@
 <script type="text/javascript">
 <!--
 
-var focus_width=228
-var focus_height=180
+var focus_width=900
+var focus_height=280
 var text_height=20
 var swf_height = focus_height+text_height
 
 var flashpath = "__ROOT__/Public/flash/pixviewer.swf"
  
-var pics="../Public/images/1.jpg|../Public/images/2.jpg|../Public/images/3.jpg|../Public/images/4.jpg"
-var links="#|#|#|#"
-var texts="学习中|竺可桢老校长语：求是、创新|美丽的玉泉|之江校区"
+var pics="{$pics}"
+var links="{$links}"
+var texts="{$texts}"
  
 document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ focus_width +'" height="'+ swf_height +'">');
 document.write('<param name="allowScriptAccess" value="sameDomain"><param name="movie" value="'+flashpath+'"><param name="quality" value="high"><param name="bgcolor" value="#DADADA">');

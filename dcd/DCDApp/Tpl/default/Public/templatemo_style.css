@@ -221,7 +221,7 @@ list-style:  url(images/dcd_button.jpg)
 .recent_projects {
 	float: left;
 	width: 900px;
-	height: 260px;
+	height: 300px;
 	margin-bottom: 10px;
 	background: #215b8d;
 }
@@ -229,7 +229,7 @@ list-style:  url(images/dcd_button.jpg)
 .project_slideshow {
 	float: left;
 	width: 900px;
-	height: 260px;
+	height: 300px;
 	overflow: hidden;	
 	background: #409ecc url(images/dcd_slider_right_divider2.jpg) right repeat-y;
 }
@@ -280,7 +280,7 @@ list-style:  url(images/dcd_button.jpg)
 #column_w290 {
 	float: left;
 	width: 290px;
-	padding: 40px 0 20px 0;
+	padding: 0px 0 20px 0;
 	background: #eeeeee url(images/content_right_column_bg.jpg) left repeat-y;
 }
 

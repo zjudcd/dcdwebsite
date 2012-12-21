@@ -10,7 +10,21 @@ class IndexAction extends BaseAction{
     }
 	protected function slide(){
 		$slides = M("Slide")->order("postdate desc")->limit(5)->select();
-		$this->assign("slide",$slides);
+		$baseurl="__ROOT__/Attachments/Slide/";
+		foreach($slides as $n => $s)
+		{
+			//¹¹Ôìpics,links,texts
+			$pics[] = $baseurl.$s["attachment"];
+			$links[]= $s["url"];
+			$texts[]= $s["title"];
+		}
+		$strpics = join("|",$pics);
+		$strlinks = join("|",$links);
+		$strtexts = join("|",$texts);
+		//$this->assign("slide",$slides);
+		$this->assign("pics",$strpics);
+		$this->assign("links",$strlinks);
+		$this->assign("texts",$strtexts);
 	}
 	
 	public function about()
