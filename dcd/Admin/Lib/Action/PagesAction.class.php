@@ -14,7 +14,7 @@ class PagesAction extends BaseAction{
 		$Page = new Page($count,20);
 		$Page -> parameter .= "keyword=".urlencode($kmap)."&";
 		$show = $Page->show();
-		$pages = $Pages->where($map)->order('id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+		$pages = $Pages->where($map)->order('type,rank')->limit($Page->firstRow.','.$Page->listRows)->select();
 		$this->assign(menu,"Pages");
 		$this->assign('pages',$show);
 		$this->assign("pgs",$pages);

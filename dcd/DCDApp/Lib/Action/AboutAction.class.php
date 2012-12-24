@@ -3,8 +3,8 @@ class AboutAction extends BaseAction{
 	public function index()
 	{
 		$Pages=M("Pages");
-		$cond["type"] = 1; // Ò³ÃæÀàÐÍ 1 ÊµÑéÊÒ½éÉÜ
-		$pages=$Pages->where($cond)->order("id")->select();
+		$cond["type"] = 1; // é¡µé¢ç±»åž‹ 1 å®žéªŒå®¤ä»‹ç»
+		$pages=$Pages->where($cond)->order("rank")->select();
 		if(isset($_GET["id"]))
 		{
 			
@@ -23,7 +23,7 @@ class AboutAction extends BaseAction{
 			$curpage=$pages[0];
 			$id=$curpage["id"];
 		}
-		$this->assign("cpn",$id);//ÄÄ¸öÁ´½Ó
+		$this->assign("cpn",$id);//å“ªä¸ªé“¾æŽ¥
 		$this->assign("intros",$pages);// 
 		$this->assign("curpage",$curpage);
 		$this->assign("menu","About");
@@ -33,8 +33,8 @@ class AboutAction extends BaseAction{
 	public function direction()
 	{
 		$Pages=M("Pages");
-		$cond["type"] = 2; // Ò³ÃæÀàÐÍ 2 ¿ÆÑÐ³É¹û
-		$pages=$Pages->where($cond)->order("id")->select();
+		$cond["type"] = 2; // é¡µé¢ç±»åž‹ 2 ç§‘ç ”æˆæžœ
+		$pages=$Pages->where($cond)->order("rank")->select();
 		if(isset($_GET["id"]))
 		{
 			
@@ -53,7 +53,7 @@ class AboutAction extends BaseAction{
 			$curpage=$pages[0];
 			$id=$curpage["id"];
 		}
-		$this->assign("cpn",$id);//ÄÄ¸öÁ´½Ó
+		$this->assign("cpn",$id);//å“ªä¸ªé“¾æŽ¥
 		$this->assign("intros",$pages);// 
 		$this->assign("curpage",$curpage);
 		$this->assign("menu","Direction");
@@ -69,8 +69,8 @@ class AboutAction extends BaseAction{
 			$type = $_GET["type"];
 		}
 		else $type = 5;
-		$cond["type"] = $type; // ÑÐ¾¿·½Ïò À¸Ä¿ÏÂ£ºÆ½Ì¨½¨Éè(5) »ñ½±³É¹û(3) ´ú±íÐÔÂÛÖø
-		$pages=$Pages->where($cond)->order("id")->select();
+		$cond["type"] = $type; // ç ”ç©¶æ–¹å‘ æ ç›®ä¸‹ï¼šå¹³å°å»ºè®¾(5) èŽ·å¥–æˆæžœ(3) ä»£è¡¨æ€§è®ºè‘—
+		$pages=$Pages->where($cond)->order("rank")->select();
 		
 		if(isset($_GET["id"]))
 		{
@@ -96,7 +96,7 @@ class AboutAction extends BaseAction{
 		
 		
 		
-		$this->assign("cpn",$id);// ÄÄ¸öÁ´½Ó
+		$this->assign("cpn",$id);// å“ªä¸ªé“¾æŽ¥
 		if($type == 5)
 			$this->assign("platform",$pages);// 
 		else if($type == 3)
@@ -110,8 +110,8 @@ class AboutAction extends BaseAction{
 	{
 		// type = 4
 		$Pages=M("Pages");
-		$cond["type"] = 4; // Ò³ÃæÀàÐÍ 4 Ñ§Êõ»î¶¯
-		$pages=$Pages->where($cond)->order("id")->select();
+		$cond["type"] = 4; // é¡µé¢ç±»åž‹ 4 å­¦æœ¯æ´»åŠ¨
+		$pages=$Pages->where($cond)->order("rank")->select();
 		if(isset($_GET["id"]))
 		{
 			
@@ -130,25 +130,25 @@ class AboutAction extends BaseAction{
 			$curpage=$pages[0];
 			$id=$curpage["id"];
 		}
-		$this->assign("cpn",$id);//ÄÄ¸öÁ´½Ó
+		$this->assign("cpn",$id);//å“ªä¸ªé“¾æŽ¥
 		$this->assign("intros",$pages);// 
 		$this->assign("curpage",$curpage);
 		$this->assign("menu","Activity");
 		$this->display("Public:activity");
 	}
 	
-	// ´ú±íÐÔÂÛÖø
+	// ä»£è¡¨æ€§è®ºè‘—
 	public function typical()
 	{
 		$cond["istypical"] = 1;
-		// ´ú±íÐÔ ÆÚ¿¯ÂÛÎÄ
+		// ä»£è¡¨æ€§ æœŸåˆŠè®ºæ–‡
 		$Jour = M("Journalpaper")->where($cond)->select();
 		$this->assign("tjour",$Jour);
-		// ´ú±íÐÔ »áÒéÂÛÎÄ
+		// ä»£è¡¨æ€§ ä¼šè®®è®ºæ–‡
 		$Conf = M("Conferencepaper")->where($cond)->select();
 		$this->assign("tconf",$Conf);
 		
-		// ´ú±íÐÔ ÏîÄ¿
+		// ä»£è¡¨æ€§ é¡¹ç›®
 		
 		//
 		$this->assign("menu","Prodlist");
