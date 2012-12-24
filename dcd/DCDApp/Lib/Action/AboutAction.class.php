@@ -33,6 +33,36 @@ class AboutAction extends BaseAction{
 	public function direction()
 	{
 		$Pages=M("Pages");
+		$cond["type"] = 2; // 页面类型 2 科研成果
+		$pages=$Pages->where($cond)->order("id")->select();
+		if(isset($_GET["id"]))
+		{
+			
+			$id=$_GET["id"];
+			foreach($pages as $n=>$page)
+			{
+				if($page["id"]==$id)
+				{
+					$curpage=$page;
+					break;
+				}
+			}
+		}
+		else
+		{
+			$curpage=$pages[0];
+			$id=$curpage["id"];
+		}
+		$this->assign("cpn",$id);//哪个链接
+		$this->assign("intros",$pages);// 
+		$this->assign("curpage",$curpage);
+		$this->assign("menu","Direction");
+		$this->display("Public:direction");
+	}
+	
+	public function prodlist()
+	{		
+		$Pages=M("Pages");
 		
 		if(isset($_GET["type"]))
 		{
@@ -71,36 +101,6 @@ class AboutAction extends BaseAction{
 			$this->assign("platform",$pages);// 
 		else if($type == 3)
 			$this->assign("award",$pages);// 
-		$this->assign("curpage",$curpage);
-		$this->assign("menu","Direction");
-		$this->display("Public:direction");
-	}
-	
-	public function prodlist()
-	{
-		$Pages=M("Pages");
-		$cond["type"] = 2; // 页面类型 2 科研成果
-		$pages=$Pages->where($cond)->order("id")->select();
-		if(isset($_GET["id"]))
-		{
-			
-			$id=$_GET["id"];
-			foreach($pages as $n=>$page)
-			{
-				if($page["id"]==$id)
-				{
-					$curpage=$page;
-					break;
-				}
-			}
-		}
-		else
-		{
-			$curpage=$pages[0];
-			$id=$curpage["id"];
-		}
-		$this->assign("cpn",$id);//哪个链接
-		$this->assign("intros",$pages);// 
 		$this->assign("curpage",$curpage);
 		$this->assign("menu","Prodlist");
 		$this->display("Public:prodlist");
@@ -149,8 +149,10 @@ class AboutAction extends BaseAction{
 		$this->assign("tconf",$Conf);
 		
 		// 代表性 项目
-		$this->assign("menu","Direction");
-		$this->display("Public:direction");
+		
+		//
+		$this->assign("menu","Prodlist");
+		$this->display("Public:prodlist");
 	}
 }
 ?>

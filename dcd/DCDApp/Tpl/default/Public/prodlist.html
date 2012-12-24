@@ -4,9 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>{$curpage.title}</title>
 <link href="../Public/templatemo_style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="__ROOT__/Public/Js/common.js"></script>
-<script type="text/javascript" src="__ROOT__/Public/Js/jquery.js"></script>
-<script type="text/javascript" src="__ROOT__/Public/Js/s3Slider.js"></script>
 </head>
 <style type="text/css">
 
@@ -40,6 +37,7 @@ padding-top:0.5em;
 padding-left:0.5em;
 background-color:white;
 overflow:hidden;
+
 }
 div.conimgright
 {
@@ -93,13 +91,22 @@ color:#409ecc;
 #link_clicked li .current {
 color: #409ecc;
 }
+
+#link_clickedd
+{}
+#link_clickedd li .current {
+color: #409ecc;
+}
+
 div.content
 {
 
 float:left;
 width:625px;
+padding-bottom:5px;
+padding-left:20px;
+padding-right:5px;
 border-left:1px solid gray;
-padding:1em;
 white-space:pre;
 word-wrap: break-word;
 word-break: normal; 
@@ -120,7 +127,19 @@ white-space:pre;
 	font-size:14px;
 	font-family:Arial, Helvetica, sans-serif;
 }
-
+div.subtitle
+{
+font-size:15px;
+color:#397fa3;
+margin-left:8px;
+margin-top:5px;
+font-weight:bold;
+}
+div.subtitle a
+{
+color:#397fa3;
+font-weight:bold;
+}
 </style>
 </head>
 <body>
@@ -131,27 +150,39 @@ white-space:pre;
 <div class="container">
 <div class="conimg">
 <div class="conimgleft">
-<!-- <img src="../Public/images/about2.jpg" width="228" height="200"/> -->
 <include file="Public:slidesmall"/>
+<!--<img src="../Public/images/about2.jpg" width="228" height="200"/> -->
 </div>
 <div class="conimgright"><img src="../Public/images/about.jpg" width="620" height="190" /></div>
 </div>
 <div class="header"><h1 class="header">科研成果</h1></div>
 
 <div class="left">
+<div class="subtitle"><a href="__URL__/prodlist/type/5">平台建设</a></div>
 <ul class="header_05" id="link_clicked">
-<volist name="intros" id="i">
+<volist name="platform" id="i">
 <if condition="$cpn eq $i['id']">
-<li><a href="__URL__/prodlist/id/{$i.id}" class="current">{$i.title}</a></li>
+<li><a href="__URL__/prodlist/type/5/id/{$i.id}" class="current">{$i.title}</a></li>
 <else />
-<li><a href="__URL__/prodlist/id/{$i.id}">{$i.title}</a></li>
+<li><a href="__URL__/prodlist/type/5/id/{$i.id}">{$i.title}</a></li>
 </if>
 </volist>
 </ul>
 
+<div class="subtitle"><a href="__URL__/prodlist/type/3">获奖成果</a></div>
+<ul class="header_05" id="link_clickedd">
+<volist name="award" id="i">
+<if condition="$cpn eq $i['id']">
+<li><a href="__URL__/prodlist/type/3/id/{$i.id}" class="current">{$i.title}</a></li>
+<else />
+<li><a href="__URL__/prodlist/type/3/id/{$i.id}">{$i.title}</a></li>
+</if>
+</volist>
+</ul>
 
+<div class="subtitle"><a href="__URL__/typical"><img  src="../Public/images/lunzhu.jpg" /> </a></div>
 </div>
-<div class="content"  >{$curpage.content}
+<div class="content"  >{$curpage.content}<ol style="padding-left:25px;font-size:15px"><volist name="tjour" id="p"><li style="margin-bottom:5px"><a href="__ROOT__/index.php/Paper/index/type/jour/id/{$p.id}"><font >{$p.authors},{$p.title},</font><font style="font-style:italic">{$p.journalname},</font><if condition="$p['volumenum'] neq ''">vol.{$p.volumenum},</if>page.{$p.pagenum},{$p.publishdate}</font></a></li></volist><volist name="tconf" id="p"><li style="margin-bottom:5px"><a href="__ROOT__/index.php/Paper/index/type/conf/id/{$p.id}"><font >{$p.authors},{$p.title},</font><font style="font-style:italic">{$p.conferencename},</font>page.{$p.pagenum},{$p.publishdate}</font></a></li></volist></ol>
 <div class="bgimg">
 </div>
 </div>
