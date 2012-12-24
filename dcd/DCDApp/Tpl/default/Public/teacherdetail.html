@@ -201,14 +201,7 @@ text-align:justify;
 </volist>
 </ol>
 </div>
-<P style="font-size:16px"  style="font-weight:bold"><strong>项目</strong></P>
-<div class="peo" style="margin-bottom:60px;white-space:normal" >
-<ol style="padding-left:25px;font-size:15px">
-<volist name="projects" id="pro">
-	<li><font size="3">项目名称：{$pro.title}&nbsp;&nbsp;&nbsp;&nbsp;项目类型：{$pro.typename}&nbsp;&nbsp;&nbsp;&nbsp;负责人姓名：{$pro.personname}</font></li>
-</volist>
-</ol>
-</div>
+
 <if condition = "($_SESSION['usertype'] eq 'teacher') AND ($_GET['id'] eq '')">
 <div style="float:right"><a href="__APP__/password" style="color:#397fa3">>>修改密码</a></div>
 </if>
