@@ -18,8 +18,14 @@ class StudenteditAction extends Action{
 		$condt["id"] = $person[0]["teacher"];
 		$teacher = M("Teacher")->where($condt)->select();
 		$this->teachername = $teacher[0]["name"];
+		//替换个人简介
 		$person[0]['introduction'] = str_replace("<br/>","\n",$person[0]['introduction']);
 		$person[0]['introduction'] = str_replace("&nbsp;"," ",$person[0]['introduction']);
+		//替换入学日期
+		$date = split('/',$person[0]['entrancedate']);
+		$person[0]['enyear'] = $date[0];
+		$person[0]['enmonth'] = $date[1];
+		$person[0]['enday'] = $date[2];
 		$this->p = $person[0];
 		$this->display("Public:studentedit");
 	}

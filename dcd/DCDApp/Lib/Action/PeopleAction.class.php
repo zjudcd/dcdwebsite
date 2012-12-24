@@ -19,19 +19,27 @@ class PeopleAction extends BaseAction{
 			$table = "teacher";
 			$map['status'] = "在校";
 		}	
-		else if($cate == "student")
+		else if($cate == "phd")
 		{
 			$table = "student";
 			$map['status'] = "在校";
+			$map['category'] = "博";
+		}
+		else if($cate == "master")
+		{
+			$table = "student";
+			$map['status'] = "在校";
+			$map['category'] = "硕";
 		}
 		else
 		{
 			$table = "Student";
 			$map['status'] = "离校";
+			$map['isshow'] = 1;
 		}
 		$Member = M($table);
 		$count = $Member->where($map)->count();
-		$Page = new Page($count,12);
+		$Page = new Page($count,16);
 		$Page -> parameter .= "keyword=".urlencode($kmap)."&";
 		$show = $Page->show();
 		$p = $Member->where($map)->order('rank')->limit($Page->firstRow.','.$Page->listRows)->select();

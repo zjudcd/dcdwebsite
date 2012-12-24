@@ -150,10 +150,15 @@ color: #409ecc;
 	<else />
 	<li><a href="__URL__/index/category/teacher" >教师</a></li>
 	</if>
-	<if condition="$cate eq 'student'">
-	<li><a href="__URL__/index/category/student" class="current">学生</a></li>
+	<if condition="$cate eq 'phd'">
+	<li><a href="__URL__/index/category/phd" class="current">博士研究生</a></li>
 	<else />
-	<li><a href="__URL__/index/category/student" >学生</a></li>
+	<li><a href="__URL__/index/category/phd" >博士研究生</a></li>
+	</if>
+	<if condition="$cate eq 'master'">
+	<li><a href="__URL__/index/category/master" class="current">硕士研究生</a></li>
+	<else />
+	<li><a href="__URL__/index/category/master" >硕士研究生</a></li>
 	</if>
 	<if condition="$cate eq 'grastudent'">
 	<li><a href="__URL__/index/category/grastudent" class="current">毕业学生</a></li>

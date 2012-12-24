@@ -47,9 +47,22 @@ table.info
 			<th width="148">导师</th>
 			  <td width="168">{$teachername}</td>
 			  <th >类型</th>
-				<td ><input type="text" name="category" value="{$p['category']}" /></td>
+				<td >
+				<select name="category">
+					<if condition="$p['category'] eq '博'">
+						<option value="硕">硕士研究生</option>
+						<option value="博" selected>博士研究生</option>
+					<else />
+						<option value="硕" selected>硕士研究生</option>
+						<option value="博">博士研究生</option>
+					</if>
+				</select></td>
 				<th width="144" >入学日期</th>
-				<td width="168"><input type="text" name="entrancedate" value="{$p['entrancedate']}" /></td>
+				<td width="168">
+				<input type="hidden" name="entrancedate" value="{$p['entrancedate']}" />
+					<input type="text" name="enyear" value="{$p['enyear']}" />年
+					<input type="text" name="enmonth" value="{$p['enmonth']}" />月
+					<input type="text" name="enday" value="{$p['enday']}" />日</td>
 				
 			<tr>
 			<th width="189" >学号</th>

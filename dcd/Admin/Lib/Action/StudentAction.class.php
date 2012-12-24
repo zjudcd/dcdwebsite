@@ -69,8 +69,14 @@ class StudentAction extends BaseAction{
 			$Teac = M("Teacher")->select();
 			$cond1["personid"] = $_GET["studentid"];
 			$status = M("person")->where($cond1)->select();
+			//替换个人简介
 			$Stu[0]['introduction'] = str_replace("<br/>","\n",$Stu[0]['introduction']);
 			$Stu[0]['introduction'] = str_replace("&nbsp;"," ",$Stu[0]['introduction']);
+			//替换入学日期
+			$date = split('/',$Stu[0]['entrancedate']);
+			$Stu[0]['enyear'] = $date[0];
+			$Stu[0]['enmonth'] = $date[1];
+			$Stu[0]['enday'] = $date[2];
 			$this->assign(title,"编辑");
 			$this->assign(action,"edits");
 			$this->assign("teacher",$Teac);
@@ -86,6 +92,10 @@ class StudentAction extends BaseAction{
 	}
 	public function edits(){
 		$data = $_POST;
+		if($_POST['show'] == on)
+			$data["isshow"] = 1;
+		else
+			$data["isshow"] = 0;
 		if(!empty($_FILES['photo']['name'])){
 			$data['photo'] = $this->_upload("photo",false,300,400,true);
 		}
