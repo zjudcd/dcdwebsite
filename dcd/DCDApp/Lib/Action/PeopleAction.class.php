@@ -47,6 +47,27 @@ class PeopleAction extends BaseAction{
 		$Page -> parameter .= "keyword=".urlencode($kmap)."&";
 		$show = $Page->show();
 		$p = $Member->where($map)->order($orderkey)->limit($Page->firstRow.','.$Page->listRows)->select();
+		if($cate == "phd" || $cate == "master")		//如果是硕士或博士
+		{
+			$res = Array();
+			$year = $p[0]['entrancedate'];
+			$year = substr($year,0,4);
+			$cur = Array();
+			foreach($p as $k => $v)
+			{
+				$y = substr($v['entrancedate'],0,4);
+				if($y == $year)
+				{
+					$cur[] = $v;
+				}
+				else
+				{
+					$res[$year] = $cur;
+					$cur = Array();
+					$year = $y;
+				}
+			}
+		}
 		$this->assign("pages",$show);
 		$this->assign("category",$table);
 		$this->assign("cate",$cate);
