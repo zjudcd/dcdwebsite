@@ -141,17 +141,16 @@ color: #409ecc;
 </head>
 <body>
 <include file="Public:header" />
-<!-- end of menu wrapper -->
 <div id="tempatemo_content_wrapper">
 <div id="people_content">
 <div class="container">
 
-<div class="header"><h1 class="header">äººå‘˜åˆ—è¡¨</h1></div>
+<div class="header"><h1 class="header">ÈËÔ±ÁĞ±í</h1></div>
 
 <div class="sea">
 <form name="search" method="post" action="" class="search f_l">
 				<input type="text" name="keyword" value="" class="search-input">
-				<input type="submit" value="æœç´¢" class="search-btn">
+				<input type="submit" value="ËÑË÷" class="search-btn">
 			</form>
 <div class="clear"></div>
 </div>
@@ -159,39 +158,34 @@ color: #409ecc;
 
 <ul class="header_05" id="link_clicked">
 	<if condition="$cate eq 'teacher'">
-	<li><a href="__URL__/index/category/teacher" class="current">æ•™å¸ˆ</a></li>
+	<li><a href="__URL__/index/category/teacher" class="current">½ÌÊ¦</a></li>
 	<else />
-	<li><a href="__URL__/index/category/teacher" >æ•™å¸ˆ</a></li>
+	<li><a href="__URL__/index/category/teacher" >½ÌÊ¦</a></li>
 	</if>
-	<li>åšå£«ç ”ç©¶ç”Ÿ</li>
-		<volist name="phdgra" id="grade">
-		<if condition="$cate eq 'phd' AND $g eq $grade">
-			<li><a href="__URL__/index/category/phd/grade/{$grade}" class="current">{$grade}çº§</a></li>
-		<else />
-			<li><a href="__URL__/index/category/phd/grade/{$grade}">{$grade}çº§</a></li>
-		</if>
-		</volist>
-	<li>ç¡•å£«ç ”ç©¶ç”Ÿ</li>
-		<volist name="masgra" id="grade">
-		<if condition="$cate eq 'master' AND $g eq $grade">
-			<li><a href="__URL__/index/category/master/grade/{$grade}" class="current">{$grade}çº§</a></li>
-		<else />
-			<li><a href="__URL__/index/category/master/grade/{$grade}">{$grade}çº§</a></li>
-		</if>
-		</volist>
-	<if condition="$cate eq 'grastudent'">
-	<li><a href="__URL__/index/category/grastudent" class="current">æ¯•ä¸šåå­¦ç”Ÿ</a></li>
+	<if condition="$cate eq 'phd'">
+	<li><a href="__URL__/index/category/phd" class="current">²©Ê¿ÑĞ¾¿Éú</a></li>
 	<else />
-	<li><a href="__URL__/index/category/grastudent" >æ¯•ä¸šåå­¦ç”Ÿ</a></li>
+	<li><a href="__URL__/index/category/phd" >²©Ê¿ÑĞ¾¿Éú</a></li>
+	</if>
+	<if condition="$cate eq 'master'">
+	<li><a href="__URL__/index/category/master" class="current">Ë¶Ê¿ÑĞ¾¿Éú</a></li>
+	<else />
+	<li><a href="__URL__/index/category/master" >Ë¶Ê¿ÑĞ¾¿Éú</a></li>
+	</if>
+	<if condition="$cate eq 'grastudent'">
+	<li><a href="__URL__/index/category/grastudent" class="current">±ÏÒµÑ§Éú</a></li>
+	<else />
+	<li><a href="__URL__/index/category/grastudent" >±ÏÒµÑ§Éú</a></li>
 	</if>
 </ul>
 
 </div>
+<if condition = "$category eq 'teacher'">
 <div class="content">
 		<volist name="people" id="person">
 		<div class="people">
 			<div class="img">
-			<a href="__APP__/{$type}detail/index/id/{$person['id']}"><img src="__ROOT__/Attachments/photo/{$person['photo']}"  width="130px" height="160px"/></a>
+			<a href="__APP__/{$category}detail/index/id/{$person['id']}"><img src="__ROOT__/Attachments/photo/{$person['photo']}"  width="130px" height="160px"/></a>
 			</div>
 			<div class="name" style="text-align:center">
 			<span >{$person["name"]}</span>
@@ -199,8 +193,27 @@ color: #409ecc;
 		</div>
 		</volist>
 </div>
+<else />
+<div class="content">
+		<volist name="students" id="student">
+			<div class="grade"><strong>{$key}¼¶</strong><br/></div>
+			<volist name="student" id="s">
+			<div class="people">
+				<div class="img">
+					<a href="__APP__/{$category}detail/index/id/{$s['id']}"><img src="__ROOT__/Attachments/photo/{$s['photo']}"  width="130px" height="160px"/></a>
+				</div>
+				<div class="name" style="text-align:center">
+					<span >{$s["name"]}</span>
+				</div>
+			</div>
+			</volist>
+			<div class="cleaner"></div>
+		</volist>
+</div>
+</if>
 <div style="text-align:center">
 {$pages}
+<include file="Public:paging" />
 </div>
 
 </div>
