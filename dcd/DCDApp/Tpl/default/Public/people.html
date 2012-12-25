@@ -32,7 +32,7 @@ margin:0;
 div.left
 {
 float:left;
-width:120px;
+width:130px;
 
 margin-top:20px;
 color:black;
@@ -70,7 +70,7 @@ padding:0px;
 margin-bottom:10px;
 margin-left:16px;
 margin-top:10px;
-margin-right:17px;
+margin-right:12px;
 overflow:hidden;
 }
 
@@ -164,6 +164,7 @@ color: #409ecc;
 	<li><a href="__URL__/index/category/teacher" >教师</a></li>
 	</if>
 	<li>博士研究生</li>
+	<ul style="list-style:disc">
 		<volist name="phdgra" id="grade">
 		<if condition="$cate eq 'phd' AND $g eq $grade">
 			<li><a href="__URL__/index/category/phd/grade/{$grade}" class="current">{$grade}级</a></li>
@@ -171,7 +172,9 @@ color: #409ecc;
 			<li><a href="__URL__/index/category/phd/grade/{$grade}">{$grade}级</a></li>
 		</if>
 		</volist>
+	</ul>
 	<li>硕士研究生</li>
+	<ul style="list-style:disc">
 		<volist name="masgra" id="grade">
 		<if condition="$cate eq 'master' AND $g eq $grade">
 			<li><a href="__URL__/index/category/master/grade/{$grade}" class="current">{$grade}级</a></li>
@@ -179,6 +182,7 @@ color: #409ecc;
 			<li><a href="__URL__/index/category/master/grade/{$grade}">{$grade}级</a></li>
 		</if>
 		</volist>
+		</ul>
 	<if condition="$cate eq 'grastudent'">
 	<li><a href="__URL__/index/category/grastudent" class="current">毕业后学生</a></li>
 	<else />
