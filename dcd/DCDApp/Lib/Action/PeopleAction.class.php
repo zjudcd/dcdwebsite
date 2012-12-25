@@ -47,7 +47,7 @@ class PeopleAction extends BaseAction{
 		$Page -> parameter .= "keyword=".urlencode($kmap)."&";
 		$show = $Page->show();
 		$p = $Member->where($map)->order($orderkey)->limit($Page->firstRow.','.$Page->listRows)->select();
-		if($cate == "phd" || $cate == "master")		//如果是硕士或博士
+		if($cate == "phd" || $cate == "master" || $cate == "grastudent")		//如果是硕士或博士
 		{
 			$res = Array();
 			$year = $p[0]['entrancedate'];
@@ -67,7 +67,10 @@ class PeopleAction extends BaseAction{
 					$year = $y;
 				}
 			}
+			if(count($cur) != 0)
+				$res[$year] = $cur;
 		}
+		$this->assign("students",$res);
 		$this->assign("pages",$show);
 		$this->assign("category",$table);
 		$this->assign("cate",$cate);

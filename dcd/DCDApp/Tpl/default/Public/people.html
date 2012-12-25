@@ -170,6 +170,7 @@ color: #409ecc;
 </ul>
 
 </div>
+<if condition = "$category eq 'teacher'">
 <div class="content">
 		<volist name="people" id="person">
 		<div class="people">
@@ -182,7 +183,23 @@ color: #409ecc;
 		</div>
 		</volist>
 </div>
-
+<else />
+<div class="content">
+		<volist name="students" id="student">
+			<strong>{$key}</strong>
+			<volist name="student" id="s">
+			<div class="people">
+				<div class="img">
+					<a href="__APP__/{$category}detail/index/id/{$s['id']}"><img src="__ROOT__/Attachments/photo/{$s['photo']}"  width="130px" height="160px"/></a>
+				</div>
+				<div class="name" style="text-align:center">
+					<span >{$s["name"]}</span>
+				</div>
+			</div>
+			</volist>
+		</volist>
+</div>
+</if>
 <div style="text-align:center">
 {$pages}
 <include file="Public:paging" />
