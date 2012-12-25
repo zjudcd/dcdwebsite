@@ -107,6 +107,17 @@ overflow:hidden;
 width:100%;
 height:40px;
 }
+
+div.grade
+{
+text-align:left;
+color:#006699;
+
+border-bottom:double 1px;
+border-bottom-color:#CCCCCC;
+
+
+}
 .search {  padding-left:650px; margin: 8px; width: 100%; height:30px; background: #ffffff; }
 	.search .search-input { border: 1px solid  #c3c4c5; height: 24px; color: #131313; background: #FFF; float:left; }
 	.search .search-btn { color: #FFF; background:#387fa2; border: 1px solid  #c3c4c5; height: 24px; cursor: pointer; float:left; }
@@ -186,7 +197,7 @@ color: #409ecc;
 <else />
 <div class="content">
 		<volist name="students" id="student">
-			<div style="float:left"><strong>{$key}</strong><br/></div>
+			<div class="grade"><strong>{$key}级</strong><br/></div>
 			<volist name="student" id="s">
 			<div class="people">
 				<div class="img">
@@ -197,6 +208,7 @@ color: #409ecc;
 				</div>
 			</div>
 			</volist>
+			<div class="cleaner"></div>
 		</volist>
 </div>
 </if>
