@@ -117,9 +117,9 @@ font-weight:bold;
 <div class="abstract">Citation</div>
 <div class="thesis">
 <if condition = "$type eq 'jour'">
-	<font >{$paper.authors},{$paper.title},</font><font style="font-style:italic">{$paper.journalname},</font><if condition="$paper['volumenum'] neq ''">vol.{$paper.volumenum},</if>page.{$paper.pagenum},{$paper.publishdate}</font>
+	<font >{$paper.authors},{$paper.title},</font><font style="font-style:italic">{$paper.journalname},</font><if condition="$paper['volumenum'] neq ''"> {$paper.volumenum}({$paper.issuenum}):</if>{$paper.pagenum}, {$paper.publishdate}</font>
 <else/>
-	<font >{$paper.authors},{$paper.title},</font><font style="font-style:italic">{$paper.conferencename},</font>page.{$paper.pagenum},{$paper.publishdate}</font>
+	<font >{$paper.authors},{$paper.title},</font><font style="font-style:italic">{$paper.conferencename},</font> page.{$paper.pagenum}, {$paper.publishdate}</font>
 </if>
 </div>
 </div>

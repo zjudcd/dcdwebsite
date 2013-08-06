@@ -165,10 +165,15 @@ class ProductsAction extends BaseAction{
 	{
 		$tablename=$_GET["tablename"];
 		$sp=$this->tb2pg($tablename);
-		if(!empty($_FILES)){
+		if(!empty($_FILES["image1"]["name"]) || !empty($_FILES["official"]["name"]) || !empty($_FILES["draft"]["name"])){
 			$filesinfo= $this->_uploadmul("products",false,300,400,true);// 附件存储在Attachments/products目录下
 		}
 		
+        if(empty($_FILES["image1"]["name"]))
+        {
+            $_POST["image1"] = "default.jpg";
+        }
+        
 		foreach($filesinfo as $num=>$file)
 		{
 			$_POST[$file["key"]]=$file["savename"];

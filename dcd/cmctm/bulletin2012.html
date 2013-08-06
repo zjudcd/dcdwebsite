@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>面向公共安全的跨媒体计算理论与方法</title>
+<link href="css/initiate.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="main">
+	<p><img src="images/logo_index.png" width="227" height="82" /></p>
+	<p><img src="images/title_text.png" width="632" height="67" /></p>
+    <ul class="up_navi">
+		<li><a href="index.html">首页</a></li>
+        <li><a href="keti.html">课题及主要参加人员</a></li>
+        <li><a href="experts.html">专家组</a></li>
+        <li><a href="cs.html">首席科学家和课题负责人</a></li>
+        <li><a href="progress.html">年度简报</a></li>
+        <li><a href="share.html">数据共享</a></li>
+    </ul>
+    <script type="text/javascript" src="js/pdfobject.js"></script>
+    <script type="text/javascript"> 
+        window.onload = function (){
+            var success = new PDFObject({ url: "files/bulletin2012.pdf" ,pdfOpenParams: { scrollbars: '0', toolbar: '0', statusbar: '0'}}).embed("bulletin");
+        };
+    </script> 
+ 
+    <div id="bulletin">似乎你没有安装Adobe Reader，或者你的浏览器不支持PDF<a href="files/test.pdf">请点击下载pdf文件</a>
+    </div>
+	<div class="footer">
+		<p>Copyright&copy;2011 Zhejiang University</p>
+	</div>
+</div>
+</body>
+</html>

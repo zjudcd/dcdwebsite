@@ -1,0 +1,49 @@
+/*
+Thanks to: http://immmmm.com/wordpress-theme-simple-bold-borders.html
+*/
+html,body,div,p,ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,input,select,button,textarea,iframe,table,th,td,blockquote{margin:0;padding:0;}
+img{border:0 none;}
+ol,ul,li{list-style-type:none;}
+
+blockquote{background:#F6F6F6;border:1px solid #EAEAEA;font-style:italic;line-height:21px;margin:4px 0 17px;overflow:hidden;padding: 8px 6px;}
+.quote-left{font-size:40px;float:left;margin:-10px 8px 0 0;height:28px;}
+.postContent hr{color: #EFEFEF; border: none; border-bottom: 1px dashed #DEDEDE; margin-bottom: 5px;}
+
+
+body,input,textarea,select,button,code,blockquote{font:14px/1.5 Verdana,Helvetica,Tahoma,Arial}
+body{background:#FFF;color:#333;}
+h1,h2,h3{font-weight:400;font-family:Georgia;}
+h1{font-size:20px;}
+h2,h3{font-size:16px;border-left:5px solid #9E0601;}
+a{text-decoration:none;color:#075220;border-bottom: 1px dashed;}
+a:hover {color:#007828;}
+a{-moz-transition: color 0.5s;-webkit-transition: color 0.5s;-o-transition: color 0.5s;transition: color 0.5s;}
+a.hover{-moz-transition: color 0.5s;-webkit-transition: color 0.5s;-o-transition: color 0.5s;transition: color 0.5s;}
+.clear{clear:both;}
+
+#container{margin:0 auto;padding:0 14px;width:850px;}
+
+#header {margin-bottom:33px;}
+#header h1{font-size:37px;font-weight:300;letter-spacing:0px;padding:6px 14px;display:inline-block;}
+
+.hentry,#comments{background-color:#FFFFFF;border-top:0px solid #3B3B3B;margin-bottom:0px;padding:15px;}
+.hentry{padding-top:0px;}
+.hentry h2{font-size:21px;font-weight:500;padding:3px 3px;text-align:left;text-transform:uppercase;}
+
+.postHead img{width:288px;height:288px;float:left;margin-right:28px;}
+
+.postContent{font-size:14px;position:relative;padding:12px 0;}
+.postContent p{margin:0 0 13px;line-height:28px;}
+.postContent blockquote p{margin:0;}
+.postContent img{max-width:778px;height:auto;}
+
+.hentry ul,.hentry li{margin-bottom:13px;}
+.hentry ul li,.hentry ol li{list-style-position:inside;list-style-type:disc;margin-bottom:6px;}
+.hentry ol li{list-style-type:decimal;}
+
+.postContent h2{font-size:14px;text-align:left;padding:0px;}
+
+
+#footer{padding:20px 0;color:#323232;font-size:11px;text-align:center;}
+#footer a{color:#DA3E3E;}
+#footer a:hover{color:#323232;}

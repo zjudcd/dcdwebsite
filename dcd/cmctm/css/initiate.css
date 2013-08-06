@@ -1,0 +1,89 @@
+@charset "utf-8";
+body {
+	margin: 0px;
+	padding: 0px;
+	background-image: url(../images/dots.png);
+	background-repeat: no-repeat;
+	width: 100%;
+}
+
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+
+.main {
+	width: 970px;
+	margin-top: 105px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+.even_row {
+	background-color: #E6E1E2;
+}
+
+#bulletin {
+    width: 100%;
+    height: 800px;
+    text-align: center;
+}
+
+.up_navi {
+	padding: 0px;
+}
+
+.up_navi li{
+	display: inline;
+	font-size: 13px;
+	margin-left: 7px;
+	margin-right: 7px;
+	text-decoration: none;
+}
+
+.content {
+	width: 700px;
+	text-align: left;
+	border: 1px solid #CCC;
+	font-size: small;
+	padding-top: 20px;
+	padding-right: 40px;
+	padding-bottom: 20px;
+	padding-left: 40px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.footer {
+	font-size: small;
+	color: #666;
+}
+
+#experts {
+	text-align: center;
+	border: 1px solid #999;
+}
+
+.login_input {
+	border: 1px solid #999;
+	text-align: center;
+}
+
+.align_center {
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.inputBox{
+	border: 1px solid #CCC;
+}

@@ -5,7 +5,7 @@ return array(
 	'DB_HOST'		=>	'localhost',
 	'DB_NAME'		=>	'dcd',
 	'DB_USER'		=>	'root',
-	'DB_PWD'		=>	'',
+	'DB_PWD'		=>	'dcdwebsite',
 	'DB_PREFIX'		=>	'',	
 	'DB_CHARSET'	=>	'utf8',
 	'ROUTER_ON'		=>	true,
